@@ -4,3 +4,5 @@ bin/
 obj/
 packages/
 NuGet.exe
+x64/
+x86/
