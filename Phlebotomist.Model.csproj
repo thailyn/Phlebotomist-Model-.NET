@@ -7,7 +7,7 @@
     <ProjectGuid>{7B60AB7B-C5CA-4564-A828-34B4907AB4ED}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Phlebotomist.Model</RootNamespace>
+    <RootNamespace>Phlebotomist</RootNamespace>
     <AssemblyName>Phlebotomist.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -49,135 +49,135 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="attack_types.cs">
+    <Compile Include="Model\attack_types.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="bazaar_offers.cs">
+    <Compile Include="Model\bazaar_offers.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="bazaar_offer_familiar_type_terms.cs">
+    <Compile Include="Model\bazaar_offer_familiar_type_terms.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="bazaar_offer_item_terms.cs">
+    <Compile Include="Model\bazaar_offer_item_terms.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="brigade.cs">
+    <Compile Include="Model\brigade.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="brigade_familiars.cs">
+    <Compile Include="Model\brigade_familiars.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="brigade_formations.cs">
+    <Compile Include="Model\brigade_formations.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="brigade_formation_horizontal_position_types.cs">
+    <Compile Include="Model\brigade_formation_horizontal_position_types.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="brigade_formation_positions.cs">
+    <Compile Include="Model\brigade_formation_positions.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="brigade_formation_vertical_position_types.cs">
+    <Compile Include="Model\brigade_formation_vertical_position_types.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="event.cs">
+    <Compile Include="Model\event.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="event_elite_familiar_types.cs">
+    <Compile Include="Model\event_elite_familiar_types.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="event_types.cs">
+    <Compile Include="Model\event_types.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="familiar.cs">
+    <Compile Include="Model\familiar.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="familiar_skills.cs">
+    <Compile Include="Model\familiar_skills.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="familiar_types.cs">
+    <Compile Include="Model\familiar_types.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="familiar_type_skills.cs">
+    <Compile Include="Model\familiar_type_skills.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="growth.cs">
+    <Compile Include="Model\growth.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="item.cs">
+    <Compile Include="Model\item.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="item_types.cs">
+    <Compile Include="Model\item_types.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PhlebotomistModel.Context.cs">
+    <Compile Include="Model\PhlebotomistModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PhlebotomistModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="PhlebotomistModel.cs">
+    <Compile Include="Model\PhlebotomistModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PhlebotomistModel.Designer.cs">
+    <Compile Include="Model\PhlebotomistModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PhlebotomistModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="player.cs">
+    <Compile Include="Model\player.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="race.cs">
+    <Compile Include="Model\race.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="raid_bosses.cs">
+    <Compile Include="Model\raid_bosses.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="raid_boss_brigade_attacks.cs">
+    <Compile Include="Model\raid_boss_brigade_attacks.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="raid_boss_familiar_types.cs">
+    <Compile Include="Model\raid_boss_familiar_types.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="raid_boss_types.cs">
+    <Compile Include="Model\raid_boss_types.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="rarity.cs">
+    <Compile Include="Model\rarity.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="skill.cs">
+    <Compile Include="Model\skill.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="skill_affected_stats.cs">
+    <Compile Include="Model\skill_affected_stats.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="skill_patterns.cs">
+    <Compile Include="Model\skill_patterns.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="skill_types.cs">
+    <Compile Include="Model\skill_types.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="stat.cs">
+    <Compile Include="Model\stat.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="PhlebotomistModel.edmx">
+    <EntityDeploy Include="Model\PhlebotomistModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PhlebotomistModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="PhlebotomistModel.Context.tt">
+    <None Include="Model\PhlebotomistModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PhlebotomistModel.edmx</DependentUpon>
       <LastGenOutput>PhlebotomistModel.Context.cs</LastGenOutput>
     </None>
-    <None Include="PhlebotomistModel.edmx.diagram">
+    <None Include="Model\PhlebotomistModel.edmx.diagram">
       <DependentUpon>PhlebotomistModel.edmx</DependentUpon>
     </None>
-    <None Include="PhlebotomistModel.tt">
+    <None Include="Model\PhlebotomistModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PhlebotomistModel.edmx</DependentUpon>
       <LastGenOutput>PhlebotomistModel.cs</LastGenOutput>
