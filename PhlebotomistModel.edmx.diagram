@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b411a32752664d3084283c93fd3a628f" Name="Diagram1" >
+        <EntityTypeShape EntityType="PhlebotomistModel.attack_types" Width="1.5" PointX="5.25" PointY="31.375" />
+        <EntityTypeShape EntityType="PhlebotomistModel.bazaar_offer_familiar_type_terms" Width="1.5" PointX="8.25" PointY="7.625" />
+        <EntityTypeShape EntityType="PhlebotomistModel.bazaar_offer_item_terms" Width="1.5" PointX="9.75" PointY="23" />
+        <EntityTypeShape EntityType="PhlebotomistModel.bazaar_offers" Width="1.5" PointX="7.5" PointY="22.875" />
+        <EntityTypeShape EntityType="PhlebotomistModel.brigade_familiars" Width="1.5" PointX="7.5" PointY="16.375" />
+        <EntityTypeShape EntityType="PhlebotomistModel.brigade_formation_horizontal_position_types" Width="1.5" PointX="3" PointY="27.75" />
+        <EntityTypeShape EntityType="PhlebotomistModel.brigade_formation_positions" Width="1.5" PointX="5.25" PointY="27.125" />
+        <EntityTypeShape EntityType="PhlebotomistModel.brigade_formation_vertical_position_types" Width="1.5" PointX="3" PointY="30.125" />
+        <EntityTypeShape EntityType="PhlebotomistModel.brigade_formations" Width="1.5" PointX="3" PointY="25.125" />
+        <EntityTypeShape EntityType="PhlebotomistModel.brigade" Width="1.5" PointX="5.25" PointY="21.625" />
+        <EntityTypeShape EntityType="PhlebotomistModel.event_elite_familiar_types" Width="1.5" PointX="5.25" PointY="11.625" />
+        <EntityTypeShape EntityType="PhlebotomistModel.event_types" Width="1.5" PointX="0.75" PointY="21.75" />
+        <EntityTypeShape EntityType="PhlebotomistModel.event" Width="1.5" PointX="3" PointY="21.375" />
+        <EntityTypeShape EntityType="PhlebotomistModel.familiar_skills" Width="1.5" PointX="10.5" PointY="16.5" />
+        <EntityTypeShape EntityType="PhlebotomistModel.familiar_type_skills" Width="1.5" PointX="5.25" PointY="8.625" />
+        <EntityTypeShape EntityType="PhlebotomistModel.familiar_types" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="PhlebotomistModel.familiar" Width="1.5" PointX="5.25" PointY="15" />
+        <EntityTypeShape EntityType="PhlebotomistModel.growth" Width="1.5" PointX="0.75" PointY="15.125" />
+        <EntityTypeShape EntityType="PhlebotomistModel.item_types" Width="1.5" PointX="7.5" PointY="20.125" />
+        <EntityTypeShape EntityType="PhlebotomistModel.item" Width="1.5" PointX="12.75" PointY="18.125" />
+        <EntityTypeShape EntityType="PhlebotomistModel.player" Width="1.5" PointX="3" PointY="16.625" />
+        <EntityTypeShape EntityType="PhlebotomistModel.race" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="PhlebotomistModel.raid_boss_brigade_attacks" Width="1.5" PointX="7.5" PointY="26.375" />
+        <EntityTypeShape EntityType="PhlebotomistModel.raid_boss_familiar_types" Width="1.5" PointX="8.25" PointY="11.375" />
+        <EntityTypeShape EntityType="PhlebotomistModel.raid_boss_types" Width="1.5" PointX="6" PointY="5.75" />
+        <EntityTypeShape EntityType="PhlebotomistModel.raid_bosses" Width="1.5" PointX="5.25" PointY="34" />
+        <EntityTypeShape EntityType="PhlebotomistModel.rarity" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="PhlebotomistModel.skill_affected_stats" Width="1.5" PointX="5.25" PointY="2.375" />
+        <EntityTypeShape EntityType="PhlebotomistModel.skill_patterns" Width="1.5" PointX="0.75" PointY="18.625" />
+        <EntityTypeShape EntityType="PhlebotomistModel.skill_types" Width="1.5" PointX="0.75" PointY="5.25" />
+        <EntityTypeShape EntityType="PhlebotomistModel.skill" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="PhlebotomistModel.stat" Width="1.5" PointX="0.75" PointY="1.75" />
+        <AssociationConnector Association="PhlebotomistModel.FK_raid_boss_brigade_attacks_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_bazaar_offer_item_terms_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_bazaar_offer_item_terms_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_bazaar_offers_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_brigade_familiars_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_brigade_familiars_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_brigade_familiars_2_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_brigade_formation_positions_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_brigade_formation_positions_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_brigade_formation_positions_2_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_brigades_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_brigades_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_raid_boss_brigade_attacks_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_event_elite_familiar_types_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_event_elite_familiar_types_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_events_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_raid_boss_familiar_types_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiar_skills_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiar_skills_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiar_type_skills_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiar_type_skills_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiar_types_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiar_types_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiar_types_2_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiar_types_3_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiar_types_4_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiars_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_raid_boss_familiar_types_2_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiars_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_items_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_items_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_raid_boss_brigade_attacks_2_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_raid_boss_familiar_types_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_skill_affected_stats_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_skill_affected_stats_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_skills_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_skills_3_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_skills_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_skills_2_0" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

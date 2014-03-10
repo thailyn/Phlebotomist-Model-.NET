@@ -1,0 +1,2506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PhlebotomistModel.Store" Provider="System.Data.SQLite" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="attack_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="bazaar_offer_familiar_type_terms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bazaar_offer_id" Type="integer" Nullable="false" />
+          <Property Name="familiar_type_id" Type="integer" Nullable="false" />
+          <Property Name="quantity" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bazaar_offer_item_terms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bazaar_offer_id" Type="integer" Nullable="false" />
+          <Property Name="item_id" Type="integer" Nullable="false" />
+          <Property Name="quantity" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bazaar_offers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="player_name" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="date" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="offered_familiar_id" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="brigade_familiars">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brigade_id" Type="integer" Nullable="false" />
+          <Property Name="familiar_id" Type="integer" Nullable="false" />
+          <Property Name="brigade_formation_position_id" Type="integer" Nullable="false" />
+          <Property Name="is_reserve" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="brigade_formation_horizontal_position_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="brigade_formation_positions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brigade_formation_id" Type="integer" Nullable="false" />
+          <Property Name="horizontal_position_type_id" Type="integer" Nullable="false" />
+          <Property Name="vertical_position_type_id" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="brigade_formation_vertical_position_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="brigade_formations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="num_positions" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="brigades">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brigade_formation_id" Type="integer" Nullable="false" />
+          <Property Name="player_id" Type="integer" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="notes" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="event_elite_familiar_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="event_id" Type="integer" Nullable="false" />
+          <Property Name="familiar_type_id" Type="integer" Nullable="false" />
+          <Property Name="multiplier" Type="real" Nullable="false" />
+        </EntityType>
+        <EntityType Name="event_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="events">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="event_type_id" Type="integer" Nullable="false" />
+          <Property Name="date_started" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="date_ended" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="familiar_skills">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="familiar_id" Type="integer" Nullable="false" />
+          <Property Name="skill_id" Type="integer" Nullable="false" />
+          <Property Name="level" Type="smallint" Nullable="false" />
+          <Property Name="exp" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="familiar_type_skills">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="familiar_type_id" Type="integer" Nullable="false" />
+          <Property Name="skill_id" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="familiar_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bb_id" Type="integer" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="rarity_id" Type="integer" Nullable="false" />
+          <Property Name="num_stars" Type="smallint" Nullable="false" />
+          <Property Name="max_stars" Type="smallint" Nullable="false" />
+          <Property Name="growth_id" Type="integer" Nullable="false" />
+          <Property Name="worth" Type="integer" Nullable="false" />
+          <Property Name="race_id" Type="integer" Nullable="false" />
+          <Property Name="tradable" Type="smallint" Nullable="false" />
+          <Property Name="last_words" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="prev_evolution_id" Type="integer" />
+          <Property Name="next_evolution_id" Type="integer" />
+        </EntityType>
+        <EntityType Name="familiars">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="player_id" Type="integer" />
+          <Property Name="familiar_type_id" Type="integer" Nullable="false" />
+          <Property Name="owned" Type="tinyint" Nullable="false" />
+          <Property Name="level" Type="real" />
+          <Property Name="hp" Type="real" />
+          <Property Name="atk" Type="real" />
+          <Property Name="def" Type="real" />
+          <Property Name="wis" Type="real" />
+          <Property Name="agi" Type="real" />
+          <Property Name="exp" Type="real" />
+          <Property Name="hp_crystals" Type="integer" Nullable="false" />
+          <Property Name="atk_crystals" Type="integer" Nullable="false" />
+          <Property Name="def_crystals" Type="integer" Nullable="false" />
+          <Property Name="wis_crystals" Type="integer" Nullable="false" />
+          <Property Name="agi_crystals" Type="integer" Nullable="false" />
+          <Property Name="roots_crystals" Type="integer" />
+        </EntityType>
+        <EntityType Name="growths">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="item_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="items">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="item_type_id" Type="integer" Nullable="false" />
+          <Property Name="player_id" Type="integer" />
+          <Property Name="quantity_tradable" Type="smallint" Nullable="false" />
+          <Property Name="quantity_bloodbound" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="players">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="created_date" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="races">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="raid_boss_brigade_attacks">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="raid_boss_id" Type="integer" Nullable="false" />
+          <Property Name="brigade_id" Type="integer" />
+          <Property Name="date" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="attack_type_id" Type="integer" Nullable="false" />
+          <Property Name="starting_HP" Type="real" />
+          <Property Name="ending_HP" Type="real" />
+          <Property Name="damage" Type="real" />
+        </EntityType>
+        <EntityType Name="raid_boss_familiar_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="familiar_type_id" Type="integer" />
+          <Property Name="raid_boss_type_id" Type="integer" Nullable="false" />
+          <Property Name="event_id" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="raid_boss_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="raid_bosses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="raid_boss_familiar_type" Type="integer" Nullable="false" />
+          <Property Name="level" Type="real" Nullable="false" />
+          <Property Name="HP" Type="real" />
+          <Property Name="attack_points" Type="real" />
+          <Property Name="mvp_bonus_multiplier" Type="real" />
+          <Property Name="jur_mvp_bonus_multiplier" Type="real" />
+        </EntityType>
+        <EntityType Name="rarities">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="rank" Type="smallint" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="skill_affected_stats">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="skill_id" Type="integer" Nullable="false" />
+          <Property Name="stat_id" Type="integer" Nullable="false" />
+          <Property Name="rank" Type="tinyint" />
+          <Property Name="affects_allies" Type="tinyint" Nullable="false" />
+          <Property Name="affects_foes" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="skill_patterns">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="skill_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="skills">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="skill_type_id" Type="integer" Nullable="false" />
+          <Property Name="min_probability" Type="real" Nullable="false" />
+          <Property Name="max_probability" Type="real" Nullable="false" />
+          <Property Name="modifier" Type="real" />
+          <Property Name="modifier_stat_id" Type="integer" />
+          <Property Name="flat_modifier" Type="tinyint" />
+          <Property Name="num_targets" Type="smallint" />
+          <Property Name="skill_pattern_id" Type="integer" />
+          <Property Name="rows_range" Type="int" />
+          <Property Name="columns_range" Type="int" />
+          <Property Name="skill_based" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="damage_reduction" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="foe_defensive_modifier_stat_id" Type="integer" />
+          <Property Name="ability" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ignores_position" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="stats">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <Association Name="FK_bazaar_offer_familiar_type_terms_0_0">
+          <End Role="familiar_types" Type="Self.familiar_types" Multiplicity="1" />
+          <End Role="bazaar_offer_familiar_type_terms" Type="Self.bazaar_offer_familiar_type_terms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bazaar_offer_familiar_type_terms">
+              <PropertyRef Name="familiar_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bazaar_offer_familiar_type_terms_1_0">
+          <End Role="bazaar_offers" Type="Self.bazaar_offers" Multiplicity="1" />
+          <End Role="bazaar_offer_familiar_type_terms" Type="Self.bazaar_offer_familiar_type_terms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bazaar_offers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bazaar_offer_familiar_type_terms">
+              <PropertyRef Name="bazaar_offer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bazaar_offer_item_terms_0_0">
+          <End Role="item_types" Type="Self.item_types" Multiplicity="1" />
+          <End Role="bazaar_offer_item_terms" Type="Self.bazaar_offer_item_terms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bazaar_offer_item_terms">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bazaar_offer_item_terms_1_0">
+          <End Role="bazaar_offers" Type="Self.bazaar_offers" Multiplicity="1" />
+          <End Role="bazaar_offer_item_terms" Type="Self.bazaar_offer_item_terms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bazaar_offers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bazaar_offer_item_terms">
+              <PropertyRef Name="bazaar_offer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bazaar_offers_0_0">
+          <End Role="familiars" Type="Self.familiars" Multiplicity="1" />
+          <End Role="bazaar_offers" Type="Self.bazaar_offers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiars">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bazaar_offers">
+              <PropertyRef Name="offered_familiar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_familiars_0_0">
+          <End Role="brigade_formation_positions" Type="Self.brigade_formation_positions" Multiplicity="1" />
+          <End Role="brigade_familiars" Type="Self.brigade_familiars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigade_formation_positions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade_familiars">
+              <PropertyRef Name="brigade_formation_position_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_familiars_1_0">
+          <End Role="familiars" Type="Self.familiars" Multiplicity="1" />
+          <End Role="brigade_familiars" Type="Self.brigade_familiars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiars">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade_familiars">
+              <PropertyRef Name="familiar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_familiars_2_0">
+          <End Role="brigades" Type="Self.brigades" Multiplicity="1" />
+          <End Role="brigade_familiars" Type="Self.brigade_familiars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigades">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade_familiars">
+              <PropertyRef Name="brigade_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_formation_positions_0_0">
+          <End Role="brigade_formation_vertical_position_types" Type="Self.brigade_formation_vertical_position_types" Multiplicity="1" />
+          <End Role="brigade_formation_positions" Type="Self.brigade_formation_positions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigade_formation_vertical_position_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade_formation_positions">
+              <PropertyRef Name="vertical_position_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_formation_positions_1_0">
+          <End Role="brigade_formation_horizontal_position_types" Type="Self.brigade_formation_horizontal_position_types" Multiplicity="1" />
+          <End Role="brigade_formation_positions" Type="Self.brigade_formation_positions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigade_formation_horizontal_position_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade_formation_positions">
+              <PropertyRef Name="horizontal_position_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_formation_positions_2_0">
+          <End Role="brigade_formations" Type="Self.brigade_formations" Multiplicity="1" />
+          <End Role="brigade_formation_positions" Type="Self.brigade_formation_positions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigade_formations">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade_formation_positions">
+              <PropertyRef Name="brigade_formation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigades_0_0">
+          <End Role="players" Type="Self.players" Multiplicity="0..1" />
+          <End Role="brigades" Type="Self.brigades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="players">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigades">
+              <PropertyRef Name="player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigades_1_0">
+          <End Role="brigade_formations" Type="Self.brigade_formations" Multiplicity="1" />
+          <End Role="brigades" Type="Self.brigades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigade_formations">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigades">
+              <PropertyRef Name="brigade_formation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_event_elite_familiar_types_0_0">
+          <End Role="familiar_types" Type="Self.familiar_types" Multiplicity="1" />
+          <End Role="event_elite_familiar_types" Type="Self.event_elite_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="event_elite_familiar_types">
+              <PropertyRef Name="familiar_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_event_elite_familiar_types_1_0">
+          <End Role="events" Type="Self.events" Multiplicity="1" />
+          <End Role="event_elite_familiar_types" Type="Self.event_elite_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="events">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="event_elite_familiar_types">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_events_0_0">
+          <End Role="event_types" Type="Self.event_types" Multiplicity="1" />
+          <End Role="events" Type="Self.events" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="event_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="events">
+              <PropertyRef Name="event_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_skills_0_0">
+          <End Role="skills" Type="Self.skills" Multiplicity="1" />
+          <End Role="familiar_skills" Type="Self.familiar_skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skills">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_skills">
+              <PropertyRef Name="skill_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_skills_1_0">
+          <End Role="familiars" Type="Self.familiars" Multiplicity="1" />
+          <End Role="familiar_skills" Type="Self.familiar_skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiars">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_skills">
+              <PropertyRef Name="familiar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_type_skills_0_0">
+          <End Role="skills" Type="Self.skills" Multiplicity="1" />
+          <End Role="familiar_type_skills" Type="Self.familiar_type_skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skills">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_type_skills">
+              <PropertyRef Name="skill_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_type_skills_1_0">
+          <End Role="familiar_types" Type="Self.familiar_types" Multiplicity="1" />
+          <End Role="familiar_type_skills" Type="Self.familiar_type_skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_type_skills">
+              <PropertyRef Name="familiar_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_types_0_0">
+          <End Role="familiar_types" Type="Self.familiar_types" Multiplicity="0..1" />
+          <End Role="familiar_types1" Type="Self.familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_types1">
+              <PropertyRef Name="next_evolution_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_types_1_0">
+          <End Role="familiar_types" Type="Self.familiar_types" Multiplicity="0..1" />
+          <End Role="familiar_types1" Type="Self.familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_types1">
+              <PropertyRef Name="prev_evolution_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_types_2_0">
+          <End Role="races" Type="Self.races" Multiplicity="1" />
+          <End Role="familiar_types" Type="Self.familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="races">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_types">
+              <PropertyRef Name="race_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_types_3_0">
+          <End Role="growths" Type="Self.growths" Multiplicity="1" />
+          <End Role="familiar_types" Type="Self.familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="growths">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_types">
+              <PropertyRef Name="growth_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_types_4_0">
+          <End Role="rarities" Type="Self.rarities" Multiplicity="1" />
+          <End Role="familiar_types" Type="Self.familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rarities">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_types">
+              <PropertyRef Name="rarity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiars_0_0">
+          <End Role="familiar_types" Type="Self.familiar_types" Multiplicity="1" />
+          <End Role="familiars" Type="Self.familiars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiars">
+              <PropertyRef Name="familiar_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiars_1_0">
+          <End Role="players" Type="Self.players" Multiplicity="0..1" />
+          <End Role="familiars" Type="Self.familiars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="players">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiars">
+              <PropertyRef Name="player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_items_0_0">
+          <End Role="players" Type="Self.players" Multiplicity="0..1" />
+          <End Role="items" Type="Self.items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="players">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="items">
+              <PropertyRef Name="player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_items_1_0">
+          <End Role="item_types" Type="Self.item_types" Multiplicity="1" />
+          <End Role="items" Type="Self.items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="items">
+              <PropertyRef Name="item_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_raid_boss_brigade_attacks_0_0">
+          <End Role="attack_types" Type="Self.attack_types" Multiplicity="1" />
+          <End Role="raid_boss_brigade_attacks" Type="Self.raid_boss_brigade_attacks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="attack_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="raid_boss_brigade_attacks">
+              <PropertyRef Name="attack_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_raid_boss_brigade_attacks_1_0">
+          <End Role="brigades" Type="Self.brigades" Multiplicity="0..1" />
+          <End Role="raid_boss_brigade_attacks" Type="Self.raid_boss_brigade_attacks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigades">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="raid_boss_brigade_attacks">
+              <PropertyRef Name="brigade_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_raid_boss_brigade_attacks_2_0">
+          <End Role="raid_bosses" Type="Self.raid_bosses" Multiplicity="1" />
+          <End Role="raid_boss_brigade_attacks" Type="Self.raid_boss_brigade_attacks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="raid_bosses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="raid_boss_brigade_attacks">
+              <PropertyRef Name="raid_boss_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_raid_boss_familiar_types_0_0">
+          <End Role="events" Type="Self.events" Multiplicity="1" />
+          <End Role="raid_boss_familiar_types" Type="Self.raid_boss_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="events">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="raid_boss_familiar_types">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_raid_boss_familiar_types_1_0">
+          <End Role="raid_boss_types" Type="Self.raid_boss_types" Multiplicity="1" />
+          <End Role="raid_boss_familiar_types" Type="Self.raid_boss_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="raid_boss_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="raid_boss_familiar_types">
+              <PropertyRef Name="raid_boss_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_raid_boss_familiar_types_2_0">
+          <End Role="familiar_types" Type="Self.familiar_types" Multiplicity="0..1" />
+          <End Role="raid_boss_familiar_types" Type="Self.raid_boss_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="raid_boss_familiar_types">
+              <PropertyRef Name="familiar_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skill_affected_stats_0_0">
+          <End Role="stats" Type="Self.stats" Multiplicity="1" />
+          <End Role="skill_affected_stats" Type="Self.skill_affected_stats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stats">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skill_affected_stats">
+              <PropertyRef Name="stat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skill_affected_stats_1_0">
+          <End Role="skills" Type="Self.skills" Multiplicity="1" />
+          <End Role="skill_affected_stats" Type="Self.skill_affected_stats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skills">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skill_affected_stats">
+              <PropertyRef Name="skill_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skills_0_0">
+          <End Role="stats" Type="Self.stats" Multiplicity="0..1" />
+          <End Role="skills" Type="Self.skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stats">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skills">
+              <PropertyRef Name="foe_defensive_modifier_stat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skills_1_0">
+          <End Role="skill_patterns" Type="Self.skill_patterns" Multiplicity="0..1" />
+          <End Role="skills" Type="Self.skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skill_patterns">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skills">
+              <PropertyRef Name="skill_pattern_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skills_2_0">
+          <End Role="stats" Type="Self.stats" Multiplicity="0..1" />
+          <End Role="skills" Type="Self.skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stats">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skills">
+              <PropertyRef Name="modifier_stat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skills_3_0">
+          <End Role="skill_types" Type="Self.skill_types" Multiplicity="1" />
+          <End Role="skills" Type="Self.skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skill_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skills">
+              <PropertyRef Name="skill_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PhlebotomistModelStoreContainer">
+          <EntitySet Name="attack_types" EntityType="Self.attack_types" store:Type="Tables" />
+          <EntitySet Name="bazaar_offer_familiar_type_terms" EntityType="Self.bazaar_offer_familiar_type_terms" store:Type="Tables" />
+          <EntitySet Name="bazaar_offer_item_terms" EntityType="Self.bazaar_offer_item_terms" store:Type="Tables" />
+          <EntitySet Name="bazaar_offers" EntityType="Self.bazaar_offers" store:Type="Tables" />
+          <EntitySet Name="brigade_familiars" EntityType="Self.brigade_familiars" store:Type="Tables" />
+          <EntitySet Name="brigade_formation_horizontal_position_types" EntityType="Self.brigade_formation_horizontal_position_types" store:Type="Tables" />
+          <EntitySet Name="brigade_formation_positions" EntityType="Self.brigade_formation_positions" store:Type="Tables" />
+          <EntitySet Name="brigade_formation_vertical_position_types" EntityType="Self.brigade_formation_vertical_position_types" store:Type="Tables" />
+          <EntitySet Name="brigade_formations" EntityType="Self.brigade_formations" store:Type="Tables" />
+          <EntitySet Name="brigades" EntityType="Self.brigades" store:Type="Tables" />
+          <EntitySet Name="event_elite_familiar_types" EntityType="Self.event_elite_familiar_types" store:Type="Tables" />
+          <EntitySet Name="event_types" EntityType="Self.event_types" store:Type="Tables" />
+          <EntitySet Name="events" EntityType="Self.events" store:Type="Tables" />
+          <EntitySet Name="familiar_skills" EntityType="Self.familiar_skills" store:Type="Tables" />
+          <EntitySet Name="familiar_type_skills" EntityType="Self.familiar_type_skills" store:Type="Tables" />
+          <EntitySet Name="familiar_types" EntityType="Self.familiar_types" store:Type="Tables" />
+          <EntitySet Name="familiars" EntityType="Self.familiars" store:Type="Tables" />
+          <EntitySet Name="growths" EntityType="Self.growths" store:Type="Tables" />
+          <EntitySet Name="item_types" EntityType="Self.item_types" store:Type="Tables" />
+          <EntitySet Name="items" EntityType="Self.items" store:Type="Tables" />
+          <EntitySet Name="players" EntityType="Self.players" store:Type="Tables" />
+          <EntitySet Name="races" EntityType="Self.races" store:Type="Tables" />
+          <EntitySet Name="raid_boss_brigade_attacks" EntityType="Self.raid_boss_brigade_attacks" store:Type="Tables" />
+          <EntitySet Name="raid_boss_familiar_types" EntityType="Self.raid_boss_familiar_types" store:Type="Tables" />
+          <EntitySet Name="raid_boss_types" EntityType="Self.raid_boss_types" store:Type="Tables" />
+          <EntitySet Name="raid_bosses" EntityType="Self.raid_bosses" store:Type="Tables" />
+          <EntitySet Name="rarities" EntityType="Self.rarities" store:Type="Tables" />
+          <EntitySet Name="skill_affected_stats" EntityType="Self.skill_affected_stats" store:Type="Tables" />
+          <EntitySet Name="skill_patterns" EntityType="Self.skill_patterns" store:Type="Tables" />
+          <EntitySet Name="skill_types" EntityType="Self.skill_types" store:Type="Tables" />
+          <EntitySet Name="skills" EntityType="Self.skills" store:Type="Tables" />
+          <EntitySet Name="stats" EntityType="Self.stats" store:Type="Tables" />
+          <AssociationSet Name="FK_bazaar_offer_familiar_type_terms_0_0" Association="Self.FK_bazaar_offer_familiar_type_terms_0_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="bazaar_offer_familiar_type_terms" EntitySet="bazaar_offer_familiar_type_terms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bazaar_offer_familiar_type_terms_1_0" Association="Self.FK_bazaar_offer_familiar_type_terms_1_0">
+            <End Role="bazaar_offers" EntitySet="bazaar_offers" />
+            <End Role="bazaar_offer_familiar_type_terms" EntitySet="bazaar_offer_familiar_type_terms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bazaar_offer_item_terms_0_0" Association="Self.FK_bazaar_offer_item_terms_0_0">
+            <End Role="item_types" EntitySet="item_types" />
+            <End Role="bazaar_offer_item_terms" EntitySet="bazaar_offer_item_terms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bazaar_offer_item_terms_1_0" Association="Self.FK_bazaar_offer_item_terms_1_0">
+            <End Role="bazaar_offers" EntitySet="bazaar_offers" />
+            <End Role="bazaar_offer_item_terms" EntitySet="bazaar_offer_item_terms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bazaar_offers_0_0" Association="Self.FK_bazaar_offers_0_0">
+            <End Role="familiars" EntitySet="familiars" />
+            <End Role="bazaar_offers" EntitySet="bazaar_offers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_familiars_0_0" Association="Self.FK_brigade_familiars_0_0">
+            <End Role="brigade_formation_positions" EntitySet="brigade_formation_positions" />
+            <End Role="brigade_familiars" EntitySet="brigade_familiars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_familiars_1_0" Association="Self.FK_brigade_familiars_1_0">
+            <End Role="familiars" EntitySet="familiars" />
+            <End Role="brigade_familiars" EntitySet="brigade_familiars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_familiars_2_0" Association="Self.FK_brigade_familiars_2_0">
+            <End Role="brigades" EntitySet="brigades" />
+            <End Role="brigade_familiars" EntitySet="brigade_familiars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_formation_positions_0_0" Association="Self.FK_brigade_formation_positions_0_0">
+            <End Role="brigade_formation_vertical_position_types" EntitySet="brigade_formation_vertical_position_types" />
+            <End Role="brigade_formation_positions" EntitySet="brigade_formation_positions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_formation_positions_1_0" Association="Self.FK_brigade_formation_positions_1_0">
+            <End Role="brigade_formation_horizontal_position_types" EntitySet="brigade_formation_horizontal_position_types" />
+            <End Role="brigade_formation_positions" EntitySet="brigade_formation_positions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_formation_positions_2_0" Association="Self.FK_brigade_formation_positions_2_0">
+            <End Role="brigade_formations" EntitySet="brigade_formations" />
+            <End Role="brigade_formation_positions" EntitySet="brigade_formation_positions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigades_0_0" Association="Self.FK_brigades_0_0">
+            <End Role="players" EntitySet="players" />
+            <End Role="brigades" EntitySet="brigades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigades_1_0" Association="Self.FK_brigades_1_0">
+            <End Role="brigade_formations" EntitySet="brigade_formations" />
+            <End Role="brigades" EntitySet="brigades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_event_elite_familiar_types_0_0" Association="Self.FK_event_elite_familiar_types_0_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="event_elite_familiar_types" EntitySet="event_elite_familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_event_elite_familiar_types_1_0" Association="Self.FK_event_elite_familiar_types_1_0">
+            <End Role="events" EntitySet="events" />
+            <End Role="event_elite_familiar_types" EntitySet="event_elite_familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_events_0_0" Association="Self.FK_events_0_0">
+            <End Role="event_types" EntitySet="event_types" />
+            <End Role="events" EntitySet="events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_skills_0_0" Association="Self.FK_familiar_skills_0_0">
+            <End Role="skills" EntitySet="skills" />
+            <End Role="familiar_skills" EntitySet="familiar_skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_skills_1_0" Association="Self.FK_familiar_skills_1_0">
+            <End Role="familiars" EntitySet="familiars" />
+            <End Role="familiar_skills" EntitySet="familiar_skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_type_skills_0_0" Association="Self.FK_familiar_type_skills_0_0">
+            <End Role="skills" EntitySet="skills" />
+            <End Role="familiar_type_skills" EntitySet="familiar_type_skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_type_skills_1_0" Association="Self.FK_familiar_type_skills_1_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar_type_skills" EntitySet="familiar_type_skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_types_0_0" Association="Self.FK_familiar_types_0_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar_types1" EntitySet="familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_types_1_0" Association="Self.FK_familiar_types_1_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar_types1" EntitySet="familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_types_2_0" Association="Self.FK_familiar_types_2_0">
+            <End Role="races" EntitySet="races" />
+            <End Role="familiar_types" EntitySet="familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_types_3_0" Association="Self.FK_familiar_types_3_0">
+            <End Role="growths" EntitySet="growths" />
+            <End Role="familiar_types" EntitySet="familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_types_4_0" Association="Self.FK_familiar_types_4_0">
+            <End Role="rarities" EntitySet="rarities" />
+            <End Role="familiar_types" EntitySet="familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiars_0_0" Association="Self.FK_familiars_0_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiars" EntitySet="familiars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiars_1_0" Association="Self.FK_familiars_1_0">
+            <End Role="players" EntitySet="players" />
+            <End Role="familiars" EntitySet="familiars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_items_0_0" Association="Self.FK_items_0_0">
+            <End Role="players" EntitySet="players" />
+            <End Role="items" EntitySet="items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_items_1_0" Association="Self.FK_items_1_0">
+            <End Role="item_types" EntitySet="item_types" />
+            <End Role="items" EntitySet="items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_raid_boss_brigade_attacks_0_0" Association="Self.FK_raid_boss_brigade_attacks_0_0">
+            <End Role="attack_types" EntitySet="attack_types" />
+            <End Role="raid_boss_brigade_attacks" EntitySet="raid_boss_brigade_attacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_raid_boss_brigade_attacks_1_0" Association="Self.FK_raid_boss_brigade_attacks_1_0">
+            <End Role="brigades" EntitySet="brigades" />
+            <End Role="raid_boss_brigade_attacks" EntitySet="raid_boss_brigade_attacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_raid_boss_brigade_attacks_2_0" Association="Self.FK_raid_boss_brigade_attacks_2_0">
+            <End Role="raid_bosses" EntitySet="raid_bosses" />
+            <End Role="raid_boss_brigade_attacks" EntitySet="raid_boss_brigade_attacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_raid_boss_familiar_types_0_0" Association="Self.FK_raid_boss_familiar_types_0_0">
+            <End Role="events" EntitySet="events" />
+            <End Role="raid_boss_familiar_types" EntitySet="raid_boss_familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_raid_boss_familiar_types_1_0" Association="Self.FK_raid_boss_familiar_types_1_0">
+            <End Role="raid_boss_types" EntitySet="raid_boss_types" />
+            <End Role="raid_boss_familiar_types" EntitySet="raid_boss_familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_raid_boss_familiar_types_2_0" Association="Self.FK_raid_boss_familiar_types_2_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="raid_boss_familiar_types" EntitySet="raid_boss_familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skill_affected_stats_0_0" Association="Self.FK_skill_affected_stats_0_0">
+            <End Role="stats" EntitySet="stats" />
+            <End Role="skill_affected_stats" EntitySet="skill_affected_stats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skill_affected_stats_1_0" Association="Self.FK_skill_affected_stats_1_0">
+            <End Role="skills" EntitySet="skills" />
+            <End Role="skill_affected_stats" EntitySet="skill_affected_stats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skills_0_0" Association="Self.FK_skills_0_0">
+            <End Role="stats" EntitySet="stats" />
+            <End Role="skills" EntitySet="skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skills_1_0" Association="Self.FK_skills_1_0">
+            <End Role="skill_patterns" EntitySet="skill_patterns" />
+            <End Role="skills" EntitySet="skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skills_2_0" Association="Self.FK_skills_2_0">
+            <End Role="stats" EntitySet="stats" />
+            <End Role="skills" EntitySet="skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skills_3_0" Association="Self.FK_skills_3_0">
+            <End Role="skill_types" EntitySet="skill_types" />
+            <End Role="skills" EntitySet="skills" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="PhlebotomistModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="PhlebotomistModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="attack_types" EntityType="PhlebotomistModel.attack_types" />
+          <EntitySet Name="bazaar_offer_familiar_type_terms" EntityType="PhlebotomistModel.bazaar_offer_familiar_type_terms" />
+          <EntitySet Name="bazaar_offer_item_terms" EntityType="PhlebotomistModel.bazaar_offer_item_terms" />
+          <EntitySet Name="bazaar_offers" EntityType="PhlebotomistModel.bazaar_offers" />
+          <EntitySet Name="brigade_familiars" EntityType="PhlebotomistModel.brigade_familiars" />
+          <EntitySet Name="brigade_formation_horizontal_position_types" EntityType="PhlebotomistModel.brigade_formation_horizontal_position_types" />
+          <EntitySet Name="brigade_formation_positions" EntityType="PhlebotomistModel.brigade_formation_positions" />
+          <EntitySet Name="brigade_formation_vertical_position_types" EntityType="PhlebotomistModel.brigade_formation_vertical_position_types" />
+          <EntitySet Name="brigade_formations" EntityType="PhlebotomistModel.brigade_formations" />
+          <EntitySet Name="brigades" EntityType="PhlebotomistModel.brigade" />
+          <EntitySet Name="event_elite_familiar_types" EntityType="PhlebotomistModel.event_elite_familiar_types" />
+          <EntitySet Name="event_types" EntityType="PhlebotomistModel.event_types" />
+          <EntitySet Name="events" EntityType="PhlebotomistModel.event" />
+          <EntitySet Name="familiar_skills" EntityType="PhlebotomistModel.familiar_skills" />
+          <EntitySet Name="familiar_type_skills" EntityType="PhlebotomistModel.familiar_type_skills" />
+          <EntitySet Name="familiar_types" EntityType="PhlebotomistModel.familiar_types" />
+          <EntitySet Name="familiars" EntityType="PhlebotomistModel.familiar" />
+          <EntitySet Name="growths" EntityType="PhlebotomistModel.growth" />
+          <EntitySet Name="item_types" EntityType="PhlebotomistModel.item_types" />
+          <EntitySet Name="items" EntityType="PhlebotomistModel.item" />
+          <EntitySet Name="players" EntityType="PhlebotomistModel.player" />
+          <EntitySet Name="races" EntityType="PhlebotomistModel.race" />
+          <EntitySet Name="raid_boss_brigade_attacks" EntityType="PhlebotomistModel.raid_boss_brigade_attacks" />
+          <EntitySet Name="raid_boss_familiar_types" EntityType="PhlebotomistModel.raid_boss_familiar_types" />
+          <EntitySet Name="raid_boss_types" EntityType="PhlebotomistModel.raid_boss_types" />
+          <EntitySet Name="raid_bosses" EntityType="PhlebotomistModel.raid_bosses" />
+          <EntitySet Name="rarities" EntityType="PhlebotomistModel.rarity" />
+          <EntitySet Name="skill_affected_stats" EntityType="PhlebotomistModel.skill_affected_stats" />
+          <EntitySet Name="skill_patterns" EntityType="PhlebotomistModel.skill_patterns" />
+          <EntitySet Name="skill_types" EntityType="PhlebotomistModel.skill_types" />
+          <EntitySet Name="skills" EntityType="PhlebotomistModel.skill" />
+          <EntitySet Name="stats" EntityType="PhlebotomistModel.stat" />
+          <AssociationSet Name="FK_raid_boss_brigade_attacks_0_0" Association="PhlebotomistModel.FK_raid_boss_brigade_attacks_0_0">
+            <End Role="attack_types" EntitySet="attack_types" />
+            <End Role="raid_boss_brigade_attacks" EntitySet="raid_boss_brigade_attacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bazaar_offer_familiar_type_terms_0_0" Association="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_0_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="bazaar_offer_familiar_type_terms" EntitySet="bazaar_offer_familiar_type_terms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bazaar_offer_familiar_type_terms_1_0" Association="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_1_0">
+            <End Role="bazaar_offers" EntitySet="bazaar_offers" />
+            <End Role="bazaar_offer_familiar_type_terms" EntitySet="bazaar_offer_familiar_type_terms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bazaar_offer_item_terms_0_0" Association="PhlebotomistModel.FK_bazaar_offer_item_terms_0_0">
+            <End Role="item_types" EntitySet="item_types" />
+            <End Role="bazaar_offer_item_terms" EntitySet="bazaar_offer_item_terms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bazaar_offer_item_terms_1_0" Association="PhlebotomistModel.FK_bazaar_offer_item_terms_1_0">
+            <End Role="bazaar_offers" EntitySet="bazaar_offers" />
+            <End Role="bazaar_offer_item_terms" EntitySet="bazaar_offer_item_terms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bazaar_offers_0_0" Association="PhlebotomistModel.FK_bazaar_offers_0_0">
+            <End Role="familiar" EntitySet="familiars" />
+            <End Role="bazaar_offers" EntitySet="bazaar_offers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_familiars_0_0" Association="PhlebotomistModel.FK_brigade_familiars_0_0">
+            <End Role="brigade_formation_positions" EntitySet="brigade_formation_positions" />
+            <End Role="brigade_familiars" EntitySet="brigade_familiars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_familiars_1_0" Association="PhlebotomistModel.FK_brigade_familiars_1_0">
+            <End Role="familiar" EntitySet="familiars" />
+            <End Role="brigade_familiars" EntitySet="brigade_familiars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_familiars_2_0" Association="PhlebotomistModel.FK_brigade_familiars_2_0">
+            <End Role="brigade" EntitySet="brigades" />
+            <End Role="brigade_familiars" EntitySet="brigade_familiars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_formation_positions_1_0" Association="PhlebotomistModel.FK_brigade_formation_positions_1_0">
+            <End Role="brigade_formation_horizontal_position_types" EntitySet="brigade_formation_horizontal_position_types" />
+            <End Role="brigade_formation_positions" EntitySet="brigade_formation_positions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_formation_positions_0_0" Association="PhlebotomistModel.FK_brigade_formation_positions_0_0">
+            <End Role="brigade_formation_vertical_position_types" EntitySet="brigade_formation_vertical_position_types" />
+            <End Role="brigade_formation_positions" EntitySet="brigade_formation_positions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_formation_positions_2_0" Association="PhlebotomistModel.FK_brigade_formation_positions_2_0">
+            <End Role="brigade_formations" EntitySet="brigade_formations" />
+            <End Role="brigade_formation_positions" EntitySet="brigade_formation_positions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigades_1_0" Association="PhlebotomistModel.FK_brigades_1_0">
+            <End Role="brigade_formations" EntitySet="brigade_formations" />
+            <End Role="brigade" EntitySet="brigades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigades_0_0" Association="PhlebotomistModel.FK_brigades_0_0">
+            <End Role="player" EntitySet="players" />
+            <End Role="brigade" EntitySet="brigades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_raid_boss_brigade_attacks_1_0" Association="PhlebotomistModel.FK_raid_boss_brigade_attacks_1_0">
+            <End Role="brigade" EntitySet="brigades" />
+            <End Role="raid_boss_brigade_attacks" EntitySet="raid_boss_brigade_attacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_event_elite_familiar_types_0_0" Association="PhlebotomistModel.FK_event_elite_familiar_types_0_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="event_elite_familiar_types" EntitySet="event_elite_familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_event_elite_familiar_types_1_0" Association="PhlebotomistModel.FK_event_elite_familiar_types_1_0">
+            <End Role="event" EntitySet="events" />
+            <End Role="event_elite_familiar_types" EntitySet="event_elite_familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_events_0_0" Association="PhlebotomistModel.FK_events_0_0">
+            <End Role="event_types" EntitySet="event_types" />
+            <End Role="event" EntitySet="events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_raid_boss_familiar_types_0_0" Association="PhlebotomistModel.FK_raid_boss_familiar_types_0_0">
+            <End Role="event" EntitySet="events" />
+            <End Role="raid_boss_familiar_types" EntitySet="raid_boss_familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_skills_0_0" Association="PhlebotomistModel.FK_familiar_skills_0_0">
+            <End Role="skill" EntitySet="skills" />
+            <End Role="familiar_skills" EntitySet="familiar_skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_skills_1_0" Association="PhlebotomistModel.FK_familiar_skills_1_0">
+            <End Role="familiar" EntitySet="familiars" />
+            <End Role="familiar_skills" EntitySet="familiar_skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_type_skills_0_0" Association="PhlebotomistModel.FK_familiar_type_skills_0_0">
+            <End Role="skill" EntitySet="skills" />
+            <End Role="familiar_type_skills" EntitySet="familiar_type_skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_type_skills_1_0" Association="PhlebotomistModel.FK_familiar_type_skills_1_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar_type_skills" EntitySet="familiar_type_skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_types_0_0" Association="PhlebotomistModel.FK_familiar_types_0_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar_types1" EntitySet="familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_types_1_0" Association="PhlebotomistModel.FK_familiar_types_1_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar_types1" EntitySet="familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_types_2_0" Association="PhlebotomistModel.FK_familiar_types_2_0">
+            <End Role="race" EntitySet="races" />
+            <End Role="familiar_types" EntitySet="familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_types_3_0" Association="PhlebotomistModel.FK_familiar_types_3_0">
+            <End Role="growth" EntitySet="growths" />
+            <End Role="familiar_types" EntitySet="familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_types_4_0" Association="PhlebotomistModel.FK_familiar_types_4_0">
+            <End Role="rarity" EntitySet="rarities" />
+            <End Role="familiar_types" EntitySet="familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiars_0_0" Association="PhlebotomistModel.FK_familiars_0_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar" EntitySet="familiars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_raid_boss_familiar_types_2_0" Association="PhlebotomistModel.FK_raid_boss_familiar_types_2_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="raid_boss_familiar_types" EntitySet="raid_boss_familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiars_1_0" Association="PhlebotomistModel.FK_familiars_1_0">
+            <End Role="player" EntitySet="players" />
+            <End Role="familiar" EntitySet="familiars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_items_1_0" Association="PhlebotomistModel.FK_items_1_0">
+            <End Role="item_types" EntitySet="item_types" />
+            <End Role="item" EntitySet="items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_items_0_0" Association="PhlebotomistModel.FK_items_0_0">
+            <End Role="player" EntitySet="players" />
+            <End Role="item" EntitySet="items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_raid_boss_brigade_attacks_2_0" Association="PhlebotomistModel.FK_raid_boss_brigade_attacks_2_0">
+            <End Role="raid_bosses" EntitySet="raid_bosses" />
+            <End Role="raid_boss_brigade_attacks" EntitySet="raid_boss_brigade_attacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_raid_boss_familiar_types_1_0" Association="PhlebotomistModel.FK_raid_boss_familiar_types_1_0">
+            <End Role="raid_boss_types" EntitySet="raid_boss_types" />
+            <End Role="raid_boss_familiar_types" EntitySet="raid_boss_familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skill_affected_stats_0_0" Association="PhlebotomistModel.FK_skill_affected_stats_0_0">
+            <End Role="stat" EntitySet="stats" />
+            <End Role="skill_affected_stats" EntitySet="skill_affected_stats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skill_affected_stats_1_0" Association="PhlebotomistModel.FK_skill_affected_stats_1_0">
+            <End Role="skill" EntitySet="skills" />
+            <End Role="skill_affected_stats" EntitySet="skill_affected_stats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skills_1_0" Association="PhlebotomistModel.FK_skills_1_0">
+            <End Role="skill_patterns" EntitySet="skill_patterns" />
+            <End Role="skill" EntitySet="skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skills_3_0" Association="PhlebotomistModel.FK_skills_3_0">
+            <End Role="skill_types" EntitySet="skill_types" />
+            <End Role="skill" EntitySet="skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skills_0_0" Association="PhlebotomistModel.FK_skills_0_0">
+            <End Role="stat" EntitySet="stats" />
+            <End Role="skill" EntitySet="skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skills_2_0" Association="PhlebotomistModel.FK_skills_2_0">
+            <End Role="stat" EntitySet="stats" />
+            <End Role="skill" EntitySet="skills" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="attack_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="raid_boss_brigade_attacks" Relationship="PhlebotomistModel.FK_raid_boss_brigade_attacks_0_0" FromRole="attack_types" ToRole="raid_boss_brigade_attacks" />
+        </EntityType>
+        <EntityType Name="bazaar_offer_familiar_type_terms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bazaar_offer_id" Type="Int64" Nullable="false" />
+          <Property Name="familiar_type_id" Type="Int64" Nullable="false" />
+          <Property Name="quantity" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_0_0" FromRole="bazaar_offer_familiar_type_terms" ToRole="familiar_types" />
+          <NavigationProperty Name="bazaar_offers" Relationship="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_1_0" FromRole="bazaar_offer_familiar_type_terms" ToRole="bazaar_offers" />
+        </EntityType>
+        <EntityType Name="bazaar_offer_item_terms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bazaar_offer_id" Type="Int64" Nullable="false" />
+          <Property Name="item_id" Type="Int64" Nullable="false" />
+          <Property Name="quantity" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="item_types" Relationship="PhlebotomistModel.FK_bazaar_offer_item_terms_0_0" FromRole="bazaar_offer_item_terms" ToRole="item_types" />
+          <NavigationProperty Name="bazaar_offers" Relationship="PhlebotomistModel.FK_bazaar_offer_item_terms_1_0" FromRole="bazaar_offer_item_terms" ToRole="bazaar_offers" />
+        </EntityType>
+        <EntityType Name="bazaar_offers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="player_name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="offered_familiar_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="bazaar_offer_familiar_type_terms" Relationship="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_1_0" FromRole="bazaar_offers" ToRole="bazaar_offer_familiar_type_terms" />
+          <NavigationProperty Name="bazaar_offer_item_terms" Relationship="PhlebotomistModel.FK_bazaar_offer_item_terms_1_0" FromRole="bazaar_offers" ToRole="bazaar_offer_item_terms" />
+          <NavigationProperty Name="familiar" Relationship="PhlebotomistModel.FK_bazaar_offers_0_0" FromRole="bazaar_offers" ToRole="familiar" />
+        </EntityType>
+        <EntityType Name="brigade_familiars">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brigade_id" Type="Int64" Nullable="false" />
+          <Property Name="familiar_id" Type="Int64" Nullable="false" />
+          <Property Name="brigade_formation_position_id" Type="Int64" Nullable="false" />
+          <Property Name="is_reserve" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="brigade_formation_positions" Relationship="PhlebotomistModel.FK_brigade_familiars_0_0" FromRole="brigade_familiars" ToRole="brigade_formation_positions" />
+          <NavigationProperty Name="familiar" Relationship="PhlebotomistModel.FK_brigade_familiars_1_0" FromRole="brigade_familiars" ToRole="familiar" />
+          <NavigationProperty Name="brigade" Relationship="PhlebotomistModel.FK_brigade_familiars_2_0" FromRole="brigade_familiars" ToRole="brigade" />
+        </EntityType>
+        <EntityType Name="brigade_formation_horizontal_position_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="brigade_formation_positions" Relationship="PhlebotomistModel.FK_brigade_formation_positions_1_0" FromRole="brigade_formation_horizontal_position_types" ToRole="brigade_formation_positions" />
+        </EntityType>
+        <EntityType Name="brigade_formation_positions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brigade_formation_id" Type="Int64" Nullable="false" />
+          <Property Name="horizontal_position_type_id" Type="Int64" Nullable="false" />
+          <Property Name="vertical_position_type_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="brigade_familiars" Relationship="PhlebotomistModel.FK_brigade_familiars_0_0" FromRole="brigade_formation_positions" ToRole="brigade_familiars" />
+          <NavigationProperty Name="brigade_formation_horizontal_position_types" Relationship="PhlebotomistModel.FK_brigade_formation_positions_1_0" FromRole="brigade_formation_positions" ToRole="brigade_formation_horizontal_position_types" />
+          <NavigationProperty Name="brigade_formation_vertical_position_types" Relationship="PhlebotomistModel.FK_brigade_formation_positions_0_0" FromRole="brigade_formation_positions" ToRole="brigade_formation_vertical_position_types" />
+          <NavigationProperty Name="brigade_formations" Relationship="PhlebotomistModel.FK_brigade_formation_positions_2_0" FromRole="brigade_formation_positions" ToRole="brigade_formations" />
+        </EntityType>
+        <EntityType Name="brigade_formation_vertical_position_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="brigade_formation_positions" Relationship="PhlebotomistModel.FK_brigade_formation_positions_0_0" FromRole="brigade_formation_vertical_position_types" ToRole="brigade_formation_positions" />
+        </EntityType>
+        <EntityType Name="brigade_formations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="num_positions" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="brigade_formation_positions" Relationship="PhlebotomistModel.FK_brigade_formation_positions_2_0" FromRole="brigade_formations" ToRole="brigade_formation_positions" />
+          <NavigationProperty Name="brigades" Relationship="PhlebotomistModel.FK_brigades_1_0" FromRole="brigade_formations" ToRole="brigade" />
+        </EntityType>
+        <EntityType Name="brigade">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brigade_formation_id" Type="Int64" Nullable="false" />
+          <Property Name="player_id" Type="Int64" />
+          <Property Name="name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="notes" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="brigade_familiars" Relationship="PhlebotomistModel.FK_brigade_familiars_2_0" FromRole="brigade" ToRole="brigade_familiars" />
+          <NavigationProperty Name="brigade_formations" Relationship="PhlebotomistModel.FK_brigades_1_0" FromRole="brigade" ToRole="brigade_formations" />
+          <NavigationProperty Name="player" Relationship="PhlebotomistModel.FK_brigades_0_0" FromRole="brigade" ToRole="player" />
+          <NavigationProperty Name="raid_boss_brigade_attacks" Relationship="PhlebotomistModel.FK_raid_boss_brigade_attacks_1_0" FromRole="brigade" ToRole="raid_boss_brigade_attacks" />
+        </EntityType>
+        <EntityType Name="event_elite_familiar_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="event_id" Type="Int64" Nullable="false" />
+          <Property Name="familiar_type_id" Type="Int64" Nullable="false" />
+          <Property Name="multiplier" Type="Double" Nullable="false" />
+          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_event_elite_familiar_types_0_0" FromRole="event_elite_familiar_types" ToRole="familiar_types" />
+          <NavigationProperty Name="event" Relationship="PhlebotomistModel.FK_event_elite_familiar_types_1_0" FromRole="event_elite_familiar_types" ToRole="event" />
+        </EntityType>
+        <EntityType Name="event_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="events" Relationship="PhlebotomistModel.FK_events_0_0" FromRole="event_types" ToRole="event" />
+        </EntityType>
+        <EntityType Name="event">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="event_type_id" Type="Int64" Nullable="false" />
+          <Property Name="date_started" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="date_ended" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="event_elite_familiar_types" Relationship="PhlebotomistModel.FK_event_elite_familiar_types_1_0" FromRole="event" ToRole="event_elite_familiar_types" />
+          <NavigationProperty Name="event_types" Relationship="PhlebotomistModel.FK_events_0_0" FromRole="event" ToRole="event_types" />
+          <NavigationProperty Name="raid_boss_familiar_types" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_0_0" FromRole="event" ToRole="raid_boss_familiar_types" />
+        </EntityType>
+        <EntityType Name="familiar_skills">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="familiar_id" Type="Int64" Nullable="false" />
+          <Property Name="skill_id" Type="Int64" Nullable="false" />
+          <Property Name="level" Type="Int16" Nullable="false" />
+          <Property Name="exp" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="skill" Relationship="PhlebotomistModel.FK_familiar_skills_0_0" FromRole="familiar_skills" ToRole="skill" />
+          <NavigationProperty Name="familiar" Relationship="PhlebotomistModel.FK_familiar_skills_1_0" FromRole="familiar_skills" ToRole="familiar" />
+        </EntityType>
+        <EntityType Name="familiar_type_skills">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="familiar_type_id" Type="Int64" Nullable="false" />
+          <Property Name="skill_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="skill" Relationship="PhlebotomistModel.FK_familiar_type_skills_0_0" FromRole="familiar_type_skills" ToRole="skill" />
+          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_familiar_type_skills_1_0" FromRole="familiar_type_skills" ToRole="familiar_types" />
+        </EntityType>
+        <EntityType Name="familiar_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bb_id" Type="Int64" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="rarity_id" Type="Int64" Nullable="false" />
+          <Property Name="num_stars" Type="Int16" Nullable="false" />
+          <Property Name="max_stars" Type="Int16" Nullable="false" />
+          <Property Name="growth_id" Type="Int64" Nullable="false" />
+          <Property Name="worth" Type="Int64" Nullable="false" />
+          <Property Name="race_id" Type="Int64" Nullable="false" />
+          <Property Name="tradable" Type="Int16" Nullable="false" />
+          <Property Name="last_words" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="prev_evolution_id" Type="Int64" />
+          <Property Name="next_evolution_id" Type="Int64" />
+          <NavigationProperty Name="bazaar_offer_familiar_type_terms" Relationship="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_0_0" FromRole="familiar_types" ToRole="bazaar_offer_familiar_type_terms" />
+          <NavigationProperty Name="event_elite_familiar_types" Relationship="PhlebotomistModel.FK_event_elite_familiar_types_0_0" FromRole="familiar_types" ToRole="event_elite_familiar_types" />
+          <NavigationProperty Name="familiar_type_skills" Relationship="PhlebotomistModel.FK_familiar_type_skills_1_0" FromRole="familiar_types" ToRole="familiar_type_skills" />
+          <NavigationProperty Name="familiar_types1" Relationship="PhlebotomistModel.FK_familiar_types_0_0" FromRole="familiar_types" ToRole="familiar_types1" />
+          <NavigationProperty Name="familiar_types2" Relationship="PhlebotomistModel.FK_familiar_types_0_0" FromRole="familiar_types1" ToRole="familiar_types" />
+          <NavigationProperty Name="familiar_types11" Relationship="PhlebotomistModel.FK_familiar_types_1_0" FromRole="familiar_types" ToRole="familiar_types1" />
+          <NavigationProperty Name="familiar_types3" Relationship="PhlebotomistModel.FK_familiar_types_1_0" FromRole="familiar_types1" ToRole="familiar_types" />
+          <NavigationProperty Name="race" Relationship="PhlebotomistModel.FK_familiar_types_2_0" FromRole="familiar_types" ToRole="race" />
+          <NavigationProperty Name="growth" Relationship="PhlebotomistModel.FK_familiar_types_3_0" FromRole="familiar_types" ToRole="growth" />
+          <NavigationProperty Name="rarity" Relationship="PhlebotomistModel.FK_familiar_types_4_0" FromRole="familiar_types" ToRole="rarity" />
+          <NavigationProperty Name="familiars" Relationship="PhlebotomistModel.FK_familiars_0_0" FromRole="familiar_types" ToRole="familiar" />
+          <NavigationProperty Name="raid_boss_familiar_types" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_2_0" FromRole="familiar_types" ToRole="raid_boss_familiar_types" />
+        </EntityType>
+        <EntityType Name="familiar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="player_id" Type="Int64" />
+          <Property Name="familiar_type_id" Type="Int64" Nullable="false" />
+          <Property Name="owned" Type="Byte" Nullable="false" />
+          <Property Name="level" Type="Double" />
+          <Property Name="hp" Type="Double" />
+          <Property Name="atk" Type="Double" />
+          <Property Name="def" Type="Double" />
+          <Property Name="wis" Type="Double" />
+          <Property Name="agi" Type="Double" />
+          <Property Name="exp" Type="Double" />
+          <Property Name="hp_crystals" Type="Int64" Nullable="false" />
+          <Property Name="atk_crystals" Type="Int64" Nullable="false" />
+          <Property Name="def_crystals" Type="Int64" Nullable="false" />
+          <Property Name="wis_crystals" Type="Int64" Nullable="false" />
+          <Property Name="agi_crystals" Type="Int64" Nullable="false" />
+          <Property Name="roots_crystals" Type="Int64" />
+          <NavigationProperty Name="bazaar_offers" Relationship="PhlebotomistModel.FK_bazaar_offers_0_0" FromRole="familiar" ToRole="bazaar_offers" />
+          <NavigationProperty Name="brigade_familiars" Relationship="PhlebotomistModel.FK_brigade_familiars_1_0" FromRole="familiar" ToRole="brigade_familiars" />
+          <NavigationProperty Name="familiar_skills" Relationship="PhlebotomistModel.FK_familiar_skills_1_0" FromRole="familiar" ToRole="familiar_skills" />
+          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_familiars_0_0" FromRole="familiar" ToRole="familiar_types" />
+          <NavigationProperty Name="player" Relationship="PhlebotomistModel.FK_familiars_1_0" FromRole="familiar" ToRole="player" />
+        </EntityType>
+        <EntityType Name="growth">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_familiar_types_3_0" FromRole="growth" ToRole="familiar_types" />
+        </EntityType>
+        <EntityType Name="item_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="bazaar_offer_item_terms" Relationship="PhlebotomistModel.FK_bazaar_offer_item_terms_0_0" FromRole="item_types" ToRole="bazaar_offer_item_terms" />
+          <NavigationProperty Name="items" Relationship="PhlebotomistModel.FK_items_1_0" FromRole="item_types" ToRole="item" />
+        </EntityType>
+        <EntityType Name="item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="item_type_id" Type="Int64" Nullable="false" />
+          <Property Name="player_id" Type="Int64" />
+          <Property Name="quantity_tradable" Type="Int16" Nullable="false" />
+          <Property Name="quantity_bloodbound" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="item_types" Relationship="PhlebotomistModel.FK_items_1_0" FromRole="item" ToRole="item_types" />
+          <NavigationProperty Name="player" Relationship="PhlebotomistModel.FK_items_0_0" FromRole="item" ToRole="player" />
+        </EntityType>
+        <EntityType Name="player">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="created_date" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="brigades" Relationship="PhlebotomistModel.FK_brigades_0_0" FromRole="player" ToRole="brigade" />
+          <NavigationProperty Name="familiars" Relationship="PhlebotomistModel.FK_familiars_1_0" FromRole="player" ToRole="familiar" />
+          <NavigationProperty Name="items" Relationship="PhlebotomistModel.FK_items_0_0" FromRole="player" ToRole="item" />
+        </EntityType>
+        <EntityType Name="race">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_familiar_types_2_0" FromRole="race" ToRole="familiar_types" />
+        </EntityType>
+        <EntityType Name="raid_boss_brigade_attacks">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="raid_boss_id" Type="Int64" Nullable="false" />
+          <Property Name="brigade_id" Type="Int64" />
+          <Property Name="date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="attack_type_id" Type="Int64" Nullable="false" />
+          <Property Name="starting_HP" Type="Double" />
+          <Property Name="ending_HP" Type="Double" />
+          <Property Name="damage" Type="Double" />
+          <NavigationProperty Name="attack_types" Relationship="PhlebotomistModel.FK_raid_boss_brigade_attacks_0_0" FromRole="raid_boss_brigade_attacks" ToRole="attack_types" />
+          <NavigationProperty Name="brigade" Relationship="PhlebotomistModel.FK_raid_boss_brigade_attacks_1_0" FromRole="raid_boss_brigade_attacks" ToRole="brigade" />
+          <NavigationProperty Name="raid_bosses" Relationship="PhlebotomistModel.FK_raid_boss_brigade_attacks_2_0" FromRole="raid_boss_brigade_attacks" ToRole="raid_bosses" />
+        </EntityType>
+        <EntityType Name="raid_boss_familiar_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="familiar_type_id" Type="Int64" />
+          <Property Name="raid_boss_type_id" Type="Int64" Nullable="false" />
+          <Property Name="event_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="event" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_0_0" FromRole="raid_boss_familiar_types" ToRole="event" />
+          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_2_0" FromRole="raid_boss_familiar_types" ToRole="familiar_types" />
+          <NavigationProperty Name="raid_boss_types" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_1_0" FromRole="raid_boss_familiar_types" ToRole="raid_boss_types" />
+        </EntityType>
+        <EntityType Name="raid_boss_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="raid_boss_familiar_types" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_1_0" FromRole="raid_boss_types" ToRole="raid_boss_familiar_types" />
+        </EntityType>
+        <EntityType Name="raid_bosses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="raid_boss_familiar_type" Type="Int64" Nullable="false" />
+          <Property Name="level" Type="Double" Nullable="false" />
+          <Property Name="HP" Type="Double" />
+          <Property Name="attack_points" Type="Double" />
+          <Property Name="mvp_bonus_multiplier" Type="Double" />
+          <Property Name="jur_mvp_bonus_multiplier" Type="Double" />
+          <NavigationProperty Name="raid_boss_brigade_attacks" Relationship="PhlebotomistModel.FK_raid_boss_brigade_attacks_2_0" FromRole="raid_bosses" ToRole="raid_boss_brigade_attacks" />
+        </EntityType>
+        <EntityType Name="rarity">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="rank" Type="Int16" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_familiar_types_4_0" FromRole="rarity" ToRole="familiar_types" />
+        </EntityType>
+        <EntityType Name="skill_affected_stats">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="skill_id" Type="Int64" Nullable="false" />
+          <Property Name="stat_id" Type="Int64" Nullable="false" />
+          <Property Name="rank" Type="Byte" />
+          <Property Name="affects_allies" Type="Byte" Nullable="false" />
+          <Property Name="affects_foes" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="stat" Relationship="PhlebotomistModel.FK_skill_affected_stats_0_0" FromRole="skill_affected_stats" ToRole="stat" />
+          <NavigationProperty Name="skill" Relationship="PhlebotomistModel.FK_skill_affected_stats_1_0" FromRole="skill_affected_stats" ToRole="skill" />
+        </EntityType>
+        <EntityType Name="skill_patterns">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="skills" Relationship="PhlebotomistModel.FK_skills_1_0" FromRole="skill_patterns" ToRole="skill" />
+        </EntityType>
+        <EntityType Name="skill_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="skills" Relationship="PhlebotomistModel.FK_skills_3_0" FromRole="skill_types" ToRole="skill" />
+        </EntityType>
+        <EntityType Name="skill">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="skill_type_id" Type="Int64" Nullable="false" />
+          <Property Name="min_probability" Type="Double" Nullable="false" />
+          <Property Name="max_probability" Type="Double" Nullable="false" />
+          <Property Name="modifier" Type="Double" />
+          <Property Name="modifier_stat_id" Type="Int64" />
+          <Property Name="flat_modifier" Type="Byte" />
+          <Property Name="num_targets" Type="Int16" />
+          <Property Name="skill_pattern_id" Type="Int64" />
+          <Property Name="rows_range" Type="Int32" />
+          <Property Name="columns_range" Type="Int32" />
+          <Property Name="skill_based" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="damage_reduction" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="foe_defensive_modifier_stat_id" Type="Int64" />
+          <Property Name="ability" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ignores_position" Type="Byte" />
+          <NavigationProperty Name="familiar_skills" Relationship="PhlebotomistModel.FK_familiar_skills_0_0" FromRole="skill" ToRole="familiar_skills" />
+          <NavigationProperty Name="familiar_type_skills" Relationship="PhlebotomistModel.FK_familiar_type_skills_0_0" FromRole="skill" ToRole="familiar_type_skills" />
+          <NavigationProperty Name="skill_affected_stats" Relationship="PhlebotomistModel.FK_skill_affected_stats_1_0" FromRole="skill" ToRole="skill_affected_stats" />
+          <NavigationProperty Name="skill_patterns" Relationship="PhlebotomistModel.FK_skills_1_0" FromRole="skill" ToRole="skill_patterns" />
+          <NavigationProperty Name="skill_types" Relationship="PhlebotomistModel.FK_skills_3_0" FromRole="skill" ToRole="skill_types" />
+          <NavigationProperty Name="stat" Relationship="PhlebotomistModel.FK_skills_0_0" FromRole="skill" ToRole="stat" />
+          <NavigationProperty Name="stat1" Relationship="PhlebotomistModel.FK_skills_2_0" FromRole="skill" ToRole="stat" />
+        </EntityType>
+        <EntityType Name="stat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="skill_affected_stats" Relationship="PhlebotomistModel.FK_skill_affected_stats_0_0" FromRole="stat" ToRole="skill_affected_stats" />
+          <NavigationProperty Name="skills" Relationship="PhlebotomistModel.FK_skills_0_0" FromRole="stat" ToRole="skill" />
+          <NavigationProperty Name="skills1" Relationship="PhlebotomistModel.FK_skills_2_0" FromRole="stat" ToRole="skill" />
+        </EntityType>
+        <Association Name="FK_raid_boss_brigade_attacks_0_0">
+          <End Type="PhlebotomistModel.attack_types" Role="attack_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.raid_boss_brigade_attacks" Role="raid_boss_brigade_attacks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="attack_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="raid_boss_brigade_attacks">
+              <PropertyRef Name="attack_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bazaar_offer_familiar_type_terms_0_0">
+          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.bazaar_offer_familiar_type_terms" Role="bazaar_offer_familiar_type_terms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bazaar_offer_familiar_type_terms">
+              <PropertyRef Name="familiar_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bazaar_offer_familiar_type_terms_1_0">
+          <End Type="PhlebotomistModel.bazaar_offers" Role="bazaar_offers" Multiplicity="1" />
+          <End Type="PhlebotomistModel.bazaar_offer_familiar_type_terms" Role="bazaar_offer_familiar_type_terms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bazaar_offers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bazaar_offer_familiar_type_terms">
+              <PropertyRef Name="bazaar_offer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bazaar_offer_item_terms_0_0">
+          <End Type="PhlebotomistModel.item_types" Role="item_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.bazaar_offer_item_terms" Role="bazaar_offer_item_terms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bazaar_offer_item_terms">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bazaar_offer_item_terms_1_0">
+          <End Type="PhlebotomistModel.bazaar_offers" Role="bazaar_offers" Multiplicity="1" />
+          <End Type="PhlebotomistModel.bazaar_offer_item_terms" Role="bazaar_offer_item_terms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bazaar_offers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bazaar_offer_item_terms">
+              <PropertyRef Name="bazaar_offer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bazaar_offers_0_0">
+          <End Type="PhlebotomistModel.familiar" Role="familiar" Multiplicity="1" />
+          <End Type="PhlebotomistModel.bazaar_offers" Role="bazaar_offers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bazaar_offers">
+              <PropertyRef Name="offered_familiar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_familiars_0_0">
+          <End Type="PhlebotomistModel.brigade_formation_positions" Role="brigade_formation_positions" Multiplicity="1" />
+          <End Type="PhlebotomistModel.brigade_familiars" Role="brigade_familiars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigade_formation_positions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade_familiars">
+              <PropertyRef Name="brigade_formation_position_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_familiars_1_0">
+          <End Type="PhlebotomistModel.familiar" Role="familiar" Multiplicity="1" />
+          <End Type="PhlebotomistModel.brigade_familiars" Role="brigade_familiars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade_familiars">
+              <PropertyRef Name="familiar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_familiars_2_0">
+          <End Type="PhlebotomistModel.brigade" Role="brigade" Multiplicity="1" />
+          <End Type="PhlebotomistModel.brigade_familiars" Role="brigade_familiars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigade">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade_familiars">
+              <PropertyRef Name="brigade_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_formation_positions_1_0">
+          <End Type="PhlebotomistModel.brigade_formation_horizontal_position_types" Role="brigade_formation_horizontal_position_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.brigade_formation_positions" Role="brigade_formation_positions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigade_formation_horizontal_position_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade_formation_positions">
+              <PropertyRef Name="horizontal_position_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_formation_positions_0_0">
+          <End Type="PhlebotomistModel.brigade_formation_vertical_position_types" Role="brigade_formation_vertical_position_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.brigade_formation_positions" Role="brigade_formation_positions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigade_formation_vertical_position_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade_formation_positions">
+              <PropertyRef Name="vertical_position_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_formation_positions_2_0">
+          <End Type="PhlebotomistModel.brigade_formations" Role="brigade_formations" Multiplicity="1" />
+          <End Type="PhlebotomistModel.brigade_formation_positions" Role="brigade_formation_positions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigade_formations">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade_formation_positions">
+              <PropertyRef Name="brigade_formation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigades_1_0">
+          <End Type="PhlebotomistModel.brigade_formations" Role="brigade_formations" Multiplicity="1" />
+          <End Type="PhlebotomistModel.brigade" Role="brigade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigade_formations">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade">
+              <PropertyRef Name="brigade_formation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigades_0_0">
+          <End Type="PhlebotomistModel.player" Role="player" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.brigade" Role="brigade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade">
+              <PropertyRef Name="player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_raid_boss_brigade_attacks_1_0">
+          <End Type="PhlebotomistModel.brigade" Role="brigade" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.raid_boss_brigade_attacks" Role="raid_boss_brigade_attacks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigade">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="raid_boss_brigade_attacks">
+              <PropertyRef Name="brigade_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_event_elite_familiar_types_0_0">
+          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.event_elite_familiar_types" Role="event_elite_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="event_elite_familiar_types">
+              <PropertyRef Name="familiar_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_event_elite_familiar_types_1_0">
+          <End Type="PhlebotomistModel.event" Role="event" Multiplicity="1" />
+          <End Type="PhlebotomistModel.event_elite_familiar_types" Role="event_elite_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="event">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="event_elite_familiar_types">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_events_0_0">
+          <End Type="PhlebotomistModel.event_types" Role="event_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.event" Role="event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="event_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="event">
+              <PropertyRef Name="event_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_raid_boss_familiar_types_0_0">
+          <End Type="PhlebotomistModel.event" Role="event" Multiplicity="1" />
+          <End Type="PhlebotomistModel.raid_boss_familiar_types" Role="raid_boss_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="event">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="raid_boss_familiar_types">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_skills_0_0">
+          <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="1" />
+          <End Type="PhlebotomistModel.familiar_skills" Role="familiar_skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skill">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_skills">
+              <PropertyRef Name="skill_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_skills_1_0">
+          <End Type="PhlebotomistModel.familiar" Role="familiar" Multiplicity="1" />
+          <End Type="PhlebotomistModel.familiar_skills" Role="familiar_skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_skills">
+              <PropertyRef Name="familiar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_type_skills_0_0">
+          <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="1" />
+          <End Type="PhlebotomistModel.familiar_type_skills" Role="familiar_type_skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skill">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_type_skills">
+              <PropertyRef Name="skill_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_type_skills_1_0">
+          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.familiar_type_skills" Role="familiar_type_skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_type_skills">
+              <PropertyRef Name="familiar_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_types_0_0">
+          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_types1">
+              <PropertyRef Name="next_evolution_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_types_1_0">
+          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_types1">
+              <PropertyRef Name="prev_evolution_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_types_2_0">
+          <End Type="PhlebotomistModel.race" Role="race" Multiplicity="1" />
+          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="race">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_types">
+              <PropertyRef Name="race_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_types_3_0">
+          <End Type="PhlebotomistModel.growth" Role="growth" Multiplicity="1" />
+          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="growth">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_types">
+              <PropertyRef Name="growth_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_types_4_0">
+          <End Type="PhlebotomistModel.rarity" Role="rarity" Multiplicity="1" />
+          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rarity">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_types">
+              <PropertyRef Name="rarity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiars_0_0">
+          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.familiar" Role="familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar">
+              <PropertyRef Name="familiar_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_raid_boss_familiar_types_2_0">
+          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.raid_boss_familiar_types" Role="raid_boss_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="raid_boss_familiar_types">
+              <PropertyRef Name="familiar_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiars_1_0">
+          <End Type="PhlebotomistModel.player" Role="player" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.familiar" Role="familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar">
+              <PropertyRef Name="player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_items_1_0">
+          <End Type="PhlebotomistModel.item_types" Role="item_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.item" Role="item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="item">
+              <PropertyRef Name="item_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_items_0_0">
+          <End Type="PhlebotomistModel.player" Role="player" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.item" Role="item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="item">
+              <PropertyRef Name="player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_raid_boss_brigade_attacks_2_0">
+          <End Type="PhlebotomistModel.raid_bosses" Role="raid_bosses" Multiplicity="1" />
+          <End Type="PhlebotomistModel.raid_boss_brigade_attacks" Role="raid_boss_brigade_attacks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="raid_bosses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="raid_boss_brigade_attacks">
+              <PropertyRef Name="raid_boss_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_raid_boss_familiar_types_1_0">
+          <End Type="PhlebotomistModel.raid_boss_types" Role="raid_boss_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.raid_boss_familiar_types" Role="raid_boss_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="raid_boss_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="raid_boss_familiar_types">
+              <PropertyRef Name="raid_boss_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skill_affected_stats_0_0">
+          <End Type="PhlebotomistModel.stat" Role="stat" Multiplicity="1" />
+          <End Type="PhlebotomistModel.skill_affected_stats" Role="skill_affected_stats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skill_affected_stats">
+              <PropertyRef Name="stat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skill_affected_stats_1_0">
+          <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="1" />
+          <End Type="PhlebotomistModel.skill_affected_stats" Role="skill_affected_stats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skill">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skill_affected_stats">
+              <PropertyRef Name="skill_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skills_1_0">
+          <End Type="PhlebotomistModel.skill_patterns" Role="skill_patterns" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skill_patterns">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skill">
+              <PropertyRef Name="skill_pattern_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skills_3_0">
+          <End Type="PhlebotomistModel.skill_types" Role="skill_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skill_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skill">
+              <PropertyRef Name="skill_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skills_0_0">
+          <End Type="PhlebotomistModel.stat" Role="stat" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skill">
+              <PropertyRef Name="foe_defensive_modifier_stat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skills_2_0">
+          <End Type="PhlebotomistModel.stat" Role="stat" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skill">
+              <PropertyRef Name="modifier_stat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="PhlebotomistModel" />
+        <Alias Key="Target" Value="PhlebotomistModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="PhlebotomistModelContainer" StorageEntityContainer="PhlebotomistModelStoreContainer">
+          <EntitySetMapping Name="attack_types">
+            <EntityTypeMapping TypeName="PhlebotomistModel.attack_types">
+              <MappingFragment StoreEntitySet="attack_types">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bazaar_offer_familiar_type_terms">
+            <EntityTypeMapping TypeName="PhlebotomistModel.bazaar_offer_familiar_type_terms">
+              <MappingFragment StoreEntitySet="bazaar_offer_familiar_type_terms">
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="familiar_type_id" ColumnName="familiar_type_id" />
+                <ScalarProperty Name="bazaar_offer_id" ColumnName="bazaar_offer_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bazaar_offer_item_terms">
+            <EntityTypeMapping TypeName="PhlebotomistModel.bazaar_offer_item_terms">
+              <MappingFragment StoreEntitySet="bazaar_offer_item_terms">
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="bazaar_offer_id" ColumnName="bazaar_offer_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bazaar_offers">
+            <EntityTypeMapping TypeName="PhlebotomistModel.bazaar_offers">
+              <MappingFragment StoreEntitySet="bazaar_offers">
+                <ScalarProperty Name="offered_familiar_id" ColumnName="offered_familiar_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="player_name" ColumnName="player_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="brigade_familiars">
+            <EntityTypeMapping TypeName="PhlebotomistModel.brigade_familiars">
+              <MappingFragment StoreEntitySet="brigade_familiars">
+                <ScalarProperty Name="is_reserve" ColumnName="is_reserve" />
+                <ScalarProperty Name="brigade_formation_position_id" ColumnName="brigade_formation_position_id" />
+                <ScalarProperty Name="familiar_id" ColumnName="familiar_id" />
+                <ScalarProperty Name="brigade_id" ColumnName="brigade_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="brigade_formation_horizontal_position_types">
+            <EntityTypeMapping TypeName="PhlebotomistModel.brigade_formation_horizontal_position_types">
+              <MappingFragment StoreEntitySet="brigade_formation_horizontal_position_types">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="brigade_formation_positions">
+            <EntityTypeMapping TypeName="PhlebotomistModel.brigade_formation_positions">
+              <MappingFragment StoreEntitySet="brigade_formation_positions">
+                <ScalarProperty Name="vertical_position_type_id" ColumnName="vertical_position_type_id" />
+                <ScalarProperty Name="horizontal_position_type_id" ColumnName="horizontal_position_type_id" />
+                <ScalarProperty Name="brigade_formation_id" ColumnName="brigade_formation_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="brigade_formation_vertical_position_types">
+            <EntityTypeMapping TypeName="PhlebotomistModel.brigade_formation_vertical_position_types">
+              <MappingFragment StoreEntitySet="brigade_formation_vertical_position_types">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="brigade_formations">
+            <EntityTypeMapping TypeName="PhlebotomistModel.brigade_formations">
+              <MappingFragment StoreEntitySet="brigade_formations">
+                <ScalarProperty Name="num_positions" ColumnName="num_positions" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="brigades">
+            <EntityTypeMapping TypeName="PhlebotomistModel.brigade">
+              <MappingFragment StoreEntitySet="brigades">
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="player_id" ColumnName="player_id" />
+                <ScalarProperty Name="brigade_formation_id" ColumnName="brigade_formation_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="event_elite_familiar_types">
+            <EntityTypeMapping TypeName="PhlebotomistModel.event_elite_familiar_types">
+              <MappingFragment StoreEntitySet="event_elite_familiar_types">
+                <ScalarProperty Name="multiplier" ColumnName="multiplier" />
+                <ScalarProperty Name="familiar_type_id" ColumnName="familiar_type_id" />
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="event_types">
+            <EntityTypeMapping TypeName="PhlebotomistModel.event_types">
+              <MappingFragment StoreEntitySet="event_types">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="events">
+            <EntityTypeMapping TypeName="PhlebotomistModel.event">
+              <MappingFragment StoreEntitySet="events">
+                <ScalarProperty Name="date_ended" ColumnName="date_ended" />
+                <ScalarProperty Name="date_started" ColumnName="date_started" />
+                <ScalarProperty Name="event_type_id" ColumnName="event_type_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="familiar_skills">
+            <EntityTypeMapping TypeName="PhlebotomistModel.familiar_skills">
+              <MappingFragment StoreEntitySet="familiar_skills">
+                <ScalarProperty Name="exp" ColumnName="exp" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="skill_id" ColumnName="skill_id" />
+                <ScalarProperty Name="familiar_id" ColumnName="familiar_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="familiar_type_skills">
+            <EntityTypeMapping TypeName="PhlebotomistModel.familiar_type_skills">
+              <MappingFragment StoreEntitySet="familiar_type_skills">
+                <ScalarProperty Name="skill_id" ColumnName="skill_id" />
+                <ScalarProperty Name="familiar_type_id" ColumnName="familiar_type_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="familiar_types">
+            <EntityTypeMapping TypeName="PhlebotomistModel.familiar_types">
+              <MappingFragment StoreEntitySet="familiar_types">
+                <ScalarProperty Name="next_evolution_id" ColumnName="next_evolution_id" />
+                <ScalarProperty Name="prev_evolution_id" ColumnName="prev_evolution_id" />
+                <ScalarProperty Name="last_words" ColumnName="last_words" />
+                <ScalarProperty Name="tradable" ColumnName="tradable" />
+                <ScalarProperty Name="race_id" ColumnName="race_id" />
+                <ScalarProperty Name="worth" ColumnName="worth" />
+                <ScalarProperty Name="growth_id" ColumnName="growth_id" />
+                <ScalarProperty Name="max_stars" ColumnName="max_stars" />
+                <ScalarProperty Name="num_stars" ColumnName="num_stars" />
+                <ScalarProperty Name="rarity_id" ColumnName="rarity_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="bb_id" ColumnName="bb_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="familiars">
+            <EntityTypeMapping TypeName="PhlebotomistModel.familiar">
+              <MappingFragment StoreEntitySet="familiars">
+                <ScalarProperty Name="roots_crystals" ColumnName="roots_crystals" />
+                <ScalarProperty Name="agi_crystals" ColumnName="agi_crystals" />
+                <ScalarProperty Name="wis_crystals" ColumnName="wis_crystals" />
+                <ScalarProperty Name="def_crystals" ColumnName="def_crystals" />
+                <ScalarProperty Name="atk_crystals" ColumnName="atk_crystals" />
+                <ScalarProperty Name="hp_crystals" ColumnName="hp_crystals" />
+                <ScalarProperty Name="exp" ColumnName="exp" />
+                <ScalarProperty Name="agi" ColumnName="agi" />
+                <ScalarProperty Name="wis" ColumnName="wis" />
+                <ScalarProperty Name="def" ColumnName="def" />
+                <ScalarProperty Name="atk" ColumnName="atk" />
+                <ScalarProperty Name="hp" ColumnName="hp" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="owned" ColumnName="owned" />
+                <ScalarProperty Name="familiar_type_id" ColumnName="familiar_type_id" />
+                <ScalarProperty Name="player_id" ColumnName="player_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="growths">
+            <EntityTypeMapping TypeName="PhlebotomistModel.growth">
+              <MappingFragment StoreEntitySet="growths">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item_types">
+            <EntityTypeMapping TypeName="PhlebotomistModel.item_types">
+              <MappingFragment StoreEntitySet="item_types">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="items">
+            <EntityTypeMapping TypeName="PhlebotomistModel.item">
+              <MappingFragment StoreEntitySet="items">
+                <ScalarProperty Name="quantity_bloodbound" ColumnName="quantity_bloodbound" />
+                <ScalarProperty Name="quantity_tradable" ColumnName="quantity_tradable" />
+                <ScalarProperty Name="player_id" ColumnName="player_id" />
+                <ScalarProperty Name="item_type_id" ColumnName="item_type_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="players">
+            <EntityTypeMapping TypeName="PhlebotomistModel.player">
+              <MappingFragment StoreEntitySet="players">
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="races">
+            <EntityTypeMapping TypeName="PhlebotomistModel.race">
+              <MappingFragment StoreEntitySet="races">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="raid_boss_brigade_attacks">
+            <EntityTypeMapping TypeName="PhlebotomistModel.raid_boss_brigade_attacks">
+              <MappingFragment StoreEntitySet="raid_boss_brigade_attacks">
+                <ScalarProperty Name="damage" ColumnName="damage" />
+                <ScalarProperty Name="ending_HP" ColumnName="ending_HP" />
+                <ScalarProperty Name="starting_HP" ColumnName="starting_HP" />
+                <ScalarProperty Name="attack_type_id" ColumnName="attack_type_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="brigade_id" ColumnName="brigade_id" />
+                <ScalarProperty Name="raid_boss_id" ColumnName="raid_boss_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="raid_boss_familiar_types">
+            <EntityTypeMapping TypeName="PhlebotomistModel.raid_boss_familiar_types">
+              <MappingFragment StoreEntitySet="raid_boss_familiar_types">
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="raid_boss_type_id" ColumnName="raid_boss_type_id" />
+                <ScalarProperty Name="familiar_type_id" ColumnName="familiar_type_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="raid_boss_types">
+            <EntityTypeMapping TypeName="PhlebotomistModel.raid_boss_types">
+              <MappingFragment StoreEntitySet="raid_boss_types">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="raid_bosses">
+            <EntityTypeMapping TypeName="PhlebotomistModel.raid_bosses">
+              <MappingFragment StoreEntitySet="raid_bosses">
+                <ScalarProperty Name="jur_mvp_bonus_multiplier" ColumnName="jur_mvp_bonus_multiplier" />
+                <ScalarProperty Name="mvp_bonus_multiplier" ColumnName="mvp_bonus_multiplier" />
+                <ScalarProperty Name="attack_points" ColumnName="attack_points" />
+                <ScalarProperty Name="HP" ColumnName="HP" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="raid_boss_familiar_type" ColumnName="raid_boss_familiar_type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rarities">
+            <EntityTypeMapping TypeName="PhlebotomistModel.rarity">
+              <MappingFragment StoreEntitySet="rarities">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="skill_affected_stats">
+            <EntityTypeMapping TypeName="PhlebotomistModel.skill_affected_stats">
+              <MappingFragment StoreEntitySet="skill_affected_stats">
+                <ScalarProperty Name="affects_foes" ColumnName="affects_foes" />
+                <ScalarProperty Name="affects_allies" ColumnName="affects_allies" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="stat_id" ColumnName="stat_id" />
+                <ScalarProperty Name="skill_id" ColumnName="skill_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="skill_patterns">
+            <EntityTypeMapping TypeName="PhlebotomistModel.skill_patterns">
+              <MappingFragment StoreEntitySet="skill_patterns">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="skill_types">
+            <EntityTypeMapping TypeName="PhlebotomistModel.skill_types">
+              <MappingFragment StoreEntitySet="skill_types">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="skills">
+            <EntityTypeMapping TypeName="PhlebotomistModel.skill">
+              <MappingFragment StoreEntitySet="skills">
+                <ScalarProperty Name="ignores_position" ColumnName="ignores_position" />
+                <ScalarProperty Name="ability" ColumnName="ability" />
+                <ScalarProperty Name="foe_defensive_modifier_stat_id" ColumnName="foe_defensive_modifier_stat_id" />
+                <ScalarProperty Name="damage_reduction" ColumnName="damage_reduction" />
+                <ScalarProperty Name="skill_based" ColumnName="skill_based" />
+                <ScalarProperty Name="columns_range" ColumnName="columns_range" />
+                <ScalarProperty Name="rows_range" ColumnName="rows_range" />
+                <ScalarProperty Name="skill_pattern_id" ColumnName="skill_pattern_id" />
+                <ScalarProperty Name="num_targets" ColumnName="num_targets" />
+                <ScalarProperty Name="flat_modifier" ColumnName="flat_modifier" />
+                <ScalarProperty Name="modifier_stat_id" ColumnName="modifier_stat_id" />
+                <ScalarProperty Name="modifier" ColumnName="modifier" />
+                <ScalarProperty Name="max_probability" ColumnName="max_probability" />
+                <ScalarProperty Name="min_probability" ColumnName="min_probability" />
+                <ScalarProperty Name="skill_type_id" ColumnName="skill_type_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stats">
+            <EntityTypeMapping TypeName="PhlebotomistModel.stat">
+              <MappingFragment StoreEntitySet="stats">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
