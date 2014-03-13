@@ -19,6 +19,8 @@ namespace Phlebotomist.Model
             this.bazaar_offers = new HashSet<bazaar_offers>();
             this.brigade_familiars = new HashSet<brigade_familiars>();
             this.familiar_skills = new HashSet<familiar_skills>();
+            this.familiars1 = new HashSet<familiar>();
+            this.familiars11 = new HashSet<familiar>();
         }
     
         public long id { get; set; }
@@ -38,11 +40,17 @@ namespace Phlebotomist.Model
         public long wis_crystals { get; set; }
         public long agi_crystals { get; set; }
         public Nullable<long> roots_crystals { get; set; }
+        public Nullable<long> spawn_parent_id { get; set; }
+        public Nullable<long> seed_parent_id { get; set; }
     
         public virtual ICollection<bazaar_offers> bazaar_offers { get; set; }
         public virtual ICollection<brigade_familiars> brigade_familiars { get; set; }
         public virtual ICollection<familiar_skills> familiar_skills { get; set; }
         public virtual familiar_types familiar_types { get; set; }
         public virtual player player { get; set; }
+        public virtual ICollection<familiar> familiars1 { get; set; }
+        public virtual familiar familiar1 { get; set; }
+        public virtual ICollection<familiar> familiars11 { get; set; }
+        public virtual familiar familiar2 { get; set; }
     }
 }

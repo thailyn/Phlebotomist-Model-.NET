@@ -78,6 +78,8 @@
         <AssociationConnector Association="PhlebotomistModel.FK_skills_3_0" />
         <AssociationConnector Association="PhlebotomistModel.FK_skills_0_0" />
         <AssociationConnector Association="PhlebotomistModel.FK_skills_2_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiars_0_01" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiars_1_01" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

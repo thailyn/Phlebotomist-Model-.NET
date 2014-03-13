@@ -162,6 +162,8 @@
           <Property Name="player_id" Type="integer" />
           <Property Name="familiar_type_id" Type="integer" Nullable="false" />
           <Property Name="owned" Type="tinyint" Nullable="false" />
+          <Property Name="spawn_parent_id" Type="integer" />
+          <Property Name="seed_parent_id" Type="integer" />
           <Property Name="level" Type="real" />
           <Property Name="hp" Type="real" />
           <Property Name="atk" Type="real" />
@@ -629,6 +631,30 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiars_0_0">
+          <End Role="familiars" Type="Self.familiars" Multiplicity="0..1" />
+          <End Role="familiars1" Type="Self.familiars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiars">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiars1">
+              <PropertyRef Name="seed_parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiars_1_0">
+          <End Role="familiars" Type="Self.familiars" Multiplicity="0..1" />
+          <End Role="familiars1" Type="Self.familiars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiars">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiars1">
+              <PropertyRef Name="spawn_parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiars_2_0">
           <End Role="familiar_types" Type="Self.familiar_types" Multiplicity="1" />
           <End Role="familiars" Type="Self.familiars" Multiplicity="*" />
           <ReferentialConstraint>
@@ -640,7 +666,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_familiars_1_0">
+        <Association Name="FK_familiars_3_0">
           <End Role="players" Type="Self.players" Multiplicity="0..1" />
           <End Role="familiars" Type="Self.familiars" Multiplicity="*" />
           <ReferentialConstraint>
@@ -954,10 +980,18 @@
             <End Role="familiar_types" EntitySet="familiar_types" />
           </AssociationSet>
           <AssociationSet Name="FK_familiars_0_0" Association="Self.FK_familiars_0_0">
+            <End Role="familiars" EntitySet="familiars" />
+            <End Role="familiars1" EntitySet="familiars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiars_1_0" Association="Self.FK_familiars_1_0">
+            <End Role="familiars" EntitySet="familiars" />
+            <End Role="familiars1" EntitySet="familiars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiars_2_0" Association="Self.FK_familiars_2_0">
             <End Role="familiar_types" EntitySet="familiar_types" />
             <End Role="familiars" EntitySet="familiars" />
           </AssociationSet>
-          <AssociationSet Name="FK_familiars_1_0" Association="Self.FK_familiars_1_0">
+          <AssociationSet Name="FK_familiars_3_0" Association="Self.FK_familiars_3_0">
             <End Role="players" EntitySet="players" />
             <End Role="familiars" EntitySet="familiars" />
           </AssociationSet>
@@ -1219,6 +1253,14 @@
             <End Role="stat" EntitySet="stats" />
             <End Role="skill" EntitySet="skills" />
           </AssociationSet>
+          <AssociationSet Name="FK_familiars_0_01" Association="PhlebotomistModel.FK_familiars_0_01">
+            <End Role="familiar" EntitySet="familiars" />
+            <End Role="familiar1" EntitySet="familiars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiars_1_01" Association="PhlebotomistModel.FK_familiars_1_01">
+            <End Role="familiar" EntitySet="familiars" />
+            <End Role="familiar1" EntitySet="familiars" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="attack_types">
           <Key>
@@ -1440,6 +1482,12 @@
           <NavigationProperty Name="familiar_skills" Relationship="PhlebotomistModel.FK_familiar_skills_1_0" FromRole="familiar" ToRole="familiar_skills" />
           <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_familiars_0_0" FromRole="familiar" ToRole="familiar_types" />
           <NavigationProperty Name="player" Relationship="PhlebotomistModel.FK_familiars_1_0" FromRole="familiar" ToRole="player" />
+          <Property Name="spawn_parent_id" Type="Int64" />
+          <Property Name="seed_parent_id" Type="Int64" />
+          <NavigationProperty Name="familiars1" Relationship="PhlebotomistModel.FK_familiars_0_01" FromRole="familiar" ToRole="familiar1" />
+          <NavigationProperty Name="familiar1" Relationship="PhlebotomistModel.FK_familiars_0_01" FromRole="familiar1" ToRole="familiar" />
+          <NavigationProperty Name="familiars11" Relationship="PhlebotomistModel.FK_familiars_1_01" FromRole="familiar" ToRole="familiar1" />
+          <NavigationProperty Name="familiar2" Relationship="PhlebotomistModel.FK_familiars_1_01" FromRole="familiar1" ToRole="familiar" />
         </EntityType>
         <EntityType Name="growth">
           <Key>
@@ -2117,6 +2165,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_familiars_0_01">
+          <End Type="PhlebotomistModel.familiar" Role="familiar" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.familiar" Role="familiar1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar1">
+              <PropertyRef Name="seed_parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiars_1_01">
+          <End Type="PhlebotomistModel.familiar" Role="familiar" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.familiar" Role="familiar1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar1">
+              <PropertyRef Name="spawn_parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2293,6 +2365,8 @@
           <EntitySetMapping Name="familiars">
             <EntityTypeMapping TypeName="PhlebotomistModel.familiar">
               <MappingFragment StoreEntitySet="familiars">
+                <ScalarProperty Name="seed_parent_id" ColumnName="seed_parent_id" />
+                <ScalarProperty Name="spawn_parent_id" ColumnName="spawn_parent_id" />
                 <ScalarProperty Name="roots_crystals" ColumnName="roots_crystals" />
                 <ScalarProperty Name="agi_crystals" ColumnName="agi_crystals" />
                 <ScalarProperty Name="wis_crystals" ColumnName="wis_crystals" />
