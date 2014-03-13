@@ -1074,7 +1074,7 @@
           <EntitySet Name="FamiliarTypeSkills" EntityType="PhlebotomistModel.FamiliarTypeSkill" />
           <EntitySet Name="FamiliarTypes" EntityType="PhlebotomistModel.FamiliarType" />
           <EntitySet Name="familiars" EntityType="PhlebotomistModel.familiar" />
-          <EntitySet Name="growths" EntityType="PhlebotomistModel.growth" />
+          <EntitySet Name="Growths" EntityType="PhlebotomistModel.Growth" />
           <EntitySet Name="item_types" EntityType="PhlebotomistModel.item_types" />
           <EntitySet Name="items" EntityType="PhlebotomistModel.item" />
           <EntitySet Name="players" EntityType="PhlebotomistModel.player" />
@@ -1194,7 +1194,7 @@
             <End Role="familiar_types" EntitySet="FamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_types_3_0" Association="PhlebotomistModel.FK_familiar_types_3_0">
-            <End Role="growth" EntitySet="growths" />
+            <End Role="growth" EntitySet="Growths" />
             <End Role="familiar_types" EntitySet="FamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_types_4_0" Association="PhlebotomistModel.FK_familiar_types_4_0">
@@ -1489,14 +1489,14 @@
           <NavigationProperty Name="familiars11" Relationship="PhlebotomistModel.FK_familiars_1_01" FromRole="familiar" ToRole="familiar1" />
           <NavigationProperty Name="familiar2" Relationship="PhlebotomistModel.FK_familiars_1_01" FromRole="familiar1" ToRole="familiar" />
         </EntityType>
-        <EntityType Name="growth">
+        <EntityType Name="Growth">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_familiar_types_3_0" FromRole="growth" ToRole="familiar_types" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FamiliarTypes" Relationship="PhlebotomistModel.FK_familiar_types_3_0" FromRole="growth" ToRole="familiar_types" />
         </EntityType>
         <EntityType Name="item_types">
           <Key>
@@ -1986,11 +1986,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiar_types_3_0">
-          <End Type="PhlebotomistModel.growth" Role="growth" Multiplicity="1" />
+          <End Type="PhlebotomistModel.Growth" Role="growth" Multiplicity="1" />
           <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="growth">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="familiar_types">
               <PropertyRef Name="GrowthId" />
@@ -2387,12 +2387,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="growths">
-            <EntityTypeMapping TypeName="PhlebotomistModel.growth">
+          <EntitySetMapping Name="Growths">
+            <EntityTypeMapping TypeName="PhlebotomistModel.Growth">
               <MappingFragment StoreEntitySet="growths">
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Description" ColumnName="description" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

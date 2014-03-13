@@ -99,7 +99,7 @@
     <Compile Include="Model\familiar_skills.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\growth.cs">
+    <Compile Include="Model\Growth.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\item.cs">
