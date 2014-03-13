@@ -32,9 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -164,7 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
     <EntityDeploy Include="Model\PhlebotomistModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PhlebotomistModel.Designer.cs</LastGenOutput>
@@ -182,6 +180,7 @@
       <DependentUpon>PhlebotomistModel.edmx</DependentUpon>
       <LastGenOutput>PhlebotomistModel.cs</LastGenOutput>
     </None>
+    <None Include="packages.config" />
     <None Include="schema\phlebotomist.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
