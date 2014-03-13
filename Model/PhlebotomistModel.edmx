@@ -1083,7 +1083,7 @@
           <EntitySet Name="raid_boss_familiar_types" EntityType="PhlebotomistModel.raid_boss_familiar_types" />
           <EntitySet Name="raid_boss_types" EntityType="PhlebotomistModel.raid_boss_types" />
           <EntitySet Name="raid_bosses" EntityType="PhlebotomistModel.raid_bosses" />
-          <EntitySet Name="rarities" EntityType="PhlebotomistModel.rarity" />
+          <EntitySet Name="Rarities1" EntityType="PhlebotomistModel.Rarity" />
           <EntitySet Name="skill_affected_stats" EntityType="PhlebotomistModel.skill_affected_stats" />
           <EntitySet Name="skill_patterns" EntityType="PhlebotomistModel.skill_patterns" />
           <EntitySet Name="skill_types" EntityType="PhlebotomistModel.skill_types" />
@@ -1198,7 +1198,7 @@
             <End Role="familiar_types" EntitySet="FamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_types_4_0" Association="PhlebotomistModel.FK_familiar_types_4_0">
-            <End Role="rarity" EntitySet="rarities" />
+            <End Role="rarity" EntitySet="Rarities1" />
             <End Role="familiar_types" EntitySet="FamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_familiars_0_0" Association="PhlebotomistModel.FK_familiars_0_0">
@@ -1591,15 +1591,15 @@
           <Property Name="jur_mvp_bonus_multiplier" Type="Double" />
           <NavigationProperty Name="raid_boss_brigade_attacks" Relationship="PhlebotomistModel.FK_raid_boss_brigade_attacks_2_0" FromRole="raid_bosses" ToRole="raid_boss_brigade_attacks" />
         </EntityType>
-        <EntityType Name="rarity">
+        <EntityType Name="Rarity">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="rank" Type="Int16" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_familiar_types_4_0" FromRole="rarity" ToRole="familiar_types" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Rank" Type="Int16" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FamiliarType" Relationship="PhlebotomistModel.FK_familiar_types_4_0" FromRole="rarity" ToRole="familiar_types" />
         </EntityType>
         <EntityType Name="skill_affected_stats">
           <Key>
@@ -1998,11 +1998,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiar_types_4_0">
-          <End Type="PhlebotomistModel.rarity" Role="rarity" Multiplicity="1" />
+          <End Type="PhlebotomistModel.Rarity" Role="rarity" Multiplicity="1" />
           <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="rarity">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="familiar_types">
               <PropertyRef Name="RarityId" />
@@ -2481,13 +2481,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="rarities">
-            <EntityTypeMapping TypeName="PhlebotomistModel.rarity">
+          <EntitySetMapping Name="Rarities1">
+            <EntityTypeMapping TypeName="PhlebotomistModel.Rarity">
               <MappingFragment StoreEntitySet="rarities">
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="rank" ColumnName="rank" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Description" ColumnName="description" />
+                <ScalarProperty Name="Rank" ColumnName="rank" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

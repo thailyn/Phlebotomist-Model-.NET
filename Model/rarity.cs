@@ -12,18 +12,18 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class rarity
+    public partial class Rarity
     {
-        public rarity()
+        public Rarity()
         {
-            this.familiar_types = new HashSet<FamiliarType>();
+            this.FamiliarType = new HashSet<FamiliarType>();
         }
     
-        public long id { get; set; }
-        public string name { get; set; }
-        public short rank { get; set; }
-        public string description { get; set; }
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public short Rank { get; set; }
+        public string Description { get; set; }
     
-        public virtual ICollection<FamiliarType> familiar_types { get; set; }
+        public virtual ICollection<FamiliarType> FamiliarType { get; set; }
     }
 }

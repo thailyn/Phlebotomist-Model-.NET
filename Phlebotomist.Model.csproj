@@ -126,6 +126,9 @@
     <Compile Include="Model\player.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Rarity.cs">
+      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\race.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
@@ -140,9 +143,6 @@
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\raid_boss_types.cs">
-      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\rarity.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\skill.cs">

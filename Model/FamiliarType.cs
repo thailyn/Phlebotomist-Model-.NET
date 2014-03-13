@@ -48,7 +48,7 @@ namespace Phlebotomist.Model
         public virtual FamiliarType PreviousEvolution { get; set; }
         public virtual race Race { get; set; }
         public virtual growth Growth { get; set; }
-        public virtual rarity Rarity { get; set; }
+        public virtual Rarity Rarity { get; set; }
         public virtual ICollection<familiar> Familiars { get; set; }
         public virtual ICollection<raid_boss_familiar_types> RaidBosses { get; set; }
     }
