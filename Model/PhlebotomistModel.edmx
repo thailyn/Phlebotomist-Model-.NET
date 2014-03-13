@@ -1071,7 +1071,7 @@
           <EntitySet Name="event_types" EntityType="PhlebotomistModel.event_types" />
           <EntitySet Name="events" EntityType="PhlebotomistModel.event" />
           <EntitySet Name="familiar_skills" EntityType="PhlebotomistModel.familiar_skills" />
-          <EntitySet Name="familiar_type_skills" EntityType="PhlebotomistModel.familiar_type_skills" />
+          <EntitySet Name="FamiliarTypeSkills" EntityType="PhlebotomistModel.FamiliarTypeSkill" />
           <EntitySet Name="FamiliarTypes" EntityType="PhlebotomistModel.FamiliarType" />
           <EntitySet Name="familiars" EntityType="PhlebotomistModel.familiar" />
           <EntitySet Name="growths" EntityType="PhlebotomistModel.growth" />
@@ -1175,11 +1175,11 @@
           </AssociationSet>
           <AssociationSet Name="FK_familiar_type_skills_0_0" Association="PhlebotomistModel.FK_familiar_type_skills_0_0">
             <End Role="skill" EntitySet="skills" />
-            <End Role="familiar_type_skills" EntitySet="familiar_type_skills" />
+            <End Role="familiar_type_skills" EntitySet="FamiliarTypeSkills" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_type_skills_1_0" Association="PhlebotomistModel.FK_familiar_type_skills_1_0">
             <End Role="familiar_types" EntitySet="FamiliarTypes" />
-            <End Role="familiar_type_skills" EntitySet="familiar_type_skills" />
+            <End Role="familiar_type_skills" EntitySet="FamiliarTypeSkills" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_types_0_0" Association="PhlebotomistModel.FK_familiar_types_0_0">
             <End Role="familiar_types" EntitySet="FamiliarTypes" />
@@ -1416,15 +1416,15 @@
           <NavigationProperty Name="skill" Relationship="PhlebotomistModel.FK_familiar_skills_0_0" FromRole="familiar_skills" ToRole="skill" />
           <NavigationProperty Name="familiar" Relationship="PhlebotomistModel.FK_familiar_skills_1_0" FromRole="familiar_skills" ToRole="familiar" />
         </EntityType>
-        <EntityType Name="familiar_type_skills">
+        <EntityType Name="FamiliarTypeSkill">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="familiar_type_id" Type="Int64" Nullable="false" />
-          <Property Name="skill_id" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="skill" Relationship="PhlebotomistModel.FK_familiar_type_skills_0_0" FromRole="familiar_type_skills" ToRole="skill" />
-          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_familiar_type_skills_1_0" FromRole="familiar_type_skills" ToRole="familiar_types" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FamiliarTypeId" Type="Int64" Nullable="false" />
+          <Property Name="SkillId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Skills" Relationship="PhlebotomistModel.FK_familiar_type_skills_0_0" FromRole="familiar_type_skills" ToRole="skill" />
+          <NavigationProperty Name="FamiliarTypes" Relationship="PhlebotomistModel.FK_familiar_type_skills_1_0" FromRole="familiar_type_skills" ToRole="familiar_types" />
         </EntityType>
         <EntityType Name="FamiliarType">
           <Key>
@@ -1927,25 +1927,25 @@
         </Association>
         <Association Name="FK_familiar_type_skills_0_0">
           <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="1" />
-          <End Type="PhlebotomistModel.familiar_type_skills" Role="familiar_type_skills" Multiplicity="*" />
+          <End Type="PhlebotomistModel.FamiliarTypeSkill" Role="familiar_type_skills" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="skill">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="familiar_type_skills">
-              <PropertyRef Name="skill_id" />
+              <PropertyRef Name="SkillId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiar_type_skills_1_0">
           <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="1" />
-          <End Type="PhlebotomistModel.familiar_type_skills" Role="familiar_type_skills" Multiplicity="*" />
+          <End Type="PhlebotomistModel.FamiliarTypeSkill" Role="familiar_type_skills" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar_types">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="familiar_type_skills">
-              <PropertyRef Name="familiar_type_id" />
+              <PropertyRef Name="FamiliarTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2334,12 +2334,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="familiar_type_skills">
-            <EntityTypeMapping TypeName="PhlebotomistModel.familiar_type_skills">
+          <EntitySetMapping Name="FamiliarTypeSkills">
+            <EntityTypeMapping TypeName="PhlebotomistModel.FamiliarTypeSkill">
               <MappingFragment StoreEntitySet="familiar_type_skills">
-                <ScalarProperty Name="skill_id" ColumnName="skill_id" />
-                <ScalarProperty Name="familiar_type_id" ColumnName="familiar_type_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SkillId" ColumnName="skill_id" />
+                <ScalarProperty Name="FamiliarTypeId" ColumnName="familiar_type_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

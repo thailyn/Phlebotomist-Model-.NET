@@ -12,13 +12,13 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class familiar_type_skills
+    public partial class FamiliarTypeSkill
     {
-        public long id { get; set; }
-        public long familiar_type_id { get; set; }
-        public long skill_id { get; set; }
+        public long Id { get; set; }
+        public long FamiliarTypeId { get; set; }
+        public long SkillId { get; set; }
     
-        public virtual skill skill { get; set; }
-        public virtual FamiliarType familiar_types { get; set; }
+        public virtual skill Skills { get; set; }
+        public virtual FamiliarType FamiliarTypes { get; set; }
     }
 }

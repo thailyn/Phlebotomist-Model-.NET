@@ -39,7 +39,7 @@ namespace Phlebotomist.Model
         public DbSet<event_types> event_types { get; set; }
         public DbSet<@event> events { get; set; }
         public DbSet<familiar_skills> familiar_skills { get; set; }
-        public DbSet<familiar_type_skills> familiar_type_skills { get; set; }
+        public DbSet<FamiliarTypeSkill> FamiliarTypeSkills { get; set; }
         public DbSet<FamiliarType> FamiliarTypes { get; set; }
         public DbSet<familiar> familiars { get; set; }
         public DbSet<growth> growths { get; set; }
