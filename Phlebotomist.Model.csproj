@@ -90,10 +90,10 @@
     <Compile Include="Model\familiar.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\familiar_skills.cs">
+    <Compile Include="Model\FamiliarType.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\familiar_types.cs">
+    <Compile Include="Model\familiar_skills.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\familiar_type_skills.cs">

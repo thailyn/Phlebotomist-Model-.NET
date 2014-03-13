@@ -16,13 +16,13 @@ namespace Phlebotomist.Model
     {
         public race()
         {
-            this.familiar_types = new HashSet<familiar_types>();
+            this.familiar_types = new HashSet<FamiliarType>();
         }
     
         public long id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
     
-        public virtual ICollection<familiar_types> familiar_types { get; set; }
+        public virtual ICollection<FamiliarType> familiar_types { get; set; }
     }
 }

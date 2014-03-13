@@ -46,7 +46,7 @@ namespace Phlebotomist.Model
         public virtual ICollection<bazaar_offers> bazaar_offers { get; set; }
         public virtual ICollection<brigade_familiars> brigade_familiars { get; set; }
         public virtual ICollection<familiar_skills> familiar_skills { get; set; }
-        public virtual familiar_types familiar_types { get; set; }
+        public virtual FamiliarType familiar_types { get; set; }
         public virtual player player { get; set; }
         public virtual ICollection<familiar> familiars1 { get; set; }
         public virtual familiar familiar1 { get; set; }

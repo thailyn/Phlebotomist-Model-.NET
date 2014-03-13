@@ -21,7 +21,7 @@ namespace Phlebotomist.Model
         public long event_id { get; set; }
     
         public virtual @event @event { get; set; }
-        public virtual familiar_types familiar_types { get; set; }
+        public virtual FamiliarType familiar_types { get; set; }
         public virtual raid_boss_types raid_boss_types { get; set; }
     }
 }

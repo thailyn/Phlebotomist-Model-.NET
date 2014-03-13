@@ -19,7 +19,7 @@ namespace Phlebotomist.Model
         public long familiar_type_id { get; set; }
         public long quantity { get; set; }
     
-        public virtual familiar_types familiar_types { get; set; }
+        public virtual FamiliarType familiar_types { get; set; }
         public virtual bazaar_offers bazaar_offers { get; set; }
     }
 }

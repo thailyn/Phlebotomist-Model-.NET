@@ -1072,7 +1072,7 @@
           <EntitySet Name="events" EntityType="PhlebotomistModel.event" />
           <EntitySet Name="familiar_skills" EntityType="PhlebotomistModel.familiar_skills" />
           <EntitySet Name="familiar_type_skills" EntityType="PhlebotomistModel.familiar_type_skills" />
-          <EntitySet Name="familiar_types" EntityType="PhlebotomistModel.familiar_types" />
+          <EntitySet Name="FamiliarTypes" EntityType="PhlebotomistModel.FamiliarType" />
           <EntitySet Name="familiars" EntityType="PhlebotomistModel.familiar" />
           <EntitySet Name="growths" EntityType="PhlebotomistModel.growth" />
           <EntitySet Name="item_types" EntityType="PhlebotomistModel.item_types" />
@@ -1094,7 +1094,7 @@
             <End Role="raid_boss_brigade_attacks" EntitySet="raid_boss_brigade_attacks" />
           </AssociationSet>
           <AssociationSet Name="FK_bazaar_offer_familiar_type_terms_0_0" Association="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_0_0">
-            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar_types" EntitySet="FamiliarTypes" />
             <End Role="bazaar_offer_familiar_type_terms" EntitySet="bazaar_offer_familiar_type_terms" />
           </AssociationSet>
           <AssociationSet Name="FK_bazaar_offer_familiar_type_terms_1_0" Association="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_1_0">
@@ -1150,7 +1150,7 @@
             <End Role="raid_boss_brigade_attacks" EntitySet="raid_boss_brigade_attacks" />
           </AssociationSet>
           <AssociationSet Name="FK_event_elite_familiar_types_0_0" Association="PhlebotomistModel.FK_event_elite_familiar_types_0_0">
-            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar_types" EntitySet="FamiliarTypes" />
             <End Role="event_elite_familiar_types" EntitySet="event_elite_familiar_types" />
           </AssociationSet>
           <AssociationSet Name="FK_event_elite_familiar_types_1_0" Association="PhlebotomistModel.FK_event_elite_familiar_types_1_0">
@@ -1178,35 +1178,35 @@
             <End Role="familiar_type_skills" EntitySet="familiar_type_skills" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_type_skills_1_0" Association="PhlebotomistModel.FK_familiar_type_skills_1_0">
-            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar_types" EntitySet="FamiliarTypes" />
             <End Role="familiar_type_skills" EntitySet="familiar_type_skills" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_types_0_0" Association="PhlebotomistModel.FK_familiar_types_0_0">
-            <End Role="familiar_types" EntitySet="familiar_types" />
-            <End Role="familiar_types1" EntitySet="familiar_types" />
+            <End Role="familiar_types" EntitySet="FamiliarTypes" />
+            <End Role="familiar_types1" EntitySet="FamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_types_1_0" Association="PhlebotomistModel.FK_familiar_types_1_0">
-            <End Role="familiar_types" EntitySet="familiar_types" />
-            <End Role="familiar_types1" EntitySet="familiar_types" />
+            <End Role="familiar_types" EntitySet="FamiliarTypes" />
+            <End Role="familiar_types1" EntitySet="FamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_types_2_0" Association="PhlebotomistModel.FK_familiar_types_2_0">
             <End Role="race" EntitySet="races" />
-            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar_types" EntitySet="FamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_types_3_0" Association="PhlebotomistModel.FK_familiar_types_3_0">
             <End Role="growth" EntitySet="growths" />
-            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar_types" EntitySet="FamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_types_4_0" Association="PhlebotomistModel.FK_familiar_types_4_0">
             <End Role="rarity" EntitySet="rarities" />
-            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar_types" EntitySet="FamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_familiars_0_0" Association="PhlebotomistModel.FK_familiars_0_0">
-            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar_types" EntitySet="FamiliarTypes" />
             <End Role="familiar" EntitySet="familiars" />
           </AssociationSet>
           <AssociationSet Name="FK_raid_boss_familiar_types_2_0" Association="PhlebotomistModel.FK_raid_boss_familiar_types_2_0">
-            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar_types" EntitySet="FamiliarTypes" />
             <End Role="raid_boss_familiar_types" EntitySet="raid_boss_familiar_types" />
           </AssociationSet>
           <AssociationSet Name="FK_familiars_1_0" Association="PhlebotomistModel.FK_familiars_1_0">
@@ -1426,35 +1426,35 @@
           <NavigationProperty Name="skill" Relationship="PhlebotomistModel.FK_familiar_type_skills_0_0" FromRole="familiar_type_skills" ToRole="skill" />
           <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_familiar_type_skills_1_0" FromRole="familiar_type_skills" ToRole="familiar_types" />
         </EntityType>
-        <EntityType Name="familiar_types">
+        <EntityType Name="FamiliarType">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="bb_id" Type="Int64" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="rarity_id" Type="Int64" Nullable="false" />
-          <Property Name="num_stars" Type="Int16" Nullable="false" />
-          <Property Name="max_stars" Type="Int16" Nullable="false" />
-          <Property Name="growth_id" Type="Int64" Nullable="false" />
-          <Property Name="worth" Type="Int64" Nullable="false" />
-          <Property Name="race_id" Type="Int64" Nullable="false" />
-          <Property Name="tradable" Type="Int16" Nullable="false" />
-          <Property Name="last_words" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="prev_evolution_id" Type="Int64" />
-          <Property Name="next_evolution_id" Type="Int64" />
-          <NavigationProperty Name="bazaar_offer_familiar_type_terms" Relationship="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_0_0" FromRole="familiar_types" ToRole="bazaar_offer_familiar_type_terms" />
-          <NavigationProperty Name="event_elite_familiar_types" Relationship="PhlebotomistModel.FK_event_elite_familiar_types_0_0" FromRole="familiar_types" ToRole="event_elite_familiar_types" />
-          <NavigationProperty Name="familiar_type_skills" Relationship="PhlebotomistModel.FK_familiar_type_skills_1_0" FromRole="familiar_types" ToRole="familiar_type_skills" />
-          <NavigationProperty Name="familiar_types1" Relationship="PhlebotomistModel.FK_familiar_types_0_0" FromRole="familiar_types" ToRole="familiar_types1" />
-          <NavigationProperty Name="familiar_types2" Relationship="PhlebotomistModel.FK_familiar_types_0_0" FromRole="familiar_types1" ToRole="familiar_types" />
-          <NavigationProperty Name="familiar_types11" Relationship="PhlebotomistModel.FK_familiar_types_1_0" FromRole="familiar_types" ToRole="familiar_types1" />
-          <NavigationProperty Name="familiar_types3" Relationship="PhlebotomistModel.FK_familiar_types_1_0" FromRole="familiar_types1" ToRole="familiar_types" />
-          <NavigationProperty Name="race" Relationship="PhlebotomistModel.FK_familiar_types_2_0" FromRole="familiar_types" ToRole="race" />
-          <NavigationProperty Name="growth" Relationship="PhlebotomistModel.FK_familiar_types_3_0" FromRole="familiar_types" ToRole="growth" />
-          <NavigationProperty Name="rarity" Relationship="PhlebotomistModel.FK_familiar_types_4_0" FromRole="familiar_types" ToRole="rarity" />
-          <NavigationProperty Name="familiars" Relationship="PhlebotomistModel.FK_familiars_0_0" FromRole="familiar_types" ToRole="familiar" />
-          <NavigationProperty Name="raid_boss_familiar_types" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_2_0" FromRole="familiar_types" ToRole="raid_boss_familiar_types" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BbId" Type="Int64" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="RarityId" Type="Int64" Nullable="false" />
+          <Property Name="NumStars" Type="Int16" Nullable="false" />
+          <Property Name="MaxStars" Type="Int16" Nullable="false" />
+          <Property Name="GrowthId" Type="Int64" Nullable="false" />
+          <Property Name="Worth" Type="Int64" Nullable="false" />
+          <Property Name="RaceId" Type="Int64" Nullable="false" />
+          <Property Name="Tradable" Type="Int16" Nullable="false" />
+          <Property Name="LastWords" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="PrevEvolutionId" Type="Int64" />
+          <Property Name="NextEvolutionId" Type="Int64" />
+          <NavigationProperty Name="BazaarOfferTerms" Relationship="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_0_0" FromRole="familiar_types" ToRole="bazaar_offer_familiar_type_terms" />
+          <NavigationProperty Name="EliteEvents" Relationship="PhlebotomistModel.FK_event_elite_familiar_types_0_0" FromRole="familiar_types" ToRole="event_elite_familiar_types" />
+          <NavigationProperty Name="Skills" Relationship="PhlebotomistModel.FK_familiar_type_skills_1_0" FromRole="familiar_types" ToRole="familiar_type_skills" />
+          <NavigationProperty Name="NextEvolutions" Relationship="PhlebotomistModel.FK_familiar_types_0_0" FromRole="familiar_types" ToRole="familiar_types1" />
+          <NavigationProperty Name="NextEvolution" Relationship="PhlebotomistModel.FK_familiar_types_0_0" FromRole="familiar_types1" ToRole="familiar_types" />
+          <NavigationProperty Name="PreviousEvolutions" Relationship="PhlebotomistModel.FK_familiar_types_1_0" FromRole="familiar_types" ToRole="familiar_types1" />
+          <NavigationProperty Name="PreviousEvolution" Relationship="PhlebotomistModel.FK_familiar_types_1_0" FromRole="familiar_types1" ToRole="familiar_types" />
+          <NavigationProperty Name="Race" Relationship="PhlebotomistModel.FK_familiar_types_2_0" FromRole="familiar_types" ToRole="race" />
+          <NavigationProperty Name="Growth" Relationship="PhlebotomistModel.FK_familiar_types_3_0" FromRole="familiar_types" ToRole="growth" />
+          <NavigationProperty Name="Rarity" Relationship="PhlebotomistModel.FK_familiar_types_4_0" FromRole="familiar_types" ToRole="rarity" />
+          <NavigationProperty Name="Familiars" Relationship="PhlebotomistModel.FK_familiars_0_0" FromRole="familiar_types" ToRole="familiar" />
+          <NavigationProperty Name="RaidBosses" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_2_0" FromRole="familiar_types" ToRole="raid_boss_familiar_types" />
         </EntityType>
         <EntityType Name="familiar">
           <Key>
@@ -1686,11 +1686,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_bazaar_offer_familiar_type_terms_0_0">
-          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="1" />
           <End Type="PhlebotomistModel.bazaar_offer_familiar_type_terms" Role="bazaar_offer_familiar_type_terms" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar_types">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bazaar_offer_familiar_type_terms">
               <PropertyRef Name="familiar_type_id" />
@@ -1854,11 +1854,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_event_elite_familiar_types_0_0">
-          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="1" />
           <End Type="PhlebotomistModel.event_elite_familiar_types" Role="event_elite_familiar_types" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar_types">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="event_elite_familiar_types">
               <PropertyRef Name="familiar_type_id" />
@@ -1938,11 +1938,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiar_type_skills_1_0">
-          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="1" />
           <End Type="PhlebotomistModel.familiar_type_skills" Role="familiar_type_skills" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar_types">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="familiar_type_skills">
               <PropertyRef Name="familiar_type_id" />
@@ -1950,71 +1950,71 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiar_types_0_0">
-          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="0..1" />
-          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types1" Multiplicity="*" />
+          <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar_types">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="familiar_types1">
-              <PropertyRef Name="next_evolution_id" />
+              <PropertyRef Name="NextEvolutionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiar_types_1_0">
-          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="0..1" />
-          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types1" Multiplicity="*" />
+          <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar_types">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="familiar_types1">
-              <PropertyRef Name="prev_evolution_id" />
+              <PropertyRef Name="PrevEvolutionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiar_types_2_0">
           <End Type="PhlebotomistModel.race" Role="race" Multiplicity="1" />
-          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="*" />
+          <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="race">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="familiar_types">
-              <PropertyRef Name="race_id" />
+              <PropertyRef Name="RaceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiar_types_3_0">
           <End Type="PhlebotomistModel.growth" Role="growth" Multiplicity="1" />
-          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="*" />
+          <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="growth">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="familiar_types">
-              <PropertyRef Name="growth_id" />
+              <PropertyRef Name="GrowthId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiar_types_4_0">
           <End Type="PhlebotomistModel.rarity" Role="rarity" Multiplicity="1" />
-          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="*" />
+          <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="rarity">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="familiar_types">
-              <PropertyRef Name="rarity_id" />
+              <PropertyRef Name="RarityId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiars_0_0">
-          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="1" />
           <End Type="PhlebotomistModel.familiar" Role="familiar" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar_types">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="familiar">
               <PropertyRef Name="familiar_type_id" />
@@ -2022,11 +2022,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_raid_boss_familiar_types_2_0">
-          <End Type="PhlebotomistModel.familiar_types" Role="familiar_types" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="0..1" />
           <End Type="PhlebotomistModel.raid_boss_familiar_types" Role="raid_boss_familiar_types" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar_types">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="raid_boss_familiar_types">
               <PropertyRef Name="familiar_type_id" />
@@ -2343,22 +2343,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="familiar_types">
-            <EntityTypeMapping TypeName="PhlebotomistModel.familiar_types">
+          <EntitySetMapping Name="FamiliarTypes">
+            <EntityTypeMapping TypeName="PhlebotomistModel.FamiliarType">
               <MappingFragment StoreEntitySet="familiar_types">
-                <ScalarProperty Name="next_evolution_id" ColumnName="next_evolution_id" />
-                <ScalarProperty Name="prev_evolution_id" ColumnName="prev_evolution_id" />
-                <ScalarProperty Name="last_words" ColumnName="last_words" />
-                <ScalarProperty Name="tradable" ColumnName="tradable" />
-                <ScalarProperty Name="race_id" ColumnName="race_id" />
-                <ScalarProperty Name="worth" ColumnName="worth" />
-                <ScalarProperty Name="growth_id" ColumnName="growth_id" />
-                <ScalarProperty Name="max_stars" ColumnName="max_stars" />
-                <ScalarProperty Name="num_stars" ColumnName="num_stars" />
-                <ScalarProperty Name="rarity_id" ColumnName="rarity_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="bb_id" ColumnName="bb_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NextEvolutionId" ColumnName="next_evolution_id" />
+                <ScalarProperty Name="PrevEvolutionId" ColumnName="prev_evolution_id" />
+                <ScalarProperty Name="LastWords" ColumnName="last_words" />
+                <ScalarProperty Name="Tradable" ColumnName="tradable" />
+                <ScalarProperty Name="RaceId" ColumnName="race_id" />
+                <ScalarProperty Name="Worth" ColumnName="worth" />
+                <ScalarProperty Name="GrowthId" ColumnName="growth_id" />
+                <ScalarProperty Name="MaxStars" ColumnName="max_stars" />
+                <ScalarProperty Name="NumStars" ColumnName="num_stars" />
+                <ScalarProperty Name="RarityId" ColumnName="rarity_id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="BbId" ColumnName="bb_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
