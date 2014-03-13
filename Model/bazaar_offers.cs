@@ -16,7 +16,7 @@ namespace Phlebotomist.Model
     {
         public bazaar_offers()
         {
-            this.bazaar_offer_familiar_type_terms = new HashSet<bazaar_offer_familiar_type_terms>();
+            this.bazaar_offer_familiar_type_terms = new HashSet<BazaarOfferFamiliarTypeTerm>();
             this.bazaar_offer_item_terms = new HashSet<bazaar_offer_item_terms>();
         }
     
@@ -25,7 +25,7 @@ namespace Phlebotomist.Model
         public string date { get; set; }
         public long offered_familiar_id { get; set; }
     
-        public virtual ICollection<bazaar_offer_familiar_type_terms> bazaar_offer_familiar_type_terms { get; set; }
+        public virtual ICollection<BazaarOfferFamiliarTypeTerm> bazaar_offer_familiar_type_terms { get; set; }
         public virtual ICollection<bazaar_offer_item_terms> bazaar_offer_item_terms { get; set; }
         public virtual familiar familiar { get; set; }
     }

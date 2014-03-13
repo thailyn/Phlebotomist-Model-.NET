@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="b411a32752664d3084283c93fd3a628f" Name="Diagram1" >
         <EntityTypeShape EntityType="PhlebotomistModel.attack_types" Width="1.5" PointX="5.25" PointY="31.375" />
-        <EntityTypeShape EntityType="PhlebotomistModel.bazaar_offer_familiar_type_terms" Width="1.5" PointX="8.25" PointY="7.625" />
+        <EntityTypeShape EntityType="PhlebotomistModel.BazaarOfferFamiliarTypeTerm" Width="1.5" PointX="8.25" PointY="7.625" />
         <EntityTypeShape EntityType="PhlebotomistModel.bazaar_offer_item_terms" Width="1.5" PointX="9.75" PointY="23" />
         <EntityTypeShape EntityType="PhlebotomistModel.bazaar_offers" Width="1.5" PointX="7.5" PointY="22.875" />
         <EntityTypeShape EntityType="PhlebotomistModel.brigade_familiars" Width="1.5" PointX="7.5" PointY="16.375" />

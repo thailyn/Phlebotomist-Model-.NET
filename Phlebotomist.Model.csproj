@@ -51,10 +51,10 @@
     <Compile Include="Model\attack_types.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\bazaar_offers.cs">
+    <Compile Include="Model\BazaarOfferFamiliarTypeTerm.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\bazaar_offer_familiar_type_terms.cs">
+    <Compile Include="Model\bazaar_offers.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\bazaar_offer_item_terms.cs">
@@ -93,10 +93,10 @@
     <Compile Include="Model\FamiliarType.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\familiar_skills.cs">
+    <Compile Include="Model\FamiliarTypeSkill.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\familiar_type_skills.cs">
+    <Compile Include="Model\familiar_skills.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\growth.cs">

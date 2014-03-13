@@ -26,7 +26,7 @@ namespace Phlebotomist.Model
         }
     
         public DbSet<attack_types> attack_types { get; set; }
-        public DbSet<bazaar_offer_familiar_type_terms> bazaar_offer_familiar_type_terms { get; set; }
+        public DbSet<BazaarOfferFamiliarTypeTerm> BazaarOfferFamiliarTypeTerms { get; set; }
         public DbSet<bazaar_offer_item_terms> bazaar_offer_item_terms { get; set; }
         public DbSet<bazaar_offers> bazaar_offers { get; set; }
         public DbSet<brigade_familiars> brigade_familiars { get; set; }
