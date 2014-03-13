@@ -12,17 +12,17 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class race
+    public partial class Race
     {
-        public race()
+        public Race()
         {
-            this.familiar_types = new HashSet<FamiliarType>();
+            this.FamiliarTypes = new HashSet<FamiliarType>();
         }
     
-        public long id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     
-        public virtual ICollection<FamiliarType> familiar_types { get; set; }
+        public virtual ICollection<FamiliarType> FamiliarTypes { get; set; }
     }
 }

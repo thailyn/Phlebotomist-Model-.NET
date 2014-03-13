@@ -1078,7 +1078,7 @@
           <EntitySet Name="item_types" EntityType="PhlebotomistModel.item_types" />
           <EntitySet Name="items" EntityType="PhlebotomistModel.item" />
           <EntitySet Name="players" EntityType="PhlebotomistModel.player" />
-          <EntitySet Name="races" EntityType="PhlebotomistModel.race" />
+          <EntitySet Name="Races" EntityType="PhlebotomistModel.Race" />
           <EntitySet Name="raid_boss_brigade_attacks" EntityType="PhlebotomistModel.raid_boss_brigade_attacks" />
           <EntitySet Name="raid_boss_familiar_types" EntityType="PhlebotomistModel.raid_boss_familiar_types" />
           <EntitySet Name="raid_boss_types" EntityType="PhlebotomistModel.raid_boss_types" />
@@ -1190,7 +1190,7 @@
             <End Role="familiar_types1" EntitySet="FamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_types_2_0" Association="PhlebotomistModel.FK_familiar_types_2_0">
-            <End Role="race" EntitySet="races" />
+            <End Role="race" EntitySet="Races" />
             <End Role="familiar_types" EntitySet="FamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_types_3_0" Association="PhlebotomistModel.FK_familiar_types_3_0">
@@ -1531,14 +1531,14 @@
           <NavigationProperty Name="familiars" Relationship="PhlebotomistModel.FK_familiars_1_0" FromRole="player" ToRole="familiar" />
           <NavigationProperty Name="items" Relationship="PhlebotomistModel.FK_items_0_0" FromRole="player" ToRole="item" />
         </EntityType>
-        <EntityType Name="race">
+        <EntityType Name="Race">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_familiar_types_2_0" FromRole="race" ToRole="familiar_types" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FamiliarTypes" Relationship="PhlebotomistModel.FK_familiar_types_2_0" FromRole="race" ToRole="familiar_types" />
         </EntityType>
         <EntityType Name="raid_boss_brigade_attacks">
           <Key>
@@ -1974,11 +1974,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiar_types_2_0">
-          <End Type="PhlebotomistModel.race" Role="race" Multiplicity="1" />
+          <End Type="PhlebotomistModel.Race" Role="race" Multiplicity="1" />
           <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="race">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="familiar_types">
               <PropertyRef Name="RaceId" />
@@ -2425,12 +2425,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="races">
-            <EntityTypeMapping TypeName="PhlebotomistModel.race">
+          <EntitySetMapping Name="Races">
+            <EntityTypeMapping TypeName="PhlebotomistModel.Race">
               <MappingFragment StoreEntitySet="races">
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Description" ColumnName="description" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
