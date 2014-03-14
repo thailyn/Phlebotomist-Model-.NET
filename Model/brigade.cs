@@ -27,7 +27,7 @@ namespace Phlebotomist.Model
         public string Notes { get; set; }
     
         public virtual ICollection<BrigadeFamiliars> Familiars { get; set; }
-        public virtual BrigadeFormations Formation { get; set; }
+        public virtual BrigadeFormation Formation { get; set; }
         public virtual Player Player { get; set; }
         public virtual ICollection<raid_boss_brigade_attacks> RaidBossAttacks { get; set; }
     }

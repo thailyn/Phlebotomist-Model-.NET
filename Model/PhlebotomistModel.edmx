@@ -1062,10 +1062,10 @@
           <EntitySet Name="BazaarOfferItemTerms1" EntityType="PhlebotomistModel.BazaarOfferItemTerm" />
           <EntitySet Name="BazaarOffers1" EntityType="PhlebotomistModel.BazaarOffer" />
           <EntitySet Name="BrigadeFamiliars" EntityType="PhlebotomistModel.BrigadeFamiliars" />
-          <EntitySet Name="BrigadeFormationHorizontalPositionTypes" EntityType="PhlebotomistModel.BrigadeFormationHorizontalPositionTypes" />
-          <EntitySet Name="BrigadeFormationPositions" EntityType="PhlebotomistModel.BrigadeFormationPositions" />
-          <EntitySet Name="BrigadeFormationVerticalPositionTypes" EntityType="PhlebotomistModel.BrigadeFormationVerticalPositionTypes" />
-          <EntitySet Name="BrigadeFormations" EntityType="PhlebotomistModel.BrigadeFormations" />
+          <EntitySet Name="BrigadeFormationHorizontalPositionTypes1" EntityType="PhlebotomistModel.BrigadeFormationHorizontalPositionType" />
+          <EntitySet Name="BrigadeFormationPositions1" EntityType="PhlebotomistModel.BrigadeFormationPosition" />
+          <EntitySet Name="BrigadeFormationVerticalPositionTypes1" EntityType="PhlebotomistModel.BrigadeFormationVerticalPositionType" />
+          <EntitySet Name="BrigadeFormations1" EntityType="PhlebotomistModel.BrigadeFormation" />
           <EntitySet Name="Brigades" EntityType="PhlebotomistModel.Brigade" />
           <EntitySet Name="EventEliteFamiliarTypes1" EntityType="PhlebotomistModel.EventEliteFamiliarType" />
           <EntitySet Name="event_types" EntityType="PhlebotomistModel.event_types" />
@@ -1114,7 +1114,7 @@
             <End Role="bazaar_offers" EntitySet="BazaarOffers1" />
           </AssociationSet>
           <AssociationSet Name="FK_brigade_familiars_0_0" Association="PhlebotomistModel.FK_brigade_familiars_0_0">
-            <End Role="brigade_formation_positions" EntitySet="BrigadeFormationPositions" />
+            <End Role="brigade_formation_positions" EntitySet="BrigadeFormationPositions1" />
             <End Role="brigade_familiars" EntitySet="BrigadeFamiliars" />
           </AssociationSet>
           <AssociationSet Name="FK_brigade_familiars_1_0" Association="PhlebotomistModel.FK_brigade_familiars_1_0">
@@ -1126,19 +1126,19 @@
             <End Role="brigade_familiars" EntitySet="BrigadeFamiliars" />
           </AssociationSet>
           <AssociationSet Name="FK_brigade_formation_positions_1_0" Association="PhlebotomistModel.FK_brigade_formation_positions_1_0">
-            <End Role="brigade_formation_horizontal_position_types" EntitySet="BrigadeFormationHorizontalPositionTypes" />
-            <End Role="brigade_formation_positions" EntitySet="BrigadeFormationPositions" />
+            <End Role="brigade_formation_horizontal_position_types" EntitySet="BrigadeFormationHorizontalPositionTypes1" />
+            <End Role="brigade_formation_positions" EntitySet="BrigadeFormationPositions1" />
           </AssociationSet>
           <AssociationSet Name="FK_brigade_formation_positions_0_0" Association="PhlebotomistModel.FK_brigade_formation_positions_0_0">
-            <End Role="brigade_formation_vertical_position_types" EntitySet="BrigadeFormationVerticalPositionTypes" />
-            <End Role="brigade_formation_positions" EntitySet="BrigadeFormationPositions" />
+            <End Role="brigade_formation_vertical_position_types" EntitySet="BrigadeFormationVerticalPositionTypes1" />
+            <End Role="brigade_formation_positions" EntitySet="BrigadeFormationPositions1" />
           </AssociationSet>
           <AssociationSet Name="FK_brigade_formation_positions_2_0" Association="PhlebotomistModel.FK_brigade_formation_positions_2_0">
-            <End Role="brigade_formations" EntitySet="BrigadeFormations" />
-            <End Role="brigade_formation_positions" EntitySet="BrigadeFormationPositions" />
+            <End Role="brigade_formations" EntitySet="BrigadeFormations1" />
+            <End Role="brigade_formation_positions" EntitySet="BrigadeFormationPositions1" />
           </AssociationSet>
           <AssociationSet Name="FK_brigades_1_0" Association="PhlebotomistModel.FK_brigades_1_0">
-            <End Role="brigade_formations" EntitySet="BrigadeFormations" />
+            <End Role="brigade_formations" EntitySet="BrigadeFormations1" />
             <End Role="brigade" EntitySet="Brigades" />
           </AssociationSet>
           <AssociationSet Name="FK_brigades_0_0" Association="PhlebotomistModel.FK_brigades_0_0">
@@ -1318,7 +1318,7 @@
           <NavigationProperty Name="Familiar" Relationship="PhlebotomistModel.FK_brigade_familiars_1_0" FromRole="brigade_familiars" ToRole="familiar" />
           <NavigationProperty Name="Brigade" Relationship="PhlebotomistModel.FK_brigade_familiars_2_0" FromRole="brigade_familiars" ToRole="brigade" />
         </EntityType>
-        <EntityType Name="BrigadeFormationHorizontalPositionTypes">
+        <EntityType Name="BrigadeFormationHorizontalPositionType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -1326,7 +1326,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BrigadeFormationPositions" Relationship="PhlebotomistModel.FK_brigade_formation_positions_1_0" FromRole="brigade_formation_horizontal_position_types" ToRole="brigade_formation_positions" />
         </EntityType>
-        <EntityType Name="BrigadeFormationPositions">
+        <EntityType Name="BrigadeFormationPosition">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -1339,7 +1339,7 @@
           <NavigationProperty Name="VerticalPositionTypes" Relationship="PhlebotomistModel.FK_brigade_formation_positions_0_0" FromRole="brigade_formation_positions" ToRole="brigade_formation_vertical_position_types" />
           <NavigationProperty Name="Formation" Relationship="PhlebotomistModel.FK_brigade_formation_positions_2_0" FromRole="brigade_formation_positions" ToRole="brigade_formations" />
         </EntityType>
-        <EntityType Name="BrigadeFormationVerticalPositionTypes">
+        <EntityType Name="BrigadeFormationVerticalPositionType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -1347,7 +1347,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BrigadeFormationPositions" Relationship="PhlebotomistModel.FK_brigade_formation_positions_0_0" FromRole="brigade_formation_vertical_position_types" ToRole="brigade_formation_positions" />
         </EntityType>
-        <EntityType Name="BrigadeFormations">
+        <EntityType Name="BrigadeFormation">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -1746,7 +1746,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_brigade_familiars_0_0">
-          <End Type="PhlebotomistModel.BrigadeFormationPositions" Role="brigade_formation_positions" Multiplicity="1" />
+          <End Type="PhlebotomistModel.BrigadeFormationPosition" Role="brigade_formation_positions" Multiplicity="1" />
           <End Type="PhlebotomistModel.BrigadeFamiliars" Role="brigade_familiars" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="brigade_formation_positions">
@@ -1782,8 +1782,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_brigade_formation_positions_1_0">
-          <End Type="PhlebotomistModel.BrigadeFormationHorizontalPositionTypes" Role="brigade_formation_horizontal_position_types" Multiplicity="1" />
-          <End Type="PhlebotomistModel.BrigadeFormationPositions" Role="brigade_formation_positions" Multiplicity="*" />
+          <End Type="PhlebotomistModel.BrigadeFormationHorizontalPositionType" Role="brigade_formation_horizontal_position_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.BrigadeFormationPosition" Role="brigade_formation_positions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="brigade_formation_horizontal_position_types">
               <PropertyRef Name="Id" />
@@ -1794,8 +1794,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_brigade_formation_positions_0_0">
-          <End Type="PhlebotomistModel.BrigadeFormationVerticalPositionTypes" Role="brigade_formation_vertical_position_types" Multiplicity="1" />
-          <End Type="PhlebotomistModel.BrigadeFormationPositions" Role="brigade_formation_positions" Multiplicity="*" />
+          <End Type="PhlebotomistModel.BrigadeFormationVerticalPositionType" Role="brigade_formation_vertical_position_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.BrigadeFormationPosition" Role="brigade_formation_positions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="brigade_formation_vertical_position_types">
               <PropertyRef Name="Id" />
@@ -1806,8 +1806,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_brigade_formation_positions_2_0">
-          <End Type="PhlebotomistModel.BrigadeFormations" Role="brigade_formations" Multiplicity="1" />
-          <End Type="PhlebotomistModel.BrigadeFormationPositions" Role="brigade_formation_positions" Multiplicity="*" />
+          <End Type="PhlebotomistModel.BrigadeFormation" Role="brigade_formations" Multiplicity="1" />
+          <End Type="PhlebotomistModel.BrigadeFormationPosition" Role="brigade_formation_positions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="brigade_formations">
               <PropertyRef Name="Id" />
@@ -1818,7 +1818,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_brigades_1_0">
-          <End Type="PhlebotomistModel.BrigadeFormations" Role="brigade_formations" Multiplicity="1" />
+          <End Type="PhlebotomistModel.BrigadeFormation" Role="brigade_formations" Multiplicity="1" />
           <End Type="PhlebotomistModel.Brigade" Role="brigade" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="brigade_formations">
@@ -2247,16 +2247,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BrigadeFormationHorizontalPositionTypes">
-            <EntityTypeMapping TypeName="PhlebotomistModel.BrigadeFormationHorizontalPositionTypes">
+          <EntitySetMapping Name="BrigadeFormationHorizontalPositionTypes1">
+            <EntityTypeMapping TypeName="PhlebotomistModel.BrigadeFormationHorizontalPositionType">
               <MappingFragment StoreEntitySet="brigade_formation_horizontal_position_types">
                 <ScalarProperty Name="Name" ColumnName="name" />
                 <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BrigadeFormationPositions">
-            <EntityTypeMapping TypeName="PhlebotomistModel.BrigadeFormationPositions">
+          <EntitySetMapping Name="BrigadeFormationPositions1">
+            <EntityTypeMapping TypeName="PhlebotomistModel.BrigadeFormationPosition">
               <MappingFragment StoreEntitySet="brigade_formation_positions">
                 <ScalarProperty Name="VerticalPositionTypeId" ColumnName="vertical_position_type_id" />
                 <ScalarProperty Name="HorizontalPositionTypeId" ColumnName="horizontal_position_type_id" />
@@ -2265,16 +2265,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BrigadeFormationVerticalPositionTypes">
-            <EntityTypeMapping TypeName="PhlebotomistModel.BrigadeFormationVerticalPositionTypes">
+          <EntitySetMapping Name="BrigadeFormationVerticalPositionTypes1">
+            <EntityTypeMapping TypeName="PhlebotomistModel.BrigadeFormationVerticalPositionType">
               <MappingFragment StoreEntitySet="brigade_formation_vertical_position_types">
                 <ScalarProperty Name="Name" ColumnName="name" />
                 <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BrigadeFormations">
-            <EntityTypeMapping TypeName="PhlebotomistModel.BrigadeFormations">
+          <EntitySetMapping Name="BrigadeFormations1">
+            <EntityTypeMapping TypeName="PhlebotomistModel.BrigadeFormation">
               <MappingFragment StoreEntitySet="brigade_formations">
                 <ScalarProperty Name="NumPositions" ColumnName="num_positions" />
                 <ScalarProperty Name="Name" ColumnName="name" />

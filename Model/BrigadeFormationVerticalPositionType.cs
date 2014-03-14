@@ -12,19 +12,16 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class BrigadeFormations
+    public partial class BrigadeFormationVerticalPositionType
     {
-        public BrigadeFormations()
+        public BrigadeFormationVerticalPositionType()
         {
-            this.Positions = new HashSet<BrigadeFormationPositions>();
-            this.Brigades = new HashSet<Brigade>();
+            this.BrigadeFormationPositions = new HashSet<BrigadeFormationPosition>();
         }
     
         public long Id { get; set; }
         public string Name { get; set; }
-        public long NumPositions { get; set; }
     
-        public virtual ICollection<BrigadeFormationPositions> Positions { get; set; }
-        public virtual ICollection<Brigade> Brigades { get; set; }
+        public virtual ICollection<BrigadeFormationPosition> BrigadeFormationPositions { get; set; }
     }
 }

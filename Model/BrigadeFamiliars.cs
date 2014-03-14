@@ -20,7 +20,7 @@ namespace Phlebotomist.Model
         public long BrigadeFormationPositionId { get; set; }
         public byte IsReserve { get; set; }
     
-        public virtual BrigadeFormationPositions BrigadeFormationPosition { get; set; }
+        public virtual BrigadeFormationPosition BrigadeFormationPosition { get; set; }
         public virtual Familiar Familiar { get; set; }
         public virtual Brigade Brigade { get; set; }
     }

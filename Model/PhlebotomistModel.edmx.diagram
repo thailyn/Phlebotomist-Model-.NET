@@ -10,10 +10,10 @@
         <EntityTypeShape EntityType="PhlebotomistModel.BazaarOfferItemTerm" Width="1.5" PointX="9.75" PointY="23" />
         <EntityTypeShape EntityType="PhlebotomistModel.BazaarOffer" Width="1.5" PointX="7.5" PointY="22.875" />
         <EntityTypeShape EntityType="PhlebotomistModel.BrigadeFamiliars" Width="1.5" PointX="7.5" PointY="16.375" />
-        <EntityTypeShape EntityType="PhlebotomistModel.BrigadeFormationHorizontalPositionTypes" Width="1.5" PointX="3" PointY="27.75" />
-        <EntityTypeShape EntityType="PhlebotomistModel.BrigadeFormationPositions" Width="1.5" PointX="5.25" PointY="27.125" />
-        <EntityTypeShape EntityType="PhlebotomistModel.BrigadeFormationVerticalPositionTypes" Width="1.5" PointX="3" PointY="30.125" />
-        <EntityTypeShape EntityType="PhlebotomistModel.BrigadeFormations" Width="1.5" PointX="3" PointY="25.125" />
+        <EntityTypeShape EntityType="PhlebotomistModel.BrigadeFormationHorizontalPositionType" Width="1.5" PointX="3" PointY="27.75" />
+        <EntityTypeShape EntityType="PhlebotomistModel.BrigadeFormationPosition" Width="1.5" PointX="5.25" PointY="27.125" />
+        <EntityTypeShape EntityType="PhlebotomistModel.BrigadeFormationVerticalPositionType" Width="1.5" PointX="3" PointY="30.125" />
+        <EntityTypeShape EntityType="PhlebotomistModel.BrigadeFormation" Width="1.5" PointX="3" PointY="25.125" />
         <EntityTypeShape EntityType="PhlebotomistModel.Brigade" Width="1.5" PointX="5.25" PointY="21.625" />
         <EntityTypeShape EntityType="PhlebotomistModel.EventEliteFamiliarType" Width="1.5" PointX="5.25" PointY="11.625" />
         <EntityTypeShape EntityType="PhlebotomistModel.event_types" Width="1.5" PointX="0.75" PointY="21.75" />
