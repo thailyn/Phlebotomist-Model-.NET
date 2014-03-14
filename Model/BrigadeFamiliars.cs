@@ -12,16 +12,16 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class brigade_familiars
+    public partial class BrigadeFamiliars
     {
-        public long id { get; set; }
-        public long brigade_id { get; set; }
-        public long familiar_id { get; set; }
-        public long brigade_formation_position_id { get; set; }
-        public byte is_reserve { get; set; }
+        public long Id { get; set; }
+        public long BrigadeId { get; set; }
+        public long FamiliarId { get; set; }
+        public long BrigadeFormationPositionId { get; set; }
+        public byte IsReserve { get; set; }
     
-        public virtual brigade_formation_positions brigade_formation_positions { get; set; }
-        public virtual Familiar familiar { get; set; }
-        public virtual brigade brigade { get; set; }
+        public virtual BrigadeFormationPositions BrigadeFormationPosition { get; set; }
+        public virtual Familiar Familiar { get; set; }
+        public virtual Brigade Brigade { get; set; }
     }
 }

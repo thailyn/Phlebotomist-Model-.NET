@@ -29,12 +29,12 @@ namespace Phlebotomist.Model
         public DbSet<BazaarOfferFamiliarTypeTerm> BazaarOfferFamiliarTypeTerms { get; set; }
         public DbSet<bazaar_offer_item_terms> bazaar_offer_item_terms { get; set; }
         public DbSet<bazaar_offers> bazaar_offers { get; set; }
-        public DbSet<brigade_familiars> brigade_familiars { get; set; }
-        public DbSet<brigade_formation_horizontal_position_types> brigade_formation_horizontal_position_types { get; set; }
-        public DbSet<brigade_formation_positions> brigade_formation_positions { get; set; }
-        public DbSet<brigade_formation_vertical_position_types> brigade_formation_vertical_position_types { get; set; }
-        public DbSet<brigade_formations> brigade_formations { get; set; }
-        public DbSet<brigade> brigades { get; set; }
+        public DbSet<BrigadeFamiliars> BrigadeFamiliars { get; set; }
+        public DbSet<BrigadeFormationHorizontalPositionTypes> BrigadeFormationHorizontalPositionTypes { get; set; }
+        public DbSet<BrigadeFormationPositions> BrigadeFormationPositions { get; set; }
+        public DbSet<BrigadeFormationVerticalPositionTypes> BrigadeFormationVerticalPositionTypes { get; set; }
+        public DbSet<BrigadeFormations> BrigadeFormations { get; set; }
+        public DbSet<Brigade> Brigades { get; set; }
         public DbSet<EventEliteFamiliarType> EventEliteFamiliarTypes1 { get; set; }
         public DbSet<event_types> event_types { get; set; }
         public DbSet<@event> events { get; set; }

@@ -24,7 +24,7 @@ namespace Phlebotomist.Model
         public Nullable<double> damage { get; set; }
     
         public virtual attack_types attack_types { get; set; }
-        public virtual brigade brigade { get; set; }
+        public virtual Brigade brigade { get; set; }
         public virtual raid_bosses raid_bosses { get; set; }
     }
 }

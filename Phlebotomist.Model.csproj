@@ -60,22 +60,22 @@
     <Compile Include="Model\bazaar_offer_item_terms.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\brigade.cs">
+    <Compile Include="Model\Brigade.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\brigade_familiars.cs">
+    <Compile Include="Model\BrigadeFamiliars.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\brigade_formations.cs">
+    <Compile Include="Model\BrigadeFormationHorizontalPositionTypes.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\brigade_formation_horizontal_position_types.cs">
+    <Compile Include="Model\BrigadeFormationPositions.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\brigade_formation_positions.cs">
+    <Compile Include="Model\BrigadeFormations.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\brigade_formation_vertical_position_types.cs">
+    <Compile Include="Model\BrigadeFormationVerticalPositionTypes.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\event.cs">
