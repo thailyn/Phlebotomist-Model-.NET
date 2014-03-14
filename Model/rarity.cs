@@ -16,7 +16,7 @@ namespace Phlebotomist.Model
     {
         public Rarity()
         {
-            this.FamiliarType = new HashSet<FamiliarType>();
+            this.FamiliarTypes = new HashSet<FamiliarType>();
         }
     
         public long Id { get; set; }
@@ -24,6 +24,6 @@ namespace Phlebotomist.Model
         public short Rank { get; set; }
         public string Description { get; set; }
     
-        public virtual ICollection<FamiliarType> FamiliarType { get; set; }
+        public virtual ICollection<FamiliarType> FamiliarTypes { get; set; }
     }
 }

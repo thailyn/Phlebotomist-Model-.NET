@@ -1279,8 +1279,8 @@
           <Property Name="BazaarOfferId" Type="Int64" Nullable="false" />
           <Property Name="FamiliarTypeId" Type="Int64" Nullable="false" />
           <Property Name="Quantity" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="FamiliarTypes" Relationship="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_0_0" FromRole="bazaar_offer_familiar_type_terms" ToRole="familiar_types" />
-          <NavigationProperty Name="BazaarOffers" Relationship="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_1_0" FromRole="bazaar_offer_familiar_type_terms" ToRole="bazaar_offers" />
+          <NavigationProperty Name="FamiliarType" Relationship="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_0_0" FromRole="bazaar_offer_familiar_type_terms" ToRole="familiar_types" />
+          <NavigationProperty Name="BazaarOffer" Relationship="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_1_0" FromRole="bazaar_offer_familiar_type_terms" ToRole="bazaar_offers" />
         </EntityType>
         <EntityType Name="bazaar_offer_item_terms">
           <Key>
@@ -1423,8 +1423,8 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FamiliarTypeId" Type="Int64" Nullable="false" />
           <Property Name="SkillId" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="Skills" Relationship="PhlebotomistModel.FK_familiar_type_skills_0_0" FromRole="familiar_type_skills" ToRole="skill" />
-          <NavigationProperty Name="FamiliarTypes" Relationship="PhlebotomistModel.FK_familiar_type_skills_1_0" FromRole="familiar_type_skills" ToRole="familiar_types" />
+          <NavigationProperty Name="Skill" Relationship="PhlebotomistModel.FK_familiar_type_skills_0_0" FromRole="familiar_type_skills" ToRole="skill" />
+          <NavigationProperty Name="FamiliarType" Relationship="PhlebotomistModel.FK_familiar_type_skills_1_0" FromRole="familiar_type_skills" ToRole="familiar_types" />
         </EntityType>
         <EntityType Name="FamiliarType">
           <Key>
@@ -1599,7 +1599,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Rank" Type="Int16" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="FamiliarType" Relationship="PhlebotomistModel.FK_familiar_types_4_0" FromRole="rarity" ToRole="familiar_types" />
+          <NavigationProperty Name="FamiliarTypes" Relationship="PhlebotomistModel.FK_familiar_types_4_0" FromRole="rarity" ToRole="familiar_types" />
         </EntityType>
         <EntityType Name="skill_affected_stats">
           <Key>

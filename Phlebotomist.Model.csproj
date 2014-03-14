@@ -129,6 +129,9 @@
     <Compile Include="Model\Race.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\RaidBossFamiliarTypes.cs">
+      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Rarity.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
@@ -137,9 +140,6 @@
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\raid_boss_brigade_attacks.cs">
-      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\raid_boss_familiar_types.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\raid_boss_types.cs">
