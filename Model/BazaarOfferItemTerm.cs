@@ -12,19 +12,14 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class item_types
+    public partial class BazaarOfferItemTerm
     {
-        public item_types()
-        {
-            this.bazaar_offer_item_terms = new HashSet<bazaar_offer_item_terms>();
-            this.items = new HashSet<item>();
-        }
+        public long Id { get; set; }
+        public long BazaarOfferId { get; set; }
+        public long ItemId { get; set; }
+        public long Quantity { get; set; }
     
-        public long id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-    
-        public virtual ICollection<bazaar_offer_item_terms> bazaar_offer_item_terms { get; set; }
-        public virtual ICollection<item> items { get; set; }
+        public virtual ItemType ItemType { get; set; }
+        public virtual BazaarOffer BazaarOffer { get; set; }
     }
 }

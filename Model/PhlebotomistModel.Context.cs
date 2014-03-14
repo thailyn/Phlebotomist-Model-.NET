@@ -27,8 +27,8 @@ namespace Phlebotomist.Model
     
         public DbSet<attack_types> attack_types { get; set; }
         public DbSet<BazaarOfferFamiliarTypeTerm> BazaarOfferFamiliarTypeTerms { get; set; }
-        public DbSet<bazaar_offer_item_terms> bazaar_offer_item_terms { get; set; }
-        public DbSet<bazaar_offers> bazaar_offers { get; set; }
+        public DbSet<BazaarOfferItemTerm> BazaarOfferItemTerms1 { get; set; }
+        public DbSet<BazaarOffer> BazaarOffers1 { get; set; }
         public DbSet<BrigadeFamiliars> BrigadeFamiliars { get; set; }
         public DbSet<BrigadeFormationHorizontalPositionTypes> BrigadeFormationHorizontalPositionTypes { get; set; }
         public DbSet<BrigadeFormationPositions> BrigadeFormationPositions { get; set; }
@@ -43,8 +43,8 @@ namespace Phlebotomist.Model
         public DbSet<FamiliarType> FamiliarTypes { get; set; }
         public DbSet<Familiar> Familiars { get; set; }
         public DbSet<Growth> Growths { get; set; }
-        public DbSet<item_types> item_types { get; set; }
-        public DbSet<item> items { get; set; }
+        public DbSet<ItemType> ItemTypes1 { get; set; }
+        public DbSet<Item> Items { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Race> Races { get; set; }
         public DbSet<raid_boss_brigade_attacks> raid_boss_brigade_attacks { get; set; }

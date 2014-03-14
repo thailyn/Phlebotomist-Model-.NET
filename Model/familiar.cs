@@ -16,7 +16,7 @@ namespace Phlebotomist.Model
     {
         public Familiar()
         {
-            this.BazaarOffers = new HashSet<bazaar_offers>();
+            this.BazaarOffers = new HashSet<BazaarOffer>();
             this.Brigades = new HashSet<BrigadeFamiliars>();
             this.Skills = new HashSet<familiar_skills>();
             this.SeedParents = new HashSet<Familiar>();
@@ -43,7 +43,7 @@ namespace Phlebotomist.Model
         public Nullable<long> SpawnParentId { get; set; }
         public Nullable<long> SeedParentId { get; set; }
     
-        public virtual ICollection<bazaar_offers> BazaarOffers { get; set; }
+        public virtual ICollection<BazaarOffer> BazaarOffers { get; set; }
         public virtual ICollection<BrigadeFamiliars> Brigades { get; set; }
         public virtual ICollection<familiar_skills> Skills { get; set; }
         public virtual FamiliarType FamiliarType { get; set; }

@@ -12,21 +12,21 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Player
+    public partial class BazaarOffer
     {
-        public Player()
+        public BazaarOffer()
         {
-            this.Brigades = new HashSet<Brigade>();
-            this.Familiars = new HashSet<Familiar>();
-            this.Items = new HashSet<Item>();
+            this.FamiliarTypeTerms = new HashSet<BazaarOfferFamiliarTypeTerm>();
+            this.ItemTerms = new HashSet<BazaarOfferItemTerm>();
         }
     
         public long Id { get; set; }
-        public string Name { get; set; }
-        public string CreatedDate { get; set; }
+        public string PlayerName { get; set; }
+        public string Date { get; set; }
+        public long OfferedFamiliarId { get; set; }
     
-        public virtual ICollection<Brigade> Brigades { get; set; }
-        public virtual ICollection<Familiar> Familiars { get; set; }
-        public virtual ICollection<Item> Items { get; set; }
+        public virtual ICollection<BazaarOfferFamiliarTypeTerm> FamiliarTypeTerms { get; set; }
+        public virtual ICollection<BazaarOfferItemTerm> ItemTerms { get; set; }
+        public virtual Familiar OfferedFamiliar { get; set; }
     }
 }

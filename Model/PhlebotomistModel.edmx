@@ -1059,8 +1059,8 @@
         <EntityContainer Name="PhlebotomistModelContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="attack_types" EntityType="PhlebotomistModel.attack_types" />
           <EntitySet Name="BazaarOfferFamiliarTypeTerms" EntityType="PhlebotomistModel.BazaarOfferFamiliarTypeTerm" />
-          <EntitySet Name="bazaar_offer_item_terms" EntityType="PhlebotomistModel.bazaar_offer_item_terms" />
-          <EntitySet Name="bazaar_offers" EntityType="PhlebotomistModel.bazaar_offers" />
+          <EntitySet Name="BazaarOfferItemTerms1" EntityType="PhlebotomistModel.BazaarOfferItemTerm" />
+          <EntitySet Name="BazaarOffers1" EntityType="PhlebotomistModel.BazaarOffer" />
           <EntitySet Name="BrigadeFamiliars" EntityType="PhlebotomistModel.BrigadeFamiliars" />
           <EntitySet Name="BrigadeFormationHorizontalPositionTypes" EntityType="PhlebotomistModel.BrigadeFormationHorizontalPositionTypes" />
           <EntitySet Name="BrigadeFormationPositions" EntityType="PhlebotomistModel.BrigadeFormationPositions" />
@@ -1075,8 +1075,8 @@
           <EntitySet Name="FamiliarTypes" EntityType="PhlebotomistModel.FamiliarType" />
           <EntitySet Name="Familiars" EntityType="PhlebotomistModel.Familiar" />
           <EntitySet Name="Growths" EntityType="PhlebotomistModel.Growth" />
-          <EntitySet Name="item_types" EntityType="PhlebotomistModel.item_types" />
-          <EntitySet Name="items" EntityType="PhlebotomistModel.item" />
+          <EntitySet Name="ItemTypes1" EntityType="PhlebotomistModel.ItemType" />
+          <EntitySet Name="Items" EntityType="PhlebotomistModel.Item" />
           <EntitySet Name="Players" EntityType="PhlebotomistModel.Player" />
           <EntitySet Name="Races" EntityType="PhlebotomistModel.Race" />
           <EntitySet Name="raid_boss_brigade_attacks" EntityType="PhlebotomistModel.raid_boss_brigade_attacks" />
@@ -1098,20 +1098,20 @@
             <End Role="bazaar_offer_familiar_type_terms" EntitySet="BazaarOfferFamiliarTypeTerms" />
           </AssociationSet>
           <AssociationSet Name="FK_bazaar_offer_familiar_type_terms_1_0" Association="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_1_0">
-            <End Role="bazaar_offers" EntitySet="bazaar_offers" />
+            <End Role="bazaar_offers" EntitySet="BazaarOffers1" />
             <End Role="bazaar_offer_familiar_type_terms" EntitySet="BazaarOfferFamiliarTypeTerms" />
           </AssociationSet>
           <AssociationSet Name="FK_bazaar_offer_item_terms_0_0" Association="PhlebotomistModel.FK_bazaar_offer_item_terms_0_0">
-            <End Role="item_types" EntitySet="item_types" />
-            <End Role="bazaar_offer_item_terms" EntitySet="bazaar_offer_item_terms" />
+            <End Role="item_types" EntitySet="ItemTypes1" />
+            <End Role="bazaar_offer_item_terms" EntitySet="BazaarOfferItemTerms1" />
           </AssociationSet>
           <AssociationSet Name="FK_bazaar_offer_item_terms_1_0" Association="PhlebotomistModel.FK_bazaar_offer_item_terms_1_0">
-            <End Role="bazaar_offers" EntitySet="bazaar_offers" />
-            <End Role="bazaar_offer_item_terms" EntitySet="bazaar_offer_item_terms" />
+            <End Role="bazaar_offers" EntitySet="BazaarOffers1" />
+            <End Role="bazaar_offer_item_terms" EntitySet="BazaarOfferItemTerms1" />
           </AssociationSet>
           <AssociationSet Name="FK_bazaar_offers_0_0" Association="PhlebotomistModel.FK_bazaar_offers_0_0">
             <End Role="familiar" EntitySet="Familiars" />
-            <End Role="bazaar_offers" EntitySet="bazaar_offers" />
+            <End Role="bazaar_offers" EntitySet="BazaarOffers1" />
           </AssociationSet>
           <AssociationSet Name="FK_brigade_familiars_0_0" Association="PhlebotomistModel.FK_brigade_familiars_0_0">
             <End Role="brigade_formation_positions" EntitySet="BrigadeFormationPositions" />
@@ -1214,12 +1214,12 @@
             <End Role="familiar" EntitySet="Familiars" />
           </AssociationSet>
           <AssociationSet Name="FK_items_1_0" Association="PhlebotomistModel.FK_items_1_0">
-            <End Role="item_types" EntitySet="item_types" />
-            <End Role="item" EntitySet="items" />
+            <End Role="item_types" EntitySet="ItemTypes1" />
+            <End Role="item" EntitySet="Items" />
           </AssociationSet>
           <AssociationSet Name="FK_items_0_0" Association="PhlebotomistModel.FK_items_0_0">
             <End Role="player" EntitySet="Players" />
-            <End Role="item" EntitySet="items" />
+            <End Role="item" EntitySet="Items" />
           </AssociationSet>
           <AssociationSet Name="FK_raid_boss_brigade_attacks_2_0" Association="PhlebotomistModel.FK_raid_boss_brigade_attacks_2_0">
             <End Role="raid_bosses" EntitySet="raid_bosses" />
@@ -1282,28 +1282,28 @@
           <NavigationProperty Name="FamiliarType" Relationship="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_0_0" FromRole="bazaar_offer_familiar_type_terms" ToRole="familiar_types" />
           <NavigationProperty Name="BazaarOffer" Relationship="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_1_0" FromRole="bazaar_offer_familiar_type_terms" ToRole="bazaar_offers" />
         </EntityType>
-        <EntityType Name="bazaar_offer_item_terms">
+        <EntityType Name="BazaarOfferItemTerm">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="bazaar_offer_id" Type="Int64" Nullable="false" />
-          <Property Name="item_id" Type="Int64" Nullable="false" />
-          <Property Name="quantity" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="item_types" Relationship="PhlebotomistModel.FK_bazaar_offer_item_terms_0_0" FromRole="bazaar_offer_item_terms" ToRole="item_types" />
-          <NavigationProperty Name="bazaar_offers" Relationship="PhlebotomistModel.FK_bazaar_offer_item_terms_1_0" FromRole="bazaar_offer_item_terms" ToRole="bazaar_offers" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BazaarOfferId" Type="Int64" Nullable="false" />
+          <Property Name="ItemId" Type="Int64" Nullable="false" />
+          <Property Name="Quantity" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="ItemType" Relationship="PhlebotomistModel.FK_bazaar_offer_item_terms_0_0" FromRole="bazaar_offer_item_terms" ToRole="item_types" />
+          <NavigationProperty Name="BazaarOffer" Relationship="PhlebotomistModel.FK_bazaar_offer_item_terms_1_0" FromRole="bazaar_offer_item_terms" ToRole="bazaar_offers" />
         </EntityType>
-        <EntityType Name="bazaar_offers">
+        <EntityType Name="BazaarOffer">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="player_name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="offered_familiar_id" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="bazaar_offer_familiar_type_terms" Relationship="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_1_0" FromRole="bazaar_offers" ToRole="bazaar_offer_familiar_type_terms" />
-          <NavigationProperty Name="bazaar_offer_item_terms" Relationship="PhlebotomistModel.FK_bazaar_offer_item_terms_1_0" FromRole="bazaar_offers" ToRole="bazaar_offer_item_terms" />
-          <NavigationProperty Name="familiar" Relationship="PhlebotomistModel.FK_bazaar_offers_0_0" FromRole="bazaar_offers" ToRole="familiar" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlayerName" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="OfferedFamiliarId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="FamiliarTypeTerms" Relationship="PhlebotomistModel.FK_bazaar_offer_familiar_type_terms_1_0" FromRole="bazaar_offers" ToRole="bazaar_offer_familiar_type_terms" />
+          <NavigationProperty Name="ItemTerms" Relationship="PhlebotomistModel.FK_bazaar_offer_item_terms_1_0" FromRole="bazaar_offers" ToRole="bazaar_offer_item_terms" />
+          <NavigationProperty Name="OfferedFamiliar" Relationship="PhlebotomistModel.FK_bazaar_offers_0_0" FromRole="bazaar_offers" ToRole="familiar" />
         </EntityType>
         <EntityType Name="BrigadeFamiliars">
           <Key>
@@ -1498,27 +1498,27 @@
           <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="FamiliarTypes" Relationship="PhlebotomistModel.FK_familiar_types_3_0" FromRole="growth" ToRole="familiar_types" />
         </EntityType>
-        <EntityType Name="item_types">
+        <EntityType Name="ItemType">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="bazaar_offer_item_terms" Relationship="PhlebotomistModel.FK_bazaar_offer_item_terms_0_0" FromRole="item_types" ToRole="bazaar_offer_item_terms" />
-          <NavigationProperty Name="items" Relationship="PhlebotomistModel.FK_items_1_0" FromRole="item_types" ToRole="item" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BazaarOfferTerms" Relationship="PhlebotomistModel.FK_bazaar_offer_item_terms_0_0" FromRole="item_types" ToRole="bazaar_offer_item_terms" />
+          <NavigationProperty Name="Items" Relationship="PhlebotomistModel.FK_items_1_0" FromRole="item_types" ToRole="item" />
         </EntityType>
-        <EntityType Name="item">
+        <EntityType Name="Item">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="item_type_id" Type="Int64" Nullable="false" />
-          <Property Name="player_id" Type="Int64" />
-          <Property Name="quantity_tradable" Type="Int16" Nullable="false" />
-          <Property Name="quantity_bloodbound" Type="Int16" Nullable="false" />
-          <NavigationProperty Name="item_types" Relationship="PhlebotomistModel.FK_items_1_0" FromRole="item" ToRole="item_types" />
-          <NavigationProperty Name="player" Relationship="PhlebotomistModel.FK_items_0_0" FromRole="item" ToRole="player" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemTypeId" Type="Int64" Nullable="false" />
+          <Property Name="PlayerId" Type="Int64" />
+          <Property Name="QuantityTradable" Type="Int16" Nullable="false" />
+          <Property Name="QuantityBloodbound" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="ItemType" Relationship="PhlebotomistModel.FK_items_1_0" FromRole="item" ToRole="item_types" />
+          <NavigationProperty Name="Player" Relationship="PhlebotomistModel.FK_items_0_0" FromRole="item" ToRole="player" />
         </EntityType>
         <EntityType Name="Player">
           <Key>
@@ -1698,11 +1698,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_bazaar_offer_familiar_type_terms_1_0">
-          <End Type="PhlebotomistModel.bazaar_offers" Role="bazaar_offers" Multiplicity="1" />
+          <End Type="PhlebotomistModel.BazaarOffer" Role="bazaar_offers" Multiplicity="1" />
           <End Type="PhlebotomistModel.BazaarOfferFamiliarTypeTerm" Role="bazaar_offer_familiar_type_terms" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="bazaar_offers">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bazaar_offer_familiar_type_terms">
               <PropertyRef Name="BazaarOfferId" />
@@ -1710,38 +1710,38 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_bazaar_offer_item_terms_0_0">
-          <End Type="PhlebotomistModel.item_types" Role="item_types" Multiplicity="1" />
-          <End Type="PhlebotomistModel.bazaar_offer_item_terms" Role="bazaar_offer_item_terms" Multiplicity="*" />
+          <End Type="PhlebotomistModel.ItemType" Role="item_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.BazaarOfferItemTerm" Role="bazaar_offer_item_terms" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="item_types">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bazaar_offer_item_terms">
-              <PropertyRef Name="item_id" />
+              <PropertyRef Name="ItemId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_bazaar_offer_item_terms_1_0">
-          <End Type="PhlebotomistModel.bazaar_offers" Role="bazaar_offers" Multiplicity="1" />
-          <End Type="PhlebotomistModel.bazaar_offer_item_terms" Role="bazaar_offer_item_terms" Multiplicity="*" />
+          <End Type="PhlebotomistModel.BazaarOffer" Role="bazaar_offers" Multiplicity="1" />
+          <End Type="PhlebotomistModel.BazaarOfferItemTerm" Role="bazaar_offer_item_terms" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="bazaar_offers">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bazaar_offer_item_terms">
-              <PropertyRef Name="bazaar_offer_id" />
+              <PropertyRef Name="BazaarOfferId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_bazaar_offers_0_0">
           <End Type="PhlebotomistModel.Familiar" Role="familiar" Multiplicity="1" />
-          <End Type="PhlebotomistModel.bazaar_offers" Role="bazaar_offers" Multiplicity="*" />
+          <End Type="PhlebotomistModel.BazaarOffer" Role="bazaar_offers" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bazaar_offers">
-              <PropertyRef Name="offered_familiar_id" />
+              <PropertyRef Name="OfferedFamiliarId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2046,26 +2046,26 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_items_1_0">
-          <End Type="PhlebotomistModel.item_types" Role="item_types" Multiplicity="1" />
-          <End Type="PhlebotomistModel.item" Role="item" Multiplicity="*" />
+          <End Type="PhlebotomistModel.ItemType" Role="item_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.Item" Role="item" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="item_types">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="item">
-              <PropertyRef Name="item_type_id" />
+              <PropertyRef Name="ItemTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_items_0_0">
           <End Type="PhlebotomistModel.Player" Role="player" Multiplicity="0..1" />
-          <End Type="PhlebotomistModel.item" Role="item" Multiplicity="*" />
+          <End Type="PhlebotomistModel.Item" Role="item" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="player">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="item">
-              <PropertyRef Name="player_id" />
+              <PropertyRef Name="PlayerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2216,23 +2216,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="bazaar_offer_item_terms">
-            <EntityTypeMapping TypeName="PhlebotomistModel.bazaar_offer_item_terms">
+          <EntitySetMapping Name="BazaarOfferItemTerms1">
+            <EntityTypeMapping TypeName="PhlebotomistModel.BazaarOfferItemTerm">
               <MappingFragment StoreEntitySet="bazaar_offer_item_terms">
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
-                <ScalarProperty Name="item_id" ColumnName="item_id" />
-                <ScalarProperty Name="bazaar_offer_id" ColumnName="bazaar_offer_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Quantity" ColumnName="quantity" />
+                <ScalarProperty Name="ItemId" ColumnName="item_id" />
+                <ScalarProperty Name="BazaarOfferId" ColumnName="bazaar_offer_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="bazaar_offers">
-            <EntityTypeMapping TypeName="PhlebotomistModel.bazaar_offers">
+          <EntitySetMapping Name="BazaarOffers1">
+            <EntityTypeMapping TypeName="PhlebotomistModel.BazaarOffer">
               <MappingFragment StoreEntitySet="bazaar_offers">
-                <ScalarProperty Name="offered_familiar_id" ColumnName="offered_familiar_id" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="player_name" ColumnName="player_name" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="OfferedFamiliarId" ColumnName="offered_familiar_id" />
+                <ScalarProperty Name="Date" ColumnName="date" />
+                <ScalarProperty Name="PlayerName" ColumnName="player_name" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2396,23 +2396,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="item_types">
-            <EntityTypeMapping TypeName="PhlebotomistModel.item_types">
+          <EntitySetMapping Name="ItemTypes1">
+            <EntityTypeMapping TypeName="PhlebotomistModel.ItemType">
               <MappingFragment StoreEntitySet="item_types">
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Description" ColumnName="description" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="items">
-            <EntityTypeMapping TypeName="PhlebotomistModel.item">
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="PhlebotomistModel.Item">
               <MappingFragment StoreEntitySet="items">
-                <ScalarProperty Name="quantity_bloodbound" ColumnName="quantity_bloodbound" />
-                <ScalarProperty Name="quantity_tradable" ColumnName="quantity_tradable" />
-                <ScalarProperty Name="player_id" ColumnName="player_id" />
-                <ScalarProperty Name="item_type_id" ColumnName="item_type_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="QuantityBloodbound" ColumnName="quantity_bloodbound" />
+                <ScalarProperty Name="QuantityTradable" ColumnName="quantity_tradable" />
+                <ScalarProperty Name="PlayerId" ColumnName="player_id" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="item_type_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

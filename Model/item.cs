@@ -12,15 +12,15 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class item
+    public partial class Item
     {
-        public long id { get; set; }
-        public long item_type_id { get; set; }
-        public Nullable<long> player_id { get; set; }
-        public short quantity_tradable { get; set; }
-        public short quantity_bloodbound { get; set; }
+        public long Id { get; set; }
+        public long ItemTypeId { get; set; }
+        public Nullable<long> PlayerId { get; set; }
+        public short QuantityTradable { get; set; }
+        public short QuantityBloodbound { get; set; }
     
-        public virtual item_types item_types { get; set; }
-        public virtual Player player { get; set; }
+        public virtual ItemType ItemType { get; set; }
+        public virtual Player Player { get; set; }
     }
 }

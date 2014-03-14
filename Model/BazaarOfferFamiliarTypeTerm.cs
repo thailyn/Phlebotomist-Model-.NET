@@ -20,6 +20,6 @@ namespace Phlebotomist.Model
         public long Quantity { get; set; }
     
         public virtual FamiliarType FamiliarType { get; set; }
-        public virtual bazaar_offers BazaarOffer { get; set; }
+        public virtual BazaarOffer BazaarOffer { get; set; }
     }
 }

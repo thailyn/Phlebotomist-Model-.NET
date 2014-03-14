@@ -7,8 +7,8 @@
       <Diagram DiagramId="b411a32752664d3084283c93fd3a628f" Name="Diagram1" >
         <EntityTypeShape EntityType="PhlebotomistModel.attack_types" Width="1.5" PointX="5.25" PointY="31.375" />
         <EntityTypeShape EntityType="PhlebotomistModel.BazaarOfferFamiliarTypeTerm" Width="1.5" PointX="8.25" PointY="7.625" />
-        <EntityTypeShape EntityType="PhlebotomistModel.bazaar_offer_item_terms" Width="1.5" PointX="9.75" PointY="23" />
-        <EntityTypeShape EntityType="PhlebotomistModel.bazaar_offers" Width="1.5" PointX="7.5" PointY="22.875" />
+        <EntityTypeShape EntityType="PhlebotomistModel.BazaarOfferItemTerm" Width="1.5" PointX="9.75" PointY="23" />
+        <EntityTypeShape EntityType="PhlebotomistModel.BazaarOffer" Width="1.5" PointX="7.5" PointY="22.875" />
         <EntityTypeShape EntityType="PhlebotomistModel.BrigadeFamiliars" Width="1.5" PointX="7.5" PointY="16.375" />
         <EntityTypeShape EntityType="PhlebotomistModel.BrigadeFormationHorizontalPositionTypes" Width="1.5" PointX="3" PointY="27.75" />
         <EntityTypeShape EntityType="PhlebotomistModel.BrigadeFormationPositions" Width="1.5" PointX="5.25" PointY="27.125" />
@@ -23,8 +23,8 @@
         <EntityTypeShape EntityType="PhlebotomistModel.FamiliarType" Width="1.5" PointX="3" PointY="9.75" />
         <EntityTypeShape EntityType="PhlebotomistModel.Familiar" Width="1.5" PointX="5.25" PointY="15" />
         <EntityTypeShape EntityType="PhlebotomistModel.Growth" Width="1.5" PointX="0.75" PointY="15.125" />
-        <EntityTypeShape EntityType="PhlebotomistModel.item_types" Width="1.5" PointX="7.5" PointY="20.125" />
-        <EntityTypeShape EntityType="PhlebotomistModel.item" Width="1.5" PointX="12.75" PointY="18.125" />
+        <EntityTypeShape EntityType="PhlebotomistModel.ItemType" Width="1.5" PointX="7.5" PointY="20.125" />
+        <EntityTypeShape EntityType="PhlebotomistModel.Item" Width="1.5" PointX="12.75" PointY="18.125" />
         <EntityTypeShape EntityType="PhlebotomistModel.Player" Width="1.5" PointX="3" PointY="16.625" />
         <EntityTypeShape EntityType="PhlebotomistModel.Race" Width="1.5" PointX="0.75" PointY="11.75" />
         <EntityTypeShape EntityType="PhlebotomistModel.raid_boss_brigade_attacks" Width="1.5" PointX="7.5" PointY="26.375" />
