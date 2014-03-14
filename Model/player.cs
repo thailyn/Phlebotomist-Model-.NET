@@ -17,7 +17,7 @@ namespace Phlebotomist.Model
         public player()
         {
             this.brigades = new HashSet<brigade>();
-            this.familiars = new HashSet<familiar>();
+            this.familiars = new HashSet<Familiar>();
             this.items = new HashSet<item>();
         }
     
@@ -26,7 +26,7 @@ namespace Phlebotomist.Model
         public string created_date { get; set; }
     
         public virtual ICollection<brigade> brigades { get; set; }
-        public virtual ICollection<familiar> familiars { get; set; }
+        public virtual ICollection<Familiar> familiars { get; set; }
         public virtual ICollection<item> items { get; set; }
     }
 }

@@ -27,6 +27,6 @@ namespace Phlebotomist.Model
     
         public virtual ICollection<BazaarOfferFamiliarTypeTerm> bazaar_offer_familiar_type_terms { get; set; }
         public virtual ICollection<bazaar_offer_item_terms> bazaar_offer_item_terms { get; set; }
-        public virtual familiar familiar { get; set; }
+        public virtual Familiar familiar { get; set; }
     }
 }

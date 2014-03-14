@@ -12,45 +12,45 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class familiar
+    public partial class Familiar
     {
-        public familiar()
+        public Familiar()
         {
-            this.bazaar_offers = new HashSet<bazaar_offers>();
-            this.brigade_familiars = new HashSet<brigade_familiars>();
-            this.familiar_skills = new HashSet<familiar_skills>();
-            this.familiars1 = new HashSet<familiar>();
-            this.familiars11 = new HashSet<familiar>();
+            this.BazaarOffers = new HashSet<bazaar_offers>();
+            this.Brigades = new HashSet<brigade_familiars>();
+            this.Skills = new HashSet<familiar_skills>();
+            this.SeedParents = new HashSet<Familiar>();
+            this.SpawnParents = new HashSet<Familiar>();
         }
     
-        public long id { get; set; }
-        public Nullable<long> player_id { get; set; }
-        public long familiar_type_id { get; set; }
-        public byte owned { get; set; }
-        public Nullable<double> level { get; set; }
-        public Nullable<double> hp { get; set; }
-        public Nullable<double> atk { get; set; }
-        public Nullable<double> def { get; set; }
-        public Nullable<double> wis { get; set; }
-        public Nullable<double> agi { get; set; }
-        public Nullable<double> exp { get; set; }
-        public long hp_crystals { get; set; }
-        public long atk_crystals { get; set; }
-        public long def_crystals { get; set; }
-        public long wis_crystals { get; set; }
-        public long agi_crystals { get; set; }
-        public Nullable<long> roots_crystals { get; set; }
-        public Nullable<long> spawn_parent_id { get; set; }
-        public Nullable<long> seed_parent_id { get; set; }
+        public long Id { get; set; }
+        public Nullable<long> PlayerId { get; set; }
+        public long FamiliarTypeId { get; set; }
+        public byte Owned { get; set; }
+        public Nullable<double> Level { get; set; }
+        public Nullable<double> HP { get; set; }
+        public Nullable<double> ATK { get; set; }
+        public Nullable<double> DEF { get; set; }
+        public Nullable<double> WIS { get; set; }
+        public Nullable<double> AGI { get; set; }
+        public Nullable<double> EXP { get; set; }
+        public long HPCrystals { get; set; }
+        public long ATKCrystals { get; set; }
+        public long DEFCrystals { get; set; }
+        public long WISCrystals { get; set; }
+        public long AGICrystals { get; set; }
+        public Nullable<long> RootsCrystals { get; set; }
+        public Nullable<long> SpawnParentId { get; set; }
+        public Nullable<long> SeedParentId { get; set; }
     
-        public virtual ICollection<bazaar_offers> bazaar_offers { get; set; }
-        public virtual ICollection<brigade_familiars> brigade_familiars { get; set; }
-        public virtual ICollection<familiar_skills> familiar_skills { get; set; }
-        public virtual FamiliarType familiar_types { get; set; }
-        public virtual player player { get; set; }
-        public virtual ICollection<familiar> familiars1 { get; set; }
-        public virtual familiar familiar1 { get; set; }
-        public virtual ICollection<familiar> familiars11 { get; set; }
-        public virtual familiar familiar2 { get; set; }
+        public virtual ICollection<bazaar_offers> BazaarOffers { get; set; }
+        public virtual ICollection<brigade_familiars> Brigades { get; set; }
+        public virtual ICollection<familiar_skills> Skills { get; set; }
+        public virtual FamiliarType FamiliarType { get; set; }
+        public virtual player Player { get; set; }
+        public virtual ICollection<Familiar> SeedParents { get; set; }
+        public virtual Familiar SeedParent { get; set; }
+        public virtual ICollection<Familiar> SpawnParents { get; set; }
+        public virtual Familiar SpawnParent { get; set; }
     }
 }

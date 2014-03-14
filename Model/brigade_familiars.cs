@@ -21,7 +21,7 @@ namespace Phlebotomist.Model
         public byte is_reserve { get; set; }
     
         public virtual brigade_formation_positions brigade_formation_positions { get; set; }
-        public virtual familiar familiar { get; set; }
+        public virtual Familiar familiar { get; set; }
         public virtual brigade brigade { get; set; }
     }
 }

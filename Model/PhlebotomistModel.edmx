@@ -1073,7 +1073,7 @@
           <EntitySet Name="familiar_skills" EntityType="PhlebotomistModel.familiar_skills" />
           <EntitySet Name="FamiliarTypeSkills" EntityType="PhlebotomistModel.FamiliarTypeSkill" />
           <EntitySet Name="FamiliarTypes" EntityType="PhlebotomistModel.FamiliarType" />
-          <EntitySet Name="familiars" EntityType="PhlebotomistModel.familiar" />
+          <EntitySet Name="Familiars" EntityType="PhlebotomistModel.Familiar" />
           <EntitySet Name="Growths" EntityType="PhlebotomistModel.Growth" />
           <EntitySet Name="item_types" EntityType="PhlebotomistModel.item_types" />
           <EntitySet Name="items" EntityType="PhlebotomistModel.item" />
@@ -1110,7 +1110,7 @@
             <End Role="bazaar_offer_item_terms" EntitySet="bazaar_offer_item_terms" />
           </AssociationSet>
           <AssociationSet Name="FK_bazaar_offers_0_0" Association="PhlebotomistModel.FK_bazaar_offers_0_0">
-            <End Role="familiar" EntitySet="familiars" />
+            <End Role="familiar" EntitySet="Familiars" />
             <End Role="bazaar_offers" EntitySet="bazaar_offers" />
           </AssociationSet>
           <AssociationSet Name="FK_brigade_familiars_0_0" Association="PhlebotomistModel.FK_brigade_familiars_0_0">
@@ -1118,7 +1118,7 @@
             <End Role="brigade_familiars" EntitySet="brigade_familiars" />
           </AssociationSet>
           <AssociationSet Name="FK_brigade_familiars_1_0" Association="PhlebotomistModel.FK_brigade_familiars_1_0">
-            <End Role="familiar" EntitySet="familiars" />
+            <End Role="familiar" EntitySet="Familiars" />
             <End Role="brigade_familiars" EntitySet="brigade_familiars" />
           </AssociationSet>
           <AssociationSet Name="FK_brigade_familiars_2_0" Association="PhlebotomistModel.FK_brigade_familiars_2_0">
@@ -1170,7 +1170,7 @@
             <End Role="familiar_skills" EntitySet="familiar_skills" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_skills_1_0" Association="PhlebotomistModel.FK_familiar_skills_1_0">
-            <End Role="familiar" EntitySet="familiars" />
+            <End Role="familiar" EntitySet="Familiars" />
             <End Role="familiar_skills" EntitySet="familiar_skills" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_type_skills_0_0" Association="PhlebotomistModel.FK_familiar_type_skills_0_0">
@@ -1203,7 +1203,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_familiars_0_0" Association="PhlebotomistModel.FK_familiars_0_0">
             <End Role="familiar_types" EntitySet="FamiliarTypes" />
-            <End Role="familiar" EntitySet="familiars" />
+            <End Role="familiar" EntitySet="Familiars" />
           </AssociationSet>
           <AssociationSet Name="FK_raid_boss_familiar_types_2_0" Association="PhlebotomistModel.FK_raid_boss_familiar_types_2_0">
             <End Role="familiar_types" EntitySet="FamiliarTypes" />
@@ -1211,7 +1211,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_familiars_1_0" Association="PhlebotomistModel.FK_familiars_1_0">
             <End Role="player" EntitySet="players" />
-            <End Role="familiar" EntitySet="familiars" />
+            <End Role="familiar" EntitySet="Familiars" />
           </AssociationSet>
           <AssociationSet Name="FK_items_1_0" Association="PhlebotomistModel.FK_items_1_0">
             <End Role="item_types" EntitySet="item_types" />
@@ -1254,12 +1254,12 @@
             <End Role="skill" EntitySet="skills" />
           </AssociationSet>
           <AssociationSet Name="FK_familiars_0_01" Association="PhlebotomistModel.FK_familiars_0_01">
-            <End Role="familiar" EntitySet="familiars" />
-            <End Role="familiar1" EntitySet="familiars" />
+            <End Role="familiar" EntitySet="Familiars" />
+            <End Role="familiar1" EntitySet="Familiars" />
           </AssociationSet>
           <AssociationSet Name="FK_familiars_1_01" Association="PhlebotomistModel.FK_familiars_1_01">
-            <End Role="familiar" EntitySet="familiars" />
-            <End Role="familiar1" EntitySet="familiars" />
+            <End Role="familiar" EntitySet="Familiars" />
+            <End Role="familiar1" EntitySet="Familiars" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="attack_types">
@@ -1456,38 +1456,38 @@
           <NavigationProperty Name="Familiars" Relationship="PhlebotomistModel.FK_familiars_0_0" FromRole="familiar_types" ToRole="familiar" />
           <NavigationProperty Name="RaidBosses" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_2_0" FromRole="familiar_types" ToRole="raid_boss_familiar_types" />
         </EntityType>
-        <EntityType Name="familiar">
+        <EntityType Name="Familiar">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="player_id" Type="Int64" />
-          <Property Name="familiar_type_id" Type="Int64" Nullable="false" />
-          <Property Name="owned" Type="Byte" Nullable="false" />
-          <Property Name="level" Type="Double" />
-          <Property Name="hp" Type="Double" />
-          <Property Name="atk" Type="Double" />
-          <Property Name="def" Type="Double" />
-          <Property Name="wis" Type="Double" />
-          <Property Name="agi" Type="Double" />
-          <Property Name="exp" Type="Double" />
-          <Property Name="hp_crystals" Type="Int64" Nullable="false" />
-          <Property Name="atk_crystals" Type="Int64" Nullable="false" />
-          <Property Name="def_crystals" Type="Int64" Nullable="false" />
-          <Property Name="wis_crystals" Type="Int64" Nullable="false" />
-          <Property Name="agi_crystals" Type="Int64" Nullable="false" />
-          <Property Name="roots_crystals" Type="Int64" />
-          <NavigationProperty Name="bazaar_offers" Relationship="PhlebotomistModel.FK_bazaar_offers_0_0" FromRole="familiar" ToRole="bazaar_offers" />
-          <NavigationProperty Name="brigade_familiars" Relationship="PhlebotomistModel.FK_brigade_familiars_1_0" FromRole="familiar" ToRole="brigade_familiars" />
-          <NavigationProperty Name="familiar_skills" Relationship="PhlebotomistModel.FK_familiar_skills_1_0" FromRole="familiar" ToRole="familiar_skills" />
-          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_familiars_0_0" FromRole="familiar" ToRole="familiar_types" />
-          <NavigationProperty Name="player" Relationship="PhlebotomistModel.FK_familiars_1_0" FromRole="familiar" ToRole="player" />
-          <Property Name="spawn_parent_id" Type="Int64" />
-          <Property Name="seed_parent_id" Type="Int64" />
-          <NavigationProperty Name="familiars1" Relationship="PhlebotomistModel.FK_familiars_0_01" FromRole="familiar" ToRole="familiar1" />
-          <NavigationProperty Name="familiar1" Relationship="PhlebotomistModel.FK_familiars_0_01" FromRole="familiar1" ToRole="familiar" />
-          <NavigationProperty Name="familiars11" Relationship="PhlebotomistModel.FK_familiars_1_01" FromRole="familiar" ToRole="familiar1" />
-          <NavigationProperty Name="familiar2" Relationship="PhlebotomistModel.FK_familiars_1_01" FromRole="familiar1" ToRole="familiar" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlayerId" Type="Int64" />
+          <Property Name="FamiliarTypeId" Type="Int64" Nullable="false" />
+          <Property Name="Owned" Type="Byte" Nullable="false" />
+          <Property Name="Level" Type="Double" />
+          <Property Name="HP" Type="Double" />
+          <Property Name="ATK" Type="Double" />
+          <Property Name="DEF" Type="Double" />
+          <Property Name="WIS" Type="Double" />
+          <Property Name="AGI" Type="Double" />
+          <Property Name="EXP" Type="Double" />
+          <Property Name="HPCrystals" Type="Int64" Nullable="false" />
+          <Property Name="ATKCrystals" Type="Int64" Nullable="false" />
+          <Property Name="DEFCrystals" Type="Int64" Nullable="false" />
+          <Property Name="WISCrystals" Type="Int64" Nullable="false" />
+          <Property Name="AGICrystals" Type="Int64" Nullable="false" />
+          <Property Name="RootsCrystals" Type="Int64" />
+          <NavigationProperty Name="BazaarOffers" Relationship="PhlebotomistModel.FK_bazaar_offers_0_0" FromRole="familiar" ToRole="bazaar_offers" />
+          <NavigationProperty Name="Brigades" Relationship="PhlebotomistModel.FK_brigade_familiars_1_0" FromRole="familiar" ToRole="brigade_familiars" />
+          <NavigationProperty Name="Skills" Relationship="PhlebotomistModel.FK_familiar_skills_1_0" FromRole="familiar" ToRole="familiar_skills" />
+          <NavigationProperty Name="FamiliarType" Relationship="PhlebotomistModel.FK_familiars_0_0" FromRole="familiar" ToRole="familiar_types" />
+          <NavigationProperty Name="Player" Relationship="PhlebotomistModel.FK_familiars_1_0" FromRole="familiar" ToRole="player" />
+          <Property Name="SpawnParentId" Type="Int64" />
+          <Property Name="SeedParentId" Type="Int64" />
+          <NavigationProperty Name="SeedParents" Relationship="PhlebotomistModel.FK_familiars_0_01" FromRole="familiar" ToRole="familiar1" />
+          <NavigationProperty Name="SeedParent" Relationship="PhlebotomistModel.FK_familiars_0_01" FromRole="familiar1" ToRole="familiar" />
+          <NavigationProperty Name="SpawnParents" Relationship="PhlebotomistModel.FK_familiars_1_01" FromRole="familiar" ToRole="familiar1" />
+          <NavigationProperty Name="SpawnParent" Relationship="PhlebotomistModel.FK_familiars_1_01" FromRole="familiar1" ToRole="familiar" />
         </EntityType>
         <EntityType Name="Growth">
           <Key>
@@ -1734,11 +1734,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_bazaar_offers_0_0">
-          <End Type="PhlebotomistModel.familiar" Role="familiar" Multiplicity="1" />
+          <End Type="PhlebotomistModel.Familiar" Role="familiar" Multiplicity="1" />
           <End Type="PhlebotomistModel.bazaar_offers" Role="bazaar_offers" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bazaar_offers">
               <PropertyRef Name="offered_familiar_id" />
@@ -1758,11 +1758,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_brigade_familiars_1_0">
-          <End Type="PhlebotomistModel.familiar" Role="familiar" Multiplicity="1" />
+          <End Type="PhlebotomistModel.Familiar" Role="familiar" Multiplicity="1" />
           <End Type="PhlebotomistModel.brigade_familiars" Role="brigade_familiars" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="brigade_familiars">
               <PropertyRef Name="familiar_id" />
@@ -1914,11 +1914,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiar_skills_1_0">
-          <End Type="PhlebotomistModel.familiar" Role="familiar" Multiplicity="1" />
+          <End Type="PhlebotomistModel.Familiar" Role="familiar" Multiplicity="1" />
           <End Type="PhlebotomistModel.familiar_skills" Role="familiar_skills" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="familiar_skills">
               <PropertyRef Name="familiar_id" />
@@ -2011,13 +2011,13 @@
         </Association>
         <Association Name="FK_familiars_0_0">
           <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="1" />
-          <End Type="PhlebotomistModel.familiar" Role="familiar" Multiplicity="*" />
+          <End Type="PhlebotomistModel.Familiar" Role="familiar" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar_types">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="familiar">
-              <PropertyRef Name="familiar_type_id" />
+              <PropertyRef Name="FamiliarTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2035,13 +2035,13 @@
         </Association>
         <Association Name="FK_familiars_1_0">
           <End Type="PhlebotomistModel.player" Role="player" Multiplicity="0..1" />
-          <End Type="PhlebotomistModel.familiar" Role="familiar" Multiplicity="*" />
+          <End Type="PhlebotomistModel.Familiar" Role="familiar" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="player">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="familiar">
-              <PropertyRef Name="player_id" />
+              <PropertyRef Name="PlayerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2166,26 +2166,26 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiars_0_01">
-          <End Type="PhlebotomistModel.familiar" Role="familiar" Multiplicity="0..1" />
-          <End Type="PhlebotomistModel.familiar" Role="familiar1" Multiplicity="*" />
+          <End Type="PhlebotomistModel.Familiar" Role="familiar" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.Familiar" Role="familiar1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="familiar1">
-              <PropertyRef Name="seed_parent_id" />
+              <PropertyRef Name="SeedParentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiars_1_01">
-          <End Type="PhlebotomistModel.familiar" Role="familiar" Multiplicity="0..1" />
-          <End Type="PhlebotomistModel.familiar" Role="familiar1" Multiplicity="*" />
+          <End Type="PhlebotomistModel.Familiar" Role="familiar" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.Familiar" Role="familiar1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="familiar1">
-              <PropertyRef Name="spawn_parent_id" />
+              <PropertyRef Name="SpawnParentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2362,28 +2362,28 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="familiars">
-            <EntityTypeMapping TypeName="PhlebotomistModel.familiar">
+          <EntitySetMapping Name="Familiars">
+            <EntityTypeMapping TypeName="PhlebotomistModel.Familiar">
               <MappingFragment StoreEntitySet="familiars">
-                <ScalarProperty Name="seed_parent_id" ColumnName="seed_parent_id" />
-                <ScalarProperty Name="spawn_parent_id" ColumnName="spawn_parent_id" />
-                <ScalarProperty Name="roots_crystals" ColumnName="roots_crystals" />
-                <ScalarProperty Name="agi_crystals" ColumnName="agi_crystals" />
-                <ScalarProperty Name="wis_crystals" ColumnName="wis_crystals" />
-                <ScalarProperty Name="def_crystals" ColumnName="def_crystals" />
-                <ScalarProperty Name="atk_crystals" ColumnName="atk_crystals" />
-                <ScalarProperty Name="hp_crystals" ColumnName="hp_crystals" />
-                <ScalarProperty Name="exp" ColumnName="exp" />
-                <ScalarProperty Name="agi" ColumnName="agi" />
-                <ScalarProperty Name="wis" ColumnName="wis" />
-                <ScalarProperty Name="def" ColumnName="def" />
-                <ScalarProperty Name="atk" ColumnName="atk" />
-                <ScalarProperty Name="hp" ColumnName="hp" />
-                <ScalarProperty Name="level" ColumnName="level" />
-                <ScalarProperty Name="owned" ColumnName="owned" />
-                <ScalarProperty Name="familiar_type_id" ColumnName="familiar_type_id" />
-                <ScalarProperty Name="player_id" ColumnName="player_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SeedParentId" ColumnName="seed_parent_id" />
+                <ScalarProperty Name="SpawnParentId" ColumnName="spawn_parent_id" />
+                <ScalarProperty Name="RootsCrystals" ColumnName="roots_crystals" />
+                <ScalarProperty Name="AGICrystals" ColumnName="agi_crystals" />
+                <ScalarProperty Name="WISCrystals" ColumnName="wis_crystals" />
+                <ScalarProperty Name="DEFCrystals" ColumnName="def_crystals" />
+                <ScalarProperty Name="ATKCrystals" ColumnName="atk_crystals" />
+                <ScalarProperty Name="HPCrystals" ColumnName="hp_crystals" />
+                <ScalarProperty Name="EXP" ColumnName="exp" />
+                <ScalarProperty Name="AGI" ColumnName="agi" />
+                <ScalarProperty Name="WIS" ColumnName="wis" />
+                <ScalarProperty Name="DEF" ColumnName="def" />
+                <ScalarProperty Name="ATK" ColumnName="atk" />
+                <ScalarProperty Name="HP" ColumnName="hp" />
+                <ScalarProperty Name="Level" ColumnName="level" />
+                <ScalarProperty Name="Owned" ColumnName="owned" />
+                <ScalarProperty Name="FamiliarTypeId" ColumnName="familiar_type_id" />
+                <ScalarProperty Name="PlayerId" ColumnName="player_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -21,7 +21,7 @@ namespace Phlebotomist.Model
             this.Skills = new HashSet<FamiliarTypeSkill>();
             this.NextEvolutions = new HashSet<FamiliarType>();
             this.PreviousEvolutions = new HashSet<FamiliarType>();
-            this.Familiars = new HashSet<familiar>();
+            this.Familiars = new HashSet<Familiar>();
             this.RaidBosses = new HashSet<RaidBossFamiliarTypes>();
         }
     
@@ -49,7 +49,7 @@ namespace Phlebotomist.Model
         public virtual Race Race { get; set; }
         public virtual Growth Growth { get; set; }
         public virtual Rarity Rarity { get; set; }
-        public virtual ICollection<familiar> Familiars { get; set; }
+        public virtual ICollection<Familiar> Familiars { get; set; }
         public virtual ICollection<RaidBossFamiliarTypes> RaidBosses { get; set; }
     }
 }

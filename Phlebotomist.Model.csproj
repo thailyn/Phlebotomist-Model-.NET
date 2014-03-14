@@ -87,7 +87,7 @@
     <Compile Include="Model\event_types.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\familiar.cs">
+    <Compile Include="Model\Familiar.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\FamiliarType.cs">
