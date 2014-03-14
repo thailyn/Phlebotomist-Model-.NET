@@ -132,10 +132,25 @@
     <Compile Include="Model\RaidBossFamiliarTypes.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\RaidBossType.cs">
+      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Rarity.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Skill.cs">
+      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SkillAffectedStat.cs">
+      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\SkillPattern.cs">
+      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SkillTypes.cs">
+      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Stat.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,21 +158,6 @@
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\raid_boss_brigade_attacks.cs">
-      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\raid_boss_types.cs">
-      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\skill.cs">
-      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\skill_affected_stats.cs">
-      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\skill_types.cs">
-      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\stat.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

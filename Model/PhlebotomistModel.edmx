@@ -1084,11 +1084,11 @@
           <EntitySet Name="RaidBossTypes1" EntityType="PhlebotomistModel.RaidBossType" />
           <EntitySet Name="raid_bosses" EntityType="PhlebotomistModel.raid_bosses" />
           <EntitySet Name="Rarities1" EntityType="PhlebotomistModel.Rarity" />
-          <EntitySet Name="skill_affected_stats" EntityType="PhlebotomistModel.skill_affected_stats" />
+          <EntitySet Name="SkillAffectedStats" EntityType="PhlebotomistModel.SkillAffectedStat" />
           <EntitySet Name="SkillPatterns1" EntityType="PhlebotomistModel.SkillPattern" />
-          <EntitySet Name="skill_types" EntityType="PhlebotomistModel.skill_types" />
-          <EntitySet Name="skills" EntityType="PhlebotomistModel.skill" />
-          <EntitySet Name="stats" EntityType="PhlebotomistModel.stat" />
+          <EntitySet Name="SkillTypes" EntityType="PhlebotomistModel.SkillTypes" />
+          <EntitySet Name="Skills" EntityType="PhlebotomistModel.Skill" />
+          <EntitySet Name="Stats" EntityType="PhlebotomistModel.Stat" />
           <AssociationSet Name="FK_raid_boss_brigade_attacks_0_0" Association="PhlebotomistModel.FK_raid_boss_brigade_attacks_0_0">
             <End Role="attack_types" EntitySet="attack_types" />
             <End Role="raid_boss_brigade_attacks" EntitySet="raid_boss_brigade_attacks" />
@@ -1166,7 +1166,7 @@
             <End Role="raid_boss_familiar_types" EntitySet="RaidBossFamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_skills_0_0" Association="PhlebotomistModel.FK_familiar_skills_0_0">
-            <End Role="skill" EntitySet="skills" />
+            <End Role="skill" EntitySet="Skills" />
             <End Role="familiar_skills" EntitySet="familiar_skills" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_skills_1_0" Association="PhlebotomistModel.FK_familiar_skills_1_0">
@@ -1174,7 +1174,7 @@
             <End Role="familiar_skills" EntitySet="familiar_skills" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_type_skills_0_0" Association="PhlebotomistModel.FK_familiar_type_skills_0_0">
-            <End Role="skill" EntitySet="skills" />
+            <End Role="skill" EntitySet="Skills" />
             <End Role="familiar_type_skills" EntitySet="FamiliarTypeSkills" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_type_skills_1_0" Association="PhlebotomistModel.FK_familiar_type_skills_1_0">
@@ -1230,28 +1230,28 @@
             <End Role="raid_boss_familiar_types" EntitySet="RaidBossFamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_skill_affected_stats_0_0" Association="PhlebotomistModel.FK_skill_affected_stats_0_0">
-            <End Role="stat" EntitySet="stats" />
-            <End Role="skill_affected_stats" EntitySet="skill_affected_stats" />
+            <End Role="stat" EntitySet="Stats" />
+            <End Role="skill_affected_stats" EntitySet="SkillAffectedStats" />
           </AssociationSet>
           <AssociationSet Name="FK_skill_affected_stats_1_0" Association="PhlebotomistModel.FK_skill_affected_stats_1_0">
-            <End Role="skill" EntitySet="skills" />
-            <End Role="skill_affected_stats" EntitySet="skill_affected_stats" />
+            <End Role="skill" EntitySet="Skills" />
+            <End Role="skill_affected_stats" EntitySet="SkillAffectedStats" />
           </AssociationSet>
           <AssociationSet Name="FK_skills_1_0" Association="PhlebotomistModel.FK_skills_1_0">
             <End Role="skill_patterns" EntitySet="SkillPatterns1" />
-            <End Role="skill" EntitySet="skills" />
+            <End Role="skill" EntitySet="Skills" />
           </AssociationSet>
           <AssociationSet Name="FK_skills_3_0" Association="PhlebotomistModel.FK_skills_3_0">
-            <End Role="skill_types" EntitySet="skill_types" />
-            <End Role="skill" EntitySet="skills" />
+            <End Role="skill_types" EntitySet="SkillTypes" />
+            <End Role="skill" EntitySet="Skills" />
           </AssociationSet>
           <AssociationSet Name="FK_skills_0_0" Association="PhlebotomistModel.FK_skills_0_0">
-            <End Role="stat" EntitySet="stats" />
-            <End Role="skill" EntitySet="skills" />
+            <End Role="stat" EntitySet="Stats" />
+            <End Role="skill" EntitySet="Skills" />
           </AssociationSet>
           <AssociationSet Name="FK_skills_2_0" Association="PhlebotomistModel.FK_skills_2_0">
-            <End Role="stat" EntitySet="stats" />
-            <End Role="skill" EntitySet="skills" />
+            <End Role="stat" EntitySet="Stats" />
+            <End Role="skill" EntitySet="Skills" />
           </AssociationSet>
           <AssociationSet Name="FK_familiars_0_01" Association="PhlebotomistModel.FK_familiars_0_01">
             <End Role="familiar" EntitySet="Familiars" />
@@ -1601,18 +1601,18 @@
           <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="FamiliarTypes" Relationship="PhlebotomistModel.FK_familiar_types_4_0" FromRole="rarity" ToRole="familiar_types" />
         </EntityType>
-        <EntityType Name="skill_affected_stats">
+        <EntityType Name="SkillAffectedStat">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="skill_id" Type="Int64" Nullable="false" />
-          <Property Name="stat_id" Type="Int64" Nullable="false" />
-          <Property Name="rank" Type="Byte" />
-          <Property Name="affects_allies" Type="Byte" Nullable="false" />
-          <Property Name="affects_foes" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="stat" Relationship="PhlebotomistModel.FK_skill_affected_stats_0_0" FromRole="skill_affected_stats" ToRole="stat" />
-          <NavigationProperty Name="skill" Relationship="PhlebotomistModel.FK_skill_affected_stats_1_0" FromRole="skill_affected_stats" ToRole="skill" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SkillId" Type="Int64" Nullable="false" />
+          <Property Name="StatId" Type="Int64" Nullable="false" />
+          <Property Name="Rank" Type="Byte" />
+          <Property Name="AffectsAllies" Type="Byte" Nullable="false" />
+          <Property Name="AffectsFoes" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Stat" Relationship="PhlebotomistModel.FK_skill_affected_stats_0_0" FromRole="skill_affected_stats" ToRole="stat" />
+          <NavigationProperty Name="Skill" Relationship="PhlebotomistModel.FK_skill_affected_stats_1_0" FromRole="skill_affected_stats" ToRole="skill" />
         </EntityType>
         <EntityType Name="SkillPattern">
           <Key>
@@ -1623,55 +1623,55 @@
           <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Skills" Relationship="PhlebotomistModel.FK_skills_1_0" FromRole="skill_patterns" ToRole="skill" />
         </EntityType>
-        <EntityType Name="skill_types">
+        <EntityType Name="SkillTypes">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="skills" Relationship="PhlebotomistModel.FK_skills_3_0" FromRole="skill_types" ToRole="skill" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nname" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Skills" Relationship="PhlebotomistModel.FK_skills_3_0" FromRole="skill_types" ToRole="skill" />
         </EntityType>
-        <EntityType Name="skill">
+        <EntityType Name="Skill">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="skill_type_id" Type="Int64" Nullable="false" />
-          <Property Name="min_probability" Type="Double" Nullable="false" />
-          <Property Name="max_probability" Type="Double" Nullable="false" />
-          <Property Name="modifier" Type="Double" />
-          <Property Name="modifier_stat_id" Type="Int64" />
-          <Property Name="flat_modifier" Type="Byte" />
-          <Property Name="num_targets" Type="Int16" />
-          <Property Name="skill_pattern_id" Type="Int64" />
-          <Property Name="rows_range" Type="Int32" />
-          <Property Name="columns_range" Type="Int32" />
-          <Property Name="skill_based" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="damage_reduction" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="foe_defensive_modifier_stat_id" Type="Int64" />
-          <Property Name="ability" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="ignores_position" Type="Byte" />
-          <NavigationProperty Name="familiar_skills" Relationship="PhlebotomistModel.FK_familiar_skills_0_0" FromRole="skill" ToRole="familiar_skills" />
-          <NavigationProperty Name="familiar_type_skills" Relationship="PhlebotomistModel.FK_familiar_type_skills_0_0" FromRole="skill" ToRole="familiar_type_skills" />
-          <NavigationProperty Name="skill_affected_stats" Relationship="PhlebotomistModel.FK_skill_affected_stats_1_0" FromRole="skill" ToRole="skill_affected_stats" />
-          <NavigationProperty Name="skill_patterns" Relationship="PhlebotomistModel.FK_skills_1_0" FromRole="skill" ToRole="skill_patterns" />
-          <NavigationProperty Name="skill_types" Relationship="PhlebotomistModel.FK_skills_3_0" FromRole="skill" ToRole="skill_types" />
-          <NavigationProperty Name="stat" Relationship="PhlebotomistModel.FK_skills_0_0" FromRole="skill" ToRole="stat" />
-          <NavigationProperty Name="stat1" Relationship="PhlebotomistModel.FK_skills_2_0" FromRole="skill" ToRole="stat" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="SkillTypeId" Type="Int64" Nullable="false" />
+          <Property Name="MinProbability" Type="Double" Nullable="false" />
+          <Property Name="MaxProbability" Type="Double" Nullable="false" />
+          <Property Name="Modifier" Type="Double" />
+          <Property Name="ModifierStatId" Type="Int64" />
+          <Property Name="FlatModifier" Type="Byte" />
+          <Property Name="NumTargets" Type="Int16" />
+          <Property Name="SkillPatternId" Type="Int64" />
+          <Property Name="RowsRange" Type="Int32" />
+          <Property Name="ColumnsRange" Type="Int32" />
+          <Property Name="SkillBased" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="DamageReduction" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FoeDefensiveModifierStatId" Type="Int64" />
+          <Property Name="Ability" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="IgnoresPosition" Type="Byte" />
+          <NavigationProperty Name="Familiars" Relationship="PhlebotomistModel.FK_familiar_skills_0_0" FromRole="skill" ToRole="familiar_skills" />
+          <NavigationProperty Name="FamiliarTypes" Relationship="PhlebotomistModel.FK_familiar_type_skills_0_0" FromRole="skill" ToRole="familiar_type_skills" />
+          <NavigationProperty Name="AffectedStats" Relationship="PhlebotomistModel.FK_skill_affected_stats_1_0" FromRole="skill" ToRole="skill_affected_stats" />
+          <NavigationProperty Name="Pattern" Relationship="PhlebotomistModel.FK_skills_1_0" FromRole="skill" ToRole="skill_patterns" />
+          <NavigationProperty Name="Type" Relationship="PhlebotomistModel.FK_skills_3_0" FromRole="skill" ToRole="skill_types" />
+          <NavigationProperty Name="FoeDefensiveModifierStat" Relationship="PhlebotomistModel.FK_skills_0_0" FromRole="skill" ToRole="stat" />
+          <NavigationProperty Name="ModifierStat" Relationship="PhlebotomistModel.FK_skills_2_0" FromRole="skill" ToRole="stat" />
         </EntityType>
-        <EntityType Name="stat">
+        <EntityType Name="Stat">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="skill_affected_stats" Relationship="PhlebotomistModel.FK_skill_affected_stats_0_0" FromRole="stat" ToRole="skill_affected_stats" />
-          <NavigationProperty Name="skills" Relationship="PhlebotomistModel.FK_skills_0_0" FromRole="stat" ToRole="skill" />
-          <NavigationProperty Name="skills1" Relationship="PhlebotomistModel.FK_skills_2_0" FromRole="stat" ToRole="skill" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AffectingSkills" Relationship="PhlebotomistModel.FK_skill_affected_stats_0_0" FromRole="stat" ToRole="skill_affected_stats" />
+          <NavigationProperty Name="FoeDefensiveModifierSkills" Relationship="PhlebotomistModel.FK_skills_0_0" FromRole="stat" ToRole="skill" />
+          <NavigationProperty Name="ModifierSkills" Relationship="PhlebotomistModel.FK_skills_2_0" FromRole="stat" ToRole="skill" />
         </EntityType>
         <Association Name="FK_raid_boss_brigade_attacks_0_0">
           <End Type="PhlebotomistModel.attack_types" Role="attack_types" Multiplicity="1" />
@@ -1902,11 +1902,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiar_skills_0_0">
-          <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="1" />
+          <End Type="PhlebotomistModel.Skill" Role="skill" Multiplicity="1" />
           <End Type="PhlebotomistModel.familiar_skills" Role="familiar_skills" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="skill">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="familiar_skills">
               <PropertyRef Name="skill_id" />
@@ -1926,11 +1926,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiar_type_skills_0_0">
-          <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="1" />
+          <End Type="PhlebotomistModel.Skill" Role="skill" Multiplicity="1" />
           <End Type="PhlebotomistModel.FamiliarTypeSkill" Role="familiar_type_skills" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="skill">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="familiar_type_skills">
               <PropertyRef Name="SkillId" />
@@ -2094,74 +2094,74 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_skill_affected_stats_0_0">
-          <End Type="PhlebotomistModel.stat" Role="stat" Multiplicity="1" />
-          <End Type="PhlebotomistModel.skill_affected_stats" Role="skill_affected_stats" Multiplicity="*" />
+          <End Type="PhlebotomistModel.Stat" Role="stat" Multiplicity="1" />
+          <End Type="PhlebotomistModel.SkillAffectedStat" Role="skill_affected_stats" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="stat">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="skill_affected_stats">
-              <PropertyRef Name="stat_id" />
+              <PropertyRef Name="StatId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_skill_affected_stats_1_0">
-          <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="1" />
-          <End Type="PhlebotomistModel.skill_affected_stats" Role="skill_affected_stats" Multiplicity="*" />
+          <End Type="PhlebotomistModel.Skill" Role="skill" Multiplicity="1" />
+          <End Type="PhlebotomistModel.SkillAffectedStat" Role="skill_affected_stats" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="skill">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="skill_affected_stats">
-              <PropertyRef Name="skill_id" />
+              <PropertyRef Name="SkillId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_skills_1_0">
           <End Type="PhlebotomistModel.SkillPattern" Role="skill_patterns" Multiplicity="0..1" />
-          <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="*" />
+          <End Type="PhlebotomistModel.Skill" Role="skill" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="skill_patterns">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="skill">
-              <PropertyRef Name="skill_pattern_id" />
+              <PropertyRef Name="SkillPatternId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_skills_3_0">
-          <End Type="PhlebotomistModel.skill_types" Role="skill_types" Multiplicity="1" />
-          <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="*" />
+          <End Type="PhlebotomistModel.SkillTypes" Role="skill_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.Skill" Role="skill" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="skill_types">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="skill">
-              <PropertyRef Name="skill_type_id" />
+              <PropertyRef Name="SkillTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_skills_0_0">
-          <End Type="PhlebotomistModel.stat" Role="stat" Multiplicity="0..1" />
-          <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="*" />
+          <End Type="PhlebotomistModel.Stat" Role="stat" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.Skill" Role="skill" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="stat">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="skill">
-              <PropertyRef Name="foe_defensive_modifier_stat_id" />
+              <PropertyRef Name="FoeDefensiveModifierStatId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_skills_2_0">
-          <End Type="PhlebotomistModel.stat" Role="stat" Multiplicity="0..1" />
-          <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="*" />
+          <End Type="PhlebotomistModel.Stat" Role="stat" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.Skill" Role="skill" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="stat">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="skill">
-              <PropertyRef Name="modifier_stat_id" />
+              <PropertyRef Name="ModifierStatId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2491,15 +2491,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="skill_affected_stats">
-            <EntityTypeMapping TypeName="PhlebotomistModel.skill_affected_stats">
+          <EntitySetMapping Name="SkillAffectedStats">
+            <EntityTypeMapping TypeName="PhlebotomistModel.SkillAffectedStat">
               <MappingFragment StoreEntitySet="skill_affected_stats">
-                <ScalarProperty Name="affects_foes" ColumnName="affects_foes" />
-                <ScalarProperty Name="affects_allies" ColumnName="affects_allies" />
-                <ScalarProperty Name="rank" ColumnName="rank" />
-                <ScalarProperty Name="stat_id" ColumnName="stat_id" />
-                <ScalarProperty Name="skill_id" ColumnName="skill_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="AffectsFoes" ColumnName="affects_foes" />
+                <ScalarProperty Name="AffectsAllies" ColumnName="affects_allies" />
+                <ScalarProperty Name="Rank" ColumnName="rank" />
+                <ScalarProperty Name="StatId" ColumnName="stat_id" />
+                <ScalarProperty Name="SkillId" ColumnName="skill_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2512,45 +2512,45 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="skill_types">
-            <EntityTypeMapping TypeName="PhlebotomistModel.skill_types">
+          <EntitySetMapping Name="SkillTypes">
+            <EntityTypeMapping TypeName="PhlebotomistModel.SkillTypes">
               <MappingFragment StoreEntitySet="skill_types">
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Description" ColumnName="description" />
+                <ScalarProperty Name="Nname" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="skills">
-            <EntityTypeMapping TypeName="PhlebotomistModel.skill">
+          <EntitySetMapping Name="Skills">
+            <EntityTypeMapping TypeName="PhlebotomistModel.Skill">
               <MappingFragment StoreEntitySet="skills">
-                <ScalarProperty Name="ignores_position" ColumnName="ignores_position" />
-                <ScalarProperty Name="ability" ColumnName="ability" />
-                <ScalarProperty Name="foe_defensive_modifier_stat_id" ColumnName="foe_defensive_modifier_stat_id" />
-                <ScalarProperty Name="damage_reduction" ColumnName="damage_reduction" />
-                <ScalarProperty Name="skill_based" ColumnName="skill_based" />
-                <ScalarProperty Name="columns_range" ColumnName="columns_range" />
-                <ScalarProperty Name="rows_range" ColumnName="rows_range" />
-                <ScalarProperty Name="skill_pattern_id" ColumnName="skill_pattern_id" />
-                <ScalarProperty Name="num_targets" ColumnName="num_targets" />
-                <ScalarProperty Name="flat_modifier" ColumnName="flat_modifier" />
-                <ScalarProperty Name="modifier_stat_id" ColumnName="modifier_stat_id" />
-                <ScalarProperty Name="modifier" ColumnName="modifier" />
-                <ScalarProperty Name="max_probability" ColumnName="max_probability" />
-                <ScalarProperty Name="min_probability" ColumnName="min_probability" />
-                <ScalarProperty Name="skill_type_id" ColumnName="skill_type_id" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="IgnoresPosition" ColumnName="ignores_position" />
+                <ScalarProperty Name="Ability" ColumnName="ability" />
+                <ScalarProperty Name="FoeDefensiveModifierStatId" ColumnName="foe_defensive_modifier_stat_id" />
+                <ScalarProperty Name="DamageReduction" ColumnName="damage_reduction" />
+                <ScalarProperty Name="SkillBased" ColumnName="skill_based" />
+                <ScalarProperty Name="ColumnsRange" ColumnName="columns_range" />
+                <ScalarProperty Name="RowsRange" ColumnName="rows_range" />
+                <ScalarProperty Name="SkillPatternId" ColumnName="skill_pattern_id" />
+                <ScalarProperty Name="NumTargets" ColumnName="num_targets" />
+                <ScalarProperty Name="FlatModifier" ColumnName="flat_modifier" />
+                <ScalarProperty Name="ModifierStatId" ColumnName="modifier_stat_id" />
+                <ScalarProperty Name="Modifier" ColumnName="modifier" />
+                <ScalarProperty Name="MaxProbability" ColumnName="max_probability" />
+                <ScalarProperty Name="MinProbability" ColumnName="min_probability" />
+                <ScalarProperty Name="SkillTypeId" ColumnName="skill_type_id" />
+                <ScalarProperty Name="Description" ColumnName="description" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="stats">
-            <EntityTypeMapping TypeName="PhlebotomistModel.stat">
+          <EntitySetMapping Name="Stats">
+            <EntityTypeMapping TypeName="PhlebotomistModel.Stat">
               <MappingFragment StoreEntitySet="stats">
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Description" ColumnName="description" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

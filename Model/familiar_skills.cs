@@ -20,7 +20,7 @@ namespace Phlebotomist.Model
         public short level { get; set; }
         public short exp { get; set; }
     
-        public virtual skill skill { get; set; }
+        public virtual Skill skill { get; set; }
         public virtual Familiar familiar { get; set; }
     }
 }

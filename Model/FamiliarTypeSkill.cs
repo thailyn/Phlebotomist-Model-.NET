@@ -18,7 +18,7 @@ namespace Phlebotomist.Model
         public long FamiliarTypeId { get; set; }
         public long SkillId { get; set; }
     
-        public virtual skill Skill { get; set; }
+        public virtual Skill Skill { get; set; }
         public virtual FamiliarType FamiliarType { get; set; }
     }
 }

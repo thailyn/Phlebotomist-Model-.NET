@@ -16,13 +16,13 @@ namespace Phlebotomist.Model
     {
         public SkillPattern()
         {
-            this.Skills = new HashSet<skill>();
+            this.Skills = new HashSet<Skill>();
         }
     
         public long Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     
-        public virtual ICollection<skill> Skills { get; set; }
+        public virtual ICollection<Skill> Skills { get; set; }
     }
 }

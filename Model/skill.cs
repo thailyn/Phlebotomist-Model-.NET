@@ -12,40 +12,40 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class skill
+    public partial class Skill
     {
-        public skill()
+        public Skill()
         {
-            this.familiar_skills = new HashSet<familiar_skills>();
-            this.familiar_type_skills = new HashSet<FamiliarTypeSkill>();
-            this.skill_affected_stats = new HashSet<skill_affected_stats>();
+            this.Familiars = new HashSet<familiar_skills>();
+            this.FamiliarTypes = new HashSet<FamiliarTypeSkill>();
+            this.AffectedStats = new HashSet<SkillAffectedStat>();
         }
     
-        public long id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public long skill_type_id { get; set; }
-        public double min_probability { get; set; }
-        public double max_probability { get; set; }
-        public Nullable<double> modifier { get; set; }
-        public Nullable<long> modifier_stat_id { get; set; }
-        public Nullable<byte> flat_modifier { get; set; }
-        public Nullable<short> num_targets { get; set; }
-        public Nullable<long> skill_pattern_id { get; set; }
-        public Nullable<int> rows_range { get; set; }
-        public Nullable<int> columns_range { get; set; }
-        public string skill_based { get; set; }
-        public string damage_reduction { get; set; }
-        public Nullable<long> foe_defensive_modifier_stat_id { get; set; }
-        public string ability { get; set; }
-        public Nullable<byte> ignores_position { get; set; }
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public long SkillTypeId { get; set; }
+        public double MinProbability { get; set; }
+        public double MaxProbability { get; set; }
+        public Nullable<double> Modifier { get; set; }
+        public Nullable<long> ModifierStatId { get; set; }
+        public Nullable<byte> FlatModifier { get; set; }
+        public Nullable<short> NumTargets { get; set; }
+        public Nullable<long> SkillPatternId { get; set; }
+        public Nullable<int> RowsRange { get; set; }
+        public Nullable<int> ColumnsRange { get; set; }
+        public string SkillBased { get; set; }
+        public string DamageReduction { get; set; }
+        public Nullable<long> FoeDefensiveModifierStatId { get; set; }
+        public string Ability { get; set; }
+        public Nullable<byte> IgnoresPosition { get; set; }
     
-        public virtual ICollection<familiar_skills> familiar_skills { get; set; }
-        public virtual ICollection<FamiliarTypeSkill> familiar_type_skills { get; set; }
-        public virtual ICollection<skill_affected_stats> skill_affected_stats { get; set; }
-        public virtual SkillPattern skill_patterns { get; set; }
-        public virtual skill_types skill_types { get; set; }
-        public virtual stat stat { get; set; }
-        public virtual stat stat1 { get; set; }
+        public virtual ICollection<familiar_skills> Familiars { get; set; }
+        public virtual ICollection<FamiliarTypeSkill> FamiliarTypes { get; set; }
+        public virtual ICollection<SkillAffectedStat> AffectedStats { get; set; }
+        public virtual SkillPattern Pattern { get; set; }
+        public virtual SkillTypes Type { get; set; }
+        public virtual Stat FoeDefensiveModifierStat { get; set; }
+        public virtual Stat ModifierStat { get; set; }
     }
 }

@@ -12,17 +12,16 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class skill_types
+    public partial class SkillAffectedStat
     {
-        public skill_types()
-        {
-            this.skills = new HashSet<skill>();
-        }
+        public long Id { get; set; }
+        public long SkillId { get; set; }
+        public long StatId { get; set; }
+        public Nullable<byte> Rank { get; set; }
+        public byte AffectsAllies { get; set; }
+        public byte AffectsFoes { get; set; }
     
-        public long id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-    
-        public virtual ICollection<skill> skills { get; set; }
+        public virtual Stat Stat { get; set; }
+        public virtual Skill Skill { get; set; }
     }
 }
