@@ -21,6 +21,8 @@ namespace Phlebotomist.Model
     
         public long Id { get; set; }
         public string Name { get; set; }
+        public double damage_dealt_modifier { get; set; }
+        public double damage_taken_modifier { get; set; }
     
         public virtual ICollection<BrigadeFormationPosition> BrigadeFormationPositions { get; set; }
     }

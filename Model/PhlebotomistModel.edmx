@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PhlebotomistModel.Store" Provider="System.Data.SQLite" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PhlebotomistModel.Store" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="attack_types">
           <Key>
             <PropertyRef Name="id" />
@@ -72,6 +72,8 @@
           </Key>
           <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="damage_dealt_modifier" Type="real" Nullable="false" />
+          <Property Name="damage_taken_modifier" Type="real" Nullable="false" />
         </EntityType>
         <EntityType Name="brigade_formations">
           <Key>
@@ -270,6 +272,7 @@
           <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="rank" Type="smallint" Nullable="false" />
+          <Property Name="max_level" Type="real" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <EntityType Name="skill_affected_stats">
@@ -1346,6 +1349,8 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BrigadeFormationPositions" Relationship="PhlebotomistModel.FK_brigade_formation_positions_0_0" FromRole="brigade_formation_vertical_position_types" ToRole="brigade_formation_positions" />
+          <Property Name="damage_dealt_modifier" Type="Double" Nullable="false" />
+          <Property Name="damage_taken_modifier" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="BrigadeFormation">
           <Key>
@@ -1600,6 +1605,7 @@
           <Property Name="Rank" Type="Int16" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="FamiliarTypes" Relationship="PhlebotomistModel.FK_familiar_types_4_0" FromRole="rarity" ToRole="familiar_types" />
+          <Property Name="max_level" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="SkillAffectedStat">
           <Key>
@@ -2268,6 +2274,8 @@
           <EntitySetMapping Name="BrigadeFormationVerticalPositionTypes1">
             <EntityTypeMapping TypeName="PhlebotomistModel.BrigadeFormationVerticalPositionType">
               <MappingFragment StoreEntitySet="brigade_formation_vertical_position_types">
+                <ScalarProperty Name="damage_taken_modifier" ColumnName="damage_taken_modifier" />
+                <ScalarProperty Name="damage_dealt_modifier" ColumnName="damage_dealt_modifier" />
                 <ScalarProperty Name="Name" ColumnName="name" />
                 <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
@@ -2484,6 +2492,7 @@
           <EntitySetMapping Name="Rarities1">
             <EntityTypeMapping TypeName="PhlebotomistModel.Rarity">
               <MappingFragment StoreEntitySet="rarities">
+                <ScalarProperty Name="max_level" ColumnName="max_level" />
                 <ScalarProperty Name="Description" ColumnName="description" />
                 <ScalarProperty Name="Rank" ColumnName="rank" />
                 <ScalarProperty Name="Name" ColumnName="name" />
