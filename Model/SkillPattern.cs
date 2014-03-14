@@ -12,17 +12,17 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class skill_patterns
+    public partial class SkillPattern
     {
-        public skill_patterns()
+        public SkillPattern()
         {
-            this.skills = new HashSet<skill>();
+            this.Skills = new HashSet<skill>();
         }
     
-        public long id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     
-        public virtual ICollection<skill> skills { get; set; }
+        public virtual ICollection<skill> Skills { get; set; }
     }
 }

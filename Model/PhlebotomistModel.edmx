@@ -1085,7 +1085,7 @@
           <EntitySet Name="raid_bosses" EntityType="PhlebotomistModel.raid_bosses" />
           <EntitySet Name="Rarities1" EntityType="PhlebotomistModel.Rarity" />
           <EntitySet Name="skill_affected_stats" EntityType="PhlebotomistModel.skill_affected_stats" />
-          <EntitySet Name="skill_patterns" EntityType="PhlebotomistModel.skill_patterns" />
+          <EntitySet Name="SkillPatterns1" EntityType="PhlebotomistModel.SkillPattern" />
           <EntitySet Name="skill_types" EntityType="PhlebotomistModel.skill_types" />
           <EntitySet Name="skills" EntityType="PhlebotomistModel.skill" />
           <EntitySet Name="stats" EntityType="PhlebotomistModel.stat" />
@@ -1238,7 +1238,7 @@
             <End Role="skill_affected_stats" EntitySet="skill_affected_stats" />
           </AssociationSet>
           <AssociationSet Name="FK_skills_1_0" Association="PhlebotomistModel.FK_skills_1_0">
-            <End Role="skill_patterns" EntitySet="skill_patterns" />
+            <End Role="skill_patterns" EntitySet="SkillPatterns1" />
             <End Role="skill" EntitySet="skills" />
           </AssociationSet>
           <AssociationSet Name="FK_skills_3_0" Association="PhlebotomistModel.FK_skills_3_0">
@@ -1614,14 +1614,14 @@
           <NavigationProperty Name="stat" Relationship="PhlebotomistModel.FK_skill_affected_stats_0_0" FromRole="skill_affected_stats" ToRole="stat" />
           <NavigationProperty Name="skill" Relationship="PhlebotomistModel.FK_skill_affected_stats_1_0" FromRole="skill_affected_stats" ToRole="skill" />
         </EntityType>
-        <EntityType Name="skill_patterns">
+        <EntityType Name="SkillPattern">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="skills" Relationship="PhlebotomistModel.FK_skills_1_0" FromRole="skill_patterns" ToRole="skill" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Skills" Relationship="PhlebotomistModel.FK_skills_1_0" FromRole="skill_patterns" ToRole="skill" />
         </EntityType>
         <EntityType Name="skill_types">
           <Key>
@@ -2118,11 +2118,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_skills_1_0">
-          <End Type="PhlebotomistModel.skill_patterns" Role="skill_patterns" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.SkillPattern" Role="skill_patterns" Multiplicity="0..1" />
           <End Type="PhlebotomistModel.skill" Role="skill" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="skill_patterns">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="skill">
               <PropertyRef Name="skill_pattern_id" />
@@ -2503,12 +2503,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="skill_patterns">
-            <EntityTypeMapping TypeName="PhlebotomistModel.skill_patterns">
+          <EntitySetMapping Name="SkillPatterns1">
+            <EntityTypeMapping TypeName="PhlebotomistModel.SkillPattern">
               <MappingFragment StoreEntitySet="skill_patterns">
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Description" ColumnName="description" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

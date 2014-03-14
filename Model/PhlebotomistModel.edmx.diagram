@@ -33,7 +33,7 @@
         <EntityTypeShape EntityType="PhlebotomistModel.raid_bosses" Width="1.5" PointX="5.25" PointY="34" />
         <EntityTypeShape EntityType="PhlebotomistModel.Rarity" Width="1.5" PointX="0.75" PointY="8.375" />
         <EntityTypeShape EntityType="PhlebotomistModel.skill_affected_stats" Width="1.5" PointX="5.25" PointY="2.375" />
-        <EntityTypeShape EntityType="PhlebotomistModel.skill_patterns" Width="1.5" PointX="0.75" PointY="18.625" />
+        <EntityTypeShape EntityType="PhlebotomistModel.SkillPattern" Width="1.5" PointX="0.75" PointY="18.625" />
         <EntityTypeShape EntityType="PhlebotomistModel.skill_types" Width="1.5" PointX="0.75" PointY="5.25" />
         <EntityTypeShape EntityType="PhlebotomistModel.skill" Width="1.5" PointX="3" PointY="0.75" />
         <EntityTypeShape EntityType="PhlebotomistModel.stat" Width="1.5" PointX="0.75" PointY="1.75" />
