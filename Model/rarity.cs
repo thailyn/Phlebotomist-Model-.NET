@@ -23,7 +23,7 @@ namespace Phlebotomist.Model
         public string Name { get; set; }
         public short Rank { get; set; }
         public string Description { get; set; }
-        public double max_level { get; set; }
+        public double MaxLevel { get; set; }
     
         public virtual ICollection<FamiliarType> FamiliarTypes { get; set; }
     }
