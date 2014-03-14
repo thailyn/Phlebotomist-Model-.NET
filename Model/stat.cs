@@ -19,7 +19,7 @@ namespace Phlebotomist.Model
             this.AffectingSkills = new HashSet<SkillAffectedStat>();
             this.FoeDefensiveModifierSkills = new HashSet<Skill>();
             this.ModifierSkills = new HashSet<Skill>();
-            this.familiar_type_stat_values = new HashSet<familiar_type_stat_values>();
+            this.familiar_type_stat_values = new HashSet<FamiliarTypeStatValue>();
         }
     
         public long Id { get; set; }
@@ -29,6 +29,6 @@ namespace Phlebotomist.Model
         public virtual ICollection<SkillAffectedStat> AffectingSkills { get; set; }
         public virtual ICollection<Skill> FoeDefensiveModifierSkills { get; set; }
         public virtual ICollection<Skill> ModifierSkills { get; set; }
-        public virtual ICollection<familiar_type_stat_values> familiar_type_stat_values { get; set; }
+        public virtual ICollection<FamiliarTypeStatValue> familiar_type_stat_values { get; set; }
     }
 }

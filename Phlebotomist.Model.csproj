@@ -99,6 +99,9 @@
     <Compile Include="Model\FamiliarTypeSkill.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\FamiliarTypeStatValue.cs">
+      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Growth.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
@@ -157,6 +160,9 @@
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Stat.cs">
+      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\StatType.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

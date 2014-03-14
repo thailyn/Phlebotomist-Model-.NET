@@ -12,16 +12,16 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class stat_types
+    public partial class FamiliarTypeStatValue
     {
-        public stat_types()
-        {
-            this.familiar_type_stat_values = new HashSet<familiar_type_stat_values>();
-        }
+        public long Id { get; set; }
+        public long FamiliarTypeId { get; set; }
+        public long StatTypeId { get; set; }
+        public long StatId { get; set; }
+        public double StatValue { get; set; }
     
-        public long id { get; set; }
-        public string name { get; set; }
-    
-        public virtual ICollection<familiar_type_stat_values> familiar_type_stat_values { get; set; }
+        public virtual Stat Stat { get; set; }
+        public virtual StatType StatType { get; set; }
+        public virtual FamiliarType FamiliarTypes { get; set; }
     }
 }
