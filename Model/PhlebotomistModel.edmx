@@ -1067,7 +1067,7 @@
           <EntitySet Name="brigade_formation_vertical_position_types" EntityType="PhlebotomistModel.brigade_formation_vertical_position_types" />
           <EntitySet Name="brigade_formations" EntityType="PhlebotomistModel.brigade_formations" />
           <EntitySet Name="brigades" EntityType="PhlebotomistModel.brigade" />
-          <EntitySet Name="event_elite_familiar_types" EntityType="PhlebotomistModel.event_elite_familiar_types" />
+          <EntitySet Name="EventEliteFamiliarTypes1" EntityType="PhlebotomistModel.EventEliteFamiliarType" />
           <EntitySet Name="event_types" EntityType="PhlebotomistModel.event_types" />
           <EntitySet Name="events" EntityType="PhlebotomistModel.event" />
           <EntitySet Name="familiar_skills" EntityType="PhlebotomistModel.familiar_skills" />
@@ -1151,11 +1151,11 @@
           </AssociationSet>
           <AssociationSet Name="FK_event_elite_familiar_types_0_0" Association="PhlebotomistModel.FK_event_elite_familiar_types_0_0">
             <End Role="familiar_types" EntitySet="FamiliarTypes" />
-            <End Role="event_elite_familiar_types" EntitySet="event_elite_familiar_types" />
+            <End Role="event_elite_familiar_types" EntitySet="EventEliteFamiliarTypes1" />
           </AssociationSet>
           <AssociationSet Name="FK_event_elite_familiar_types_1_0" Association="PhlebotomistModel.FK_event_elite_familiar_types_1_0">
             <End Role="event" EntitySet="events" />
-            <End Role="event_elite_familiar_types" EntitySet="event_elite_familiar_types" />
+            <End Role="event_elite_familiar_types" EntitySet="EventEliteFamiliarTypes1" />
           </AssociationSet>
           <AssociationSet Name="FK_events_0_0" Association="PhlebotomistModel.FK_events_0_0">
             <End Role="event_types" EntitySet="event_types" />
@@ -1371,16 +1371,16 @@
           <NavigationProperty Name="player" Relationship="PhlebotomistModel.FK_brigades_0_0" FromRole="brigade" ToRole="player" />
           <NavigationProperty Name="raid_boss_brigade_attacks" Relationship="PhlebotomistModel.FK_raid_boss_brigade_attacks_1_0" FromRole="brigade" ToRole="raid_boss_brigade_attacks" />
         </EntityType>
-        <EntityType Name="event_elite_familiar_types">
+        <EntityType Name="EventEliteFamiliarType">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="event_id" Type="Int64" Nullable="false" />
-          <Property Name="familiar_type_id" Type="Int64" Nullable="false" />
-          <Property Name="multiplier" Type="Double" Nullable="false" />
-          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_event_elite_familiar_types_0_0" FromRole="event_elite_familiar_types" ToRole="familiar_types" />
-          <NavigationProperty Name="event" Relationship="PhlebotomistModel.FK_event_elite_familiar_types_1_0" FromRole="event_elite_familiar_types" ToRole="event" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventId" Type="Int64" Nullable="false" />
+          <Property Name="FamiliarTypeId" Type="Int64" Nullable="false" />
+          <Property Name="Multiplier" Type="Double" Nullable="false" />
+          <NavigationProperty Name="FamiliarType" Relationship="PhlebotomistModel.FK_event_elite_familiar_types_0_0" FromRole="event_elite_familiar_types" ToRole="familiar_types" />
+          <NavigationProperty Name="Event" Relationship="PhlebotomistModel.FK_event_elite_familiar_types_1_0" FromRole="event_elite_familiar_types" ToRole="event" />
         </EntityType>
         <EntityType Name="event_types">
           <Key>
@@ -1855,25 +1855,25 @@
         </Association>
         <Association Name="FK_event_elite_familiar_types_0_0">
           <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="1" />
-          <End Type="PhlebotomistModel.event_elite_familiar_types" Role="event_elite_familiar_types" Multiplicity="*" />
+          <End Type="PhlebotomistModel.EventEliteFamiliarType" Role="event_elite_familiar_types" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar_types">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="event_elite_familiar_types">
-              <PropertyRef Name="familiar_type_id" />
+              <PropertyRef Name="FamiliarTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_event_elite_familiar_types_1_0">
           <End Type="PhlebotomistModel.event" Role="event" Multiplicity="1" />
-          <End Type="PhlebotomistModel.event_elite_familiar_types" Role="event_elite_familiar_types" Multiplicity="*" />
+          <End Type="PhlebotomistModel.EventEliteFamiliarType" Role="event_elite_familiar_types" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="event">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="event_elite_familiar_types">
-              <PropertyRef Name="event_id" />
+              <PropertyRef Name="EventId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2293,13 +2293,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="event_elite_familiar_types">
-            <EntityTypeMapping TypeName="PhlebotomistModel.event_elite_familiar_types">
+          <EntitySetMapping Name="EventEliteFamiliarTypes1">
+            <EntityTypeMapping TypeName="PhlebotomistModel.EventEliteFamiliarType">
               <MappingFragment StoreEntitySet="event_elite_familiar_types">
-                <ScalarProperty Name="multiplier" ColumnName="multiplier" />
-                <ScalarProperty Name="familiar_type_id" ColumnName="familiar_type_id" />
-                <ScalarProperty Name="event_id" ColumnName="event_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Multiplier" ColumnName="multiplier" />
+                <ScalarProperty Name="FamiliarTypeId" ColumnName="familiar_type_id" />
+                <ScalarProperty Name="EventId" ColumnName="event_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

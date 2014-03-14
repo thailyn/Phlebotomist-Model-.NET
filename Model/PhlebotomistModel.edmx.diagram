@@ -15,7 +15,7 @@
         <EntityTypeShape EntityType="PhlebotomistModel.brigade_formation_vertical_position_types" Width="1.5" PointX="3" PointY="30.125" />
         <EntityTypeShape EntityType="PhlebotomistModel.brigade_formations" Width="1.5" PointX="3" PointY="25.125" />
         <EntityTypeShape EntityType="PhlebotomistModel.brigade" Width="1.5" PointX="5.25" PointY="21.625" />
-        <EntityTypeShape EntityType="PhlebotomistModel.event_elite_familiar_types" Width="1.5" PointX="5.25" PointY="11.625" />
+        <EntityTypeShape EntityType="PhlebotomistModel.EventEliteFamiliarType" Width="1.5" PointX="5.25" PointY="11.625" />
         <EntityTypeShape EntityType="PhlebotomistModel.event_types" Width="1.5" PointX="0.75" PointY="21.75" />
         <EntityTypeShape EntityType="PhlebotomistModel.event" Width="1.5" PointX="3" PointY="21.375" />
         <EntityTypeShape EntityType="PhlebotomistModel.familiar_skills" Width="1.5" PointX="10.5" PointY="16.5" />

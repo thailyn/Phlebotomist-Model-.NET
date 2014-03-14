@@ -35,7 +35,7 @@ namespace Phlebotomist.Model
         public DbSet<brigade_formation_vertical_position_types> brigade_formation_vertical_position_types { get; set; }
         public DbSet<brigade_formations> brigade_formations { get; set; }
         public DbSet<brigade> brigades { get; set; }
-        public DbSet<event_elite_familiar_types> event_elite_familiar_types { get; set; }
+        public DbSet<EventEliteFamiliarType> EventEliteFamiliarTypes1 { get; set; }
         public DbSet<event_types> event_types { get; set; }
         public DbSet<@event> events { get; set; }
         public DbSet<familiar_skills> familiar_skills { get; set; }

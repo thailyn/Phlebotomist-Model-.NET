@@ -17,7 +17,7 @@ namespace Phlebotomist.Model
         public FamiliarType()
         {
             this.BazaarOfferTerms = new HashSet<BazaarOfferFamiliarTypeTerm>();
-            this.EliteEvents = new HashSet<event_elite_familiar_types>();
+            this.EliteEvents = new HashSet<EventEliteFamiliarType>();
             this.Skills = new HashSet<FamiliarTypeSkill>();
             this.NextEvolutions = new HashSet<FamiliarType>();
             this.PreviousEvolutions = new HashSet<FamiliarType>();
@@ -40,7 +40,7 @@ namespace Phlebotomist.Model
         public Nullable<long> NextEvolutionId { get; set; }
     
         public virtual ICollection<BazaarOfferFamiliarTypeTerm> BazaarOfferTerms { get; set; }
-        public virtual ICollection<event_elite_familiar_types> EliteEvents { get; set; }
+        public virtual ICollection<EventEliteFamiliarType> EliteEvents { get; set; }
         public virtual ICollection<FamiliarTypeSkill> Skills { get; set; }
         public virtual ICollection<FamiliarType> NextEvolutions { get; set; }
         public virtual FamiliarType NextEvolution { get; set; }

@@ -12,14 +12,14 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class event_elite_familiar_types
+    public partial class EventEliteFamiliarType
     {
-        public long id { get; set; }
-        public long event_id { get; set; }
-        public long familiar_type_id { get; set; }
-        public double multiplier { get; set; }
+        public long Id { get; set; }
+        public long EventId { get; set; }
+        public long FamiliarTypeId { get; set; }
+        public double Multiplier { get; set; }
     
-        public virtual FamiliarType familiar_types { get; set; }
-        public virtual @event @event { get; set; }
+        public virtual FamiliarType FamiliarType { get; set; }
+        public virtual @event Event { get; set; }
     }
 }
