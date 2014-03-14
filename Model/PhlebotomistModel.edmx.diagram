@@ -80,6 +80,11 @@
         <AssociationConnector Association="PhlebotomistModel.FK_skills_2_0" />
         <AssociationConnector Association="PhlebotomistModel.FK_familiars_0_01" />
         <AssociationConnector Association="PhlebotomistModel.FK_familiars_1_01" />
+        <EntityTypeShape EntityType="PhlebotomistModel.familiar_type_stat_values" Width="1.5" PointX="8.25" PointY="4.25" />
+        <EntityTypeShape EntityType="PhlebotomistModel.stat_types" Width="1.5" PointX="6" PointY="0.75" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiar_type_stat_values_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiar_type_stat_values_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_familiar_type_stat_values_2_0" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

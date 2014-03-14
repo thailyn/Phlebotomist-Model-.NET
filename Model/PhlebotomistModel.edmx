@@ -138,6 +138,16 @@
           <Property Name="familiar_type_id" Type="integer" Nullable="false" />
           <Property Name="skill_id" Type="integer" Nullable="false" />
         </EntityType>
+        <EntityType Name="familiar_type_stat_values">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="familiar_type_id" Type="integer" Nullable="false" />
+          <Property Name="stat_type_id" Type="integer" Nullable="false" />
+          <Property Name="stat_id" Type="integer" Nullable="false" />
+          <Property Name="stat_value" Type="real" Nullable="false" />
+        </EntityType>
         <EntityType Name="familiar_types">
           <Key>
             <PropertyRef Name="id" />
@@ -324,6 +334,13 @@
           <Property Name="foe_defensive_modifier_stat_id" Type="integer" />
           <Property Name="ability" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="ignores_position" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="stat_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
         </EntityType>
         <EntityType Name="stats">
           <Key>
@@ -569,6 +586,42 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="familiar_type_skills">
+              <PropertyRef Name="familiar_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_type_stat_values_0_0">
+          <End Role="stats" Type="Self.stats" Multiplicity="1" />
+          <End Role="familiar_type_stat_values" Type="Self.familiar_type_stat_values" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stats">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_type_stat_values">
+              <PropertyRef Name="stat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_type_stat_values_1_0">
+          <End Role="stat_types" Type="Self.stat_types" Multiplicity="1" />
+          <End Role="familiar_type_stat_values" Type="Self.familiar_type_stat_values" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stat_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_type_stat_values">
+              <PropertyRef Name="stat_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_type_stat_values_2_0">
+          <End Role="familiar_types" Type="Self.familiar_types" Multiplicity="1" />
+          <End Role="familiar_type_stat_values" Type="Self.familiar_type_stat_values" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_type_stat_values">
               <PropertyRef Name="familiar_type_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -865,6 +918,7 @@
           <EntitySet Name="events" EntityType="Self.events" store:Type="Tables" />
           <EntitySet Name="familiar_skills" EntityType="Self.familiar_skills" store:Type="Tables" />
           <EntitySet Name="familiar_type_skills" EntityType="Self.familiar_type_skills" store:Type="Tables" />
+          <EntitySet Name="familiar_type_stat_values" EntityType="Self.familiar_type_stat_values" store:Type="Tables" />
           <EntitySet Name="familiar_types" EntityType="Self.familiar_types" store:Type="Tables" />
           <EntitySet Name="familiars" EntityType="Self.familiars" store:Type="Tables" />
           <EntitySet Name="growths" EntityType="Self.growths" store:Type="Tables" />
@@ -881,6 +935,7 @@
           <EntitySet Name="skill_patterns" EntityType="Self.skill_patterns" store:Type="Tables" />
           <EntitySet Name="skill_types" EntityType="Self.skill_types" store:Type="Tables" />
           <EntitySet Name="skills" EntityType="Self.skills" store:Type="Tables" />
+          <EntitySet Name="stat_types" EntityType="Self.stat_types" store:Type="Tables" />
           <EntitySet Name="stats" EntityType="Self.stats" store:Type="Tables" />
           <AssociationSet Name="FK_bazaar_offer_familiar_type_terms_0_0" Association="Self.FK_bazaar_offer_familiar_type_terms_0_0">
             <End Role="familiar_types" EntitySet="familiar_types" />
@@ -961,6 +1016,18 @@
           <AssociationSet Name="FK_familiar_type_skills_1_0" Association="Self.FK_familiar_type_skills_1_0">
             <End Role="familiar_types" EntitySet="familiar_types" />
             <End Role="familiar_type_skills" EntitySet="familiar_type_skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_type_stat_values_0_0" Association="Self.FK_familiar_type_stat_values_0_0">
+            <End Role="stats" EntitySet="stats" />
+            <End Role="familiar_type_stat_values" EntitySet="familiar_type_stat_values" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_type_stat_values_1_0" Association="Self.FK_familiar_type_stat_values_1_0">
+            <End Role="stat_types" EntitySet="stat_types" />
+            <End Role="familiar_type_stat_values" EntitySet="familiar_type_stat_values" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_type_stat_values_2_0" Association="Self.FK_familiar_type_stat_values_2_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="familiar_type_stat_values" EntitySet="familiar_type_stat_values" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_types_0_0" Association="Self.FK_familiar_types_0_0">
             <End Role="familiar_types" EntitySet="familiar_types" />
@@ -1264,6 +1331,20 @@
             <End Role="familiar" EntitySet="Familiars" />
             <End Role="familiar1" EntitySet="Familiars" />
           </AssociationSet>
+          <EntitySet Name="familiar_type_stat_values" EntityType="PhlebotomistModel.familiar_type_stat_values" />
+          <EntitySet Name="stat_types" EntityType="PhlebotomistModel.stat_types" />
+          <AssociationSet Name="FK_familiar_type_stat_values_0_0" Association="PhlebotomistModel.FK_familiar_type_stat_values_0_0">
+            <End Role="Stat" EntitySet="Stats" />
+            <End Role="familiar_type_stat_values" EntitySet="familiar_type_stat_values" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_type_stat_values_1_0" Association="PhlebotomistModel.FK_familiar_type_stat_values_1_0">
+            <End Role="stat_types" EntitySet="stat_types" />
+            <End Role="familiar_type_stat_values" EntitySet="familiar_type_stat_values" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiar_type_stat_values_2_0" Association="PhlebotomistModel.FK_familiar_type_stat_values_2_0">
+            <End Role="FamiliarType" EntitySet="FamiliarTypes" />
+            <End Role="familiar_type_stat_values" EntitySet="familiar_type_stat_values" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="AttackType">
           <Key>
@@ -1460,6 +1541,7 @@
           <NavigationProperty Name="Rarity" Relationship="PhlebotomistModel.FK_familiar_types_4_0" FromRole="familiar_types" ToRole="rarity" />
           <NavigationProperty Name="Familiars" Relationship="PhlebotomistModel.FK_familiars_0_0" FromRole="familiar_types" ToRole="familiar" />
           <NavigationProperty Name="RaidBosses" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_2_0" FromRole="familiar_types" ToRole="raid_boss_familiar_types" />
+          <NavigationProperty Name="familiar_type_stat_values" Relationship="PhlebotomistModel.FK_familiar_type_stat_values_2_0" FromRole="FamiliarType" ToRole="familiar_type_stat_values" />
         </EntityType>
         <EntityType Name="Familiar">
           <Key>
@@ -1678,6 +1760,7 @@
           <NavigationProperty Name="AffectingSkills" Relationship="PhlebotomistModel.FK_skill_affected_stats_0_0" FromRole="stat" ToRole="skill_affected_stats" />
           <NavigationProperty Name="FoeDefensiveModifierSkills" Relationship="PhlebotomistModel.FK_skills_0_0" FromRole="stat" ToRole="skill" />
           <NavigationProperty Name="ModifierSkills" Relationship="PhlebotomistModel.FK_skills_2_0" FromRole="stat" ToRole="skill" />
+          <NavigationProperty Name="familiar_type_stat_values" Relationship="PhlebotomistModel.FK_familiar_type_stat_values_0_0" FromRole="Stat" ToRole="familiar_type_stat_values" />
         </EntityType>
         <Association Name="FK_raid_boss_brigade_attacks_0_0">
           <End Type="PhlebotomistModel.AttackType" Role="attack_types" Multiplicity="1" />
@@ -2195,6 +2278,63 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="familiar_type_stat_values">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="familiar_type_id" Type="Int64" Nullable="false" />
+          <Property Name="stat_type_id" Type="Int64" Nullable="false" />
+          <Property Name="stat_id" Type="Int64" Nullable="false" />
+          <Property Name="stat_value" Type="Double" Nullable="false" />
+          <NavigationProperty Name="stat" Relationship="PhlebotomistModel.FK_familiar_type_stat_values_0_0" FromRole="familiar_type_stat_values" ToRole="Stat" />
+          <NavigationProperty Name="stat_types" Relationship="PhlebotomistModel.FK_familiar_type_stat_values_1_0" FromRole="familiar_type_stat_values" ToRole="stat_types" />
+          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_familiar_type_stat_values_2_0" FromRole="familiar_type_stat_values" ToRole="FamiliarType" />
+        </EntityType>
+        <EntityType Name="stat_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="familiar_type_stat_values" Relationship="PhlebotomistModel.FK_familiar_type_stat_values_1_0" FromRole="stat_types" ToRole="familiar_type_stat_values" />
+        </EntityType>
+        <Association Name="FK_familiar_type_stat_values_0_0">
+          <End Type="PhlebotomistModel.Stat" Role="Stat" Multiplicity="1" />
+          <End Type="PhlebotomistModel.familiar_type_stat_values" Role="familiar_type_stat_values" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="familiar_type_stat_values">
+              <PropertyRef Name="stat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_type_stat_values_1_0">
+          <End Type="PhlebotomistModel.stat_types" Role="stat_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.familiar_type_stat_values" Role="familiar_type_stat_values" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stat_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="familiar_type_stat_values">
+              <PropertyRef Name="stat_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_familiar_type_stat_values_2_0">
+          <End Type="PhlebotomistModel.FamiliarType" Role="FamiliarType" Multiplicity="1" />
+          <End Type="PhlebotomistModel.familiar_type_stat_values" Role="familiar_type_stat_values" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamiliarType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="familiar_type_stat_values">
+              <PropertyRef Name="familiar_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2560,6 +2700,25 @@
                 <ScalarProperty Name="Description" ColumnName="description" />
                 <ScalarProperty Name="Name" ColumnName="name" />
                 <ScalarProperty Name="Id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="familiar_type_stat_values">
+            <EntityTypeMapping TypeName="PhlebotomistModel.familiar_type_stat_values">
+              <MappingFragment StoreEntitySet="familiar_type_stat_values">
+                <ScalarProperty Name="stat_value" ColumnName="stat_value" />
+                <ScalarProperty Name="stat_id" ColumnName="stat_id" />
+                <ScalarProperty Name="stat_type_id" ColumnName="stat_type_id" />
+                <ScalarProperty Name="familiar_type_id" ColumnName="familiar_type_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stat_types">
+            <EntityTypeMapping TypeName="PhlebotomistModel.stat_types">
+              <MappingFragment StoreEntitySet="stat_types">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

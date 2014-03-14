@@ -57,5 +57,7 @@ namespace Phlebotomist.Model
         public DbSet<SkillTypes> SkillTypes { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Stat> Stats { get; set; }
+        public DbSet<familiar_type_stat_values> familiar_type_stat_values { get; set; }
+        public DbSet<stat_types> stat_types { get; set; }
     }
 }
