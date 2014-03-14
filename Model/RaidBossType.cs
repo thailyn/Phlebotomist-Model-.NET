@@ -12,17 +12,17 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class raid_boss_types
+    public partial class RaidBossType
     {
-        public raid_boss_types()
+        public RaidBossType()
         {
-            this.raid_boss_familiar_types = new HashSet<RaidBossFamiliarTypes>();
+            this.RaidBossFamiliarTypes = new HashSet<RaidBossFamiliarTypes>();
         }
     
-        public long id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     
-        public virtual ICollection<RaidBossFamiliarTypes> raid_boss_familiar_types { get; set; }
+        public virtual ICollection<RaidBossFamiliarTypes> RaidBossFamiliarTypes { get; set; }
     }
 }
