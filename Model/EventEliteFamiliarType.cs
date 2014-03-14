@@ -20,6 +20,6 @@ namespace Phlebotomist.Model
         public double Multiplier { get; set; }
     
         public virtual FamiliarType FamiliarType { get; set; }
-        public virtual @event Event { get; set; }
+        public virtual Event Event { get; set; }
     }
 }

@@ -12,17 +12,17 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class attack_types
+    public partial class EventType
     {
-        public attack_types()
+        public EventType()
         {
-            this.raid_boss_brigade_attacks = new HashSet<raid_boss_brigade_attacks>();
+            this.Events = new HashSet<Event>();
         }
     
-        public long id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     
-        public virtual ICollection<raid_boss_brigade_attacks> raid_boss_brigade_attacks { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
     }
 }

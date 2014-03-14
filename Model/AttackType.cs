@@ -12,15 +12,17 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class familiar_skills
+    public partial class AttackType
     {
-        public long id { get; set; }
-        public long familiar_id { get; set; }
-        public long skill_id { get; set; }
-        public short level { get; set; }
-        public short exp { get; set; }
+        public AttackType()
+        {
+            this.RaidBossBrigadeAttacks = new HashSet<RaidBossBrigadeAttacks>();
+        }
     
-        public virtual Skill skill { get; set; }
-        public virtual Familiar familiar { get; set; }
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+    
+        public virtual ICollection<RaidBossBrigadeAttacks> RaidBossBrigadeAttacks { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace Phlebotomist.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<attack_types> attack_types { get; set; }
+        public DbSet<AttackType> AttackTypes { get; set; }
         public DbSet<BazaarOfferFamiliarTypeTerm> BazaarOfferFamiliarTypeTerms { get; set; }
         public DbSet<BazaarOfferItemTerm> BazaarOfferItemTerms1 { get; set; }
         public DbSet<BazaarOffer> BazaarOffers1 { get; set; }
@@ -36,9 +36,9 @@ namespace Phlebotomist.Model
         public DbSet<BrigadeFormation> BrigadeFormations1 { get; set; }
         public DbSet<Brigade> Brigades { get; set; }
         public DbSet<EventEliteFamiliarType> EventEliteFamiliarTypes1 { get; set; }
-        public DbSet<event_types> event_types { get; set; }
-        public DbSet<@event> events { get; set; }
-        public DbSet<familiar_skills> familiar_skills { get; set; }
+        public DbSet<EventType> EventTypes { get; set; }
+        public DbSet<Event> Events1 { get; set; }
+        public DbSet<FamiliarSkill> FamiliarSkills { get; set; }
         public DbSet<FamiliarTypeSkill> FamiliarTypeSkills { get; set; }
         public DbSet<FamiliarType> FamiliarTypes { get; set; }
         public DbSet<Familiar> Familiars { get; set; }
@@ -47,10 +47,10 @@ namespace Phlebotomist.Model
         public DbSet<Item> Items { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Race> Races { get; set; }
-        public DbSet<raid_boss_brigade_attacks> raid_boss_brigade_attacks { get; set; }
+        public DbSet<RaidBossBrigadeAttacks> RaidBossBrigadeAttacks { get; set; }
         public DbSet<RaidBossFamiliarTypes> RaidBossFamiliarTypes { get; set; }
         public DbSet<RaidBossType> RaidBossTypes1 { get; set; }
-        public DbSet<raid_bosses> raid_bosses { get; set; }
+        public DbSet<RaidBoss> RaidBosses { get; set; }
         public DbSet<Rarity> Rarities1 { get; set; }
         public DbSet<SkillAffectedStat> SkillAffectedStats { get; set; }
         public DbSet<SkillPattern> SkillPatterns1 { get; set; }

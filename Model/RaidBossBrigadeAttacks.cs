@@ -12,16 +12,19 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class RaidBossFamiliarTypes
+    public partial class RaidBossBrigadeAttacks
     {
         public long Id { get; set; }
-        public string Name { get; set; }
-        public Nullable<long> FamiliarTypeId { get; set; }
-        public long RaidBossTypeId { get; set; }
-        public long EventId { get; set; }
+        public long RaidBossId { get; set; }
+        public Nullable<long> BrigadeId { get; set; }
+        public string Date { get; set; }
+        public long AttackTypeId { get; set; }
+        public Nullable<double> StartingHP { get; set; }
+        public Nullable<double> EndingHP { get; set; }
+        public Nullable<double> Damage { get; set; }
     
-        public virtual Event Event { get; set; }
-        public virtual FamiliarType FamiliarType { get; set; }
-        public virtual RaidBossType RaidBossType { get; set; }
+        public virtual AttackType AttackType { get; set; }
+        public virtual Brigade Brigade { get; set; }
+        public virtual RaidBoss RaidBoss { get; set; }
     }
 }

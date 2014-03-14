@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\attack_types.cs">
+    <Compile Include="Model\AttackType.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\BazaarOffer.cs">
@@ -66,37 +66,37 @@
     <Compile Include="Model\BrigadeFamiliars.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\BrigadeFormationHorizontalPositionTypes.cs">
+    <Compile Include="Model\BrigadeFormation.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\BrigadeFormationPositions.cs">
+    <Compile Include="Model\BrigadeFormationHorizontalPositionType.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\BrigadeFormations.cs">
+    <Compile Include="Model\BrigadeFormationPosition.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\BrigadeFormationVerticalPositionTypes.cs">
+    <Compile Include="Model\BrigadeFormationVerticalPositionType.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\event.cs">
+    <Compile Include="Model\Event.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\EventEliteFamiliarType.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\event_types.cs">
+    <Compile Include="Model\EventType.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Familiar.cs">
+      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FamiliarSkill.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\FamiliarType.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\FamiliarTypeSkill.cs">
-      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\familiar_skills.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Growth.cs">
@@ -129,6 +129,12 @@
     <Compile Include="Model\Race.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\RaidBoss.cs">
+      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RaidBossBrigadeAttacks.cs">
+      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\RaidBossFamiliarTypes.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
@@ -154,12 +160,6 @@
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\raid_bosses.cs">
-      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\raid_boss_brigade_attacks.cs">
-      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

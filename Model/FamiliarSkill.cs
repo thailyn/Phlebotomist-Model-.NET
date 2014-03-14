@@ -12,17 +12,15 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class event_types
+    public partial class FamiliarSkill
     {
-        public event_types()
-        {
-            this.events = new HashSet<@event>();
-        }
+        public long Id { get; set; }
+        public long FamiliarId { get; set; }
+        public long SkillId { get; set; }
+        public short Level { get; set; }
+        public short EXP { get; set; }
     
-        public long id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-    
-        public virtual ICollection<@event> events { get; set; }
+        public virtual Skill Skill { get; set; }
+        public virtual Familiar Familiar { get; set; }
     }
 }

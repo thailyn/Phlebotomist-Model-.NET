@@ -12,21 +12,21 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class raid_bosses
+    public partial class RaidBoss
     {
-        public raid_bosses()
+        public RaidBoss()
         {
-            this.raid_boss_brigade_attacks = new HashSet<raid_boss_brigade_attacks>();
+            this.RaidBossBrigadeAttacks = new HashSet<RaidBossBrigadeAttacks>();
         }
     
-        public long id { get; set; }
-        public long raid_boss_familiar_type { get; set; }
-        public double level { get; set; }
+        public long Id { get; set; }
+        public long RaidBossFamiliarType { get; set; }
+        public double Level { get; set; }
         public Nullable<double> HP { get; set; }
-        public Nullable<double> attack_points { get; set; }
-        public Nullable<double> mvp_bonus_multiplier { get; set; }
-        public Nullable<double> jur_mvp_bonus_multiplier { get; set; }
+        public Nullable<double> AttackPoints { get; set; }
+        public Nullable<double> MvpBonusMultiplier { get; set; }
+        public Nullable<double> JurMvpBonusMultiplier { get; set; }
     
-        public virtual ICollection<raid_boss_brigade_attacks> raid_boss_brigade_attacks { get; set; }
+        public virtual ICollection<RaidBossBrigadeAttacks> RaidBossBrigadeAttacks { get; set; }
     }
 }

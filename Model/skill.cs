@@ -16,7 +16,7 @@ namespace Phlebotomist.Model
     {
         public Skill()
         {
-            this.Familiars = new HashSet<familiar_skills>();
+            this.Familiars = new HashSet<FamiliarSkill>();
             this.FamiliarTypes = new HashSet<FamiliarTypeSkill>();
             this.AffectedStats = new HashSet<SkillAffectedStat>();
         }
@@ -40,7 +40,7 @@ namespace Phlebotomist.Model
         public string Ability { get; set; }
         public Nullable<byte> IgnoresPosition { get; set; }
     
-        public virtual ICollection<familiar_skills> Familiars { get; set; }
+        public virtual ICollection<FamiliarSkill> Familiars { get; set; }
         public virtual ICollection<FamiliarTypeSkill> FamiliarTypes { get; set; }
         public virtual ICollection<SkillAffectedStat> AffectedStats { get; set; }
         public virtual SkillPattern Pattern { get; set; }

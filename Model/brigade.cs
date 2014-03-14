@@ -17,7 +17,7 @@ namespace Phlebotomist.Model
         public Brigade()
         {
             this.Familiars = new HashSet<BrigadeFamiliars>();
-            this.RaidBossAttacks = new HashSet<raid_boss_brigade_attacks>();
+            this.RaidBossAttacks = new HashSet<RaidBossBrigadeAttacks>();
         }
     
         public long Id { get; set; }
@@ -29,6 +29,6 @@ namespace Phlebotomist.Model
         public virtual ICollection<BrigadeFamiliars> Familiars { get; set; }
         public virtual BrigadeFormation Formation { get; set; }
         public virtual Player Player { get; set; }
-        public virtual ICollection<raid_boss_brigade_attacks> RaidBossAttacks { get; set; }
+        public virtual ICollection<RaidBossBrigadeAttacks> RaidBossAttacks { get; set; }
     }
 }

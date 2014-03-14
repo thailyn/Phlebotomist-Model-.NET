@@ -12,22 +12,22 @@ namespace Phlebotomist.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class @event
+    public partial class Event
     {
-        public @event()
+        public Event()
         {
-            this.event_elite_familiar_types = new HashSet<EventEliteFamiliarType>();
-            this.raid_boss_familiar_types = new HashSet<RaidBossFamiliarTypes>();
+            this.EliteFamiliarTypes = new HashSet<EventEliteFamiliarType>();
+            this.RaidBossFamiliarTypes = new HashSet<RaidBossFamiliarTypes>();
         }
     
-        public long id { get; set; }
-        public string name { get; set; }
-        public long event_type_id { get; set; }
-        public string date_started { get; set; }
-        public string date_ended { get; set; }
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public long EventTypeId { get; set; }
+        public string DateStarted { get; set; }
+        public string DateEnded { get; set; }
     
-        public virtual ICollection<EventEliteFamiliarType> event_elite_familiar_types { get; set; }
-        public virtual event_types event_types { get; set; }
-        public virtual ICollection<RaidBossFamiliarTypes> raid_boss_familiar_types { get; set; }
+        public virtual ICollection<EventEliteFamiliarType> EliteFamiliarTypes { get; set; }
+        public virtual EventType Type { get; set; }
+        public virtual ICollection<RaidBossFamiliarTypes> RaidBossFamiliarTypes { get; set; }
     }
 }
