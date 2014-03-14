@@ -21,6 +21,6 @@ namespace Phlebotomist.Model
         public short quantity_bloodbound { get; set; }
     
         public virtual item_types item_types { get; set; }
-        public virtual player player { get; set; }
+        public virtual Player player { get; set; }
     }
 }

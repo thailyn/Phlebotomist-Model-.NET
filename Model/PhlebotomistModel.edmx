@@ -1077,7 +1077,7 @@
           <EntitySet Name="Growths" EntityType="PhlebotomistModel.Growth" />
           <EntitySet Name="item_types" EntityType="PhlebotomistModel.item_types" />
           <EntitySet Name="items" EntityType="PhlebotomistModel.item" />
-          <EntitySet Name="players" EntityType="PhlebotomistModel.player" />
+          <EntitySet Name="Players" EntityType="PhlebotomistModel.Player" />
           <EntitySet Name="Races" EntityType="PhlebotomistModel.Race" />
           <EntitySet Name="raid_boss_brigade_attacks" EntityType="PhlebotomistModel.raid_boss_brigade_attacks" />
           <EntitySet Name="RaidBossFamiliarTypes" EntityType="PhlebotomistModel.RaidBossFamiliarTypes" />
@@ -1142,7 +1142,7 @@
             <End Role="brigade" EntitySet="brigades" />
           </AssociationSet>
           <AssociationSet Name="FK_brigades_0_0" Association="PhlebotomistModel.FK_brigades_0_0">
-            <End Role="player" EntitySet="players" />
+            <End Role="player" EntitySet="Players" />
             <End Role="brigade" EntitySet="brigades" />
           </AssociationSet>
           <AssociationSet Name="FK_raid_boss_brigade_attacks_1_0" Association="PhlebotomistModel.FK_raid_boss_brigade_attacks_1_0">
@@ -1210,7 +1210,7 @@
             <End Role="raid_boss_familiar_types" EntitySet="RaidBossFamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_familiars_1_0" Association="PhlebotomistModel.FK_familiars_1_0">
-            <End Role="player" EntitySet="players" />
+            <End Role="player" EntitySet="Players" />
             <End Role="familiar" EntitySet="Familiars" />
           </AssociationSet>
           <AssociationSet Name="FK_items_1_0" Association="PhlebotomistModel.FK_items_1_0">
@@ -1218,7 +1218,7 @@
             <End Role="item" EntitySet="items" />
           </AssociationSet>
           <AssociationSet Name="FK_items_0_0" Association="PhlebotomistModel.FK_items_0_0">
-            <End Role="player" EntitySet="players" />
+            <End Role="player" EntitySet="Players" />
             <End Role="item" EntitySet="items" />
           </AssociationSet>
           <AssociationSet Name="FK_raid_boss_brigade_attacks_2_0" Association="PhlebotomistModel.FK_raid_boss_brigade_attacks_2_0">
@@ -1520,16 +1520,16 @@
           <NavigationProperty Name="item_types" Relationship="PhlebotomistModel.FK_items_1_0" FromRole="item" ToRole="item_types" />
           <NavigationProperty Name="player" Relationship="PhlebotomistModel.FK_items_0_0" FromRole="item" ToRole="player" />
         </EntityType>
-        <EntityType Name="player">
+        <EntityType Name="Player">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="created_date" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="brigades" Relationship="PhlebotomistModel.FK_brigades_0_0" FromRole="player" ToRole="brigade" />
-          <NavigationProperty Name="familiars" Relationship="PhlebotomistModel.FK_familiars_1_0" FromRole="player" ToRole="familiar" />
-          <NavigationProperty Name="items" Relationship="PhlebotomistModel.FK_items_0_0" FromRole="player" ToRole="item" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Brigades" Relationship="PhlebotomistModel.FK_brigades_0_0" FromRole="player" ToRole="brigade" />
+          <NavigationProperty Name="Familiars" Relationship="PhlebotomistModel.FK_familiars_1_0" FromRole="player" ToRole="familiar" />
+          <NavigationProperty Name="Items" Relationship="PhlebotomistModel.FK_items_0_0" FromRole="player" ToRole="item" />
         </EntityType>
         <EntityType Name="Race">
           <Key>
@@ -1830,11 +1830,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_brigades_0_0">
-          <End Type="PhlebotomistModel.player" Role="player" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.Player" Role="player" Multiplicity="0..1" />
           <End Type="PhlebotomistModel.brigade" Role="brigade" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="player">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="brigade">
               <PropertyRef Name="player_id" />
@@ -2034,11 +2034,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiars_1_0">
-          <End Type="PhlebotomistModel.player" Role="player" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.Player" Role="player" Multiplicity="0..1" />
           <End Type="PhlebotomistModel.Familiar" Role="familiar" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="player">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="familiar">
               <PropertyRef Name="PlayerId" />
@@ -2058,11 +2058,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_items_0_0">
-          <End Type="PhlebotomistModel.player" Role="player" Multiplicity="0..1" />
+          <End Type="PhlebotomistModel.Player" Role="player" Multiplicity="0..1" />
           <End Type="PhlebotomistModel.item" Role="item" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="player">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="item">
               <PropertyRef Name="player_id" />
@@ -2416,12 +2416,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="players">
-            <EntityTypeMapping TypeName="PhlebotomistModel.player">
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="PhlebotomistModel.Player">
               <MappingFragment StoreEntitySet="players">
-                <ScalarProperty Name="created_date" ColumnName="created_date" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CreatedDate" ColumnName="created_date" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

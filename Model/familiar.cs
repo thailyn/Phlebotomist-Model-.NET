@@ -47,7 +47,7 @@ namespace Phlebotomist.Model
         public virtual ICollection<brigade_familiars> Brigades { get; set; }
         public virtual ICollection<familiar_skills> Skills { get; set; }
         public virtual FamiliarType FamiliarType { get; set; }
-        public virtual player Player { get; set; }
+        public virtual Player Player { get; set; }
         public virtual ICollection<Familiar> SeedParents { get; set; }
         public virtual Familiar SeedParent { get; set; }
         public virtual ICollection<Familiar> SpawnParents { get; set; }

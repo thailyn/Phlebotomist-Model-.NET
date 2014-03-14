@@ -123,7 +123,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PhlebotomistModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\player.cs">
+    <Compile Include="Model\Player.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Race.cs">

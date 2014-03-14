@@ -25,7 +25,7 @@
         <EntityTypeShape EntityType="PhlebotomistModel.Growth" Width="1.5" PointX="0.75" PointY="15.125" />
         <EntityTypeShape EntityType="PhlebotomistModel.item_types" Width="1.5" PointX="7.5" PointY="20.125" />
         <EntityTypeShape EntityType="PhlebotomistModel.item" Width="1.5" PointX="12.75" PointY="18.125" />
-        <EntityTypeShape EntityType="PhlebotomistModel.player" Width="1.5" PointX="3" PointY="16.625" />
+        <EntityTypeShape EntityType="PhlebotomistModel.Player" Width="1.5" PointX="3" PointY="16.625" />
         <EntityTypeShape EntityType="PhlebotomistModel.Race" Width="1.5" PointX="0.75" PointY="11.75" />
         <EntityTypeShape EntityType="PhlebotomistModel.raid_boss_brigade_attacks" Width="1.5" PointX="7.5" PointY="26.375" />
         <EntityTypeShape EntityType="PhlebotomistModel.RaidBossFamiliarTypes" Width="1.5" PointX="8.25" PointY="11.375" />

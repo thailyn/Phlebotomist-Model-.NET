@@ -45,7 +45,7 @@ namespace Phlebotomist.Model
         public DbSet<Growth> Growths { get; set; }
         public DbSet<item_types> item_types { get; set; }
         public DbSet<item> items { get; set; }
-        public DbSet<player> players { get; set; }
+        public DbSet<Player> Players { get; set; }
         public DbSet<Race> Races { get; set; }
         public DbSet<raid_boss_brigade_attacks> raid_boss_brigade_attacks { get; set; }
         public DbSet<RaidBossFamiliarTypes> RaidBossFamiliarTypes { get; set; }
