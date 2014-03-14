@@ -1080,7 +1080,7 @@
           <EntitySet Name="players" EntityType="PhlebotomistModel.player" />
           <EntitySet Name="Races" EntityType="PhlebotomistModel.Race" />
           <EntitySet Name="raid_boss_brigade_attacks" EntityType="PhlebotomistModel.raid_boss_brigade_attacks" />
-          <EntitySet Name="raid_boss_familiar_types" EntityType="PhlebotomistModel.raid_boss_familiar_types" />
+          <EntitySet Name="RaidBossFamiliarTypes" EntityType="PhlebotomistModel.RaidBossFamiliarTypes" />
           <EntitySet Name="raid_boss_types" EntityType="PhlebotomistModel.raid_boss_types" />
           <EntitySet Name="raid_bosses" EntityType="PhlebotomistModel.raid_bosses" />
           <EntitySet Name="Rarities1" EntityType="PhlebotomistModel.Rarity" />
@@ -1163,7 +1163,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_raid_boss_familiar_types_0_0" Association="PhlebotomistModel.FK_raid_boss_familiar_types_0_0">
             <End Role="event" EntitySet="events" />
-            <End Role="raid_boss_familiar_types" EntitySet="raid_boss_familiar_types" />
+            <End Role="raid_boss_familiar_types" EntitySet="RaidBossFamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_familiar_skills_0_0" Association="PhlebotomistModel.FK_familiar_skills_0_0">
             <End Role="skill" EntitySet="skills" />
@@ -1207,7 +1207,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_raid_boss_familiar_types_2_0" Association="PhlebotomistModel.FK_raid_boss_familiar_types_2_0">
             <End Role="familiar_types" EntitySet="FamiliarTypes" />
-            <End Role="raid_boss_familiar_types" EntitySet="raid_boss_familiar_types" />
+            <End Role="raid_boss_familiar_types" EntitySet="RaidBossFamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_familiars_1_0" Association="PhlebotomistModel.FK_familiars_1_0">
             <End Role="player" EntitySet="players" />
@@ -1227,7 +1227,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_raid_boss_familiar_types_1_0" Association="PhlebotomistModel.FK_raid_boss_familiar_types_1_0">
             <End Role="raid_boss_types" EntitySet="raid_boss_types" />
-            <End Role="raid_boss_familiar_types" EntitySet="raid_boss_familiar_types" />
+            <End Role="raid_boss_familiar_types" EntitySet="RaidBossFamiliarTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_skill_affected_stats_0_0" Association="PhlebotomistModel.FK_skill_affected_stats_0_0">
             <End Role="stat" EntitySet="stats" />
@@ -1556,18 +1556,18 @@
           <NavigationProperty Name="brigade" Relationship="PhlebotomistModel.FK_raid_boss_brigade_attacks_1_0" FromRole="raid_boss_brigade_attacks" ToRole="brigade" />
           <NavigationProperty Name="raid_bosses" Relationship="PhlebotomistModel.FK_raid_boss_brigade_attacks_2_0" FromRole="raid_boss_brigade_attacks" ToRole="raid_bosses" />
         </EntityType>
-        <EntityType Name="raid_boss_familiar_types">
+        <EntityType Name="RaidBossFamiliarTypes">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="familiar_type_id" Type="Int64" />
-          <Property Name="raid_boss_type_id" Type="Int64" Nullable="false" />
-          <Property Name="event_id" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="event" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_0_0" FromRole="raid_boss_familiar_types" ToRole="event" />
-          <NavigationProperty Name="familiar_types" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_2_0" FromRole="raid_boss_familiar_types" ToRole="familiar_types" />
-          <NavigationProperty Name="raid_boss_types" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_1_0" FromRole="raid_boss_familiar_types" ToRole="raid_boss_types" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FamiliarTypeId" Type="Int64" />
+          <Property Name="RaidBossTypeId" Type="Int64" Nullable="false" />
+          <Property Name="EventId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Event" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_0_0" FromRole="raid_boss_familiar_types" ToRole="event" />
+          <NavigationProperty Name="FamiliarType" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_2_0" FromRole="raid_boss_familiar_types" ToRole="familiar_types" />
+          <NavigationProperty Name="RaidBossType" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_1_0" FromRole="raid_boss_familiar_types" ToRole="raid_boss_types" />
         </EntityType>
         <EntityType Name="raid_boss_types">
           <Key>
@@ -1891,13 +1891,13 @@
         </Association>
         <Association Name="FK_raid_boss_familiar_types_0_0">
           <End Type="PhlebotomistModel.event" Role="event" Multiplicity="1" />
-          <End Type="PhlebotomistModel.raid_boss_familiar_types" Role="raid_boss_familiar_types" Multiplicity="*" />
+          <End Type="PhlebotomistModel.RaidBossFamiliarTypes" Role="raid_boss_familiar_types" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="event">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="raid_boss_familiar_types">
-              <PropertyRef Name="event_id" />
+              <PropertyRef Name="EventId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2023,13 +2023,13 @@
         </Association>
         <Association Name="FK_raid_boss_familiar_types_2_0">
           <End Type="PhlebotomistModel.FamiliarType" Role="familiar_types" Multiplicity="0..1" />
-          <End Type="PhlebotomistModel.raid_boss_familiar_types" Role="raid_boss_familiar_types" Multiplicity="*" />
+          <End Type="PhlebotomistModel.RaidBossFamiliarTypes" Role="raid_boss_familiar_types" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familiar_types">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="raid_boss_familiar_types">
-              <PropertyRef Name="familiar_type_id" />
+              <PropertyRef Name="FamiliarTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2083,13 +2083,13 @@
         </Association>
         <Association Name="FK_raid_boss_familiar_types_1_0">
           <End Type="PhlebotomistModel.raid_boss_types" Role="raid_boss_types" Multiplicity="1" />
-          <End Type="PhlebotomistModel.raid_boss_familiar_types" Role="raid_boss_familiar_types" Multiplicity="*" />
+          <End Type="PhlebotomistModel.RaidBossFamiliarTypes" Role="raid_boss_familiar_types" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="raid_boss_types">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="raid_boss_familiar_types">
-              <PropertyRef Name="raid_boss_type_id" />
+              <PropertyRef Name="RaidBossTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2448,14 +2448,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="raid_boss_familiar_types">
-            <EntityTypeMapping TypeName="PhlebotomistModel.raid_boss_familiar_types">
+          <EntitySetMapping Name="RaidBossFamiliarTypes">
+            <EntityTypeMapping TypeName="PhlebotomistModel.RaidBossFamiliarTypes">
               <MappingFragment StoreEntitySet="raid_boss_familiar_types">
-                <ScalarProperty Name="event_id" ColumnName="event_id" />
-                <ScalarProperty Name="raid_boss_type_id" ColumnName="raid_boss_type_id" />
-                <ScalarProperty Name="familiar_type_id" ColumnName="familiar_type_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="EventId" ColumnName="event_id" />
+                <ScalarProperty Name="RaidBossTypeId" ColumnName="raid_boss_type_id" />
+                <ScalarProperty Name="FamiliarTypeId" ColumnName="familiar_type_id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

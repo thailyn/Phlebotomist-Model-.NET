@@ -16,13 +16,13 @@ namespace Phlebotomist.Model
     {
         public raid_boss_types()
         {
-            this.raid_boss_familiar_types = new HashSet<raid_boss_familiar_types>();
+            this.raid_boss_familiar_types = new HashSet<RaidBossFamiliarTypes>();
         }
     
         public long id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
     
-        public virtual ICollection<raid_boss_familiar_types> raid_boss_familiar_types { get; set; }
+        public virtual ICollection<RaidBossFamiliarTypes> raid_boss_familiar_types { get; set; }
     }
 }

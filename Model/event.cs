@@ -17,7 +17,7 @@ namespace Phlebotomist.Model
         public @event()
         {
             this.event_elite_familiar_types = new HashSet<event_elite_familiar_types>();
-            this.raid_boss_familiar_types = new HashSet<raid_boss_familiar_types>();
+            this.raid_boss_familiar_types = new HashSet<RaidBossFamiliarTypes>();
         }
     
         public long id { get; set; }
@@ -28,6 +28,6 @@ namespace Phlebotomist.Model
     
         public virtual ICollection<event_elite_familiar_types> event_elite_familiar_types { get; set; }
         public virtual event_types event_types { get; set; }
-        public virtual ICollection<raid_boss_familiar_types> raid_boss_familiar_types { get; set; }
+        public virtual ICollection<RaidBossFamiliarTypes> raid_boss_familiar_types { get; set; }
     }
 }
