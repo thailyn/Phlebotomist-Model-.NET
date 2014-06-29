@@ -302,44 +302,54 @@ namespace Phlebotomist.ViewModels
         private int _wisStatId = 4;
         private int _agiStatId = 5;
 
+        protected double GetStat(FamiliarType familiarType, int statTypeId, int statId)
+        {
+            var stats = from s in familiarType.StatValues
+                        where s.StatTypeId == statTypeId
+                        where s.StatId == statId
+                        //where string.Equals(s.StatType.Name, "Base", StringComparison.CurrentCultureIgnoreCase)
+                        //where string.Equals(s.Stat.Name, "HP", StringComparison.CurrentCultureIgnoreCase)
+                        select s;
+
+            var stat = stats.ToList().FirstOrDefault();
+            return stat == null ? 0 : stat.StatValue;
+        }
+
+        protected void SetStat(FamiliarType familiarType, int statTypeId, int statId, double value)
+        {
+            var stats = from s in familiarType.StatValues
+                        where s.StatTypeId == statTypeId
+                        where s.StatId == statId
+                        //where string.Equals(s.StatType.Name, "Base", StringComparison.CurrentCultureIgnoreCase)
+                        //where string.Equals(s.Stat.Name, "HP", StringComparison.CurrentCultureIgnoreCase)
+                        select s;
+
+            var stat = stats.ToList().FirstOrDefault();
+            if (stat == null)
+            {
+                familiarType.StatValues.Add(new FamiliarTypeStatValue
+                {
+                    FamiliarTypeId = familiarType.Id,
+                    StatTypeId = statTypeId,
+                    StatId = statId,
+                    StatValue = value
+                });
+            }
+            else
+            {
+                stat.StatValue = value;
+            }
+        }
+
         public double BaseHP
         {
             get
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _baseStatTypeId
-                            where s.StatId == _hpStatId
-                            //where string.Equals(s.StatType.Name, "Base", StringComparison.CurrentCultureIgnoreCase)
-                            //where string.Equals(s.Stat.Name, "HP", StringComparison.CurrentCultureIgnoreCase)
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                return stat == null ? 0 : stat.StatValue;
+                return GetStat(_familiarType, _baseStatTypeId, _hpStatId);
             }
             set
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _baseStatTypeId
-                            where s.StatId == _hpStatId
-                            //where string.Equals(s.StatType.Name, "Base", StringComparison.CurrentCultureIgnoreCase)
-                            //where string.Equals(s.Stat.Name, "HP", StringComparison.CurrentCultureIgnoreCase)
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                if (stat == null)
-                {
-                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
-                    {
-                        FamiliarTypeId = Id,
-                        StatTypeId = _baseStatTypeId,
-                        StatId = _hpStatId,
-                        StatValue = value
-                    });
-                }
-                else
-                {
-                    stat.StatValue = value;
-                }
+                SetStat(_familiarType, _baseStatTypeId, _hpStatId, value);
             }
         }
 
@@ -347,36 +357,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _baseStatTypeId
-                            where s.StatId == _atkStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                return stat == null ? 0 : stat.StatValue;
+                return GetStat(_familiarType, _baseStatTypeId, _atkStatId);
             }
             set
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _baseStatTypeId
-                            where s.StatId == _atkStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                if (stat == null)
-                {
-                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
-                    {
-                        FamiliarTypeId = Id,
-                        StatTypeId = _baseStatTypeId,
-                        StatId = _atkStatId,
-                        StatValue = value
-                    });
-                }
-                else
-                {
-                    stat.StatValue = value;
-                }
+                SetStat(_familiarType, _baseStatTypeId, _atkStatId, value);
             }
         }
 
@@ -384,36 +369,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _baseStatTypeId
-                            where s.StatId == _defStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                return stat == null ? 0 : stat.StatValue;
+                return GetStat(_familiarType, _baseStatTypeId, _defStatId);
             }
             set
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _baseStatTypeId
-                            where s.StatId == _defStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                if (stat == null)
-                {
-                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
-                    {
-                        FamiliarTypeId = Id,
-                        StatTypeId = _baseStatTypeId,
-                        StatId = _defStatId,
-                        StatValue = value
-                    });
-                }
-                else
-                {
-                    stat.StatValue = value;
-                }
+                SetStat(_familiarType, _baseStatTypeId, _defStatId, value);
             }
         }
 
@@ -421,36 +381,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _baseStatTypeId
-                            where s.StatId == _wisStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                return stat == null ? 0 : stat.StatValue;
+                return GetStat(_familiarType, _baseStatTypeId, _wisStatId);
             }
             set
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _baseStatTypeId
-                            where s.StatId == _wisStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                if (stat == null)
-                {
-                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
-                    {
-                        FamiliarTypeId = Id,
-                        StatTypeId = _baseStatTypeId,
-                        StatId = _wisStatId,
-                        StatValue = value
-                    });
-                }
-                else
-                {
-                    stat.StatValue = value;
-                }
+                SetStat(_familiarType, _baseStatTypeId, _wisStatId, value);
             }
         }
 
@@ -458,36 +393,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _baseStatTypeId
-                            where s.StatId == _agiStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                return stat == null ? 0 : stat.StatValue;
+                return GetStat(_familiarType, _baseStatTypeId, _agiStatId);
             }
             set
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _baseStatTypeId
-                            where s.StatId == _agiStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                if (stat == null)
-                {
-                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
-                    {
-                        FamiliarTypeId = Id,
-                        StatTypeId = _baseStatTypeId,
-                        StatId = _agiStatId,
-                        StatValue = value
-                    });
-                }
-                else
-                {
-                    stat.StatValue = value;
-                }
+                SetStat(_familiarType, _baseStatTypeId, _agiStatId, value);
             }
         }
 
@@ -495,40 +405,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _maxStatTypeId
-                            where s.StatId == _hpStatId
-                            //where string.Equals(s.StatType.Name, "Base", StringComparison.CurrentCultureIgnoreCase)
-                            //where string.Equals(s.Stat.Name, "HP", StringComparison.CurrentCultureIgnoreCase)
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                return stat == null ? 0 : stat.StatValue;
+                return GetStat(_familiarType, _maxStatTypeId, _hpStatId);
             }
             set
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _maxStatTypeId
-                            where s.StatId == _hpStatId
-                            //where string.Equals(s.StatType.Name, "Base", StringComparison.CurrentCultureIgnoreCase)
-                            //where string.Equals(s.Stat.Name, "HP", StringComparison.CurrentCultureIgnoreCase)
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                if (stat == null)
-                {
-                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
-                    {
-                        FamiliarTypeId = Id,
-                        StatTypeId = _maxStatTypeId,
-                        StatId = _hpStatId,
-                        StatValue = value
-                    });
-                }
-                else
-                {
-                    stat.StatValue = value;
-                }
+                SetStat(_familiarType, _maxStatTypeId, _hpStatId, value);
             }
         }
 
@@ -536,36 +417,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _maxStatTypeId
-                            where s.StatId == _atkStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                return stat == null ? 0 : stat.StatValue;
+                return GetStat(_familiarType, _maxStatTypeId, _atkStatId);
             }
             set
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _maxStatTypeId
-                            where s.StatId == _atkStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                if (stat == null)
-                {
-                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
-                    {
-                        FamiliarTypeId = Id,
-                        StatTypeId = _maxStatTypeId,
-                        StatId = _atkStatId,
-                        StatValue = value
-                    });
-                }
-                else
-                {
-                    stat.StatValue = value;
-                }
+                SetStat(_familiarType, _maxStatTypeId, _atkStatId, value);
             }
         }
 
@@ -573,36 +429,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _maxStatTypeId
-                            where s.StatId == _defStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                return stat == null ? 0 : stat.StatValue;
+                return GetStat(_familiarType, _maxStatTypeId, _defStatId);
             }
             set
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _maxStatTypeId
-                            where s.StatId == _defStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                if (stat == null)
-                {
-                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
-                    {
-                        FamiliarTypeId = Id,
-                        StatTypeId = _maxStatTypeId,
-                        StatId = _defStatId,
-                        StatValue = value
-                    });
-                }
-                else
-                {
-                    stat.StatValue = value;
-                }
+                SetStat(_familiarType, _maxStatTypeId, _defStatId, value);
             }
         }
 
@@ -610,36 +441,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _maxStatTypeId
-                            where s.StatId == _wisStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                return stat == null ? 0 : stat.StatValue;
+                return GetStat(_familiarType, _maxStatTypeId, _wisStatId);
             }
             set
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _maxStatTypeId
-                            where s.StatId == _wisStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                if (stat == null)
-                {
-                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
-                    {
-                        FamiliarTypeId = Id,
-                        StatTypeId = _maxStatTypeId,
-                        StatId = _wisStatId,
-                        StatValue = value
-                    });
-                }
-                else
-                {
-                    stat.StatValue = value;
-                }
+                SetStat(_familiarType, _maxStatTypeId, _wisStatId, value);
             }
         }
 
@@ -647,36 +453,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _maxStatTypeId
-                            where s.StatId == _agiStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                return stat == null ? 0 : stat.StatValue;
+                return GetStat(_familiarType, _maxStatTypeId, _agiStatId);
             }
             set
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _maxStatTypeId
-                            where s.StatId == _agiStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                if (stat == null)
-                {
-                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
-                    {
-                        FamiliarTypeId = Id,
-                        StatTypeId = _maxStatTypeId,
-                        StatId = _agiStatId,
-                        StatValue = value
-                    });
-                }
-                else
-                {
-                    stat.StatValue = value;
-                }
+                SetStat(_familiarType, _maxStatTypeId, _agiStatId, value);
             }
         }
 
@@ -684,40 +465,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _peStatTypeId
-                            where s.StatId == _hpStatId
-                            //where string.Equals(s.StatType.Name, "Base", StringComparison.CurrentCultureIgnoreCase)
-                            //where string.Equals(s.Stat.Name, "HP", StringComparison.CurrentCultureIgnoreCase)
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                return stat == null ? 0 : stat.StatValue;
+                return GetStat(_familiarType, _peStatTypeId, _hpStatId);
             }
             set
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _peStatTypeId
-                            where s.StatId == _hpStatId
-                            //where string.Equals(s.StatType.Name, "Base", StringComparison.CurrentCultureIgnoreCase)
-                            //where string.Equals(s.Stat.Name, "HP", StringComparison.CurrentCultureIgnoreCase)
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                if (stat == null)
-                {
-                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
-                    {
-                        FamiliarTypeId = Id,
-                        StatTypeId = _peStatTypeId,
-                        StatId = _hpStatId,
-                        StatValue = value
-                    });
-                }
-                else
-                {
-                    stat.StatValue = value;
-                }
+                SetStat(_familiarType, _peStatTypeId, _hpStatId, value);
             }
         }
 
@@ -725,36 +477,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _peStatTypeId
-                            where s.StatId == _atkStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                return stat == null ? 0 : stat.StatValue;
+                return GetStat(_familiarType, _peStatTypeId, _atkStatId);
             }
             set
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _peStatTypeId
-                            where s.StatId == _atkStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                if (stat == null)
-                {
-                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
-                    {
-                        FamiliarTypeId = Id,
-                        StatTypeId = _peStatTypeId,
-                        StatId = _atkStatId,
-                        StatValue = value
-                    });
-                }
-                else
-                {
-                    stat.StatValue = value;
-                }
+                SetStat(_familiarType, _peStatTypeId, _atkStatId, value);
             }
         }
 
@@ -762,36 +489,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _peStatTypeId
-                            where s.StatId == _defStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                return stat == null ? 0 : stat.StatValue;
+                return GetStat(_familiarType, _peStatTypeId, _defStatId);
             }
             set
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _peStatTypeId
-                            where s.StatId == _defStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                if (stat == null)
-                {
-                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
-                    {
-                        FamiliarTypeId = Id,
-                        StatTypeId = _peStatTypeId,
-                        StatId = _defStatId,
-                        StatValue = value
-                    });
-                }
-                else
-                {
-                    stat.StatValue = value;
-                }
+                SetStat(_familiarType, _peStatTypeId, _defStatId, value);
             }
         }
 
@@ -799,36 +501,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _peStatTypeId
-                            where s.StatId == _wisStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                return stat == null ? 0 : stat.StatValue;
+                return GetStat(_familiarType, _peStatTypeId, _wisStatId);
             }
             set
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _peStatTypeId
-                            where s.StatId == _wisStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                if (stat == null)
-                {
-                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
-                    {
-                        FamiliarTypeId = Id,
-                        StatTypeId = _peStatTypeId,
-                        StatId = _wisStatId,
-                        StatValue = value
-                    });
-                }
-                else
-                {
-                    stat.StatValue = value;
-                }
+                SetStat(_familiarType, _peStatTypeId, _wisStatId, value);
             }
         }
 
@@ -836,36 +513,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _peStatTypeId
-                            where s.StatId == _agiStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                return stat == null ? 0 : stat.StatValue;
+                return GetStat(_familiarType, _peStatTypeId, _agiStatId);
             }
             set
             {
-                var stats = from s in _familiarType.StatValues
-                            where s.StatTypeId == _peStatTypeId
-                            where s.StatId == _agiStatId
-                            select s;
-
-                var stat = stats.ToList().FirstOrDefault();
-                if (stat == null)
-                {
-                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
-                    {
-                        FamiliarTypeId = Id,
-                        StatTypeId = _peStatTypeId,
-                        StatId = _agiStatId,
-                        StatValue = value
-                    });
-                }
-                else
-                {
-                    stat.StatValue = value;
-                }
+                SetStat(_familiarType, _peStatTypeId, _agiStatId, value);
             }
         }
         #endregion
