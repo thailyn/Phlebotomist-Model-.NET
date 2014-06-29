@@ -96,7 +96,6 @@
     <Compile Include="Model\FamiliarType.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\FamiliarTypeAdditions.cs" />
     <Compile Include="Model\FamiliarTypeSkill.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>

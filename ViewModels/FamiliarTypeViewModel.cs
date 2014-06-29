@@ -342,6 +342,532 @@ namespace Phlebotomist.ViewModels
                 }
             }
         }
+
+        public double BaseATK
+        {
+            get
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _baseStatTypeId
+                            where s.StatId == _atkStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                return stat == null ? 0 : stat.StatValue;
+            }
+            set
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _baseStatTypeId
+                            where s.StatId == _atkStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                if (stat == null)
+                {
+                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
+                    {
+                        FamiliarTypeId = Id,
+                        StatTypeId = _baseStatTypeId,
+                        StatId = _atkStatId,
+                        StatValue = value
+                    });
+                }
+                else
+                {
+                    stat.StatValue = value;
+                }
+            }
+        }
+
+        public double BaseDEF
+        {
+            get
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _baseStatTypeId
+                            where s.StatId == _defStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                return stat == null ? 0 : stat.StatValue;
+            }
+            set
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _baseStatTypeId
+                            where s.StatId == _defStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                if (stat == null)
+                {
+                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
+                    {
+                        FamiliarTypeId = Id,
+                        StatTypeId = _baseStatTypeId,
+                        StatId = _defStatId,
+                        StatValue = value
+                    });
+                }
+                else
+                {
+                    stat.StatValue = value;
+                }
+            }
+        }
+
+        public double BaseWIS
+        {
+            get
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _baseStatTypeId
+                            where s.StatId == _wisStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                return stat == null ? 0 : stat.StatValue;
+            }
+            set
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _baseStatTypeId
+                            where s.StatId == _wisStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                if (stat == null)
+                {
+                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
+                    {
+                        FamiliarTypeId = Id,
+                        StatTypeId = _baseStatTypeId,
+                        StatId = _wisStatId,
+                        StatValue = value
+                    });
+                }
+                else
+                {
+                    stat.StatValue = value;
+                }
+            }
+        }
+
+        public double BaseAGI
+        {
+            get
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _baseStatTypeId
+                            where s.StatId == _agiStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                return stat == null ? 0 : stat.StatValue;
+            }
+            set
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _baseStatTypeId
+                            where s.StatId == _agiStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                if (stat == null)
+                {
+                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
+                    {
+                        FamiliarTypeId = Id,
+                        StatTypeId = _baseStatTypeId,
+                        StatId = _agiStatId,
+                        StatValue = value
+                    });
+                }
+                else
+                {
+                    stat.StatValue = value;
+                }
+            }
+        }
+
+        public double MaxHP
+        {
+            get
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _maxStatTypeId
+                            where s.StatId == _hpStatId
+                            //where string.Equals(s.StatType.Name, "Base", StringComparison.CurrentCultureIgnoreCase)
+                            //where string.Equals(s.Stat.Name, "HP", StringComparison.CurrentCultureIgnoreCase)
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                return stat == null ? 0 : stat.StatValue;
+            }
+            set
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _maxStatTypeId
+                            where s.StatId == _hpStatId
+                            //where string.Equals(s.StatType.Name, "Base", StringComparison.CurrentCultureIgnoreCase)
+                            //where string.Equals(s.Stat.Name, "HP", StringComparison.CurrentCultureIgnoreCase)
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                if (stat == null)
+                {
+                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
+                    {
+                        FamiliarTypeId = Id,
+                        StatTypeId = _maxStatTypeId,
+                        StatId = _hpStatId,
+                        StatValue = value
+                    });
+                }
+                else
+                {
+                    stat.StatValue = value;
+                }
+            }
+        }
+
+        public double MaxATK
+        {
+            get
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _maxStatTypeId
+                            where s.StatId == _atkStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                return stat == null ? 0 : stat.StatValue;
+            }
+            set
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _maxStatTypeId
+                            where s.StatId == _atkStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                if (stat == null)
+                {
+                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
+                    {
+                        FamiliarTypeId = Id,
+                        StatTypeId = _maxStatTypeId,
+                        StatId = _atkStatId,
+                        StatValue = value
+                    });
+                }
+                else
+                {
+                    stat.StatValue = value;
+                }
+            }
+        }
+
+        public double MaxDEF
+        {
+            get
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _maxStatTypeId
+                            where s.StatId == _defStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                return stat == null ? 0 : stat.StatValue;
+            }
+            set
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _maxStatTypeId
+                            where s.StatId == _defStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                if (stat == null)
+                {
+                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
+                    {
+                        FamiliarTypeId = Id,
+                        StatTypeId = _maxStatTypeId,
+                        StatId = _defStatId,
+                        StatValue = value
+                    });
+                }
+                else
+                {
+                    stat.StatValue = value;
+                }
+            }
+        }
+
+        public double MaxWIS
+        {
+            get
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _maxStatTypeId
+                            where s.StatId == _wisStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                return stat == null ? 0 : stat.StatValue;
+            }
+            set
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _maxStatTypeId
+                            where s.StatId == _wisStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                if (stat == null)
+                {
+                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
+                    {
+                        FamiliarTypeId = Id,
+                        StatTypeId = _maxStatTypeId,
+                        StatId = _wisStatId,
+                        StatValue = value
+                    });
+                }
+                else
+                {
+                    stat.StatValue = value;
+                }
+            }
+        }
+
+        public double MaxAGI
+        {
+            get
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _maxStatTypeId
+                            where s.StatId == _agiStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                return stat == null ? 0 : stat.StatValue;
+            }
+            set
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _maxStatTypeId
+                            where s.StatId == _agiStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                if (stat == null)
+                {
+                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
+                    {
+                        FamiliarTypeId = Id,
+                        StatTypeId = _maxStatTypeId,
+                        StatId = _agiStatId,
+                        StatValue = value
+                    });
+                }
+                else
+                {
+                    stat.StatValue = value;
+                }
+            }
+        }
+
+        public double PEHP
+        {
+            get
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _peStatTypeId
+                            where s.StatId == _hpStatId
+                            //where string.Equals(s.StatType.Name, "Base", StringComparison.CurrentCultureIgnoreCase)
+                            //where string.Equals(s.Stat.Name, "HP", StringComparison.CurrentCultureIgnoreCase)
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                return stat == null ? 0 : stat.StatValue;
+            }
+            set
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _peStatTypeId
+                            where s.StatId == _hpStatId
+                            //where string.Equals(s.StatType.Name, "Base", StringComparison.CurrentCultureIgnoreCase)
+                            //where string.Equals(s.Stat.Name, "HP", StringComparison.CurrentCultureIgnoreCase)
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                if (stat == null)
+                {
+                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
+                    {
+                        FamiliarTypeId = Id,
+                        StatTypeId = _peStatTypeId,
+                        StatId = _hpStatId,
+                        StatValue = value
+                    });
+                }
+                else
+                {
+                    stat.StatValue = value;
+                }
+            }
+        }
+
+        public double PEATK
+        {
+            get
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _peStatTypeId
+                            where s.StatId == _atkStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                return stat == null ? 0 : stat.StatValue;
+            }
+            set
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _peStatTypeId
+                            where s.StatId == _atkStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                if (stat == null)
+                {
+                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
+                    {
+                        FamiliarTypeId = Id,
+                        StatTypeId = _peStatTypeId,
+                        StatId = _atkStatId,
+                        StatValue = value
+                    });
+                }
+                else
+                {
+                    stat.StatValue = value;
+                }
+            }
+        }
+
+        public double PEDEF
+        {
+            get
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _peStatTypeId
+                            where s.StatId == _defStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                return stat == null ? 0 : stat.StatValue;
+            }
+            set
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _peStatTypeId
+                            where s.StatId == _defStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                if (stat == null)
+                {
+                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
+                    {
+                        FamiliarTypeId = Id,
+                        StatTypeId = _peStatTypeId,
+                        StatId = _defStatId,
+                        StatValue = value
+                    });
+                }
+                else
+                {
+                    stat.StatValue = value;
+                }
+            }
+        }
+
+        public double PEWIS
+        {
+            get
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _peStatTypeId
+                            where s.StatId == _wisStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                return stat == null ? 0 : stat.StatValue;
+            }
+            set
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _peStatTypeId
+                            where s.StatId == _wisStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                if (stat == null)
+                {
+                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
+                    {
+                        FamiliarTypeId = Id,
+                        StatTypeId = _peStatTypeId,
+                        StatId = _wisStatId,
+                        StatValue = value
+                    });
+                }
+                else
+                {
+                    stat.StatValue = value;
+                }
+            }
+        }
+
+        public double PEAGI
+        {
+            get
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _peStatTypeId
+                            where s.StatId == _agiStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                return stat == null ? 0 : stat.StatValue;
+            }
+            set
+            {
+                var stats = from s in _familiarType.StatValues
+                            where s.StatTypeId == _peStatTypeId
+                            where s.StatId == _agiStatId
+                            select s;
+
+                var stat = stats.ToList().FirstOrDefault();
+                if (stat == null)
+                {
+                    _familiarType.StatValues.Add(new FamiliarTypeStatValue
+                    {
+                        FamiliarTypeId = Id,
+                        StatTypeId = _peStatTypeId,
+                        StatId = _agiStatId,
+                        StatValue = value
+                    });
+                }
+                else
+                {
+                    stat.StatValue = value;
+                }
+            }
+        }
         #endregion
 
         public FamiliarTypeViewModel(FamiliarType model, IPhlebotomistRepository phlebotomistRepository)
