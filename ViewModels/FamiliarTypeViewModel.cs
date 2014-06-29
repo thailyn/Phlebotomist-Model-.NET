@@ -268,6 +268,29 @@ namespace Phlebotomist.ViewModels
             }
         }
 
+        public FamiliarTypeViewModel NextEvolution
+        {
+            get
+            {
+                return new FamiliarTypeViewModel(_familiarType.NextEvolution, PhlebotomistRepository);
+            }
+            set
+            {
+                if (value == null)
+                {
+                    _familiarType.NextEvolution = null;
+                    _familiarType.NextEvolutionId = null;
+                }
+                else
+                {
+                    _familiarType.NextEvolution = value._familiarType;
+                    _familiarType.NextEvolutionId = value.Id;
+                }
+                OnPropertyChanged("NextEvolution");
+                OnPropertyChanged("NextEvolutionId");
+            }
+        }
+
         public FamiliarTypeViewModel(FamiliarType model, IPhlebotomistRepository phlebotomistRepository)
         {
             _familiarType = model;
