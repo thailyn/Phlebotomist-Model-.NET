@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Phlebotomist.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace Phlebotomist.Repositories.Interfaces
 {
     public interface IPhlebotomistRepository
     {
+        PhlebotomistModelContainer Context { get; }
+
         void Save();
     }
 }
