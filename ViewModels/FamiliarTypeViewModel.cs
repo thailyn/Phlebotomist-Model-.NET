@@ -532,6 +532,12 @@ namespace Phlebotomist.ViewModels
         {
             try
             {
+                if (FamiliarType.Id < 0)
+                {
+                    var repository = PhlebotomistRepository as IPhlebotomistRepository;
+                    repository.Context.FamiliarTypes.Add(FamiliarType);
+                }
+
                 PhlebotomistRepository.Save();
             }
             catch (Exception)
