@@ -11,7 +11,9 @@ namespace Phlebotomist.Model
     {
         public void Save()
         {
-            SaveChanges();
+            // result == 0: bad
+            // result == 1: good
+            int result = SaveChanges();
         }
 
         public void Rollback()
