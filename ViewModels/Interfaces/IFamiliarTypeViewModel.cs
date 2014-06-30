@@ -2,6 +2,7 @@
 using Phlebotomist.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +20,21 @@ namespace Phlebotomist.ViewModels.Interfaces
         long Id { get; set; }
         Nullable<long> BbId { get; set; }
         string Name { get; set; }
-        //*********************************//
+        long RarityId { get; set; }
+        short NumStars { get; set; }
+        short MaxStars { get; set; }
+        long GrowthId { get; set; }
+        long Worth { get; set; }
+        long RaceId { get; set; }
+        short Tradable { get; set; }
+        string LastWords { get; set; }
+        Nullable<long> PrevEvolutionId { get; set; }
+        Nullable<long> NextEvolutionId { get; set; }
+
         FamiliarTypeViewModel PreviousEvolution { get; set; }
+        FamiliarTypeViewModel NextEvolution { get; set; }
+
+        ObservableCollection<FamiliarTypeSkill> Skills { get; set; }
         #endregion
         #endregion
 
