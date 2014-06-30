@@ -157,7 +157,7 @@
     <Compile Include="Model\SkillPattern.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\SkillTypes.cs">
+    <Compile Include="Model\SkillType.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Stat.cs">

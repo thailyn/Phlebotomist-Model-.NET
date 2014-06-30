@@ -53,8 +53,8 @@ namespace Phlebotomist.Model
         public DbSet<RaidBoss> RaidBosses { get; set; }
         public DbSet<Rarity> Rarities1 { get; set; }
         public DbSet<SkillAffectedStat> SkillAffectedStats { get; set; }
-        public DbSet<SkillPattern> SkillPatterns1 { get; set; }
-        public DbSet<SkillTypes> SkillTypes { get; set; }
+        public DbSet<SkillPattern> SkillPatterns { get; set; }
+        public DbSet<SkillType> SkillType { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Stat> Stats { get; set; }
         public DbSet<FamiliarTypeStatValue> FamiliarTypeStatValues1 { get; set; }

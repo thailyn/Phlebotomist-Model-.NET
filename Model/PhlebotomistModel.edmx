@@ -1155,8 +1155,8 @@
           <EntitySet Name="RaidBosses" EntityType="PhlebotomistModel.RaidBoss" />
           <EntitySet Name="Rarities1" EntityType="PhlebotomistModel.Rarity" />
           <EntitySet Name="SkillAffectedStats" EntityType="PhlebotomistModel.SkillAffectedStat" />
-          <EntitySet Name="SkillPatterns1" EntityType="PhlebotomistModel.SkillPattern" />
-          <EntitySet Name="SkillTypes" EntityType="PhlebotomistModel.SkillTypes" />
+          <EntitySet Name="SkillPatterns" EntityType="PhlebotomistModel.SkillPattern" />
+          <EntitySet Name="SkillType" EntityType="PhlebotomistModel.SkillType" />
           <EntitySet Name="Skills" EntityType="PhlebotomistModel.Skill" />
           <EntitySet Name="Stats" EntityType="PhlebotomistModel.Stat" />
           <AssociationSet Name="FK_raid_boss_brigade_attacks_0_0" Association="PhlebotomistModel.FK_raid_boss_brigade_attacks_0_0">
@@ -1308,11 +1308,11 @@
             <End Role="skill_affected_stats" EntitySet="SkillAffectedStats" />
           </AssociationSet>
           <AssociationSet Name="FK_skills_1_0" Association="PhlebotomistModel.FK_skills_1_0">
-            <End Role="skill_patterns" EntitySet="SkillPatterns1" />
+            <End Role="skill_patterns" EntitySet="SkillPatterns" />
             <End Role="skill" EntitySet="Skills" />
           </AssociationSet>
           <AssociationSet Name="FK_skills_3_0" Association="PhlebotomistModel.FK_skills_3_0">
-            <End Role="skill_types" EntitySet="SkillTypes" />
+            <End Role="skill_types" EntitySet="SkillType" />
             <End Role="skill" EntitySet="Skills" />
           </AssociationSet>
           <AssociationSet Name="FK_skills_0_0" Association="PhlebotomistModel.FK_skills_0_0">
@@ -1711,12 +1711,12 @@
           <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Skills" Relationship="PhlebotomistModel.FK_skills_1_0" FromRole="skill_patterns" ToRole="skill" />
         </EntityType>
-        <EntityType Name="SkillTypes">
+        <EntityType Name="SkillType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nname" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Skills" Relationship="PhlebotomistModel.FK_skills_3_0" FromRole="skill_types" ToRole="skill" />
         </EntityType>
@@ -2219,7 +2219,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_skills_3_0">
-          <End Type="PhlebotomistModel.SkillTypes" Role="skill_types" Multiplicity="1" />
+          <End Type="PhlebotomistModel.SkillType" Role="skill_types" Multiplicity="1" />
           <End Type="PhlebotomistModel.Skill" Role="skill" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="skill_types">
@@ -2652,7 +2652,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SkillPatterns1">
+          <EntitySetMapping Name="SkillPatterns">
             <EntityTypeMapping TypeName="PhlebotomistModel.SkillPattern">
               <MappingFragment StoreEntitySet="skill_patterns">
                 <ScalarProperty Name="Description" ColumnName="description" />
@@ -2661,11 +2661,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SkillTypes">
-            <EntityTypeMapping TypeName="PhlebotomistModel.SkillTypes">
+          <EntitySetMapping Name="SkillType">
+            <EntityTypeMapping TypeName="PhlebotomistModel.SkillType">
               <MappingFragment StoreEntitySet="skill_types">
                 <ScalarProperty Name="Description" ColumnName="description" />
-                <ScalarProperty Name="Nname" ColumnName="name" />
+                <ScalarProperty Name="Name" ColumnName="name" />
                 <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

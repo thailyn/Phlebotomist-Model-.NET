@@ -44,7 +44,7 @@ namespace Phlebotomist.Model
         public virtual ICollection<FamiliarTypeSkill> FamiliarTypes { get; set; }
         public virtual ICollection<SkillAffectedStat> AffectedStats { get; set; }
         public virtual SkillPattern Pattern { get; set; }
-        public virtual SkillTypes Type { get; set; }
+        public virtual SkillType Type { get; set; }
         public virtual Stat FoeDefensiveModifierStat { get; set; }
         public virtual Stat ModifierStat { get; set; }
     }
