@@ -172,6 +172,8 @@
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="ViewModels\FamiliarTypeViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\IFamiliarTypeViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\ISkillViewModel.cs" />
+    <Compile Include="ViewModels\SkillViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
