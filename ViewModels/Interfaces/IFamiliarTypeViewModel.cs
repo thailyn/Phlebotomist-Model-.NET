@@ -49,6 +49,8 @@ namespace Phlebotomist.ViewModels.Interfaces
         #endregion
 
         #region Mutators
+        void AddSkill(Skill newSkill);
+        void RemoveSkill(Skill skill);
         #endregion
 
         /// <summary>

@@ -4,6 +4,7 @@ using Phlebotomist.UnitOfWork;
 using Phlebotomist.ViewModels.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,8 @@ namespace Phlebotomist.ViewModels
         public IPhlebotomistRepository PhlebotomistRepository { get; set; }
         #endregion
 
+        #region Properties
+        #region Model
         private FamiliarType _familiarType;
         public FamiliarType FamiliarType
         {
@@ -36,7 +39,9 @@ namespace Phlebotomist.ViewModels
                 }
             }
         }
+        #endregion
 
+        #region Bindings
         public long Id
         {
             get
@@ -522,11 +527,79 @@ namespace Phlebotomist.ViewModels
         }
         #endregion
 
+        public ObservableCollection<FamiliarTypeSkill> _skills;
+        public ObservableCollection<FamiliarTypeSkill> Skills
+        {
+            get
+            {
+                return _skills;
+            }
+            set
+            {
+                if (value != _skills)
+                {
+                    _skills = value;
+                    OnPropertyChanged("Skills");
+                }
+            }
+        }
+        #endregion
+        #endregion
+
         public FamiliarTypeViewModel(FamiliarType model, IPhlebotomistRepository phlebotomistRepository)
         {
             _familiarType = model;
             PhlebotomistRepository = phlebotomistRepository;
+
+            Skills = new ObservableCollection<FamiliarTypeSkill>();
+            foreach (var skill in _familiarType.Skills)
+            {
+                Skills.Add(skill);
+            }
         }
+
+        #region Mutators
+        public void AddSkill(Skill newSkill)
+        {
+            var familiarTypeSkill = new FamiliarTypeSkill
+            {
+                FamiliarTypeId = Id,
+                SkillId = newSkill.Id,
+                Skill = newSkill
+            };
+
+            Skills.Add(familiarTypeSkill);
+            FamiliarType.Skills.Add(familiarTypeSkill);
+            OnPropertyChanged("Skills");
+        }
+
+        public void RemoveSkill(Skill skill)
+        {
+            for (int i = 0; i < Skills.Count; i++)
+            {
+                if (Skills[i].SkillId == skill.Id)
+                {
+                    Skills.RemoveAt(i);
+                    break;
+                }
+            }
+
+            foreach (var familiarTypeSkill in FamiliarType.Skills)
+            {
+                if (familiarTypeSkill.SkillId == skill.Id)
+                {
+                    FamiliarType.Skills.Remove(familiarTypeSkill);
+
+                    var repository = PhlebotomistRepository as IPhlebotomistRepository;
+                    repository.Context.FamiliarTypeSkills.Remove(familiarTypeSkill);
+
+                    break;
+                }
+            }
+
+            OnPropertyChanged("Skills");
+        }
+        #endregion
 
         public bool Save()
         {
