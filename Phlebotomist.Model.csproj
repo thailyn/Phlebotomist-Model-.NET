@@ -170,7 +170,9 @@
     <Compile Include="Repositories\Interfaces\IPhlebotomistRepository.cs" />
     <Compile Include="Repositories\PhlebotomistRepository.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="ViewModels\BrigadeViewModel.cs" />
     <Compile Include="ViewModels\FamiliarTypeViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IBrigadeViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\IFamiliarTypeViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\ISkillViewModel.cs" />
     <Compile Include="ViewModels\SkillViewModel.cs" />
