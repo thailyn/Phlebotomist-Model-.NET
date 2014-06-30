@@ -178,9 +178,9 @@ namespace Phlebotomist.ViewModels
             PhlebotomistRepository = phlebotomistRepository;
 
             Familiars = new ObservableCollection<FamiliarTypeViewModel>();
-            foreach (var familiar in Brigade.Familiars)
+            foreach (var brigadeFamiliarType in Brigade.FamiliarTypes)
             {
-                Familiars.Add(new FamiliarTypeViewModel(familiar.Familiar, PhlebotomistRepository));
+                Familiars.Add(new FamiliarTypeViewModel(brigadeFamiliarType.FamiliarType, PhlebotomistRepository));
             }
         }
 
