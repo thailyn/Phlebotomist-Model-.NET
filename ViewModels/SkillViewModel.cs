@@ -19,6 +19,8 @@ namespace Phlebotomist.ViewModels
         public IPhlebotomistRepository PhlebotomistRepository { get; set; }
         #endregion
 
+        #region Properties
+        #region Model
         private Skill _skill;
         public Skill Skill
         {
@@ -35,7 +37,9 @@ namespace Phlebotomist.ViewModels
                 }
             }
         }
+        #endregion
 
+        #region Bindings
         public long Id
         {
             get
@@ -435,6 +439,8 @@ namespace Phlebotomist.ViewModels
                 }
             }
         }
+        #endregion
+        #endregion
 
         public SkillViewModel(Skill model, IPhlebotomistRepository phlebotomistRepository)
         {
