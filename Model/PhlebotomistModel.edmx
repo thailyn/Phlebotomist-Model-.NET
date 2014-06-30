@@ -40,6 +40,16 @@
           <Property Name="date" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="offered_familiar_id" Type="integer" Nullable="false" />
         </EntityType>
+        <EntityType Name="brigade_familiar_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brigade_id" Type="integer" Nullable="false" />
+          <Property Name="familiar_type_id" Type="integer" Nullable="false" />
+          <Property Name="brigade_formation_position_id" Type="integer" Nullable="false" />
+          <Property Name="is_reserve" Type="tinyint" Nullable="false" />
+        </EntityType>
         <EntityType Name="brigade_familiars">
           <Key>
             <PropertyRef Name="id" />
@@ -407,6 +417,42 @@
             </Principal>
             <Dependent Role="bazaar_offers">
               <PropertyRef Name="offered_familiar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_familiar_types_0_0">
+          <End Role="brigade_formation_positions" Type="Self.brigade_formation_positions" Multiplicity="1" />
+          <End Role="brigade_familiar_types" Type="Self.brigade_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigade_formation_positions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade_familiar_types">
+              <PropertyRef Name="brigade_formation_position_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_familiar_types_1_0">
+          <End Role="familiar_types" Type="Self.familiar_types" Multiplicity="1" />
+          <End Role="brigade_familiar_types" Type="Self.brigade_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="familiar_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade_familiar_types">
+              <PropertyRef Name="familiar_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_familiar_types_2_0">
+          <End Role="brigades" Type="Self.brigades" Multiplicity="1" />
+          <End Role="brigade_familiar_types" Type="Self.brigade_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brigades">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brigade_familiar_types">
+              <PropertyRef Name="brigade_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -907,6 +953,7 @@
           <EntitySet Name="bazaar_offer_familiar_type_terms" EntityType="Self.bazaar_offer_familiar_type_terms" store:Type="Tables" />
           <EntitySet Name="bazaar_offer_item_terms" EntityType="Self.bazaar_offer_item_terms" store:Type="Tables" />
           <EntitySet Name="bazaar_offers" EntityType="Self.bazaar_offers" store:Type="Tables" />
+          <EntitySet Name="brigade_familiar_types" EntityType="Self.brigade_familiar_types" store:Type="Tables" />
           <EntitySet Name="brigade_familiars" EntityType="Self.brigade_familiars" store:Type="Tables" />
           <EntitySet Name="brigade_formation_horizontal_position_types" EntityType="Self.brigade_formation_horizontal_position_types" store:Type="Tables" />
           <EntitySet Name="brigade_formation_positions" EntityType="Self.brigade_formation_positions" store:Type="Tables" />
@@ -956,6 +1003,18 @@
           <AssociationSet Name="FK_bazaar_offers_0_0" Association="Self.FK_bazaar_offers_0_0">
             <End Role="familiars" EntitySet="familiars" />
             <End Role="bazaar_offers" EntitySet="bazaar_offers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_familiar_types_0_0" Association="Self.FK_brigade_familiar_types_0_0">
+            <End Role="brigade_formation_positions" EntitySet="brigade_formation_positions" />
+            <End Role="brigade_familiar_types" EntitySet="brigade_familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_familiar_types_1_0" Association="Self.FK_brigade_familiar_types_1_0">
+            <End Role="familiar_types" EntitySet="familiar_types" />
+            <End Role="brigade_familiar_types" EntitySet="brigade_familiar_types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_familiar_types_2_0" Association="Self.FK_brigade_familiar_types_2_0">
+            <End Role="brigades" EntitySet="brigades" />
+            <End Role="brigade_familiar_types" EntitySet="brigade_familiar_types" />
           </AssociationSet>
           <AssociationSet Name="FK_brigade_familiars_0_0" Association="Self.FK_brigade_familiars_0_0">
             <End Role="brigade_formation_positions" EntitySet="brigade_formation_positions" />
@@ -1345,6 +1404,19 @@
             <End Role="FamiliarType" EntitySet="FamiliarTypes" />
             <End Role="familiar_type_stat_values" EntitySet="FamiliarTypeStatValues1" />
           </AssociationSet>
+          <EntitySet Name="BrigadeFamiliarTypes" EntityType="PhlebotomistModel.BrigadeFamiliarType" />
+          <AssociationSet Name="FK_brigade_familiar_types_0_0" Association="PhlebotomistModel.FK_brigade_familiar_types_0_0">
+            <End Role="BrigadeFormationPosition" EntitySet="BrigadeFormationPositions1" />
+            <End Role="brigade_familiar_types" EntitySet="BrigadeFamiliarTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_familiar_types_1_0" Association="PhlebotomistModel.FK_brigade_familiar_types_1_0">
+            <End Role="FamiliarType" EntitySet="FamiliarTypes" />
+            <End Role="brigade_familiar_types" EntitySet="BrigadeFamiliarTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_brigade_familiar_types_2_0" Association="PhlebotomistModel.FK_brigade_familiar_types_2_0">
+            <End Role="Brigade" EntitySet="Brigades" />
+            <End Role="brigade_familiar_types" EntitySet="BrigadeFamiliarTypes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="AttackType">
           <Key>
@@ -1422,6 +1494,7 @@
           <NavigationProperty Name="HorizontalPositionTypes" Relationship="PhlebotomistModel.FK_brigade_formation_positions_1_0" FromRole="brigade_formation_positions" ToRole="brigade_formation_horizontal_position_types" />
           <NavigationProperty Name="VerticalPositionTypes" Relationship="PhlebotomistModel.FK_brigade_formation_positions_0_0" FromRole="brigade_formation_positions" ToRole="brigade_formation_vertical_position_types" />
           <NavigationProperty Name="Formation" Relationship="PhlebotomistModel.FK_brigade_formation_positions_2_0" FromRole="brigade_formation_positions" ToRole="brigade_formations" />
+          <NavigationProperty Name="FamiliarTypes" Relationship="PhlebotomistModel.FK_brigade_familiar_types_0_0" FromRole="BrigadeFormationPosition" ToRole="brigade_familiar_types" />
         </EntityType>
         <EntityType Name="BrigadeFormationVerticalPositionType">
           <Key>
@@ -1456,6 +1529,7 @@
           <NavigationProperty Name="Formation" Relationship="PhlebotomistModel.FK_brigades_1_0" FromRole="brigade" ToRole="brigade_formations" />
           <NavigationProperty Name="Player" Relationship="PhlebotomistModel.FK_brigades_0_0" FromRole="brigade" ToRole="player" />
           <NavigationProperty Name="RaidBossAttacks" Relationship="PhlebotomistModel.FK_raid_boss_brigade_attacks_1_0" FromRole="brigade" ToRole="raid_boss_brigade_attacks" />
+          <NavigationProperty Name="FamiliarTypes" Relationship="PhlebotomistModel.FK_brigade_familiar_types_2_0" FromRole="Brigade" ToRole="brigade_familiar_types" />
         </EntityType>
         <EntityType Name="EventEliteFamiliarType">
           <Key>
@@ -1542,6 +1616,7 @@
           <NavigationProperty Name="Familiars" Relationship="PhlebotomistModel.FK_familiars_0_0" FromRole="familiar_types" ToRole="familiar" />
           <NavigationProperty Name="RaidBosses" Relationship="PhlebotomistModel.FK_raid_boss_familiar_types_2_0" FromRole="familiar_types" ToRole="raid_boss_familiar_types" />
           <NavigationProperty Name="StatValues" Relationship="PhlebotomistModel.FK_familiar_type_stat_values_2_0" FromRole="FamiliarType" ToRole="familiar_type_stat_values" />
+          <NavigationProperty Name="FamiliarTypes" Relationship="PhlebotomistModel.FK_brigade_familiar_types_1_0" FromRole="FamiliarType" ToRole="brigade_familiar_types" />
         </EntityType>
         <EntityType Name="Familiar">
           <Key>
@@ -2335,6 +2410,55 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="BrigadeFamiliarType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrigadeId" Type="Int64" Nullable="false" />
+          <Property Name="FamiliarTypeId" Type="Int64" Nullable="false" />
+          <Property Name="BrigadeFormationPositionId" Type="Int64" Nullable="false" />
+          <Property Name="IsReserve" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="BrigadeFormationPosition" Relationship="PhlebotomistModel.FK_brigade_familiar_types_0_0" FromRole="brigade_familiar_types" ToRole="BrigadeFormationPosition" />
+          <NavigationProperty Name="FamiliarType" Relationship="PhlebotomistModel.FK_brigade_familiar_types_1_0" FromRole="brigade_familiar_types" ToRole="FamiliarType" />
+          <NavigationProperty Name="Brigade" Relationship="PhlebotomistModel.FK_brigade_familiar_types_2_0" FromRole="brigade_familiar_types" ToRole="Brigade" />
+        </EntityType>
+        <Association Name="FK_brigade_familiar_types_0_0">
+          <End Type="PhlebotomistModel.BrigadeFormationPosition" Role="BrigadeFormationPosition" Multiplicity="1" />
+          <End Type="PhlebotomistModel.BrigadeFamiliarType" Role="brigade_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrigadeFormationPosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="brigade_familiar_types">
+              <PropertyRef Name="BrigadeFormationPositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_familiar_types_1_0">
+          <End Type="PhlebotomistModel.FamiliarType" Role="FamiliarType" Multiplicity="1" />
+          <End Type="PhlebotomistModel.BrigadeFamiliarType" Role="brigade_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamiliarType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="brigade_familiar_types">
+              <PropertyRef Name="FamiliarTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_brigade_familiar_types_2_0">
+          <End Type="PhlebotomistModel.Brigade" Role="Brigade" Multiplicity="1" />
+          <End Type="PhlebotomistModel.BrigadeFamiliarType" Role="brigade_familiar_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brigade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="brigade_familiar_types">
+              <PropertyRef Name="BrigadeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2718,6 +2842,17 @@
             <EntityTypeMapping TypeName="PhlebotomistModel.StatType">
               <MappingFragment StoreEntitySet="stat_types">
                 <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrigadeFamiliarTypes">
+            <EntityTypeMapping TypeName="PhlebotomistModel.BrigadeFamiliarType">
+              <MappingFragment StoreEntitySet="brigade_familiar_types">
+                <ScalarProperty Name="IsReserve" ColumnName="is_reserve" />
+                <ScalarProperty Name="BrigadeFormationPositionId" ColumnName="brigade_formation_position_id" />
+                <ScalarProperty Name="FamiliarTypeId" ColumnName="familiar_type_id" />
+                <ScalarProperty Name="BrigadeId" ColumnName="brigade_id" />
                 <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

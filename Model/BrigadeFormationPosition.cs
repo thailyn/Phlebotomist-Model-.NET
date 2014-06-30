@@ -17,6 +17,7 @@ namespace Phlebotomist.Model
         public BrigadeFormationPosition()
         {
             this.Familiars = new HashSet<BrigadeFamiliars>();
+            this.FamiliarTypes = new HashSet<BrigadeFamiliarType>();
         }
     
         public long Id { get; set; }
@@ -28,5 +29,6 @@ namespace Phlebotomist.Model
         public virtual BrigadeFormationHorizontalPositionType HorizontalPositionTypes { get; set; }
         public virtual BrigadeFormationVerticalPositionType VerticalPositionTypes { get; set; }
         public virtual BrigadeFormation Formation { get; set; }
+        public virtual ICollection<BrigadeFamiliarType> FamiliarTypes { get; set; }
     }
 }

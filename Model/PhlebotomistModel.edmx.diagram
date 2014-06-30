@@ -85,6 +85,10 @@
         <AssociationConnector Association="PhlebotomistModel.FK_familiar_type_stat_values_0_0" />
         <AssociationConnector Association="PhlebotomistModel.FK_familiar_type_stat_values_1_0" />
         <AssociationConnector Association="PhlebotomistModel.FK_familiar_type_stat_values_2_0" />
+        <EntityTypeShape EntityType="PhlebotomistModel.BrigadeFamiliarType" Width="1.5" PointX="12.5" PointY="21.5" />
+        <AssociationConnector Association="PhlebotomistModel.FK_brigade_familiar_types_0_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_brigade_familiar_types_1_0" />
+        <AssociationConnector Association="PhlebotomistModel.FK_brigade_familiar_types_2_0" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

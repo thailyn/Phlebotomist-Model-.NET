@@ -66,6 +66,9 @@
     <Compile Include="Model\BrigadeFamiliars.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\BrigadeFamiliarType.cs">
+      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\BrigadeFormation.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
