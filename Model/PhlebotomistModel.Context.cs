@@ -30,10 +30,10 @@ namespace Phlebotomist.Model
         public DbSet<BazaarOfferItemTerm> BazaarOfferItemTerms1 { get; set; }
         public DbSet<BazaarOffer> BazaarOffers1 { get; set; }
         public DbSet<BrigadeFamiliars> BrigadeFamiliars { get; set; }
-        public DbSet<BrigadeFormationHorizontalPositionType> BrigadeFormationHorizontalPositionTypes1 { get; set; }
-        public DbSet<BrigadeFormationPosition> BrigadeFormationPositions1 { get; set; }
-        public DbSet<BrigadeFormationVerticalPositionType> BrigadeFormationVerticalPositionTypes1 { get; set; }
-        public DbSet<BrigadeFormation> BrigadeFormations1 { get; set; }
+        public DbSet<BrigadeFormationHorizontalPositionType> BrigadeFormationHorizontalPositionTypes { get; set; }
+        public DbSet<BrigadeFormationPosition> BrigadeFormationPositions { get; set; }
+        public DbSet<BrigadeFormationVerticalPositionType> BrigadeFormationVerticalPositionTypes { get; set; }
+        public DbSet<BrigadeFormation> BrigadeFormations { get; set; }
         public DbSet<Brigade> Brigades { get; set; }
         public DbSet<EventEliteFamiliarType> EventEliteFamiliarTypes1 { get; set; }
         public DbSet<EventType> EventTypes { get; set; }
