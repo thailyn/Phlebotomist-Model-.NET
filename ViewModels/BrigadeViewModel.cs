@@ -172,6 +172,67 @@ namespace Phlebotomist.ViewModels
                 }
             }
         }
+
+        #region Familiars
+        public FamiliarTypeViewModel FarLeftFrontFamiliarType
+        {
+            get
+            {
+                return GetBrigadePositionFamiliarType(BrigadeHorizontalPosition.FarLeft, false);
+            }
+            set
+            {
+                SetBrigadePositionFamiliarType(BrigadeHorizontalPosition.FarLeft, false, value);
+            }
+        }
+
+        public FamiliarTypeViewModel GetBrigadePositionFamiliarType(BrigadeHorizontalPosition horizontalPosition, bool isReserve)
+        {
+            var familiars = from bf in _brigade.FamiliarTypes
+                            where bf.BrigadeFormationPosition.HorizontalPositionTypeId == (int)horizontalPosition
+                            where bf.IsReserve == (isReserve ? 1 : 0)
+                            select bf.FamiliarType;
+
+            var familiar = familiars.ToList().FirstOrDefault();
+            if (familiar == null)
+            {
+                return null;
+            }
+            else
+            {
+                return new FamiliarTypeViewModel(familiar, PhlebotomistRepository);
+            }
+        }
+
+        public void SetBrigadePositionFamiliarType(BrigadeHorizontalPosition horizontalPosition, bool isReserve, FamiliarTypeViewModel familiarType)
+        {
+            var brigadeFamiliars = from bf in _brigade.FamiliarTypes
+                                   where bf.BrigadeFormationPosition.HorizontalPositionTypeId == (int)horizontalPosition
+                                   where bf.IsReserve == (isReserve ? 1 : 0)
+                                   select bf;
+
+            var brigadeFamiliar = brigadeFamiliars.ToList().FirstOrDefault();
+            if (brigadeFamiliar == null)
+            {
+                var brigadeFormationPosition = PhlebotomistRepository.Context.BrigadeFormationPositions
+                    .Where(p => p.BrigadeFormationId == _brigade.BrigadeFormationId
+                    && p.HorizontalPositionTypeId == (int)horizontalPosition).FirstOrDefault();
+
+                _brigade.FamiliarTypes.Add(new BrigadeFamiliarType
+                {
+                    FamiliarTypeId = familiarType.Id,
+                    BrigadeFormationPositionId = brigadeFormationPosition.Id,
+                    //BrigadeId = _brigade.Id,
+                    Brigade = _brigade,
+                    IsReserve = (byte)(isReserve ? 1 : 0)
+                });
+            }
+            else
+            {
+                brigadeFamiliar.FamiliarTypeId = familiarType.Id;
+            }
+        }
+        #endregion
         #endregion
 
         #region Utility
