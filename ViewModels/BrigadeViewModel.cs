@@ -11,6 +11,15 @@ using System.Threading.Tasks;
 
 namespace Phlebotomist.ViewModels
 {
+    public enum BrigadeHorizontalPosition
+    {
+        FarLeft = 1,
+        MidLeft,
+        Middle,
+        MidRight,
+        FarRight
+    }
+
     public class BrigadeViewModel : IBrigadeViewModel, INotifyPropertyChanged
     {
         #region Properties
