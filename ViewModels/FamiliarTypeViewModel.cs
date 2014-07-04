@@ -591,6 +591,29 @@ namespace Phlebotomist.ViewModels
             }
         }
 
+        public double PEOrMaxPvPScore
+        {
+            get
+            {
+                var statType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "PE")).FirstOrDefault();
+                var verticalPosition = PhlebotomistRepository.Context.BrigadeFormationVerticalPositionTypes.Where(vp =>
+                    string.Equals(vp.Name, "Front")).FirstOrDefault();
+                var eventType = PhlebotomistRepository.Context.EventTypes.Where(et =>
+                    string.Equals(et.Name, "PvP")).FirstOrDefault();
+
+                var peScore = GetScore(statType, verticalPosition, eventType);
+                if (peScore > 0)
+                {
+                    return peScore;
+                }
+
+                var maxStatType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "Max")).FirstOrDefault();
+                return GetScore(maxStatType, verticalPosition, eventType);
+            }
+        }
+
         public double BaseRaidScore
         {
             get
@@ -633,6 +656,29 @@ namespace Phlebotomist.ViewModels
                     string.Equals(et.Name, "Raid")).FirstOrDefault();
 
                 return GetScore(statType, verticalPosition, eventType);
+            }
+        }
+
+        public double PEOrMaxRaidScore
+        {
+            get
+            {
+                var statType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "PE")).FirstOrDefault();
+                var verticalPosition = PhlebotomistRepository.Context.BrigadeFormationVerticalPositionTypes.Where(vp =>
+                    string.Equals(vp.Name, "Front")).FirstOrDefault();
+                var eventType = PhlebotomistRepository.Context.EventTypes.Where(et =>
+                    string.Equals(et.Name, "Raid")).FirstOrDefault();
+
+                var peScore = GetScore(statType, verticalPosition, eventType);
+                if (peScore > 0)
+                {
+                    return peScore;
+                }
+
+                var maxStatType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "Max")).FirstOrDefault();
+                return GetScore(maxStatType, verticalPosition, eventType);
             }
         }
         #endregion
