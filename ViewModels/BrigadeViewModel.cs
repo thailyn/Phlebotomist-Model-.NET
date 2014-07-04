@@ -173,7 +173,7 @@ namespace Phlebotomist.ViewModels
             }
         }
 
-        #region Familiars
+        #region FamiliarTypes
         public FamiliarTypeViewModel FarLeftFrontFamiliarType
         {
             get
@@ -183,6 +183,124 @@ namespace Phlebotomist.ViewModels
             set
             {
                 SetBrigadePositionFamiliarType(BrigadeHorizontalPosition.FarLeft, false, value);
+                OnPropertyChanged("FarLeftFrontFamiliarType");
+            }
+        }
+
+        public FamiliarTypeViewModel MidLeftFrontFamiliarType
+        {
+            get
+            {
+                return GetBrigadePositionFamiliarType(BrigadeHorizontalPosition.MidLeft, false);
+            }
+            set
+            {
+                SetBrigadePositionFamiliarType(BrigadeHorizontalPosition.MidLeft, false, value);
+                OnPropertyChanged("MidLeftFrontFamiliarType");
+            }
+        }
+
+        public FamiliarTypeViewModel MiddleFrontFamiliarType
+        {
+            get
+            {
+                return GetBrigadePositionFamiliarType(BrigadeHorizontalPosition.Middle, false);
+            }
+            set
+            {
+                SetBrigadePositionFamiliarType(BrigadeHorizontalPosition.Middle, false, value);
+                OnPropertyChanged("MiddleFrontFamiliarType");
+            }
+        }
+
+        public FamiliarTypeViewModel MidRightFrontFamiliarType
+        {
+            get
+            {
+                return GetBrigadePositionFamiliarType(BrigadeHorizontalPosition.MidRight, false);
+            }
+            set
+            {
+                SetBrigadePositionFamiliarType(BrigadeHorizontalPosition.MidRight, false, value);
+                OnPropertyChanged("MidRightFrontFamiliarType");
+            }
+        }
+
+        public FamiliarTypeViewModel FarRightFrontFamiliarType
+        {
+            get
+            {
+                return GetBrigadePositionFamiliarType(BrigadeHorizontalPosition.FarRight, false);
+            }
+            set
+            {
+                SetBrigadePositionFamiliarType(BrigadeHorizontalPosition.FarRight, false, value);
+                OnPropertyChanged("FarRightFrontFamiliarType");
+            }
+        }
+
+        public FamiliarTypeViewModel FarLeftReserveFamiliarType
+        {
+            get
+            {
+                return GetBrigadePositionFamiliarType(BrigadeHorizontalPosition.FarLeft, true);
+            }
+            set
+            {
+                SetBrigadePositionFamiliarType(BrigadeHorizontalPosition.FarLeft, true, value);
+                OnPropertyChanged("FarLeftReserveFamiliarType");
+            }
+        }
+
+        public FamiliarTypeViewModel MidLeftReserveFamiliarType
+        {
+            get
+            {
+                return GetBrigadePositionFamiliarType(BrigadeHorizontalPosition.MidLeft, true);
+            }
+            set
+            {
+                SetBrigadePositionFamiliarType(BrigadeHorizontalPosition.MidLeft, true, value);
+                OnPropertyChanged("MidLeftReserveFamiliarType");
+            }
+        }
+
+        public FamiliarTypeViewModel MiddleReserveFamiliarType
+        {
+            get
+            {
+                return GetBrigadePositionFamiliarType(BrigadeHorizontalPosition.Middle, true);
+            }
+            set
+            {
+                SetBrigadePositionFamiliarType(BrigadeHorizontalPosition.Middle, true, value);
+                OnPropertyChanged("MiddleReserveFamiliarType");
+            }
+        }
+
+        public FamiliarTypeViewModel MidRightReserveFamiliarType
+        {
+            get
+            {
+                return GetBrigadePositionFamiliarType(BrigadeHorizontalPosition.MidRight, true);
+            }
+            set
+            {
+                SetBrigadePositionFamiliarType(BrigadeHorizontalPosition.MidRight, true, value);
+                OnPropertyChanged("MidRightReserveFamiliarType");
+            }
+        }
+
+        public FamiliarTypeViewModel FarRightReserveFamiliarType
+        {
+            get
+            {
+                return GetBrigadePositionFamiliarType(BrigadeHorizontalPosition.FarRight, true);
+            }
+            set
+            {
+                SetBrigadePositionFamiliarType(BrigadeHorizontalPosition.FarRight, true, value);
+                OnPropertyChanged("FarRightReserveFamiliarType");
             }
         }
 
