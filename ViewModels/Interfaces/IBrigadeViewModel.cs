@@ -26,6 +26,23 @@ namespace Phlebotomist.ViewModels.Interfaces
         ICollection<FamiliarTypeViewModel> Familiars { get; }
         BrigadeFormation Formation { get; set; }
         Player Player { get; set; }
+
+        #region FamiliarTypes
+        FamiliarTypeViewModel FarLeftFrontFamiliarType {get; set; }
+        FamiliarTypeViewModel MidLeftFrontFamiliarType {get; set; }
+        FamiliarTypeViewModel MiddleFrontFamiliarType { get; set; }
+        FamiliarTypeViewModel MidRightFrontFamiliarType { get; set; }
+        FamiliarTypeViewModel FarRightFrontFamiliarType { get; set; }
+
+        FamiliarTypeViewModel FarLeftReserveFamiliarType { get; set; }
+        FamiliarTypeViewModel MidLeftReserveFamiliarType { get; set; }
+        FamiliarTypeViewModel MiddleReserveFamiliarType { get; set; }
+        FamiliarTypeViewModel MidRightReserveFamiliarType { get; set; }
+        FamiliarTypeViewModel FarRightReserveFamiliarType { get; set; }
+
+        FamiliarTypeViewModel GetBrigadePositionFamiliarType(BrigadeHorizontalPosition horizontalPosition, bool isReserve);
+        void SetBrigadePositionFamiliarType(BrigadeHorizontalPosition horizontalPosition, bool isReserve, FamiliarTypeViewModel familiarType);
+        #endregion
         #endregion
 
         #region Utility
