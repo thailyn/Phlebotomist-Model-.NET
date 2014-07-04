@@ -351,6 +351,7 @@ namespace Phlebotomist.ViewModels
             {
                 familiarType.StatValues.Add(new FamiliarTypeStatValue
                 {
+                    FamiliarTypes = familiarType,
                     FamiliarTypeId = familiarType.Id,
                     StatTypeId = (int)statType,
                     StatId = (int)stat,
@@ -712,6 +713,7 @@ namespace Phlebotomist.ViewModels
         {
             var familiarTypeSkill = new FamiliarTypeSkill
             {
+                FamiliarType = FamiliarType,
                 FamiliarTypeId = Id,
                 SkillId = newSkill.Id,
                 Skill = newSkill
