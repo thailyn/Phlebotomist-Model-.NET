@@ -158,6 +158,22 @@ namespace Phlebotomist.ViewModels
                 if (value != Brigade.Formation)
                 {
                     Brigade.Formation = value;
+
+                    // Refresh each position so they have the correct formation
+                    // position (specifically the vertical position).
+                    FarLeftFrontFamiliarType = FarLeftFrontFamiliarType;
+                    MidLeftFrontFamiliarType = MidLeftFrontFamiliarType;
+                    MiddleFrontFamiliarType = MiddleFrontFamiliarType;
+                    MidRightFrontFamiliarType = MidRightFrontFamiliarType;
+                    FarRightFrontFamiliarType = FarRightFrontFamiliarType;
+
+                    FarLeftReserveFamiliarType = FarLeftReserveFamiliarType;
+                    MidLeftReserveFamiliarType = MidLeftReserveFamiliarType;
+                    MiddleReserveFamiliarType = MiddleReserveFamiliarType;
+                    MidRightReserveFamiliarType = MidRightReserveFamiliarType;
+                    FarRightReserveFamiliarType = FarRightReserveFamiliarType;
+
+                    BrigadeFormationId = Brigade.Formation.Id;
                     OnPropertyChanged("Formation");
                 }
             }
@@ -417,13 +433,18 @@ namespace Phlebotomist.ViewModels
                 return;
             }
 
+            if (familiarType == null)
+            {
+                return;
+            }
+
             var brigadeFamiliars = from bf in _brigade.FamiliarTypes
                                    where bf.BrigadeFormationPosition.HorizontalPositionTypeId == (int)horizontalPosition
                                    where bf.IsReserve == (isReserve ? 1 : 0)
                                    select bf;
 
             var brigadeFormationPosition = PhlebotomistRepository.Context.BrigadeFormationPositions
-                .Where(p => p.BrigadeFormationId == _brigade.BrigadeFormationId
+                .Where(p => p.BrigadeFormationId == _brigade.Formation.Id
                 && p.HorizontalPositionTypeId == (int)horizontalPosition).FirstOrDefault();
 
             var brigadeFamiliar = brigadeFamiliars.ToList().FirstOrDefault();

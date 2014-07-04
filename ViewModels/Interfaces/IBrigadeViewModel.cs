@@ -28,13 +28,13 @@ namespace Phlebotomist.ViewModels.Interfaces
         Player Player { get; set; }
 
         #region Scores
-        double BasePvPScore { get; set; }
-        double MaxPvPScore { get; set; }
-        double PEPvPScore { get; set; }
+        double BasePvPScore { get; }
+        double MaxPvPScore { get; }
+        double PEPvPScore { get; }
 
-        double BaseRaidScore { get; set; }
-        double MaxRaidScore { get; set; }
-        double PERaidScore { get; set; }
+        double BaseRaidScore { get; }
+        double MaxRaidScore { get; }
+        double PERaidScore { get; }
         #endregion
 
         #region FamiliarTypes
