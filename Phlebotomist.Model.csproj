@@ -157,6 +157,9 @@
     <Compile Include="Model\SkillAffectedStat.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\SkillGroup.cs">
+      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\SkillPattern.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>

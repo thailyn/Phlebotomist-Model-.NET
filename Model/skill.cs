@@ -39,6 +39,7 @@ namespace Phlebotomist.Model
         public Nullable<long> FoeDefensiveModifierStatId { get; set; }
         public string Ability { get; set; }
         public Nullable<byte> IgnoresPosition { get; set; }
+        public long SkillGroupId { get; set; }
     
         public virtual ICollection<FamiliarSkill> Familiars { get; set; }
         public virtual ICollection<FamiliarTypeSkill> FamiliarTypes { get; set; }
@@ -47,5 +48,6 @@ namespace Phlebotomist.Model
         public virtual SkillType Type { get; set; }
         public virtual Stat FoeDefensiveModifierStat { get; set; }
         public virtual Stat ModifierStat { get; set; }
+        public virtual SkillGroup SkillGroups { get; set; }
     }
 }

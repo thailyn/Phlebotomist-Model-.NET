@@ -306,6 +306,14 @@
           <Property Name="affects_allies" Type="tinyint" Nullable="false" />
           <Property Name="affects_foes" Type="tinyint" Nullable="false" />
         </EntityType>
+        <EntityType Name="skill_groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
         <EntityType Name="skill_patterns">
           <Key>
             <PropertyRef Name="id" />
@@ -330,6 +338,7 @@
           <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="skill_type_id" Type="integer" Nullable="false" />
+          <Property Name="skill_group_id" Type="integer" Nullable="false" />
           <Property Name="min_probability" Type="real" Nullable="false" />
           <Property Name="max_probability" Type="real" Nullable="false" />
           <Property Name="modifier" Type="real" />
@@ -937,6 +946,18 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_skills_3_0">
+          <End Role="skill_groups" Type="Self.skill_groups" Multiplicity="1" />
+          <End Role="skills" Type="Self.skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skill_groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skills">
+              <PropertyRef Name="skill_group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skills_4_0">
           <End Role="skill_types" Type="Self.skill_types" Multiplicity="1" />
           <End Role="skills" Type="Self.skills" Multiplicity="*" />
           <ReferentialConstraint>
@@ -979,6 +1000,7 @@
           <EntitySet Name="raid_bosses" EntityType="Self.raid_bosses" store:Type="Tables" />
           <EntitySet Name="rarities" EntityType="Self.rarities" store:Type="Tables" />
           <EntitySet Name="skill_affected_stats" EntityType="Self.skill_affected_stats" store:Type="Tables" />
+          <EntitySet Name="skill_groups" EntityType="Self.skill_groups" store:Type="Tables" />
           <EntitySet Name="skill_patterns" EntityType="Self.skill_patterns" store:Type="Tables" />
           <EntitySet Name="skill_types" EntityType="Self.skill_types" store:Type="Tables" />
           <EntitySet Name="skills" EntityType="Self.skills" store:Type="Tables" />
@@ -1177,6 +1199,10 @@
             <End Role="skills" EntitySet="skills" />
           </AssociationSet>
           <AssociationSet Name="FK_skills_3_0" Association="Self.FK_skills_3_0">
+            <End Role="skill_groups" EntitySet="skill_groups" />
+            <End Role="skills" EntitySet="skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skills_4_0" Association="Self.FK_skills_4_0">
             <End Role="skill_types" EntitySet="skill_types" />
             <End Role="skills" EntitySet="skills" />
           </AssociationSet>
@@ -1416,6 +1442,11 @@
           <AssociationSet Name="FK_brigade_familiar_types_2_0" Association="PhlebotomistModel.FK_brigade_familiar_types_2_0">
             <End Role="Brigade" EntitySet="Brigades" />
             <End Role="brigade_familiar_types" EntitySet="BrigadeFamiliarTypes" />
+          </AssociationSet>
+          <EntitySet Name="SkillGroups" EntityType="PhlebotomistModel.SkillGroup" />
+          <AssociationSet Name="FK_skills_3_01" Association="PhlebotomistModel.FK_skills_3_01">
+            <End Role="skill_groups" EntitySet="SkillGroups" />
+            <End Role="Skill" EntitySet="Skills" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AttackType">
@@ -1824,6 +1855,8 @@
           <NavigationProperty Name="Type" Relationship="PhlebotomistModel.FK_skills_3_0" FromRole="skill" ToRole="skill_types" />
           <NavigationProperty Name="FoeDefensiveModifierStat" Relationship="PhlebotomistModel.FK_skills_0_0" FromRole="skill" ToRole="stat" />
           <NavigationProperty Name="ModifierStat" Relationship="PhlebotomistModel.FK_skills_2_0" FromRole="skill" ToRole="stat" />
+          <Property Name="SkillGroupId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="SkillGroups" Relationship="PhlebotomistModel.FK_skills_3_01" FromRole="Skill" ToRole="skill_groups" />
         </EntityType>
         <EntityType Name="Stat">
           <Key>
@@ -2459,6 +2492,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="SkillGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Skills" Relationship="PhlebotomistModel.FK_skills_3_01" FromRole="skill_groups" ToRole="Skill" />
+        </EntityType>
+        <Association Name="FK_skills_3_01">
+          <End Type="PhlebotomistModel.SkillGroup" Role="skill_groups" Multiplicity="1" />
+          <End Type="PhlebotomistModel.Skill" Role="Skill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skill_groups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Skill">
+              <PropertyRef Name="SkillGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2797,6 +2851,7 @@
           <EntitySetMapping Name="Skills">
             <EntityTypeMapping TypeName="PhlebotomistModel.Skill">
               <MappingFragment StoreEntitySet="skills">
+                <ScalarProperty Name="SkillGroupId" ColumnName="skill_group_id" />
                 <ScalarProperty Name="IgnoresPosition" ColumnName="ignores_position" />
                 <ScalarProperty Name="Ability" ColumnName="ability" />
                 <ScalarProperty Name="FoeDefensiveModifierStatId" ColumnName="foe_defensive_modifier_stat_id" />
@@ -2853,6 +2908,15 @@
                 <ScalarProperty Name="BrigadeFormationPositionId" ColumnName="brigade_formation_position_id" />
                 <ScalarProperty Name="FamiliarTypeId" ColumnName="familiar_type_id" />
                 <ScalarProperty Name="BrigadeId" ColumnName="brigade_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SkillGroups">
+            <EntityTypeMapping TypeName="PhlebotomistModel.SkillGroup">
+              <MappingFragment StoreEntitySet="skill_groups">
+                <ScalarProperty Name="Description" ColumnName="description" />
+                <ScalarProperty Name="Name" ColumnName="name" />
                 <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
