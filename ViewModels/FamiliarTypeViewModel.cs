@@ -669,7 +669,7 @@ namespace Phlebotomist.ViewModels
                                       select sv.StatValue).FirstOrDefault();
 
             double standardAttackScore = standardAttackStat * skill.Modifier.Value * skillProbability;
-            if (skill.IgnoresPosition.HasValue && skill.IgnoresPosition.Value == 0)
+            if (!skill.IgnoresPosition.HasValue || skill.IgnoresPosition.Value == 0)
             {
                 standardAttackScore *= verticalPosition.DamageDealtModifier;
             }
