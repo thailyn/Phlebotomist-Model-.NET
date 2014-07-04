@@ -609,7 +609,6 @@ namespace Phlebotomist.ViewModels
                     if (skill.Type.Name.Equals("Attack"))
                     {
                         nonStandardAttacks.Add(skill);
-                        standardAttackProbability -= skill.MaxProbability;
                     }
                 }
             }
@@ -622,7 +621,10 @@ namespace Phlebotomist.ViewModels
             // algorithm works, as well.
             foreach (var attack in nonStandardAttacks)
             {
-                nonStandardAttackProbabilities.Add(attack.MaxProbability / nonStandardAttacks.Count);
+                var modifiedProbability = attack.MaxProbability / nonStandardAttacks.Count;
+                nonStandardAttackProbabilities.Add(modifiedProbability);
+
+                standardAttackProbability -= modifiedProbability;
             }
 
             int maxTargets = 0;
