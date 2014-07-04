@@ -66,22 +66,6 @@ namespace Phlebotomist.ViewModels
             }
         }
 
-        public long BrigadeFormationId
-        {
-            get
-            {
-                return Brigade.BrigadeFormationId;
-            }
-            set
-            {
-                if (value != Brigade.BrigadeFormationId)
-                {
-                    Brigade.BrigadeFormationId = value;
-                    OnPropertyChanged("BrigadeFormationId");
-                }
-            }
-        }
-
         public Nullable<long> PlayerId
         {
             get
@@ -173,7 +157,6 @@ namespace Phlebotomist.ViewModels
                     MidRightReserveFamiliarType = MidRightReserveFamiliarType;
                     FarRightReserveFamiliarType = FarRightReserveFamiliarType;
 
-                    BrigadeFormationId = Brigade.Formation.Id;
                     OnPropertyChanged("Formation");
                 }
             }
@@ -428,7 +411,7 @@ namespace Phlebotomist.ViewModels
         public void SetBrigadePositionFamiliarType(BrigadeHorizontalPosition horizontalPosition, bool isReserve, FamiliarTypeViewModel familiarType)
         {
             // Do nothing if no brigade has been selected.
-            if (_brigade.BrigadeFormationId == 0)
+            if (_brigade.Formation == null)
             {
                 return;
             }

@@ -18,7 +18,6 @@ namespace Phlebotomist.ViewModels.Interfaces
         #region Bindings
         #endregion
         long Id { get; set; }
-        long BrigadeFormationId { get; set; }
         Nullable<long> PlayerId { get; set; }
         string Name { get; set; }
         string Notes { get; set; }
