@@ -50,7 +50,6 @@ namespace Phlebotomist.ViewModels
         #endregion
 
         #region Bindings
-        #endregion
         public long Id
         {
             get
@@ -131,18 +130,18 @@ namespace Phlebotomist.ViewModels
             }
         }
 
-        public ICollection<FamiliarTypeViewModel> _familiars;
-        public ICollection<FamiliarTypeViewModel> Familiars
+        public ICollection<FamiliarTypeViewModel> _familiarTypes;
+        public ICollection<FamiliarTypeViewModel> FamiliarTypes
         {
             get
             {
-                return _familiars;
+                return _familiarTypes;
             }
             protected set
             {
-                if (value != _familiars)
+                if (value != _familiarTypes)
                 {
-                    _familiars = value;
+                    _familiarTypes = value;
                     OnPropertyChanged("Familiars");
                 }
             }
@@ -179,6 +178,87 @@ namespace Phlebotomist.ViewModels
                 }
             }
         }
+
+        #region Scores
+        public double BasePvPScore
+        {
+            get
+            {
+                var statType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "Base")).FirstOrDefault();
+                var eventType = PhlebotomistRepository.Context.EventTypes.Where(et =>
+                    string.Equals(et.Name, "PvP")).FirstOrDefault();
+
+                return GetScore(statType, eventType);
+            }
+        }
+
+        public double MaxPvPScore
+        {
+            get
+            {
+                var statType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "Max")).FirstOrDefault();
+                var eventType = PhlebotomistRepository.Context.EventTypes.Where(et =>
+                    string.Equals(et.Name, "PvP")).FirstOrDefault();
+
+                return GetScore(statType, eventType);
+            }
+        }
+
+        public double PEPvPScore
+        {
+            get
+            {
+                var statType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "PE")).FirstOrDefault();
+                var eventType = PhlebotomistRepository.Context.EventTypes.Where(et =>
+                    string.Equals(et.Name, "PvP")).FirstOrDefault();
+
+                return GetScore(statType, eventType);
+            }
+        }
+
+        public double BaseRaidScore
+        {
+            get
+            {
+                var statType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "Base")).FirstOrDefault();
+                var eventType = PhlebotomistRepository.Context.EventTypes.Where(et =>
+                    string.Equals(et.Name, "Raid")).FirstOrDefault();
+
+                return GetScore(statType, eventType);
+            }
+        }
+
+        public double MaxRaidScore
+        {
+            get
+            {
+                var statType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "Max")).FirstOrDefault();
+                var eventType = PhlebotomistRepository.Context.EventTypes.Where(et =>
+                    string.Equals(et.Name, "Raid")).FirstOrDefault();
+
+                return GetScore(statType, eventType);
+            }
+        }
+
+        public double PERaidScore
+        {
+            get
+            {
+                var statType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "PE")).FirstOrDefault();
+                var eventType = PhlebotomistRepository.Context.EventTypes.Where(et =>
+                    string.Equals(et.Name, "Raid")).FirstOrDefault();
+
+                return GetScore(statType, eventType);
+            }
+        }
+        #endregion
+        #endregion
 
         #region FamiliarTypes
         public FamiliarTypeViewModel FarLeftFrontFamiliarType
@@ -331,6 +411,12 @@ namespace Phlebotomist.ViewModels
 
         public void SetBrigadePositionFamiliarType(BrigadeHorizontalPosition horizontalPosition, bool isReserve, FamiliarTypeViewModel familiarType)
         {
+            // Do nothing if no brigade has been selected.
+            if (_brigade.BrigadeFormationId == 0)
+            {
+                return;
+            }
+
             var brigadeFamiliars = from bf in _brigade.FamiliarTypes
                                    where bf.BrigadeFormationPosition.HorizontalPositionTypeId == (int)horizontalPosition
                                    where bf.IsReserve == (isReserve ? 1 : 0)
@@ -378,14 +464,40 @@ namespace Phlebotomist.ViewModels
             Brigade = model;
             PhlebotomistRepository = phlebotomistRepository;
 
-            Familiars = new ObservableCollection<FamiliarTypeViewModel>();
+            FamiliarTypes = new ObservableCollection<FamiliarTypeViewModel>();
             foreach (var brigadeFamiliarType in Brigade.FamiliarTypes)
             {
-                Familiars.Add(new FamiliarTypeViewModel(brigadeFamiliarType.FamiliarType, PhlebotomistRepository));
+                FamiliarTypes.Add(new FamiliarTypeViewModel(brigadeFamiliarType.FamiliarType, PhlebotomistRepository));
             }
         }
 
         #region Accessors
+        public double GetScore(StatType statType, EventType eventType)
+        {
+            double score = 0;
+
+            foreach (var brigadeFamiliarType in Brigade.FamiliarTypes)
+            {
+                var verticalPosition = brigadeFamiliarType.BrigadeFormationPosition.VerticalPositionTypes;
+                if (brigadeFamiliarType.FamiliarType != null)
+                {
+                    var familiarTypeViewModel = new FamiliarTypeViewModel(brigadeFamiliarType.FamiliarType, PhlebotomistRepository);
+                    double familiarTypeScore = familiarTypeViewModel.GetScore(statType, verticalPosition, eventType);
+
+                    // If familiar has no PE score value (e.g., base evolution), use his Max value instead.
+                    if (familiarTypeScore == 0 && statType.Id == (int) StatTypeEnum.PE)
+                    {
+                        var maxStatType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                            string.Equals(st.Name, "Max")).FirstOrDefault();
+                        familiarTypeScore = familiarTypeViewModel.GetScore(maxStatType, verticalPosition, eventType);
+                    }
+
+                    score += familiarTypeScore;
+                }
+            }
+
+            return score;
+        }
         #endregion
 
         #region Mutators

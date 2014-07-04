@@ -23,9 +23,19 @@ namespace Phlebotomist.ViewModels.Interfaces
         string Name { get; set; }
         string Notes { get; set; }
 
-        ICollection<FamiliarTypeViewModel> Familiars { get; }
+        ICollection<FamiliarTypeViewModel> FamiliarTypes { get; }
         BrigadeFormation Formation { get; set; }
         Player Player { get; set; }
+
+        #region Scores
+        double BasePvPScore { get; set; }
+        double MaxPvPScore { get; set; }
+        double PEPvPScore { get; set; }
+
+        double BaseRaidScore { get; set; }
+        double MaxRaidScore { get; set; }
+        double PERaidScore { get; set; }
+        #endregion
 
         #region FamiliarTypes
         FamiliarTypeViewModel FarLeftFrontFamiliarType {get; set; }
@@ -53,6 +63,7 @@ namespace Phlebotomist.ViewModels.Interfaces
         #endregion
 
         #region Accessors
+        double GetScore(StatType statType, EventType eventType);
         #endregion
 
         #region Mutators
