@@ -49,6 +49,13 @@ namespace Phlebotomist.ViewModels
         Varies
     }
 
+    public enum SkillGroupEnum
+    {
+        Offensive = 1,
+        Healing,
+        Debuff
+    }
+
     public class FamiliarTypeViewModel : IFamiliarTypeViewModel, INotifyPropertyChanged
     {
         #region Utility
@@ -651,33 +658,39 @@ namespace Phlebotomist.ViewModels
         }
 
         private double CalcSkillScore(StatType statType, BrigadeFormationVerticalPositionType verticalPosition,
-            Skill standardAttack, int maxTargets, double skillProbability)
+            Skill skill, int maxTargets, double skillProbability)
         {
+            // Skills other than offensive skills do no damage.
+            if (skill.SkillGroups.Id != (int)SkillGroupEnum.Offensive)
+            {
+                return 0;
+            }
+
             var standardAttackStat = (from sv in FamiliarType.StatValues
                                       where sv.StatType.Id == statType.Id // Base, Max, etc.
-                                      where sv.Stat.Id == standardAttack.ModifierStat.Id // ATK, WIS, etc.
+                                      where sv.Stat.Id == skill.ModifierStat.Id // ATK, WIS, etc.
                                       select sv.StatValue).FirstOrDefault();
 
-            double standardAttackScore = standardAttackStat * standardAttack.Modifier.Value * skillProbability;
-            if (standardAttack.IgnoresPosition.HasValue && standardAttack.IgnoresPosition.Value == 0)
+            double standardAttackScore = standardAttackStat * skill.Modifier.Value * skillProbability;
+            if (skill.IgnoresPosition.HasValue && skill.IgnoresPosition.Value == 0)
             {
                 standardAttackScore *= verticalPosition.DamageDealtModifier;
             }
 
             int numTargets = 0;
-            switch (standardAttack.Pattern.Id)
+            switch (skill.Pattern.Id)
             {
                 case ((int)SkillPatternEnum.Sweeping):
                     // Hit a single target only once.
-                    numTargets = Math.Min(maxTargets, (int)standardAttack.NumTargets);
+                    numTargets = Math.Min(maxTargets, (int)skill.NumTargets);
                     break;
                 case ((int)SkillPatternEnum.AoE):
                     // Hit a single target only once.
-                    numTargets = Math.Min(maxTargets, (int)standardAttack.NumTargets);
+                    numTargets = Math.Min(maxTargets, (int)skill.NumTargets);
                     break;
                 case ((int)SkillPatternEnum.MultiAttack):
                     // Hit a single target multiple times.
-                    numTargets = (int)standardAttack.NumTargets;
+                    numTargets = (int)skill.NumTargets;
                     break;
                 case ((int)SkillPatternEnum.SingleAttack):
                     // Hit only a single target once.
@@ -685,7 +698,7 @@ namespace Phlebotomist.ViewModels
                     break;
                 case ((int)SkillPatternEnum.ForkAttack):
                     // Hit a single target only once.
-                    numTargets = Math.Min(maxTargets, (int)standardAttack.NumTargets);
+                    numTargets = Math.Min(maxTargets, (int)skill.NumTargets);
                     break;
                 case ((int)SkillPatternEnum.Varies):
                     // Unknown!
