@@ -10,6 +10,23 @@ using System.Threading.Tasks;
 
 namespace Phlebotomist.ViewModels
 {
+    public enum SkillPatternEnum
+    {
+        Sweeping = 1,
+        AoE,
+        MultiAttack,
+        SingleAttack,
+        ForkAttack,
+        Varies
+    }
+
+    public enum SkillGroupEnum
+    {
+        Offensive = 1,
+        Healing,
+        Debuff
+    }
+
     public class SkillViewModel : INotifyPropertyChanged, ISkillViewModel
     {
         #region Utility

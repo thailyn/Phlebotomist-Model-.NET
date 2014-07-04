@@ -39,23 +39,6 @@ namespace Phlebotomist.ViewModels
         Raid
     }
 
-    public enum SkillPatternEnum
-    {
-        Sweeping = 1,
-        AoE,
-        MultiAttack,
-        SingleAttack,
-        ForkAttack,
-        Varies
-    }
-
-    public enum SkillGroupEnum
-    {
-        Offensive = 1,
-        Healing,
-        Debuff
-    }
-
     public class FamiliarTypeViewModel : IFamiliarTypeViewModel, INotifyPropertyChanged
     {
         #region Utility
