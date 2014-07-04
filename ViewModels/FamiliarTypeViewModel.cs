@@ -595,6 +595,7 @@ namespace Phlebotomist.ViewModels
             double standardAttackProbability = 1;
             Skill standardAttack = null;
             List<Skill> nonStandardAttacks = new List<Skill>();
+            List<double> nonStandardAttackProbabilities = new List<double>();
             foreach (var familiarTypeSkill in Skills)
             {
                 var skill = familiarTypeSkill.Skill;
@@ -610,6 +611,17 @@ namespace Phlebotomist.ViewModels
                         standardAttackProbability -= skill.MaxProbability;
                     }
                 }
+            }
+
+            // Modify each non-standard attack's probability based on the number
+            // of non-standard attacks there are.  Note that this really be based
+            // on the ratio between the current attack's probability relative to
+            // the sum of all the non-standard attacks' probabilities.  But, since
+            // all non-standard attacks have the same max probability, this simpler
+            // algorithm works, as well.
+            foreach (var attack in nonStandardAttacks)
+            {
+                nonStandardAttackProbabilities.Add(attack.MaxProbability / nonStandardAttacks.Count);
             }
 
             int maxTargets = 0;
@@ -630,10 +642,11 @@ namespace Phlebotomist.ViewModels
                 score += standardAttackScore;
             }
 
-            foreach (var attack in nonStandardAttacks)
+            for (int i = 0; i < nonStandardAttacks.Count; i++)
             {
+                var attack = nonStandardAttacks[i];
                 double nonStandardAttackScore = CalcSkillScore(statType, verticalPosition,
-                    attack, maxTargets, attack.MaxProbability);
+                    attack, maxTargets, nonStandardAttackProbabilities[i]);
                 score += nonStandardAttackScore;
             }
 
