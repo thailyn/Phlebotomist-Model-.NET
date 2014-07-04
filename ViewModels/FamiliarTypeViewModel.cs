@@ -545,6 +545,98 @@ namespace Phlebotomist.ViewModels
         }
         #endregion
 
+        #region Scores
+        public double BasePvPScore
+        {
+            get
+            {
+                var statType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "Base")).FirstOrDefault();
+                var verticalPosition = PhlebotomistRepository.Context.BrigadeFormationVerticalPositionTypes.Where(vp =>
+                    string.Equals(vp.Name, "Front")).FirstOrDefault();
+                var eventType = PhlebotomistRepository.Context.EventTypes.Where(et =>
+                    string.Equals(et.Name, "PvP")).FirstOrDefault();
+
+                return GetScore(statType, verticalPosition, eventType);
+            }
+        }
+
+        public double MaxPvPScore
+        {
+            get
+            {
+                var statType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "Max")).FirstOrDefault();
+                var verticalPosition = PhlebotomistRepository.Context.BrigadeFormationVerticalPositionTypes.Where(vp =>
+                    string.Equals(vp.Name, "Front")).FirstOrDefault();
+                var eventType = PhlebotomistRepository.Context.EventTypes.Where(et =>
+                    string.Equals(et.Name, "PvP")).FirstOrDefault();
+
+                return GetScore(statType, verticalPosition, eventType);
+            }
+        }
+
+        public double PEPvPScore
+        {
+            get
+            {
+                var statType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "PE")).FirstOrDefault();
+                var verticalPosition = PhlebotomistRepository.Context.BrigadeFormationVerticalPositionTypes.Where(vp =>
+                    string.Equals(vp.Name, "Front")).FirstOrDefault();
+                var eventType = PhlebotomistRepository.Context.EventTypes.Where(et =>
+                    string.Equals(et.Name, "PvP")).FirstOrDefault();
+
+                return GetScore(statType, verticalPosition, eventType);
+            }
+        }
+
+        public double BaseRaidScore
+        {
+            get
+            {
+                var statType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "Base")).FirstOrDefault();
+                var verticalPosition = PhlebotomistRepository.Context.BrigadeFormationVerticalPositionTypes.Where(vp =>
+                    string.Equals(vp.Name, "Front")).FirstOrDefault();
+                var eventType = PhlebotomistRepository.Context.EventTypes.Where(et =>
+                    string.Equals(et.Name, "Raid")).FirstOrDefault();
+
+                return GetScore(statType, verticalPosition, eventType);
+            }
+        }
+
+        public double MaxRaidScore
+        {
+            get
+            {
+                var statType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "Max")).FirstOrDefault();
+                var verticalPosition = PhlebotomistRepository.Context.BrigadeFormationVerticalPositionTypes.Where(vp =>
+                    string.Equals(vp.Name, "Front")).FirstOrDefault();
+                var eventType = PhlebotomistRepository.Context.EventTypes.Where(et =>
+                    string.Equals(et.Name, "Raid")).FirstOrDefault();
+
+                return GetScore(statType, verticalPosition, eventType);
+            }
+        }
+
+        public double PERaidScore
+        {
+            get
+            {
+                var statType = PhlebotomistRepository.Context.StatTypes.Where(st =>
+                    string.Equals(st.Name, "PE")).FirstOrDefault();
+                var verticalPosition = PhlebotomistRepository.Context.BrigadeFormationVerticalPositionTypes.Where(vp =>
+                    string.Equals(vp.Name, "Front")).FirstOrDefault();
+                var eventType = PhlebotomistRepository.Context.EventTypes.Where(et =>
+                    string.Equals(et.Name, "Raid")).FirstOrDefault();
+
+                return GetScore(statType, verticalPosition, eventType);
+            }
+        }
+        #endregion
+
         public ObservableCollection<FamiliarTypeSkill> _skills;
         public ObservableCollection<FamiliarTypeSkill> Skills
         {
