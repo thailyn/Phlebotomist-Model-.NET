@@ -20,6 +20,13 @@ namespace Phlebotomist.ViewModels
         FarRight
     }
 
+    public enum BrigadeVerticalPosition
+    {
+        Front = 1,
+        Center,
+        Rear
+    }
+
     public class BrigadeViewModel : IBrigadeViewModel, INotifyPropertyChanged
     {
         #region Properties
