@@ -12,6 +12,25 @@ using System.Threading.Tasks;
 
 namespace Phlebotomist.ViewModels
 {
+    public enum StatTypeEnum
+    {
+        Base = 1,
+        Max,
+        PE,
+        Current,
+        POPE
+    }
+
+    public enum StatEnum
+    {
+        HP = 1,
+        ATK,
+        DEF,
+        WIS,
+        AGI,
+        XP
+    }
+
     public class FamiliarTypeViewModel : IFamiliarTypeViewModel, INotifyPropertyChanged
     {
         #region Utility
@@ -297,52 +316,42 @@ namespace Phlebotomist.ViewModels
         }
 
         #region Stats
-        private int _baseStatTypeId = 1;
-        private int _maxStatTypeId = 2;
-        private int _peStatTypeId = 3;
-
-        private int _hpStatId = 1;
-        private int _atkStatId = 2;
-        private int _defStatId = 3;
-        private int _wisStatId = 4;
-        private int _agiStatId = 5;
-
-        protected double GetStat(FamiliarType familiarType, int statTypeId, int statId)
+        protected double GetStat(FamiliarType familiarType, StatTypeEnum statType, StatEnum stat)
         {
             var stats = from s in familiarType.StatValues
-                        where s.StatTypeId == statTypeId
-                        where s.StatId == statId
+                        where s.StatTypeId == (int)statType
+                        where s.StatId == (int)stat
                         //where string.Equals(s.StatType.Name, "Base", StringComparison.CurrentCultureIgnoreCase)
                         //where string.Equals(s.Stat.Name, "HP", StringComparison.CurrentCultureIgnoreCase)
                         select s;
 
-            var stat = stats.ToList().FirstOrDefault();
-            return stat == null ? 0 : stat.StatValue;
+            var familiarTypeStatValue = stats.ToList().FirstOrDefault();
+            return familiarTypeStatValue == null ? 0 : familiarTypeStatValue.StatValue;
         }
 
-        protected void SetStat(FamiliarType familiarType, int statTypeId, int statId, double value)
+        protected void SetStat(FamiliarType familiarType, StatTypeEnum statType, StatEnum stat, double value)
         {
             var stats = from s in familiarType.StatValues
-                        where s.StatTypeId == statTypeId
-                        where s.StatId == statId
+                        where s.StatTypeId == (int)statType
+                        where s.StatId == (int)stat
                         //where string.Equals(s.StatType.Name, "Base", StringComparison.CurrentCultureIgnoreCase)
                         //where string.Equals(s.Stat.Name, "HP", StringComparison.CurrentCultureIgnoreCase)
                         select s;
 
-            var stat = stats.ToList().FirstOrDefault();
-            if (stat == null)
+            var familiarTypeStatValue = stats.ToList().FirstOrDefault();
+            if (familiarTypeStatValue == null)
             {
                 familiarType.StatValues.Add(new FamiliarTypeStatValue
                 {
                     FamiliarTypeId = familiarType.Id,
-                    StatTypeId = statTypeId,
-                    StatId = statId,
+                    StatTypeId = (int)statType,
+                    StatId = (int)stat,
                     StatValue = value
                 });
             }
             else
             {
-                stat.StatValue = value;
+                familiarTypeStatValue.StatValue = value;
             }
         }
 
@@ -350,11 +359,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                return GetStat(_familiarType, _baseStatTypeId, _hpStatId);
+                return GetStat(_familiarType, StatTypeEnum.Base, StatEnum.HP);
             }
             set
             {
-                SetStat(_familiarType, _baseStatTypeId, _hpStatId, value);
+                SetStat(_familiarType, StatTypeEnum.Base, StatEnum.HP, value);
             }
         }
 
@@ -362,11 +371,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                return GetStat(_familiarType, _baseStatTypeId, _atkStatId);
+                return GetStat(_familiarType, StatTypeEnum.Base, StatEnum.ATK);
             }
             set
             {
-                SetStat(_familiarType, _baseStatTypeId, _atkStatId, value);
+                SetStat(_familiarType, StatTypeEnum.Base, StatEnum.ATK, value);
             }
         }
 
@@ -374,11 +383,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                return GetStat(_familiarType, _baseStatTypeId, _defStatId);
+                return GetStat(_familiarType, StatTypeEnum.Base, StatEnum.DEF);
             }
             set
             {
-                SetStat(_familiarType, _baseStatTypeId, _defStatId, value);
+                SetStat(_familiarType, StatTypeEnum.Base, StatEnum.DEF, value);
             }
         }
 
@@ -386,11 +395,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                return GetStat(_familiarType, _baseStatTypeId, _wisStatId);
+                return GetStat(_familiarType, StatTypeEnum.Base, StatEnum.WIS);
             }
             set
             {
-                SetStat(_familiarType, _baseStatTypeId, _wisStatId, value);
+                SetStat(_familiarType, StatTypeEnum.Base, StatEnum.WIS, value);
             }
         }
 
@@ -398,11 +407,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                return GetStat(_familiarType, _baseStatTypeId, _agiStatId);
+                return GetStat(_familiarType, StatTypeEnum.Base, StatEnum.AGI);
             }
             set
             {
-                SetStat(_familiarType, _baseStatTypeId, _agiStatId, value);
+                SetStat(_familiarType, StatTypeEnum.Base, StatEnum.AGI, value);
             }
         }
 
@@ -410,11 +419,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                return GetStat(_familiarType, _maxStatTypeId, _hpStatId);
+                return GetStat(_familiarType, StatTypeEnum.Max, StatEnum.HP);
             }
             set
             {
-                SetStat(_familiarType, _maxStatTypeId, _hpStatId, value);
+                SetStat(_familiarType, StatTypeEnum.Max, StatEnum.HP, value);
             }
         }
 
@@ -422,11 +431,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                return GetStat(_familiarType, _maxStatTypeId, _atkStatId);
+                return GetStat(_familiarType, StatTypeEnum.Max, StatEnum.ATK);
             }
             set
             {
-                SetStat(_familiarType, _maxStatTypeId, _atkStatId, value);
+                SetStat(_familiarType, StatTypeEnum.Max, StatEnum.ATK, value);
             }
         }
 
@@ -434,11 +443,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                return GetStat(_familiarType, _maxStatTypeId, _defStatId);
+                return GetStat(_familiarType, StatTypeEnum.Max, StatEnum.DEF);
             }
             set
             {
-                SetStat(_familiarType, _maxStatTypeId, _defStatId, value);
+                SetStat(_familiarType, StatTypeEnum.Max, StatEnum.DEF, value);
             }
         }
 
@@ -446,11 +455,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                return GetStat(_familiarType, _maxStatTypeId, _wisStatId);
+                return GetStat(_familiarType, StatTypeEnum.Max, StatEnum.WIS);
             }
             set
             {
-                SetStat(_familiarType, _maxStatTypeId, _wisStatId, value);
+                SetStat(_familiarType, StatTypeEnum.Max, StatEnum.WIS, value);
             }
         }
 
@@ -458,11 +467,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                return GetStat(_familiarType, _maxStatTypeId, _agiStatId);
+                return GetStat(_familiarType, StatTypeEnum.Max, StatEnum.AGI);
             }
             set
             {
-                SetStat(_familiarType, _maxStatTypeId, _agiStatId, value);
+                SetStat(_familiarType, StatTypeEnum.Max, StatEnum.AGI, value);
             }
         }
 
@@ -470,11 +479,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                return GetStat(_familiarType, _peStatTypeId, _hpStatId);
+                return GetStat(_familiarType, StatTypeEnum.PE, StatEnum.HP);
             }
             set
             {
-                SetStat(_familiarType, _peStatTypeId, _hpStatId, value);
+                SetStat(_familiarType, StatTypeEnum.PE, StatEnum.HP, value);
             }
         }
 
@@ -482,11 +491,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                return GetStat(_familiarType, _peStatTypeId, _atkStatId);
+                return GetStat(_familiarType, StatTypeEnum.PE, StatEnum.ATK);
             }
             set
             {
-                SetStat(_familiarType, _peStatTypeId, _atkStatId, value);
+                SetStat(_familiarType, StatTypeEnum.PE, StatEnum.ATK, value);
             }
         }
 
@@ -494,11 +503,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                return GetStat(_familiarType, _peStatTypeId, _defStatId);
+                return GetStat(_familiarType, StatTypeEnum.PE, StatEnum.DEF);
             }
             set
             {
-                SetStat(_familiarType, _peStatTypeId, _defStatId, value);
+                SetStat(_familiarType, StatTypeEnum.PE, StatEnum.DEF, value);
             }
         }
 
@@ -506,11 +515,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                return GetStat(_familiarType, _peStatTypeId, _wisStatId);
+                return GetStat(_familiarType, StatTypeEnum.PE, StatEnum.WIS);
             }
             set
             {
-                SetStat(_familiarType, _peStatTypeId, _wisStatId, value);
+                SetStat(_familiarType, StatTypeEnum.PE, StatEnum.WIS, value);
             }
         }
 
@@ -518,11 +527,11 @@ namespace Phlebotomist.ViewModels
         {
             get
             {
-                return GetStat(_familiarType, _peStatTypeId, _agiStatId);
+                return GetStat(_familiarType, StatTypeEnum.PE, StatEnum.AGI);
             }
             set
             {
-                SetStat(_familiarType, _peStatTypeId, _agiStatId, value);
+                SetStat(_familiarType, StatTypeEnum.PE, StatEnum.AGI, value);
             }
         }
         #endregion
