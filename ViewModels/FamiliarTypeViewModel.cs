@@ -31,6 +31,24 @@ namespace Phlebotomist.ViewModels
         XP
     }
 
+    public enum EventTypeEnum
+    {
+        PvP = 1,
+        SpecialDungeon,
+        WorldBattleColiseum,
+        Raid
+    }
+
+    public enum SkillPatternEnum
+    {
+        Sweeping = 1,
+        AoE,
+        MultiAttack,
+        SingleAttack,
+        ForkAttack,
+        Varies
+    }
+
     public class FamiliarTypeViewModel : IFamiliarTypeViewModel, INotifyPropertyChanged
     {
         #region Utility
@@ -566,6 +584,119 @@ namespace Phlebotomist.ViewModels
                 Skills.Add(skill);
             }
         }
+
+        #region Accessors
+        public double GetScore(StatType statType, BrigadeFormationVerticalPositionType verticalPosition, EventType eventType)
+        {
+            if (string.Equals(statType.Name, "Current", StringComparison.CurrentCultureIgnoreCase)
+                || string.Equals(statType.Name, "POPE", StringComparison.CurrentCultureIgnoreCase))
+            {
+                throw new NotImplementedException(string.Format("Selected stat type {0} is not currently supported.",
+                    statType.Name));
+            }
+
+            if (string.Equals(eventType.Name, "Special Dungeon", StringComparison.CurrentCultureIgnoreCase)
+                || string.Equals(eventType.Name, "World Battle Coliseum", StringComparison.CurrentCultureIgnoreCase))
+            {
+                throw new NotImplementedException(string.Format("Selected event type {0} is not currently supported.",
+                    eventType.Name));
+            }
+
+            double standardAttackProbability = 1;
+            Skill standardAttack = null;
+            List<Skill> nonStandardAttacks = new List<Skill>();
+            foreach (var familiarTypeSkill in Skills)
+            {
+                var skill = familiarTypeSkill.Skill;
+                if (skill.Name.Contains("Standard Attack"))
+                {
+                    standardAttack = skill;
+                }
+                else
+                {
+                    if (skill.Type.Name.Equals("Attack"))
+                    {
+                        nonStandardAttacks.Add(skill);
+                        standardAttackProbability -= skill.MaxProbability;
+                    }
+                }
+            }
+
+            int maxTargets = 0;
+            if (string.Equals(eventType.Name, "PvP", StringComparison.CurrentCultureIgnoreCase))
+            {
+                maxTargets = 5;
+            }
+            else if (string.Equals(eventType.Name, "Raid", StringComparison.CurrentCultureIgnoreCase))
+            {
+                maxTargets = 1;
+            }
+
+            double score = 0;
+            if (standardAttack != null)
+            {
+                double standardAttackScore = CalcSkillScore(statType, verticalPosition,
+                    standardAttack, maxTargets, standardAttackProbability);
+                score += standardAttackScore;
+            }
+
+            foreach (var attack in nonStandardAttacks)
+            {
+                double nonStandardAttackScore = CalcSkillScore(statType, verticalPosition,
+                    attack, maxTargets, attack.MaxProbability);
+                score += nonStandardAttackScore;
+            }
+
+            return score;
+        }
+
+        private double CalcSkillScore(StatType statType, BrigadeFormationVerticalPositionType verticalPosition,
+            Skill standardAttack, int maxTargets, double skillProbability)
+        {
+            var standardAttackStat = (from sv in FamiliarType.StatValues
+                                      where sv.StatType.Id == statType.Id // Base, Max, etc.
+                                      where sv.Stat.Id == standardAttack.ModifierStat.Id // ATK, WIS, etc.
+                                      select sv.StatValue).FirstOrDefault();
+
+            double standardAttackScore = standardAttackStat * standardAttack.Modifier.Value * skillProbability;
+            if (standardAttack.IgnoresPosition.HasValue && standardAttack.IgnoresPosition.Value == 0)
+            {
+                standardAttackScore *= verticalPosition.DamageDealtModifier;
+            }
+
+            int numTargets = 0;
+            switch (standardAttack.Pattern.Id)
+            {
+                case ((int)SkillPatternEnum.Sweeping):
+                    // Hit a single target only once.
+                    numTargets = Math.Min(maxTargets, (int)standardAttack.NumTargets);
+                    break;
+                case ((int)SkillPatternEnum.AoE):
+                    // Hit a single target only once.
+                    numTargets = Math.Min(maxTargets, (int)standardAttack.NumTargets);
+                    break;
+                case ((int)SkillPatternEnum.MultiAttack):
+                    // Hit a single target multiple times.
+                    numTargets = (int)standardAttack.NumTargets;
+                    break;
+                case ((int)SkillPatternEnum.SingleAttack):
+                    // Hit only a single target once.
+                    numTargets = 1;
+                    break;
+                case ((int)SkillPatternEnum.ForkAttack):
+                    // Hit a single target only once.
+                    numTargets = Math.Min(maxTargets, (int)standardAttack.NumTargets);
+                    break;
+                case ((int)SkillPatternEnum.Varies):
+                    // Unknown!
+                    break;
+            }
+
+            standardAttackScore *= numTargets;
+            return standardAttackScore;
+        }
+
+        #endregion
 
         #region Mutators
         public void AddSkill(Skill newSkill)
