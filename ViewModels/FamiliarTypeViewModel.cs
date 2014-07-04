@@ -644,7 +644,7 @@ namespace Phlebotomist.ViewModels
             Skill skill, int maxTargets, double skillProbability)
         {
             // Skills other than offensive skills do no damage.
-            if (skill.SkillGroups.Id != (int)SkillGroupEnum.Offensive)
+            if (skill.Group.Id != (int)SkillGroupEnum.Offensive)
             {
                 return 0;
             }

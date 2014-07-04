@@ -48,6 +48,6 @@ namespace Phlebotomist.Model
         public virtual SkillType Type { get; set; }
         public virtual Stat FoeDefensiveModifierStat { get; set; }
         public virtual Stat ModifierStat { get; set; }
-        public virtual SkillGroup SkillGroups { get; set; }
+        public virtual SkillGroup Group { get; set; }
     }
 }

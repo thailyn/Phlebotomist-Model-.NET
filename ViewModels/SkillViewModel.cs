@@ -425,6 +425,22 @@ namespace Phlebotomist.ViewModels
             }
         }
 
+        public SkillGroup Group
+        {
+            get
+            {
+                return _skill.Group;
+            }
+            set
+            {
+                if (value != _skill.Group)
+                {
+                    _skill.Group = value;
+                    OnPropertyChanged("Group");
+                }
+            }
+        }
+
         public Stat FoeDefensiveModifierStat
         {
             get

@@ -1856,7 +1856,7 @@
           <NavigationProperty Name="FoeDefensiveModifierStat" Relationship="PhlebotomistModel.FK_skills_0_0" FromRole="skill" ToRole="stat" />
           <NavigationProperty Name="ModifierStat" Relationship="PhlebotomistModel.FK_skills_2_0" FromRole="skill" ToRole="stat" />
           <Property Name="SkillGroupId" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="SkillGroups" Relationship="PhlebotomistModel.FK_skills_3_01" FromRole="Skill" ToRole="skill_groups" />
+          <NavigationProperty Name="Group" Relationship="PhlebotomistModel.FK_skills_3_01" FromRole="Skill" ToRole="skill_groups" />
         </EntityType>
         <EntityType Name="Stat">
           <Key>
