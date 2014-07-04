@@ -121,6 +121,22 @@ namespace Phlebotomist.ViewModels
             }
         }
 
+        public long SkillGroupId
+        {
+            get
+            {
+                return _skill.SkillGroupId;
+            }
+            set
+            {
+                if (value != _skill.SkillGroupId)
+                {
+                    _skill.SkillGroupId = value;
+                    OnPropertyChanged("SkillGroupId");
+                }
+            }
+        }
+
         public double MinProbability
         {
             get
