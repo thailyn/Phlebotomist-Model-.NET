@@ -329,25 +329,31 @@ namespace Phlebotomist.ViewModels
                                    where bf.IsReserve == (isReserve ? 1 : 0)
                                    select bf;
 
+            var brigadeFormationPosition = PhlebotomistRepository.Context.BrigadeFormationPositions
+                .Where(p => p.BrigadeFormationId == _brigade.BrigadeFormationId
+                && p.HorizontalPositionTypeId == (int)horizontalPosition).FirstOrDefault();
+
             var brigadeFamiliar = brigadeFamiliars.ToList().FirstOrDefault();
             if (brigadeFamiliar == null)
             {
-                var brigadeFormationPosition = PhlebotomistRepository.Context.BrigadeFormationPositions
-                    .Where(p => p.BrigadeFormationId == _brigade.BrigadeFormationId
-                    && p.HorizontalPositionTypeId == (int)horizontalPosition).FirstOrDefault();
-
                 _brigade.FamiliarTypes.Add(new BrigadeFamiliarType
                 {
+                    FamiliarType = familiarType.FamiliarType,
                     FamiliarTypeId = familiarType.Id,
+                    BrigadeFormationPosition = brigadeFormationPosition,
                     BrigadeFormationPositionId = brigadeFormationPosition.Id,
-                    //BrigadeId = _brigade.Id,
+                    BrigadeId = _brigade.Id,
                     Brigade = _brigade,
                     IsReserve = (byte)(isReserve ? 1 : 0)
                 });
             }
             else
             {
+                brigadeFamiliar.FamiliarType = familiarType.FamiliarType;
                 brigadeFamiliar.FamiliarTypeId = familiarType.Id;
+                brigadeFamiliar.BrigadeFormationPosition = brigadeFormationPosition;
+                brigadeFamiliar.BrigadeFormationPositionId = brigadeFormationPosition.Id;
+                brigadeFamiliar.IsReserve = (byte)(isReserve ? 1 : 0);
             }
         }
         #endregion
