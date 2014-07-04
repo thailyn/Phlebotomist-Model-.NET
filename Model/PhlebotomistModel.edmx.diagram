@@ -91,6 +91,7 @@
         <AssociationConnector Association="PhlebotomistModel.FK_brigade_familiar_types_2_0" />
         <EntityTypeShape EntityType="PhlebotomistModel.SkillGroup" Width="1.5" PointX="8.375" PointY="0.875" />
         <AssociationConnector Association="PhlebotomistModel.FK_skills_3_01" />
+        <EntityTypeShape EntityType="PhlebotomistModel.DataVersion" Width="1.5" PointX="10.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

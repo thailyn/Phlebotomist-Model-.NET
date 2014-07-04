@@ -103,6 +103,13 @@
           <Property Name="name" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="notes" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
+        <EntityType Name="data_version">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="integer" Nullable="false" />
+        </EntityType>
         <EntityType Name="event_elite_familiar_types">
           <Key>
             <PropertyRef Name="id" />
@@ -981,6 +988,7 @@
           <EntitySet Name="brigade_formation_vertical_position_types" EntityType="Self.brigade_formation_vertical_position_types" store:Type="Tables" />
           <EntitySet Name="brigade_formations" EntityType="Self.brigade_formations" store:Type="Tables" />
           <EntitySet Name="brigades" EntityType="Self.brigades" store:Type="Tables" />
+          <EntitySet Name="data_version" EntityType="Self.data_version" store:Type="Tables" />
           <EntitySet Name="event_elite_familiar_types" EntityType="Self.event_elite_familiar_types" store:Type="Tables" />
           <EntitySet Name="event_types" EntityType="Self.event_types" store:Type="Tables" />
           <EntitySet Name="events" EntityType="Self.events" store:Type="Tables" />
@@ -1448,6 +1456,7 @@
             <End Role="skill_groups" EntitySet="SkillGroups" />
             <End Role="Skill" EntitySet="Skills" />
           </AssociationSet>
+          <EntitySet Name="DataVersions" EntityType="PhlebotomistModel.DataVersion" />
         </EntityContainer>
         <EntityType Name="AttackType">
           <Key>
@@ -2513,6 +2522,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="DataVersion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Version" Type="Int64" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2917,6 +2933,14 @@
               <MappingFragment StoreEntitySet="skill_groups">
                 <ScalarProperty Name="Description" ColumnName="description" />
                 <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataVersions">
+            <EntityTypeMapping TypeName="PhlebotomistModel.DataVersion">
+              <MappingFragment StoreEntitySet="data_version">
+                <ScalarProperty Name="Version" ColumnName="version" />
                 <ScalarProperty Name="Id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

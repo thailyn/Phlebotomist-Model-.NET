@@ -61,5 +61,6 @@ namespace Phlebotomist.Model
         public DbSet<StatType> StatTypes { get; set; }
         public DbSet<BrigadeFamiliarType> BrigadeFamiliarTypes { get; set; }
         public DbSet<SkillGroup> SkillGroups { get; set; }
+        public DbSet<DataVersion> DataVersions { get; set; }
     }
 }
