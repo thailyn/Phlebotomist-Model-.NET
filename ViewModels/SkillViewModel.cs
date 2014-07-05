@@ -107,38 +107,6 @@ namespace Phlebotomist.ViewModels
             }
         }
 
-        public long SkillTypeId
-        {
-            get
-            {
-                return _skill.SkillTypeId;
-            }
-            set
-            {
-                if (value != _skill.SkillTypeId)
-                {
-                    _skill.SkillTypeId = value;
-                    OnPropertyChanged("SkillTypeId");
-                }
-            }
-        }
-
-        public long SkillGroupId
-        {
-            get
-            {
-                return _skill.SkillGroupId;
-            }
-            set
-            {
-                if (value != _skill.SkillGroupId)
-                {
-                    _skill.SkillGroupId = value;
-                    OnPropertyChanged("SkillGroupId");
-                }
-            }
-        }
-
         public double MinProbability
         {
             get
@@ -187,22 +155,6 @@ namespace Phlebotomist.ViewModels
             }
         }
 
-        public Nullable<long> ModifierStatId
-        {
-            get
-            {
-                return _skill.ModifierStatId;
-            }
-            set
-            {
-                if (value != _skill.ModifierStatId)
-                {
-                    _skill.ModifierStatId = value;
-                    OnPropertyChanged("ModifierStatId");
-                }
-            }
-        }
-
         public Nullable<byte> FlatModifier
         {
             get
@@ -231,22 +183,6 @@ namespace Phlebotomist.ViewModels
                 {
                     _skill.NumTargets = value;
                     OnPropertyChanged("NumTargets");
-                }
-            }
-        }
-
-        public Nullable<long> SkillPatternId
-        {
-            get
-            {
-                return _skill.SkillPatternId;
-            }
-            set
-            {
-                if (value != _skill.SkillPatternId)
-                {
-                    _skill.SkillPatternId = value;
-                    OnPropertyChanged("SkillPatternId");
                 }
             }
         }
@@ -311,22 +247,6 @@ namespace Phlebotomist.ViewModels
                 {
                     _skill.DamageReduction = value;
                     OnPropertyChanged("DamageReduction");
-                }
-            }
-        }
-
-        public Nullable<long> FoeDefensiveModifierStatId
-        {
-            get
-            {
-                return _skill.FoeDefensiveModifierStatId;
-            }
-            set
-            {
-                if (value != _skill.FoeDefensiveModifierStatId)
-                {
-                    _skill.FoeDefensiveModifierStatId = value;
-                    OnPropertyChanged("FoeDefensiveModifierStatId");
                 }
             }
         }

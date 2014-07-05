@@ -19,19 +19,15 @@ namespace Phlebotomist.ViewModels.Interfaces
         long Id { get; set; }
         string Name { get; set; }
         string Description { get; set; }
-        long SkillTypeId { get; set; }
         double MinProbability { get; set; }
         double MaxProbability { get; set; }
         Nullable<double> Modifier { get; set; }
-        Nullable<long> ModifierStatId { get; set; }
         Nullable<byte> FlatModifier { get; set; }
         Nullable<short> NumTargets { get; set; }
-        Nullable<long> SkillPatternId { get; set; }
         Nullable<int> RowsRange { get; set; }
         Nullable<int> ColumnsRange { get; set; }
         string SkillBased { get; set; }
         string DamageReduction { get; set; }
-        Nullable<long> FoeDefensiveModifierStatId { get; set; }
         string Ability { get; set; }
         Nullable<byte> IgnoresPosition { get; set; }
 
