@@ -24,7 +24,9 @@ namespace Phlebotomist.ViewModels
     {
         Offensive = 1,
         Healing,
-        Debuff
+        Debuff,
+        Flat,
+        Buff
     }
 
     public class SkillViewModel : INotifyPropertyChanged, ISkillViewModel

@@ -81,6 +81,9 @@
     <Compile Include="Model\BrigadeFormationVerticalPositionType.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataVersion.cs">
+      <DependentUpon>PhlebotomistModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Event.cs">
       <DependentUpon>PhlebotomistModel.tt</DependentUpon>
     </Compile>
