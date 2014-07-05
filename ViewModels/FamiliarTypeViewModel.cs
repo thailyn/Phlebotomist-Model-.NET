@@ -907,6 +907,12 @@ namespace Phlebotomist.ViewModels
             return familiarTypeViewModel.Id == this.Id || familiarTypeViewModel.Name == this.Name;
         }
 
+        public override int GetHashCode()
+        {
+            var value = this.Id % (long)int.MaxValue;
+            return (int)value;
+        }
+
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 
