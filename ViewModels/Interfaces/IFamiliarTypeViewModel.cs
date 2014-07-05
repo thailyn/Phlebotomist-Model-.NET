@@ -20,16 +20,14 @@ namespace Phlebotomist.ViewModels.Interfaces
         long Id { get; set; }
         Nullable<long> BbId { get; set; }
         string Name { get; set; }
-        long RarityId { get; set; }
+        Rarity Rarity { get; set; }
         short NumStars { get; set; }
         short MaxStars { get; set; }
-        long GrowthId { get; set; }
+        Growth Growth { get; set; }
         long Worth { get; set; }
-        long RaceId { get; set; }
+        Race Race { get; set; }
         short Tradable { get; set; }
         string LastWords { get; set; }
-        Nullable<long> PrevEvolutionId { get; set; }
-        Nullable<long> NextEvolutionId { get; set; }
 
         FamiliarTypeViewModel PreviousEvolution { get; set; }
         FamiliarTypeViewModel NextEvolution { get; set; }

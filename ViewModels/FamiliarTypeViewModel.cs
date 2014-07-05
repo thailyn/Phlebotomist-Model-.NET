@@ -117,18 +117,18 @@ namespace Phlebotomist.ViewModels
             }
         }
 
-        public long RarityId
+        public Rarity Rarity
         {
             get
             {
-                return _familiarType.RarityId;
+                return _familiarType.Rarity;
             }
             set
             {
-                if (value != _familiarType.RarityId)
+                if (value != _familiarType.Rarity)
                 {
-                    _familiarType.RarityId = value;
-                    OnPropertyChanged("RarityId");
+                    _familiarType.Rarity = value;
+                    OnPropertyChanged("Rarity");
                 }
             }
         }
@@ -165,18 +165,18 @@ namespace Phlebotomist.ViewModels
             }
         }
 
-        public long GrowthId
+        public Growth Growth
         {
             get
             {
-                return _familiarType.GrowthId;
+                return _familiarType.Growth;
             }
             set
             {
-                if (value != _familiarType.GrowthId)
+                if (value != _familiarType.Growth)
                 {
-                    _familiarType.GrowthId = value;
-                    OnPropertyChanged("GrowthId");
+                    _familiarType.Growth = value;
+                    OnPropertyChanged("Growth");
                 }
             }
         }
@@ -197,18 +197,18 @@ namespace Phlebotomist.ViewModels
             }
         }
 
-        public long RaceId
+        public Race Race
         {
             get
             {
-                return _familiarType.RaceId;
+                return _familiarType.Race;
             }
             set
             {
-                if (value != _familiarType.RaceId)
+                if (value != _familiarType.Race)
                 {
-                    _familiarType.RaceId = value;
-                    OnPropertyChanged("RaceId");
+                    _familiarType.Race = value;
+                    OnPropertyChanged("Race");
                 }
             }
         }
@@ -245,66 +245,48 @@ namespace Phlebotomist.ViewModels
             }
         }
 
-        public Nullable<long> PrevEvolutionId
-        {
-            get
-            {
-                return _familiarType.PrevEvolutionId;
-            }
-            set
-            {
-                if (value != _familiarType.PrevEvolutionId)
-                {
-                    _familiarType.PrevEvolutionId = value;
-                    OnPropertyChanged("PrevEvolutionId");
-                }
-            }
-        }
-
-        public Nullable<long> NextEvolutionId
-        {
-            get
-            {
-                return _familiarType.NextEvolutionId;
-            }
-            set
-            {
-                if (value != _familiarType.NextEvolutionId)
-                {
-                    _familiarType.NextEvolutionId = value;
-                    OnPropertyChanged("NextEvolutionId");
-                }
-            }
-        }
-
+        private FamiliarTypeViewModel _previousEvolution;
         public FamiliarTypeViewModel PreviousEvolution
         {
             get
             {
-                return new FamiliarTypeViewModel(_familiarType.PreviousEvolution, PhlebotomistRepository);
+                if (_previousEvolution == null && _familiarType.PreviousEvolution != null)
+                {
+                    _previousEvolution = new FamiliarTypeViewModel(_familiarType.PreviousEvolution, PhlebotomistRepository);
+                }
+                return _previousEvolution;
             }
             set
             {
-                if (value == null)
+                if (value != _previousEvolution)
                 {
-                    _familiarType.PreviousEvolution = null;
-                    _familiarType.PrevEvolutionId = null;
+                    if (value == null)
+                    {
+                        _familiarType.PreviousEvolution = null;
+                        _familiarType.PrevEvolutionId = null;
+                        _previousEvolution = null;
+                    }
+                    else
+                    {
+                        _familiarType.PreviousEvolution = value._familiarType;
+                        _familiarType.PrevEvolutionId = value.Id;
+                        _previousEvolution = value;
+                    }
+                    OnPropertyChanged("PreviousEvolution");
                 }
-                else
-                {
-                    _familiarType.PreviousEvolution = value._familiarType;
-                    _familiarType.PrevEvolutionId = value.Id;
-                }
-                OnPropertyChanged("PreviousEvolution");
-                OnPropertyChanged("PrevEvolutionId");
             }
         }
 
+        private FamiliarTypeViewModel _nextEvolution;
         public FamiliarTypeViewModel NextEvolution
         {
             get
             {
-                return new FamiliarTypeViewModel(_familiarType.NextEvolution, PhlebotomistRepository);
+                if (_nextEvolution == null && _familiarType.NextEvolution != null)
+                {
+                    _nextEvolution = new FamiliarTypeViewModel(_familiarType.NextEvolution, PhlebotomistRepository);
+                }
+                return _nextEvolution;
             }
             set
             {
@@ -312,14 +294,15 @@ namespace Phlebotomist.ViewModels
                 {
                     _familiarType.NextEvolution = null;
                     _familiarType.NextEvolutionId = null;
+                    _nextEvolution = null;
                 }
                 else
                 {
                     _familiarType.NextEvolution = value._familiarType;
                     _familiarType.NextEvolutionId = value.Id;
+                    _nextEvolution = value;
                 }
                 OnPropertyChanged("NextEvolution");
-                OnPropertyChanged("NextEvolutionId");
             }
         }
 
@@ -911,6 +894,17 @@ namespace Phlebotomist.ViewModels
             }
 
             return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            FamiliarTypeViewModel familiarTypeViewModel = obj as FamiliarTypeViewModel;
+            if (familiarTypeViewModel == null)
+            {
+                return false;
+            }
+
+            return familiarTypeViewModel.Id == this.Id || familiarTypeViewModel.Name == this.Name;
         }
 
         #region INotifyPropertyChanged
